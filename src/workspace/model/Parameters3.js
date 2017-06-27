@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['workspace/ApiClient', 'workspace/model/VoicedialData'], factory);
+    define(['workspace/ApiClient', 'workspace/model/VoicemakecallData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./VoicedialData'));
+    module.exports = factory(require('../ApiClient'), require('./VoicemakecallData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.Parameters3 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicedialData);
+    root.WorkspaceApi.Parameters3 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicemakecallData);
   }
-}(this, function(ApiClient, VoicedialData) {
+}(this, function(ApiClient, VoicemakecallData) {
   'use strict';
 
 
@@ -60,14 +60,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = VoicedialData.constructFromObject(data['data']);
+        obj['data'] = VoicemakecallData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:workspace/model/VoicedialData} data
+   * @member {module:workspace/model/VoicemakecallData} data
    */
   exports.prototype['data'] = undefined;
 

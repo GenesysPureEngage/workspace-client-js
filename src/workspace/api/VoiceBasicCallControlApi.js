@@ -94,50 +94,6 @@
     }
 
     /**
-     * Callback function to receive the result of the dial operation.
-     * @callback module:workspace/api/VoiceBasicCallControlApi~dialCallback
-     * @param {String} error Error message, if any.
-     * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Dial a new call to the specified destination
-     * @param {module:workspace/model/Parameters3} parameters Request parameters.
-     * @param {module:workspace/api/VoiceBasicCallControlApi~dialCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:workspace/model/ApiSuccessResponse}
-     */
-    this.dial = function(parameters, callback) {
-      var postBody = parameters;
-
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling dial");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/voice/dial', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the getCalls operation.
      * @callback module:workspace/api/VoiceBasicCallControlApi~getCallsCallback
      * @param {String} error Error message, if any.
@@ -169,7 +125,7 @@
       var returnType = InlineResponse200;
 
       return this.apiClient.callApi(
-        '/voice/get-calls', 'GET',
+        '/voice/calls/', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -218,6 +174,50 @@
 
       return this.apiClient.callApi(
         '/voice/calls/{id}/hold', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the makeCall operation.
+     * @callback module:workspace/api/VoiceBasicCallControlApi~makeCallCallback
+     * @param {String} error Error message, if any.
+     * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Make a new call to the specified destination
+     * @param {module:workspace/model/Parameters3} parameters Request parameters.
+     * @param {module:workspace/api/VoiceBasicCallControlApi~makeCallCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:workspace/model/ApiSuccessResponse}
+     */
+    this.makeCall = function(parameters, callback) {
+      var postBody = parameters;
+
+      // verify the required parameter 'parameters' is set
+      if (parameters == undefined || parameters == null) {
+        throw new Error("Missing the required parameter 'parameters' when calling makeCall");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/voice/make-call', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

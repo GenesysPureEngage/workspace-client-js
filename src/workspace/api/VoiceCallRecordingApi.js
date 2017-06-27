@@ -46,8 +46,8 @@
 
 
     /**
-     * Callback function to receive the result of the pauseCallRecording operation.
-     * @callback module:workspace/api/VoiceCallRecordingApi~pauseCallRecordingCallback
+     * Callback function to receive the result of the pauseRecording operation.
+     * @callback module:workspace/api/VoiceCallRecordingApi~pauseRecordingCallback
      * @param {String} error Error message, if any.
      * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -56,15 +56,15 @@
     /**
      * Pauses call recording.
      * @param {String} id id of the call
-     * @param {module:workspace/api/VoiceCallRecordingApi~pauseCallRecordingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:workspace/api/VoiceCallRecordingApi~pauseRecordingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.pauseCallRecording = function(id, callback) {
+    this.pauseRecording = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling pauseCallRecording");
+        throw new Error("Missing the required parameter 'id' when calling pauseRecording");
       }
 
 
@@ -84,15 +84,15 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/pause-call-recording', 'POST',
+        '/voice/calls/{id}/pause-recording', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the resumeCallRecording operation.
-     * @callback module:workspace/api/VoiceCallRecordingApi~resumeCallRecordingCallback
+     * Callback function to receive the result of the resumeRecording operation.
+     * @callback module:workspace/api/VoiceCallRecordingApi~resumeRecordingCallback
      * @param {String} error Error message, if any.
      * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -101,15 +101,15 @@
     /**
      * Resumes call recording.
      * @param {String} id id of the call
-     * @param {module:workspace/api/VoiceCallRecordingApi~resumeCallRecordingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:workspace/api/VoiceCallRecordingApi~resumeRecordingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.resumeCallRecording = function(id, callback) {
+    this.resumeRecording = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling resumeCallRecording");
+        throw new Error("Missing the required parameter 'id' when calling resumeRecording");
       }
 
 
@@ -129,15 +129,15 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/resume-call-recording', 'POST',
+        '/voice/calls/{id}/resume-recording', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the startCallRecording operation.
-     * @callback module:workspace/api/VoiceCallRecordingApi~startCallRecordingCallback
+     * Callback function to receive the result of the startRecording operation.
+     * @callback module:workspace/api/VoiceCallRecordingApi~startRecordingCallback
      * @param {String} error Error message, if any.
      * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -146,15 +146,15 @@
     /**
      * Starts call recording.
      * @param {String} id id of the call
-     * @param {module:workspace/api/VoiceCallRecordingApi~startCallRecordingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:workspace/api/VoiceCallRecordingApi~startRecordingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.startCallRecording = function(id, callback) {
+    this.startRecording = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling startCallRecording");
+        throw new Error("Missing the required parameter 'id' when calling startRecording");
       }
 
 
@@ -174,15 +174,15 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/start-call-recording', 'POST',
+        '/voice/calls/{id}/start-recording', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the stopCallRecording operation.
-     * @callback module:workspace/api/VoiceCallRecordingApi~stopCallRecordingCallback
+     * Callback function to receive the result of the stopRecording operation.
+     * @callback module:workspace/api/VoiceCallRecordingApi~stopRecordingCallback
      * @param {String} error Error message, if any.
      * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -191,15 +191,15 @@
     /**
      * Stops call recording.
      * @param {String} id id of the call
-     * @param {module:workspace/api/VoiceCallRecordingApi~stopCallRecordingCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:workspace/api/VoiceCallRecordingApi~stopRecordingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.stopCallRecording = function(id, callback) {
+    this.stopRecording = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling stopCallRecording");
+        throw new Error("Missing the required parameter 'id' when calling stopRecording");
       }
 
 
@@ -219,7 +219,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/stop-call-recording', 'POST',
+        '/voice/calls/{id}/stop-recording', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

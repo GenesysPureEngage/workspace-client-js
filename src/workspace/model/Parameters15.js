@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['workspace/ApiClient', 'workspace/model/VoicecallsidreconnectcallData'], factory);
+    define(['workspace/ApiClient', 'workspace/model/VoicecallsidreconnectData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./VoicecallsidreconnectcallData'));
+    module.exports = factory(require('../ApiClient'), require('./VoicecallsidreconnectData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.Parameters15 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicecallsidreconnectcallData);
+    root.WorkspaceApi.Parameters15 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicecallsidreconnectData);
   }
-}(this, function(ApiClient, VoicecallsidreconnectcallData) {
+}(this, function(ApiClient, VoicecallsidreconnectData) {
   'use strict';
 
 
@@ -60,14 +60,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = VoicecallsidreconnectcallData.constructFromObject(data['data']);
+        obj['data'] = VoicecallsidreconnectData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:workspace/model/VoicecallsidreconnectcallData} data
+   * @member {module:workspace/model/VoicecallsidreconnectData} data
    */
   exports.prototype['data'] = undefined;
 

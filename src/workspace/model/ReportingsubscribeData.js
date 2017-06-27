@@ -41,13 +41,13 @@
    * Constructs a new <code>ReportingsubscribeData</code>.
    * @alias module:workspace/model/ReportingsubscribeData
    * @class
-   * @param socketId {String} 
+   * @param connectionId {String} 
    * @param statistics {Array.<String>} 
    */
-  var exports = function(socketId, statistics) {
+  var exports = function(connectionId, statistics) {
     var _this = this;
 
-    _this['socketId'] = socketId;
+    _this['connectionId'] = connectionId;
     _this['statistics'] = statistics;
   };
 
@@ -62,8 +62,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('socketId')) {
-        obj['socketId'] = ApiClient.convertToType(data['socketId'], 'String');
+      if (data.hasOwnProperty('connectionId')) {
+        obj['connectionId'] = ApiClient.convertToType(data['connectionId'], 'String');
       }
       if (data.hasOwnProperty('statistics')) {
         obj['statistics'] = ApiClient.convertToType(data['statistics'], ['String']);
@@ -73,9 +73,9 @@
   }
 
   /**
-   * @member {String} socketId
+   * @member {String} connectionId
    */
-  exports.prototype['socketId'] = undefined;
+  exports.prototype['connectionId'] = undefined;
   /**
    * @member {Array.<String>} statistics
    */

@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['workspace/ApiClient', 'workspace/model/ApiErrorResponse', 'workspace/model/ApiSuccessResponse', 'workspace/model/Parameters39'], factory);
+    define(['workspace/ApiClient', 'workspace/model/ApiErrorResponse', 'workspace/model/ApiSuccessResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters39'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.TargetsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters39);
+    root.WorkspaceApi.TargetsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters39) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse) {
   'use strict';
 
   /**
@@ -60,7 +60,6 @@
      * @param {String} opts.types Comma separated list of types to include in the search
      * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
      * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {String} opts.socketId socketId for subscription to availability statistics.
      * @param {module:workspace/api/TargetsApi~getCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
@@ -80,8 +79,7 @@
         'searchTerm': searchTerm,
         'types': opts['types'],
         'sort': opts['sort'],
-        'limit': opts['limit'],
-        'socketId': opts['socketId']
+        'limit': opts['limit']
       };
       var headerParams = {
       };
@@ -112,13 +110,10 @@
      * Get a target
      * @param {Number} id The id of the target
      * @param {String} type the type of the target
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.socketId socketId for subscription to availability statistics.
      * @param {module:workspace/api/TargetsApi~getTargetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.getTarget = function(id, type, opts, callback) {
-      opts = opts || {};
+    this.getTarget = function(id, type, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -137,7 +132,6 @@
         'type': type
       };
       var queryParams = {
-        'socketId': opts['socketId']
       };
       var headerParams = {
       };
@@ -151,50 +145,6 @@
 
       return this.apiClient.callApi(
         '/targets/{type}/{id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the targetUnsubscribe operation.
-     * @callback module:workspace/api/TargetsApi~targetUnsubscribeCallback
-     * @param {String} error Error message, if any.
-     * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Unsubscribe to availability notifications for previous search result
-     * @param {module:workspace/model/Parameters39} parameters Request parameters.
-     * @param {module:workspace/api/TargetsApi~targetUnsubscribeCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:workspace/model/ApiSuccessResponse}
-     */
-    this.targetUnsubscribe = function(parameters, callback) {
-      var postBody = parameters;
-
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling targetUnsubscribe");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/targets/unsubscribe', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

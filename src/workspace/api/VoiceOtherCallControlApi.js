@@ -46,8 +46,8 @@
 
 
     /**
-     * Callback function to receive the result of the alternateCall operation.
-     * @callback module:workspace/api/VoiceOtherCallControlApi~alternateCallCallback
+     * Callback function to receive the result of the alternate operation.
+     * @callback module:workspace/api/VoiceOtherCallControlApi~alternateCallback
      * @param {String} error Error message, if any.
      * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -58,20 +58,20 @@
      * On behalf of the telephony object specified by the parameter dn, places the active call specified by the parameter current_conn_id on hold and connects the call specified by the parameter held_conn_id.
      * @param {String} id Connection identifier of the call that is requested to be connected.
      * @param {module:workspace/model/Parameters16} parameters 
-     * @param {module:workspace/api/VoiceOtherCallControlApi~alternateCallCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:workspace/api/VoiceOtherCallControlApi~alternateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.alternateCall = function(id, parameters, callback) {
+    this.alternate = function(id, parameters, callback) {
       var postBody = parameters;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling alternateCall");
+        throw new Error("Missing the required parameter 'id' when calling alternate");
       }
 
       // verify the required parameter 'parameters' is set
       if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling alternateCall");
+        throw new Error("Missing the required parameter 'parameters' when calling alternate");
       }
 
 
@@ -91,15 +91,15 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/alternate-call', 'POST',
+        '/voice/calls/{id}/alternate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the clearCall operation.
-     * @callback module:workspace/api/VoiceOtherCallControlApi~clearCallCallback
+     * Callback function to receive the result of the clear operation.
+     * @callback module:workspace/api/VoiceOtherCallControlApi~clearCallback
      * @param {String} error Error message, if any.
      * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -110,20 +110,20 @@
      * Deletes all parties, that is, all telephony objects, from the call specified by conn_id and disconnects the call.
      * @param {String} id Connection identifier of the call, from which the telephony object in question is requested to be released.
      * @param {module:workspace/model/Parameters17} parameters 
-     * @param {module:workspace/api/VoiceOtherCallControlApi~clearCallCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:workspace/api/VoiceOtherCallControlApi~clearCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.clearCall = function(id, parameters, callback) {
+    this.clear = function(id, parameters, callback) {
       var postBody = parameters;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling clearCall");
+        throw new Error("Missing the required parameter 'id' when calling clear");
       }
 
       // verify the required parameter 'parameters' is set
       if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling clearCall");
+        throw new Error("Missing the required parameter 'parameters' when calling clear");
       }
 
 
@@ -143,15 +143,15 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/clear-call', 'POST',
+        '/voice/calls/{id}/clear', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the reconnectCall operation.
-     * @callback module:workspace/api/VoiceOtherCallControlApi~reconnectCallCallback
+     * Callback function to receive the result of the reconnect operation.
+     * @callback module:workspace/api/VoiceOtherCallControlApi~reconnectCallback
      * @param {String} error Error message, if any.
      * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -162,20 +162,20 @@
      * Releases the telephony object specified by the parameter dn from the active call specified by the parameter current_conn_id and retrieves the previously held call, specified by the parameter held_conn_id, to the same object. This function is commonly used to clear an active call and to return to a held call, or to cancel a consult call (because of no answer, called device busy, and so on) and then to return to a held call.
      * @param {String} id Connection identifier of the original call that should be retrieved.
      * @param {module:workspace/model/Parameters15} parameters 
-     * @param {module:workspace/api/VoiceOtherCallControlApi~reconnectCallCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:workspace/api/VoiceOtherCallControlApi~reconnectCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.reconnectCall = function(id, parameters, callback) {
+    this.reconnect = function(id, parameters, callback) {
       var postBody = parameters;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling reconnectCall");
+        throw new Error("Missing the required parameter 'id' when calling reconnect");
       }
 
       // verify the required parameter 'parameters' is set
       if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling reconnectCall");
+        throw new Error("Missing the required parameter 'parameters' when calling reconnect");
       }
 
 
@@ -195,15 +195,15 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/reconnect-call', 'POST',
+        '/voice/calls/{id}/reconnect', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the redirectCall operation.
-     * @callback module:workspace/api/VoiceOtherCallControlApi~redirectCallCallback
+     * Callback function to receive the result of the redirect operation.
+     * @callback module:workspace/api/VoiceOtherCallControlApi~redirectCallback
      * @param {String} error Error message, if any.
      * @param {module:workspace/model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -214,20 +214,20 @@
      * Requests that the call be redirected, without an answer, from the party specified by the parameter dn to the party specified by the parameter dest_dn.
      * @param {String} id Connection ID of the current call handled by the DN.
      * @param {module:workspace/model/Parameters18} parameters 
-     * @param {module:workspace/api/VoiceOtherCallControlApi~redirectCallCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:workspace/api/VoiceOtherCallControlApi~redirectCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:workspace/model/ApiSuccessResponse}
      */
-    this.redirectCall = function(id, parameters, callback) {
+    this.redirect = function(id, parameters, callback) {
       var postBody = parameters;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling redirectCall");
+        throw new Error("Missing the required parameter 'id' when calling redirect");
       }
 
       // verify the required parameter 'parameters' is set
       if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling redirectCall");
+        throw new Error("Missing the required parameter 'parameters' when calling redirect");
       }
 
 
@@ -247,7 +247,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/redirect-call', 'POST',
+        '/voice/calls/{id}/redirect', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
