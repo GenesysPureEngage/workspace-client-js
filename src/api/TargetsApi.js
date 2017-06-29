@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters39'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters39'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.TargetsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse);
+    root.WorkspaceApi.TargetsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters39);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters39) {
   'use strict';
 
   /**
@@ -46,6 +46,50 @@
 
 
     /**
+     * Callback function to receive the result of the addRecentTarget operation.
+     * @callback module:api/TargetsApi~addRecentTargetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Add a recent target
+     * @param {module:model/Parameters39} parameters 
+     * @param {module:api/TargetsApi~addRecentTargetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.addRecentTarget = function(parameters, callback) {
+      var postBody = parameters;
+
+      // verify the required parameter 'parameters' is set
+      if (parameters == undefined || parameters == null) {
+        throw new Error("Missing the required parameter 'parameters' when calling addRecentTarget");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/targets/recents/add', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the get operation.
      * @callback module:api/TargetsApi~getCallback
      * @param {String} error Error message, if any.
@@ -57,6 +101,7 @@
      * Search for targets
      * @param {String} searchTerm The text to search for
      * @param {Object} opts Optional parameters
+     * @param {String} opts.filterName The filter to specify on which fields the search is applied
      * @param {String} opts.types Comma separated list of types to include in the search
      * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
      * @param {Number} opts.limit Number of results. 100 if not specified.
@@ -77,6 +122,7 @@
       };
       var queryParams = {
         'searchTerm': searchTerm,
+        'filterName': opts['filterName'],
         'types': opts['types'],
         'sort': opts['sort'],
         'limit': opts['limit']
@@ -93,6 +139,48 @@
 
       return this.apiClient.callApi(
         '/targets', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getRecentTargets operation.
+     * @callback module:api/TargetsApi~getRecentTargetsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get recent targets
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Number of results. 50 if not specified.
+     * @param {module:api/TargetsApi~getRecentTargetsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.getRecentTargets = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'limit': opts['limit']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/targets/recents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

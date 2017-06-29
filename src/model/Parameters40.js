@@ -14,32 +14,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/TargetsrecentsaddData'], factory);
+    define(['ApiClient', 'model/ReportingunsubscribeData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./TargetsrecentsaddData'));
+    module.exports = factory(require('../ApiClient'), require('./ReportingunsubscribeData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.Parameters39 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.TargetsrecentsaddData);
+    root.WorkspaceApi.Parameters40 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ReportingunsubscribeData);
   }
-}(this, function(ApiClient, TargetsrecentsaddData) {
+}(this, function(ApiClient, ReportingunsubscribeData) {
   'use strict';
 
 
 
 
   /**
-   * The Parameters39 model module.
-   * @module model/Parameters39
+   * The Parameters40 model module.
+   * @module model/Parameters40
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Parameters39</code>.
-   * @alias module:model/Parameters39
+   * Constructs a new <code>Parameters40</code>.
+   * @alias module:model/Parameters40
    * @class
    */
   var exports = function() {
@@ -49,25 +49,25 @@
   };
 
   /**
-   * Constructs a <code>Parameters39</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Parameters40</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Parameters39} obj Optional instance to populate.
-   * @return {module:model/Parameters39} The populated <code>Parameters39</code> instance.
+   * @param {module:model/Parameters40} obj Optional instance to populate.
+   * @return {module:model/Parameters40} The populated <code>Parameters40</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = TargetsrecentsaddData.constructFromObject(data['data']);
+        obj['data'] = ReportingunsubscribeData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/TargetsrecentsaddData} data
+   * @member {module:model/ReportingunsubscribeData} data
    */
   exports.prototype['data'] = undefined;
 

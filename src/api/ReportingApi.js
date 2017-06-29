@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters39', 'model/Statistics', 'model/Statistics1'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters40', 'model/Statistics', 'model/Statistics1'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters39'), require('../model/Statistics'), require('../model/Statistics1'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters40'), require('../model/Statistics'), require('../model/Statistics1'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ReportingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters39, root.WorkspaceApi.Statistics, root.WorkspaceApi.Statistics1);
+    root.WorkspaceApi.ReportingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters40, root.WorkspaceApi.Statistics, root.WorkspaceApi.Statistics1);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters39, Statistics, Statistics1) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters40, Statistics, Statistics1) {
   'use strict';
 
   /**
@@ -188,7 +188,7 @@
 
     /**
      * Unsubscribe to availability notifications for previous search result
-     * @param {module:model/Parameters39} parameters Request parameters.
+     * @param {module:model/Parameters40} parameters Request parameters.
      * @param {module:api/ReportingApi~unsubscribeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
