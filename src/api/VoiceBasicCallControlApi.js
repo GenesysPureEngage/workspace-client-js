@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/InlineResponse200', 'model/Parameters19', 'model/Parameters3', 'model/Parameters4', 'model/Parameters5', 'model/Parameters6', 'model/Parameters7'], factory);
+    define(['ApiClient', 'model/AnswerData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/HoldData', 'model/InlineResponse200', 'model/MakeCallData', 'model/ReleaseData', 'model/RetrieveData', 'model/SendDTMFData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/InlineResponse200'), require('../model/Parameters19'), require('../model/Parameters3'), require('../model/Parameters4'), require('../model/Parameters5'), require('../model/Parameters6'), require('../model/Parameters7'));
+    module.exports = factory(require('../ApiClient'), require('../model/AnswerData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/HoldData'), require('../model/InlineResponse200'), require('../model/MakeCallData'), require('../model/ReleaseData'), require('../model/RetrieveData'), require('../model/SendDTMFData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceBasicCallControlApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.InlineResponse200, root.WorkspaceApi.Parameters19, root.WorkspaceApi.Parameters3, root.WorkspaceApi.Parameters4, root.WorkspaceApi.Parameters5, root.WorkspaceApi.Parameters6, root.WorkspaceApi.Parameters7);
+    root.WorkspaceApi.VoiceBasicCallControlApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AnswerData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.HoldData, root.WorkspaceApi.InlineResponse200, root.WorkspaceApi.MakeCallData, root.WorkspaceApi.ReleaseData, root.WorkspaceApi.RetrieveData, root.WorkspaceApi.SendDTMFData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, InlineResponse200, Parameters19, Parameters3, Parameters4, Parameters5, Parameters6, Parameters7) {
+}(this, function(ApiClient, AnswerData, ApiErrorResponse, ApiSuccessResponse, HoldData, InlineResponse200, MakeCallData, ReleaseData, RetrieveData, SendDTMFData) {
   'use strict';
 
   /**
@@ -57,13 +57,13 @@
      * Answer a call
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters4} opts.parameters Request parameters.
+     * @param {module:model/AnswerData} opts.answerData Request parameters.
      * @param {module:api/VoiceBasicCallControlApi~answerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
     this.answer = function(id, opts, callback) {
       opts = opts || {};
-      var postBody = opts['parameters'];
+      var postBody = opts['answerData'];
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
@@ -143,13 +143,13 @@
      * Place a call on hold
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters5} opts.parameters Request parameters.
+     * @param {module:model/HoldData} opts.holdData Request parameters.
      * @param {module:api/VoiceBasicCallControlApi~holdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
     this.hold = function(id, opts, callback) {
       opts = opts || {};
-      var postBody = opts['parameters'];
+      var postBody = opts['holdData'];
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
@@ -189,16 +189,16 @@
 
     /**
      * Make a new call to the specified destination
-     * @param {module:model/Parameters3} parameters Request parameters.
+     * @param {module:model/MakeCallData} makeCallData Request parameters.
      * @param {module:api/VoiceBasicCallControlApi~makeCallCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.makeCall = function(parameters, callback) {
-      var postBody = parameters;
+    this.makeCall = function(makeCallData, callback) {
+      var postBody = makeCallData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling makeCall");
+      // verify the required parameter 'makeCallData' is set
+      if (makeCallData == undefined || makeCallData == null) {
+        throw new Error("Missing the required parameter 'makeCallData' when calling makeCall");
       }
 
 
@@ -235,13 +235,13 @@
      * Release a call
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters7} opts.parameters Request parameters.
+     * @param {module:model/ReleaseData} opts.releaseData Request parameters.
      * @param {module:api/VoiceBasicCallControlApi~releaseCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
     this.release = function(id, opts, callback) {
       opts = opts || {};
-      var postBody = opts['parameters'];
+      var postBody = opts['releaseData'];
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
@@ -283,13 +283,13 @@
      * Retrieve a held call
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters6} opts.parameters Request parameters.
+     * @param {module:model/RetrieveData} opts.retrieveData Request parameters.
      * @param {module:api/VoiceBasicCallControlApi~retrieveCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
     this.retrieve = function(id, opts, callback) {
       opts = opts || {};
-      var postBody = opts['parameters'];
+      var postBody = opts['retrieveData'];
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
@@ -331,21 +331,21 @@
      * Send digits as DTMF.
      * On behalf of the telephony object specified by the parameter dn, sends digits that are expected by an interactive voice response system.
      * @param {String} id Connection identifier of the call in question.
-     * @param {module:model/Parameters19} parameters 
+     * @param {module:model/SendDTMFData} sendDTMFData 
      * @param {module:api/VoiceBasicCallControlApi~sendDTMFCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.sendDTMF = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.sendDTMF = function(id, sendDTMFData, callback) {
+      var postBody = sendDTMFData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling sendDTMF");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling sendDTMF");
+      // verify the required parameter 'sendDTMFData' is set
+      if (sendDTMFData == undefined || sendDTMFData == null) {
+        throw new Error("Missing the required parameter 'sendDTMFData' when calling sendDTMF");
       }
 
 

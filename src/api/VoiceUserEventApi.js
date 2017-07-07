@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/UserData2'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/UserData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/UserData2'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/UserData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceUserEventApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.UserData2);
+    root.WorkspaceApi.VoiceUserEventApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.UserData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, UserData2) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, UserData) {
   'use strict';
 
   /**
@@ -55,7 +55,7 @@
 
     /**
      * Send a userEvent event to TServer with provided attached data.
-     * @param {module:model/UserData2} userData An array of key/value pairs.
+     * @param {module:model/UserData} userData An array of key/value pairs.
      * @param {module:api/VoiceUserEventApi~sendUserEventCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */

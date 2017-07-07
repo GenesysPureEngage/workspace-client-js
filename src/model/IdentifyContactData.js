@@ -14,32 +14,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UserDataData'], factory);
+    define(['ApiClient', 'model/UcsidentifycontactData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UserDataData'));
+    module.exports = factory(require('../ApiClient'), require('./UcsidentifycontactData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UserData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UserDataData);
+    root.WorkspaceApi.IdentifyContactData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsidentifycontactData);
   }
-}(this, function(ApiClient, UserDataData) {
+}(this, function(ApiClient, UcsidentifycontactData) {
   'use strict';
 
 
 
 
   /**
-   * The UserData model module.
-   * @module model/UserData
+   * The IdentifyContactData model module.
+   * @module model/IdentifyContactData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UserData</code>.
-   * @alias module:model/UserData
+   * Constructs a new <code>IdentifyContactData</code>.
+   * @alias module:model/IdentifyContactData
    * @class
    */
   var exports = function() {
@@ -49,25 +49,25 @@
   };
 
   /**
-   * Constructs a <code>UserData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>IdentifyContactData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UserData} obj Optional instance to populate.
-   * @return {module:model/UserData} The populated <code>UserData</code> instance.
+   * @param {module:model/IdentifyContactData} obj Optional instance to populate.
+   * @return {module:model/IdentifyContactData} The populated <code>IdentifyContactData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UserDataData.constructFromObject(data['data']);
+        obj['data'] = UcsidentifycontactData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UserDataData} data
+   * @member {module:model/UcsidentifycontactData} data
    */
   exports.prototype['data'] = undefined;
 

@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters10', 'model/Parameters11', 'model/Parameters12', 'model/Parameters13', 'model/Parameters14', 'model/Parameters8', 'model/Parameters9'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/CompleteConferenceData', 'model/CompleteTransferData', 'model/DeleteFromConferenceData', 'model/InitiateConferenceData', 'model/InitiateTransferData', 'model/SingleStepConferenceData', 'model/SingleStepTransferData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters10'), require('../model/Parameters11'), require('../model/Parameters12'), require('../model/Parameters13'), require('../model/Parameters14'), require('../model/Parameters8'), require('../model/Parameters9'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/CompleteConferenceData'), require('../model/CompleteTransferData'), require('../model/DeleteFromConferenceData'), require('../model/InitiateConferenceData'), require('../model/InitiateTransferData'), require('../model/SingleStepConferenceData'), require('../model/SingleStepTransferData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceConferencesAndTransfersApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters10, root.WorkspaceApi.Parameters11, root.WorkspaceApi.Parameters12, root.WorkspaceApi.Parameters13, root.WorkspaceApi.Parameters14, root.WorkspaceApi.Parameters8, root.WorkspaceApi.Parameters9);
+    root.WorkspaceApi.VoiceConferencesAndTransfersApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.CompleteConferenceData, root.WorkspaceApi.CompleteTransferData, root.WorkspaceApi.DeleteFromConferenceData, root.WorkspaceApi.InitiateConferenceData, root.WorkspaceApi.InitiateTransferData, root.WorkspaceApi.SingleStepConferenceData, root.WorkspaceApi.SingleStepTransferData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters10, Parameters11, Parameters12, Parameters13, Parameters14, Parameters8, Parameters9) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, CompleteConferenceData, CompleteTransferData, DeleteFromConferenceData, InitiateConferenceData, InitiateTransferData, SingleStepConferenceData, SingleStepTransferData) {
   'use strict';
 
   /**
@@ -55,22 +55,22 @@
 
     /**
      * Complete a conference
-     * @param {String} id Connection identifier of the original call; will be assigned to the resulting conference call.
-     * @param {module:model/Parameters13} parameters 
+     * @param {String} id Connection identifier of the consult call
+     * @param {module:model/CompleteConferenceData} completeConferenceData 
      * @param {module:api/VoiceConferencesAndTransfersApi~completeConferenceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.completeConference = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.completeConference = function(id, completeConferenceData, callback) {
+      var postBody = completeConferenceData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling completeConference");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling completeConference");
+      // verify the required parameter 'completeConferenceData' is set
+      if (completeConferenceData == undefined || completeConferenceData == null) {
+        throw new Error("Missing the required parameter 'completeConferenceData' when calling completeConference");
       }
 
 
@@ -106,22 +106,22 @@
 
     /**
      * Complete a transfer
-     * @param {String} id Connection identifier of the original call; will be assigned to the resulting transferred call.
-     * @param {module:model/Parameters12} parameters 
+     * @param {String} id Connection identifier of the consult call
+     * @param {module:model/CompleteTransferData} completeTransferData 
      * @param {module:api/VoiceConferencesAndTransfersApi~completeTransferCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.completeTransfer = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.completeTransfer = function(id, completeTransferData, callback) {
+      var postBody = completeTransferData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling completeTransfer");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling completeTransfer");
+      // verify the required parameter 'completeTransferData' is set
+      if (completeTransferData == undefined || completeTransferData == null) {
+        throw new Error("Missing the required parameter 'completeTransferData' when calling completeTransfer");
       }
 
 
@@ -158,21 +158,21 @@
     /**
      * Complete a conference
      * @param {String} id Connection identifier of the conference call from which the object is requested to be deleted.
-     * @param {module:model/Parameters14} parameters 
+     * @param {module:model/DeleteFromConferenceData} deleteFromConferenceData 
      * @param {module:api/VoiceConferencesAndTransfersApi~deleteFromConferenceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.deleteFromConference = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.deleteFromConference = function(id, deleteFromConferenceData, callback) {
+      var postBody = deleteFromConferenceData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling deleteFromConference");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling deleteFromConference");
+      // verify the required parameter 'deleteFromConferenceData' is set
+      if (deleteFromConferenceData == undefined || deleteFromConferenceData == null) {
+        throw new Error("Missing the required parameter 'deleteFromConferenceData' when calling deleteFromConference");
       }
 
 
@@ -209,21 +209,21 @@
     /**
      * Initiate a conference
      * @param {String} id Connection identifier of the call that is requested to be placed on hold.
-     * @param {module:model/Parameters11} parameters 
+     * @param {module:model/InitiateConferenceData} initiateConferenceData 
      * @param {module:api/VoiceConferencesAndTransfersApi~initiateConferenceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.initiateConference = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.initiateConference = function(id, initiateConferenceData, callback) {
+      var postBody = initiateConferenceData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling initiateConference");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling initiateConference");
+      // verify the required parameter 'initiateConferenceData' is set
+      if (initiateConferenceData == undefined || initiateConferenceData == null) {
+        throw new Error("Missing the required parameter 'initiateConferenceData' when calling initiateConference");
       }
 
 
@@ -260,21 +260,21 @@
     /**
      * Initiate a transfer
      * @param {String} id Connection identifier of the call that is requested to be placed on hold.
-     * @param {module:model/Parameters10} parameters 
+     * @param {module:model/InitiateTransferData} initiateTransferData 
      * @param {module:api/VoiceConferencesAndTransfersApi~initiateTransferCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.initiateTransfer = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.initiateTransfer = function(id, initiateTransferData, callback) {
+      var postBody = initiateTransferData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling initiateTransfer");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling initiateTransfer");
+      // verify the required parameter 'initiateTransferData' is set
+      if (initiateTransferData == undefined || initiateTransferData == null) {
+        throw new Error("Missing the required parameter 'initiateTransferData' when calling initiateTransfer");
       }
 
 
@@ -312,21 +312,21 @@
      * Create a conference in a single step
      * Adds a new party to an existing call and creates a conference.
      * @param {String} id Connection identifier of the call that is requested to be conferenced.
-     * @param {module:model/Parameters9} parameters 
+     * @param {module:model/SingleStepConferenceData} singleStepConferenceData 
      * @param {module:api/VoiceConferencesAndTransfersApi~singleStepConferenceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.singleStepConference = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.singleStepConference = function(id, singleStepConferenceData, callback) {
+      var postBody = singleStepConferenceData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling singleStepConference");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling singleStepConference");
+      // verify the required parameter 'singleStepConferenceData' is set
+      if (singleStepConferenceData == undefined || singleStepConferenceData == null) {
+        throw new Error("Missing the required parameter 'singleStepConferenceData' when calling singleStepConference");
       }
 
 
@@ -364,21 +364,21 @@
      * Transfer a call in a single step
      * Transfers the call from a specified directory number dn that is currently engaged in the call specified by the parameter conn_id to a destination DN that is specified by the parameter destination.
      * @param {String} id Connection identifier of the call that is requested to be transferred.
-     * @param {module:model/Parameters8} parameters 
+     * @param {module:model/SingleStepTransferData} singleStepTransferData 
      * @param {module:api/VoiceConferencesAndTransfersApi~singleStepTransferCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.singleStepTransfer = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.singleStepTransfer = function(id, singleStepTransferData, callback) {
+      var postBody = singleStepTransferData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling singleStepTransfer");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling singleStepTransfer");
+      // verify the required parameter 'singleStepTransferData' is set
+      if (singleStepTransferData == undefined || singleStepTransferData == null) {
+        throw new Error("Missing the required parameter 'singleStepTransferData' when calling singleStepTransfer");
       }
 
 

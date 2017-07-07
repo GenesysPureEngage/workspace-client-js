@@ -14,12 +14,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ActivatechannelsData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Call', 'model/CallParticipants', 'model/ConfigResponse', 'model/ConfigResponseData', 'model/ConfigResponseDataActionCodes', 'model/ConfigResponseDataBusinessAttributes', 'model/ConfigResponseDataTransactions', 'model/ConfigResponseDataValues', 'model/CurrentUser', 'model/CurrentUserData', 'model/CurrentUserDataUser', 'model/CurrentUserDataUserActiveSession', 'model/CurrentUserDataUserActiveSessionDn', 'model/CurrentUserStatus', 'model/InlineResponse200', 'model/InlineResponse200Data', 'model/InlineResponse200Status', 'model/Key', 'model/Kvpair', 'model/Login', 'model/Parameters', 'model/Parameters1', 'model/Parameters10', 'model/Parameters11', 'model/Parameters12', 'model/Parameters13', 'model/Parameters14', 'model/Parameters15', 'model/Parameters16', 'model/Parameters17', 'model/Parameters18', 'model/Parameters19', 'model/Parameters2', 'model/Parameters20', 'model/Parameters21', 'model/Parameters22', 'model/Parameters23', 'model/Parameters24', 'model/Parameters25', 'model/Parameters26', 'model/Parameters27', 'model/Parameters28', 'model/Parameters29', 'model/Parameters3', 'model/Parameters30', 'model/Parameters31', 'model/Parameters32', 'model/Parameters33', 'model/Parameters34', 'model/Parameters35', 'model/Parameters36', 'model/Parameters37', 'model/Parameters38', 'model/Parameters39', 'model/Parameters4', 'model/Parameters40', 'model/Parameters5', 'model/Parameters6', 'model/Parameters7', 'model/Parameters8', 'model/Parameters9', 'model/RecentData', 'model/ReportingregisterData', 'model/ReportingsubscribeData', 'model/ReportingunsubscribeData', 'model/Statistics', 'model/Statistics1', 'model/TargetId', 'model/TargetsrecentsaddData', 'model/UcsassigninteractiontocontactData', 'model/UcsdeletecontactData', 'model/UcsfindorcreatephonecallData', 'model/UcsgetagenthistoryData', 'model/UcsgetcontactdetailsData', 'model/UcsgetcontacthistoryData', 'model/UcsgetcontactsData', 'model/UcsgetinteractioncontentData', 'model/UcsidentifycontactData', 'model/UcslucenesearchData', 'model/UcslucenesearchinteractionData', 'model/UcssetcallcompletedData', 'model/UcssetcallnoteData', 'model/UcsupdatecontactData', 'model/UserData', 'model/UserData1', 'model/UserData2', 'model/VoicecallsidalternateData', 'model/VoicecallsidanswerData', 'model/VoicecallsidattachuserdataData', 'model/VoicecallsidcompleteconferenceData', 'model/VoicecallsidcompletetransferData', 'model/VoicecallsiddeletefromconferenceData', 'model/VoicecallsiddeletepairData', 'model/VoicecallsidinitiateconferenceData', 'model/VoicecallsidinitiatetransferData', 'model/VoicecallsidreconnectData', 'model/VoicecallsidredirectData', 'model/VoicecallsidsenddtmfData', 'model/VoicecallsidsinglestepconferenceData', 'model/VoicecallsidsinglesteptransferData', 'model/VoicecallsidswitchtolisteninData', 'model/VoicemakecallData', 'model/VoicenotreadyData', 'model/VoicesendusereventData', 'model/VoicesetforwardData', 'model/VoicestartmonitoringData', 'model/VoicestopmonitoringData', 'api/DocumentationApi', 'api/NotificationsApi', 'api/ReportingApi', 'api/SessionApi', 'api/TargetsApi', 'api/UcsApi', 'api/VoiceAgentStateApi', 'api/VoiceBasicCallControlApi', 'api/VoiceCallForwardingApi', 'api/VoiceCallMonitoringApi', 'api/VoiceCallRecordingApi', 'api/VoiceConferencesAndTransfersApi', 'api/VoiceOtherCallControlApi', 'api/VoiceUserEventApi', 'api/VoiceUserdataApi'], factory);
+    define(['ApiClient', 'model/ActivatechannelsData', 'model/AgentHistoryData', 'model/AlternateData', 'model/AnswerData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/Call', 'model/CallCompletedData', 'model/CallNoteData', 'model/CallParticipants', 'model/ChannelsData', 'model/ClearData', 'model/CompleteConferenceData', 'model/CompleteTransferData', 'model/ConfigResponse', 'model/ConfigResponseData', 'model/ConfigResponseDataActionCodes', 'model/ConfigResponseDataBusinessAttributes', 'model/ConfigResponseDataTransactions', 'model/ConfigResponseDataValues', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CurrentUser', 'model/CurrentUserData', 'model/CurrentUserDataUser', 'model/CurrentUserDataUserActiveSession', 'model/CurrentUserDataUserActiveSessionDn', 'model/CurrentUserStatus', 'model/DeleteContactData', 'model/DeleteFromConferenceData', 'model/ForwardData', 'model/GetContactsData', 'model/HoldData', 'model/IdentifyContactData', 'model/InitiateConferenceData', 'model/InitiateTransferData', 'model/InlineResponse200', 'model/InlineResponse200Data', 'model/InlineResponse200Status', 'model/InteractionContentData', 'model/KeyData', 'model/Kvpair', 'model/LoginData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/MakeCallData', 'model/MonitoringScopeData', 'model/MonitoringScopeDataData', 'model/NotReadyData', 'model/PhoneCallData', 'model/RecentData', 'model/RecentTargetData', 'model/ReconnectData', 'model/RedirectData', 'model/ReleaseData', 'model/ReportingunsubscribeData', 'model/RetrieveData', 'model/SendDTMFData', 'model/SingleStepConferenceData', 'model/SingleStepTransferData', 'model/StartMonitoringData', 'model/StatisticsData', 'model/StatisticsDataData', 'model/StopMonitoringData', 'model/TargetId', 'model/TargetsrecentsaddData', 'model/UcsassigninteractiontocontactData', 'model/UcsdeletecontactData', 'model/UcsfindorcreatephonecallData', 'model/UcsgetagenthistoryData', 'model/UcsgetcontactdetailsData', 'model/UcsgetcontacthistoryData', 'model/UcsgetcontactsData', 'model/UcsgetinteractioncontentData', 'model/UcsidentifycontactData', 'model/UcslucenesearchData', 'model/UcslucenesearchinteractionData', 'model/UcssetcallcompletedData', 'model/UcssetcallnoteData', 'model/UcsupdatecontactData', 'model/UnsubscribeData', 'model/UpdateContactData', 'model/UserData', 'model/UserDataData', 'model/VoicecallsidalternateData', 'model/VoicecallsidanswerData', 'model/VoicecallsidcompletetransferData', 'model/VoicecallsiddeletefromconferenceData', 'model/VoicecallsiddeleteuserdatapairData', 'model/VoicecallsidinitiateconferenceData', 'model/VoicecallsidinitiatetransferData', 'model/VoicecallsidreconnectData', 'model/VoicecallsidredirectData', 'model/VoicecallsidsenddtmfData', 'model/VoicecallsidsinglestepconferenceData', 'model/VoicecallsidsinglesteptransferData', 'model/VoicemakecallData', 'model/VoicenotreadyData', 'model/VoicesetforwardData', 'model/VoicestartmonitoringData', 'model/VoicestopmonitoringData', 'api/DocumentationApi', 'api/NotificationsApi', 'api/ReportingApi', 'api/SessionApi', 'api/TargetsApi', 'api/UcsApi', 'api/VoiceAgentStateApi', 'api/VoiceBasicCallControlApi', 'api/VoiceCallForwardingApi', 'api/VoiceCallMonitoringApi', 'api/VoiceCallRecordingApi', 'api/VoiceConferencesAndTransfersApi', 'api/VoiceOtherCallControlApi', 'api/VoiceUserEventApi', 'api/VoiceUserdataApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/ActivatechannelsData'), require('./model/ApiErrorResponse'), require('./model/ApiSuccessResponse'), require('./model/Call'), require('./model/CallParticipants'), require('./model/ConfigResponse'), require('./model/ConfigResponseData'), require('./model/ConfigResponseDataActionCodes'), require('./model/ConfigResponseDataBusinessAttributes'), require('./model/ConfigResponseDataTransactions'), require('./model/ConfigResponseDataValues'), require('./model/CurrentUser'), require('./model/CurrentUserData'), require('./model/CurrentUserDataUser'), require('./model/CurrentUserDataUserActiveSession'), require('./model/CurrentUserDataUserActiveSessionDn'), require('./model/CurrentUserStatus'), require('./model/InlineResponse200'), require('./model/InlineResponse200Data'), require('./model/InlineResponse200Status'), require('./model/Key'), require('./model/Kvpair'), require('./model/Login'), require('./model/Parameters'), require('./model/Parameters1'), require('./model/Parameters10'), require('./model/Parameters11'), require('./model/Parameters12'), require('./model/Parameters13'), require('./model/Parameters14'), require('./model/Parameters15'), require('./model/Parameters16'), require('./model/Parameters17'), require('./model/Parameters18'), require('./model/Parameters19'), require('./model/Parameters2'), require('./model/Parameters20'), require('./model/Parameters21'), require('./model/Parameters22'), require('./model/Parameters23'), require('./model/Parameters24'), require('./model/Parameters25'), require('./model/Parameters26'), require('./model/Parameters27'), require('./model/Parameters28'), require('./model/Parameters29'), require('./model/Parameters3'), require('./model/Parameters30'), require('./model/Parameters31'), require('./model/Parameters32'), require('./model/Parameters33'), require('./model/Parameters34'), require('./model/Parameters35'), require('./model/Parameters36'), require('./model/Parameters37'), require('./model/Parameters38'), require('./model/Parameters39'), require('./model/Parameters4'), require('./model/Parameters40'), require('./model/Parameters5'), require('./model/Parameters6'), require('./model/Parameters7'), require('./model/Parameters8'), require('./model/Parameters9'), require('./model/RecentData'), require('./model/ReportingregisterData'), require('./model/ReportingsubscribeData'), require('./model/ReportingunsubscribeData'), require('./model/Statistics'), require('./model/Statistics1'), require('./model/TargetId'), require('./model/TargetsrecentsaddData'), require('./model/UcsassigninteractiontocontactData'), require('./model/UcsdeletecontactData'), require('./model/UcsfindorcreatephonecallData'), require('./model/UcsgetagenthistoryData'), require('./model/UcsgetcontactdetailsData'), require('./model/UcsgetcontacthistoryData'), require('./model/UcsgetcontactsData'), require('./model/UcsgetinteractioncontentData'), require('./model/UcsidentifycontactData'), require('./model/UcslucenesearchData'), require('./model/UcslucenesearchinteractionData'), require('./model/UcssetcallcompletedData'), require('./model/UcssetcallnoteData'), require('./model/UcsupdatecontactData'), require('./model/UserData'), require('./model/UserData1'), require('./model/UserData2'), require('./model/VoicecallsidalternateData'), require('./model/VoicecallsidanswerData'), require('./model/VoicecallsidattachuserdataData'), require('./model/VoicecallsidcompleteconferenceData'), require('./model/VoicecallsidcompletetransferData'), require('./model/VoicecallsiddeletefromconferenceData'), require('./model/VoicecallsiddeletepairData'), require('./model/VoicecallsidinitiateconferenceData'), require('./model/VoicecallsidinitiatetransferData'), require('./model/VoicecallsidreconnectData'), require('./model/VoicecallsidredirectData'), require('./model/VoicecallsidsenddtmfData'), require('./model/VoicecallsidsinglestepconferenceData'), require('./model/VoicecallsidsinglesteptransferData'), require('./model/VoicecallsidswitchtolisteninData'), require('./model/VoicemakecallData'), require('./model/VoicenotreadyData'), require('./model/VoicesendusereventData'), require('./model/VoicesetforwardData'), require('./model/VoicestartmonitoringData'), require('./model/VoicestopmonitoringData'), require('./api/DocumentationApi'), require('./api/NotificationsApi'), require('./api/ReportingApi'), require('./api/SessionApi'), require('./api/TargetsApi'), require('./api/UcsApi'), require('./api/VoiceAgentStateApi'), require('./api/VoiceBasicCallControlApi'), require('./api/VoiceCallForwardingApi'), require('./api/VoiceCallMonitoringApi'), require('./api/VoiceCallRecordingApi'), require('./api/VoiceConferencesAndTransfersApi'), require('./api/VoiceOtherCallControlApi'), require('./api/VoiceUserEventApi'), require('./api/VoiceUserdataApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/ActivatechannelsData'), require('./model/AgentHistoryData'), require('./model/AlternateData'), require('./model/AnswerData'), require('./model/ApiErrorResponse'), require('./model/ApiSuccessResponse'), require('./model/AssignInteractionToContactData'), require('./model/Call'), require('./model/CallCompletedData'), require('./model/CallNoteData'), require('./model/CallParticipants'), require('./model/ChannelsData'), require('./model/ClearData'), require('./model/CompleteConferenceData'), require('./model/CompleteTransferData'), require('./model/ConfigResponse'), require('./model/ConfigResponseData'), require('./model/ConfigResponseDataActionCodes'), require('./model/ConfigResponseDataBusinessAttributes'), require('./model/ConfigResponseDataTransactions'), require('./model/ConfigResponseDataValues'), require('./model/ContactDetailsData'), require('./model/ContactHistoryData'), require('./model/CurrentUser'), require('./model/CurrentUserData'), require('./model/CurrentUserDataUser'), require('./model/CurrentUserDataUserActiveSession'), require('./model/CurrentUserDataUserActiveSessionDn'), require('./model/CurrentUserStatus'), require('./model/DeleteContactData'), require('./model/DeleteFromConferenceData'), require('./model/ForwardData'), require('./model/GetContactsData'), require('./model/HoldData'), require('./model/IdentifyContactData'), require('./model/InitiateConferenceData'), require('./model/InitiateTransferData'), require('./model/InlineResponse200'), require('./model/InlineResponse200Data'), require('./model/InlineResponse200Status'), require('./model/InteractionContentData'), require('./model/KeyData'), require('./model/Kvpair'), require('./model/LoginData'), require('./model/LuceneSearchData'), require('./model/LuceneSearchInteractionData'), require('./model/MakeCallData'), require('./model/MonitoringScopeData'), require('./model/MonitoringScopeDataData'), require('./model/NotReadyData'), require('./model/PhoneCallData'), require('./model/RecentData'), require('./model/RecentTargetData'), require('./model/ReconnectData'), require('./model/RedirectData'), require('./model/ReleaseData'), require('./model/ReportingunsubscribeData'), require('./model/RetrieveData'), require('./model/SendDTMFData'), require('./model/SingleStepConferenceData'), require('./model/SingleStepTransferData'), require('./model/StartMonitoringData'), require('./model/StatisticsData'), require('./model/StatisticsDataData'), require('./model/StopMonitoringData'), require('./model/TargetId'), require('./model/TargetsrecentsaddData'), require('./model/UcsassigninteractiontocontactData'), require('./model/UcsdeletecontactData'), require('./model/UcsfindorcreatephonecallData'), require('./model/UcsgetagenthistoryData'), require('./model/UcsgetcontactdetailsData'), require('./model/UcsgetcontacthistoryData'), require('./model/UcsgetcontactsData'), require('./model/UcsgetinteractioncontentData'), require('./model/UcsidentifycontactData'), require('./model/UcslucenesearchData'), require('./model/UcslucenesearchinteractionData'), require('./model/UcssetcallcompletedData'), require('./model/UcssetcallnoteData'), require('./model/UcsupdatecontactData'), require('./model/UnsubscribeData'), require('./model/UpdateContactData'), require('./model/UserData'), require('./model/UserDataData'), require('./model/VoicecallsidalternateData'), require('./model/VoicecallsidanswerData'), require('./model/VoicecallsidcompletetransferData'), require('./model/VoicecallsiddeletefromconferenceData'), require('./model/VoicecallsiddeleteuserdatapairData'), require('./model/VoicecallsidinitiateconferenceData'), require('./model/VoicecallsidinitiatetransferData'), require('./model/VoicecallsidreconnectData'), require('./model/VoicecallsidredirectData'), require('./model/VoicecallsidsenddtmfData'), require('./model/VoicecallsidsinglestepconferenceData'), require('./model/VoicecallsidsinglesteptransferData'), require('./model/VoicemakecallData'), require('./model/VoicenotreadyData'), require('./model/VoicesetforwardData'), require('./model/VoicestartmonitoringData'), require('./model/VoicestopmonitoringData'), require('./api/DocumentationApi'), require('./api/NotificationsApi'), require('./api/ReportingApi'), require('./api/SessionApi'), require('./api/TargetsApi'), require('./api/UcsApi'), require('./api/VoiceAgentStateApi'), require('./api/VoiceBasicCallControlApi'), require('./api/VoiceCallForwardingApi'), require('./api/VoiceCallMonitoringApi'), require('./api/VoiceCallRecordingApi'), require('./api/VoiceConferencesAndTransfersApi'), require('./api/VoiceOtherCallControlApi'), require('./api/VoiceUserEventApi'), require('./api/VoiceUserdataApi'));
   }
-}(function(ApiClient, ActivatechannelsData, ApiErrorResponse, ApiSuccessResponse, Call, CallParticipants, ConfigResponse, ConfigResponseData, ConfigResponseDataActionCodes, ConfigResponseDataBusinessAttributes, ConfigResponseDataTransactions, ConfigResponseDataValues, CurrentUser, CurrentUserData, CurrentUserDataUser, CurrentUserDataUserActiveSession, CurrentUserDataUserActiveSessionDn, CurrentUserStatus, InlineResponse200, InlineResponse200Data, InlineResponse200Status, Key, Kvpair, Login, Parameters, Parameters1, Parameters10, Parameters11, Parameters12, Parameters13, Parameters14, Parameters15, Parameters16, Parameters17, Parameters18, Parameters19, Parameters2, Parameters20, Parameters21, Parameters22, Parameters23, Parameters24, Parameters25, Parameters26, Parameters27, Parameters28, Parameters29, Parameters3, Parameters30, Parameters31, Parameters32, Parameters33, Parameters34, Parameters35, Parameters36, Parameters37, Parameters38, Parameters39, Parameters4, Parameters40, Parameters5, Parameters6, Parameters7, Parameters8, Parameters9, RecentData, ReportingregisterData, ReportingsubscribeData, ReportingunsubscribeData, Statistics, Statistics1, TargetId, TargetsrecentsaddData, UcsassigninteractiontocontactData, UcsdeletecontactData, UcsfindorcreatephonecallData, UcsgetagenthistoryData, UcsgetcontactdetailsData, UcsgetcontacthistoryData, UcsgetcontactsData, UcsgetinteractioncontentData, UcsidentifycontactData, UcslucenesearchData, UcslucenesearchinteractionData, UcssetcallcompletedData, UcssetcallnoteData, UcsupdatecontactData, UserData, UserData1, UserData2, VoicecallsidalternateData, VoicecallsidanswerData, VoicecallsidattachuserdataData, VoicecallsidcompleteconferenceData, VoicecallsidcompletetransferData, VoicecallsiddeletefromconferenceData, VoicecallsiddeletepairData, VoicecallsidinitiateconferenceData, VoicecallsidinitiatetransferData, VoicecallsidreconnectData, VoicecallsidredirectData, VoicecallsidsenddtmfData, VoicecallsidsinglestepconferenceData, VoicecallsidsinglesteptransferData, VoicecallsidswitchtolisteninData, VoicemakecallData, VoicenotreadyData, VoicesendusereventData, VoicesetforwardData, VoicestartmonitoringData, VoicestopmonitoringData, DocumentationApi, NotificationsApi, ReportingApi, SessionApi, TargetsApi, UcsApi, VoiceAgentStateApi, VoiceBasicCallControlApi, VoiceCallForwardingApi, VoiceCallMonitoringApi, VoiceCallRecordingApi, VoiceConferencesAndTransfersApi, VoiceOtherCallControlApi, VoiceUserEventApi, VoiceUserdataApi) {
+}(function(ApiClient, ActivatechannelsData, AgentHistoryData, AlternateData, AnswerData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, Call, CallCompletedData, CallNoteData, CallParticipants, ChannelsData, ClearData, CompleteConferenceData, CompleteTransferData, ConfigResponse, ConfigResponseData, ConfigResponseDataActionCodes, ConfigResponseDataBusinessAttributes, ConfigResponseDataTransactions, ConfigResponseDataValues, ContactDetailsData, ContactHistoryData, CurrentUser, CurrentUserData, CurrentUserDataUser, CurrentUserDataUserActiveSession, CurrentUserDataUserActiveSessionDn, CurrentUserStatus, DeleteContactData, DeleteFromConferenceData, ForwardData, GetContactsData, HoldData, IdentifyContactData, InitiateConferenceData, InitiateTransferData, InlineResponse200, InlineResponse200Data, InlineResponse200Status, InteractionContentData, KeyData, Kvpair, LoginData, LuceneSearchData, LuceneSearchInteractionData, MakeCallData, MonitoringScopeData, MonitoringScopeDataData, NotReadyData, PhoneCallData, RecentData, RecentTargetData, ReconnectData, RedirectData, ReleaseData, ReportingunsubscribeData, RetrieveData, SendDTMFData, SingleStepConferenceData, SingleStepTransferData, StartMonitoringData, StatisticsData, StatisticsDataData, StopMonitoringData, TargetId, TargetsrecentsaddData, UcsassigninteractiontocontactData, UcsdeletecontactData, UcsfindorcreatephonecallData, UcsgetagenthistoryData, UcsgetcontactdetailsData, UcsgetcontacthistoryData, UcsgetcontactsData, UcsgetinteractioncontentData, UcsidentifycontactData, UcslucenesearchData, UcslucenesearchinteractionData, UcssetcallcompletedData, UcssetcallnoteData, UcsupdatecontactData, UnsubscribeData, UpdateContactData, UserData, UserDataData, VoicecallsidalternateData, VoicecallsidanswerData, VoicecallsidcompletetransferData, VoicecallsiddeletefromconferenceData, VoicecallsiddeleteuserdatapairData, VoicecallsidinitiateconferenceData, VoicecallsidinitiatetransferData, VoicecallsidreconnectData, VoicecallsidredirectData, VoicecallsidsenddtmfData, VoicecallsidsinglestepconferenceData, VoicecallsidsinglesteptransferData, VoicemakecallData, VoicenotreadyData, VoicesetforwardData, VoicestartmonitoringData, VoicestopmonitoringData, DocumentationApi, NotificationsApi, ReportingApi, SessionApi, TargetsApi, UcsApi, VoiceAgentStateApi, VoiceBasicCallControlApi, VoiceCallForwardingApi, VoiceCallMonitoringApi, VoiceCallRecordingApi, VoiceConferencesAndTransfersApi, VoiceOtherCallControlApi, VoiceUserEventApi, VoiceUserdataApi) {
   'use strict';
 
   /**
@@ -65,6 +65,21 @@
      */
     ActivatechannelsData: ActivatechannelsData,
     /**
+     * The AgentHistoryData model constructor.
+     * @property {module:model/AgentHistoryData}
+     */
+    AgentHistoryData: AgentHistoryData,
+    /**
+     * The AlternateData model constructor.
+     * @property {module:model/AlternateData}
+     */
+    AlternateData: AlternateData,
+    /**
+     * The AnswerData model constructor.
+     * @property {module:model/AnswerData}
+     */
+    AnswerData: AnswerData,
+    /**
      * The ApiErrorResponse model constructor.
      * @property {module:model/ApiErrorResponse}
      */
@@ -75,15 +90,50 @@
      */
     ApiSuccessResponse: ApiSuccessResponse,
     /**
+     * The AssignInteractionToContactData model constructor.
+     * @property {module:model/AssignInteractionToContactData}
+     */
+    AssignInteractionToContactData: AssignInteractionToContactData,
+    /**
      * The Call model constructor.
      * @property {module:model/Call}
      */
     Call: Call,
     /**
+     * The CallCompletedData model constructor.
+     * @property {module:model/CallCompletedData}
+     */
+    CallCompletedData: CallCompletedData,
+    /**
+     * The CallNoteData model constructor.
+     * @property {module:model/CallNoteData}
+     */
+    CallNoteData: CallNoteData,
+    /**
      * The CallParticipants model constructor.
      * @property {module:model/CallParticipants}
      */
     CallParticipants: CallParticipants,
+    /**
+     * The ChannelsData model constructor.
+     * @property {module:model/ChannelsData}
+     */
+    ChannelsData: ChannelsData,
+    /**
+     * The ClearData model constructor.
+     * @property {module:model/ClearData}
+     */
+    ClearData: ClearData,
+    /**
+     * The CompleteConferenceData model constructor.
+     * @property {module:model/CompleteConferenceData}
+     */
+    CompleteConferenceData: CompleteConferenceData,
+    /**
+     * The CompleteTransferData model constructor.
+     * @property {module:model/CompleteTransferData}
+     */
+    CompleteTransferData: CompleteTransferData,
     /**
      * The ConfigResponse model constructor.
      * @property {module:model/ConfigResponse}
@@ -115,6 +165,16 @@
      */
     ConfigResponseDataValues: ConfigResponseDataValues,
     /**
+     * The ContactDetailsData model constructor.
+     * @property {module:model/ContactDetailsData}
+     */
+    ContactDetailsData: ContactDetailsData,
+    /**
+     * The ContactHistoryData model constructor.
+     * @property {module:model/ContactHistoryData}
+     */
+    ContactHistoryData: ContactHistoryData,
+    /**
      * The CurrentUser model constructor.
      * @property {module:model/CurrentUser}
      */
@@ -145,6 +205,46 @@
      */
     CurrentUserStatus: CurrentUserStatus,
     /**
+     * The DeleteContactData model constructor.
+     * @property {module:model/DeleteContactData}
+     */
+    DeleteContactData: DeleteContactData,
+    /**
+     * The DeleteFromConferenceData model constructor.
+     * @property {module:model/DeleteFromConferenceData}
+     */
+    DeleteFromConferenceData: DeleteFromConferenceData,
+    /**
+     * The ForwardData model constructor.
+     * @property {module:model/ForwardData}
+     */
+    ForwardData: ForwardData,
+    /**
+     * The GetContactsData model constructor.
+     * @property {module:model/GetContactsData}
+     */
+    GetContactsData: GetContactsData,
+    /**
+     * The HoldData model constructor.
+     * @property {module:model/HoldData}
+     */
+    HoldData: HoldData,
+    /**
+     * The IdentifyContactData model constructor.
+     * @property {module:model/IdentifyContactData}
+     */
+    IdentifyContactData: IdentifyContactData,
+    /**
+     * The InitiateConferenceData model constructor.
+     * @property {module:model/InitiateConferenceData}
+     */
+    InitiateConferenceData: InitiateConferenceData,
+    /**
+     * The InitiateTransferData model constructor.
+     * @property {module:model/InitiateTransferData}
+     */
+    InitiateTransferData: InitiateTransferData,
+    /**
      * The InlineResponse200 model constructor.
      * @property {module:model/InlineResponse200}
      */
@@ -160,255 +260,130 @@
      */
     InlineResponse200Status: InlineResponse200Status,
     /**
-     * The Key model constructor.
-     * @property {module:model/Key}
+     * The InteractionContentData model constructor.
+     * @property {module:model/InteractionContentData}
      */
-    Key: Key,
+    InteractionContentData: InteractionContentData,
+    /**
+     * The KeyData model constructor.
+     * @property {module:model/KeyData}
+     */
+    KeyData: KeyData,
     /**
      * The Kvpair model constructor.
      * @property {module:model/Kvpair}
      */
     Kvpair: Kvpair,
     /**
-     * The Login model constructor.
-     * @property {module:model/Login}
+     * The LoginData model constructor.
+     * @property {module:model/LoginData}
      */
-    Login: Login,
+    LoginData: LoginData,
     /**
-     * The Parameters model constructor.
-     * @property {module:model/Parameters}
+     * The LuceneSearchData model constructor.
+     * @property {module:model/LuceneSearchData}
      */
-    Parameters: Parameters,
+    LuceneSearchData: LuceneSearchData,
     /**
-     * The Parameters1 model constructor.
-     * @property {module:model/Parameters1}
+     * The LuceneSearchInteractionData model constructor.
+     * @property {module:model/LuceneSearchInteractionData}
      */
-    Parameters1: Parameters1,
+    LuceneSearchInteractionData: LuceneSearchInteractionData,
     /**
-     * The Parameters10 model constructor.
-     * @property {module:model/Parameters10}
+     * The MakeCallData model constructor.
+     * @property {module:model/MakeCallData}
      */
-    Parameters10: Parameters10,
+    MakeCallData: MakeCallData,
     /**
-     * The Parameters11 model constructor.
-     * @property {module:model/Parameters11}
+     * The MonitoringScopeData model constructor.
+     * @property {module:model/MonitoringScopeData}
      */
-    Parameters11: Parameters11,
+    MonitoringScopeData: MonitoringScopeData,
     /**
-     * The Parameters12 model constructor.
-     * @property {module:model/Parameters12}
+     * The MonitoringScopeDataData model constructor.
+     * @property {module:model/MonitoringScopeDataData}
      */
-    Parameters12: Parameters12,
+    MonitoringScopeDataData: MonitoringScopeDataData,
     /**
-     * The Parameters13 model constructor.
-     * @property {module:model/Parameters13}
+     * The NotReadyData model constructor.
+     * @property {module:model/NotReadyData}
      */
-    Parameters13: Parameters13,
+    NotReadyData: NotReadyData,
     /**
-     * The Parameters14 model constructor.
-     * @property {module:model/Parameters14}
+     * The PhoneCallData model constructor.
+     * @property {module:model/PhoneCallData}
      */
-    Parameters14: Parameters14,
-    /**
-     * The Parameters15 model constructor.
-     * @property {module:model/Parameters15}
-     */
-    Parameters15: Parameters15,
-    /**
-     * The Parameters16 model constructor.
-     * @property {module:model/Parameters16}
-     */
-    Parameters16: Parameters16,
-    /**
-     * The Parameters17 model constructor.
-     * @property {module:model/Parameters17}
-     */
-    Parameters17: Parameters17,
-    /**
-     * The Parameters18 model constructor.
-     * @property {module:model/Parameters18}
-     */
-    Parameters18: Parameters18,
-    /**
-     * The Parameters19 model constructor.
-     * @property {module:model/Parameters19}
-     */
-    Parameters19: Parameters19,
-    /**
-     * The Parameters2 model constructor.
-     * @property {module:model/Parameters2}
-     */
-    Parameters2: Parameters2,
-    /**
-     * The Parameters20 model constructor.
-     * @property {module:model/Parameters20}
-     */
-    Parameters20: Parameters20,
-    /**
-     * The Parameters21 model constructor.
-     * @property {module:model/Parameters21}
-     */
-    Parameters21: Parameters21,
-    /**
-     * The Parameters22 model constructor.
-     * @property {module:model/Parameters22}
-     */
-    Parameters22: Parameters22,
-    /**
-     * The Parameters23 model constructor.
-     * @property {module:model/Parameters23}
-     */
-    Parameters23: Parameters23,
-    /**
-     * The Parameters24 model constructor.
-     * @property {module:model/Parameters24}
-     */
-    Parameters24: Parameters24,
-    /**
-     * The Parameters25 model constructor.
-     * @property {module:model/Parameters25}
-     */
-    Parameters25: Parameters25,
-    /**
-     * The Parameters26 model constructor.
-     * @property {module:model/Parameters26}
-     */
-    Parameters26: Parameters26,
-    /**
-     * The Parameters27 model constructor.
-     * @property {module:model/Parameters27}
-     */
-    Parameters27: Parameters27,
-    /**
-     * The Parameters28 model constructor.
-     * @property {module:model/Parameters28}
-     */
-    Parameters28: Parameters28,
-    /**
-     * The Parameters29 model constructor.
-     * @property {module:model/Parameters29}
-     */
-    Parameters29: Parameters29,
-    /**
-     * The Parameters3 model constructor.
-     * @property {module:model/Parameters3}
-     */
-    Parameters3: Parameters3,
-    /**
-     * The Parameters30 model constructor.
-     * @property {module:model/Parameters30}
-     */
-    Parameters30: Parameters30,
-    /**
-     * The Parameters31 model constructor.
-     * @property {module:model/Parameters31}
-     */
-    Parameters31: Parameters31,
-    /**
-     * The Parameters32 model constructor.
-     * @property {module:model/Parameters32}
-     */
-    Parameters32: Parameters32,
-    /**
-     * The Parameters33 model constructor.
-     * @property {module:model/Parameters33}
-     */
-    Parameters33: Parameters33,
-    /**
-     * The Parameters34 model constructor.
-     * @property {module:model/Parameters34}
-     */
-    Parameters34: Parameters34,
-    /**
-     * The Parameters35 model constructor.
-     * @property {module:model/Parameters35}
-     */
-    Parameters35: Parameters35,
-    /**
-     * The Parameters36 model constructor.
-     * @property {module:model/Parameters36}
-     */
-    Parameters36: Parameters36,
-    /**
-     * The Parameters37 model constructor.
-     * @property {module:model/Parameters37}
-     */
-    Parameters37: Parameters37,
-    /**
-     * The Parameters38 model constructor.
-     * @property {module:model/Parameters38}
-     */
-    Parameters38: Parameters38,
-    /**
-     * The Parameters39 model constructor.
-     * @property {module:model/Parameters39}
-     */
-    Parameters39: Parameters39,
-    /**
-     * The Parameters4 model constructor.
-     * @property {module:model/Parameters4}
-     */
-    Parameters4: Parameters4,
-    /**
-     * The Parameters40 model constructor.
-     * @property {module:model/Parameters40}
-     */
-    Parameters40: Parameters40,
-    /**
-     * The Parameters5 model constructor.
-     * @property {module:model/Parameters5}
-     */
-    Parameters5: Parameters5,
-    /**
-     * The Parameters6 model constructor.
-     * @property {module:model/Parameters6}
-     */
-    Parameters6: Parameters6,
-    /**
-     * The Parameters7 model constructor.
-     * @property {module:model/Parameters7}
-     */
-    Parameters7: Parameters7,
-    /**
-     * The Parameters8 model constructor.
-     * @property {module:model/Parameters8}
-     */
-    Parameters8: Parameters8,
-    /**
-     * The Parameters9 model constructor.
-     * @property {module:model/Parameters9}
-     */
-    Parameters9: Parameters9,
+    PhoneCallData: PhoneCallData,
     /**
      * The RecentData model constructor.
      * @property {module:model/RecentData}
      */
     RecentData: RecentData,
     /**
-     * The ReportingregisterData model constructor.
-     * @property {module:model/ReportingregisterData}
+     * The RecentTargetData model constructor.
+     * @property {module:model/RecentTargetData}
      */
-    ReportingregisterData: ReportingregisterData,
+    RecentTargetData: RecentTargetData,
     /**
-     * The ReportingsubscribeData model constructor.
-     * @property {module:model/ReportingsubscribeData}
+     * The ReconnectData model constructor.
+     * @property {module:model/ReconnectData}
      */
-    ReportingsubscribeData: ReportingsubscribeData,
+    ReconnectData: ReconnectData,
+    /**
+     * The RedirectData model constructor.
+     * @property {module:model/RedirectData}
+     */
+    RedirectData: RedirectData,
+    /**
+     * The ReleaseData model constructor.
+     * @property {module:model/ReleaseData}
+     */
+    ReleaseData: ReleaseData,
     /**
      * The ReportingunsubscribeData model constructor.
      * @property {module:model/ReportingunsubscribeData}
      */
     ReportingunsubscribeData: ReportingunsubscribeData,
     /**
-     * The Statistics model constructor.
-     * @property {module:model/Statistics}
+     * The RetrieveData model constructor.
+     * @property {module:model/RetrieveData}
      */
-    Statistics: Statistics,
+    RetrieveData: RetrieveData,
     /**
-     * The Statistics1 model constructor.
-     * @property {module:model/Statistics1}
+     * The SendDTMFData model constructor.
+     * @property {module:model/SendDTMFData}
      */
-    Statistics1: Statistics1,
+    SendDTMFData: SendDTMFData,
+    /**
+     * The SingleStepConferenceData model constructor.
+     * @property {module:model/SingleStepConferenceData}
+     */
+    SingleStepConferenceData: SingleStepConferenceData,
+    /**
+     * The SingleStepTransferData model constructor.
+     * @property {module:model/SingleStepTransferData}
+     */
+    SingleStepTransferData: SingleStepTransferData,
+    /**
+     * The StartMonitoringData model constructor.
+     * @property {module:model/StartMonitoringData}
+     */
+    StartMonitoringData: StartMonitoringData,
+    /**
+     * The StatisticsData model constructor.
+     * @property {module:model/StatisticsData}
+     */
+    StatisticsData: StatisticsData,
+    /**
+     * The StatisticsDataData model constructor.
+     * @property {module:model/StatisticsDataData}
+     */
+    StatisticsDataData: StatisticsDataData,
+    /**
+     * The StopMonitoringData model constructor.
+     * @property {module:model/StopMonitoringData}
+     */
+    StopMonitoringData: StopMonitoringData,
     /**
      * The TargetId model constructor.
      * @property {module:model/TargetId}
@@ -490,20 +465,25 @@
      */
     UcsupdatecontactData: UcsupdatecontactData,
     /**
+     * The UnsubscribeData model constructor.
+     * @property {module:model/UnsubscribeData}
+     */
+    UnsubscribeData: UnsubscribeData,
+    /**
+     * The UpdateContactData model constructor.
+     * @property {module:model/UpdateContactData}
+     */
+    UpdateContactData: UpdateContactData,
+    /**
      * The UserData model constructor.
      * @property {module:model/UserData}
      */
     UserData: UserData,
     /**
-     * The UserData1 model constructor.
-     * @property {module:model/UserData1}
+     * The UserDataData model constructor.
+     * @property {module:model/UserDataData}
      */
-    UserData1: UserData1,
-    /**
-     * The UserData2 model constructor.
-     * @property {module:model/UserData2}
-     */
-    UserData2: UserData2,
+    UserDataData: UserDataData,
     /**
      * The VoicecallsidalternateData model constructor.
      * @property {module:model/VoicecallsidalternateData}
@@ -515,16 +495,6 @@
      */
     VoicecallsidanswerData: VoicecallsidanswerData,
     /**
-     * The VoicecallsidattachuserdataData model constructor.
-     * @property {module:model/VoicecallsidattachuserdataData}
-     */
-    VoicecallsidattachuserdataData: VoicecallsidattachuserdataData,
-    /**
-     * The VoicecallsidcompleteconferenceData model constructor.
-     * @property {module:model/VoicecallsidcompleteconferenceData}
-     */
-    VoicecallsidcompleteconferenceData: VoicecallsidcompleteconferenceData,
-    /**
      * The VoicecallsidcompletetransferData model constructor.
      * @property {module:model/VoicecallsidcompletetransferData}
      */
@@ -535,10 +505,10 @@
      */
     VoicecallsiddeletefromconferenceData: VoicecallsiddeletefromconferenceData,
     /**
-     * The VoicecallsiddeletepairData model constructor.
-     * @property {module:model/VoicecallsiddeletepairData}
+     * The VoicecallsiddeleteuserdatapairData model constructor.
+     * @property {module:model/VoicecallsiddeleteuserdatapairData}
      */
-    VoicecallsiddeletepairData: VoicecallsiddeletepairData,
+    VoicecallsiddeleteuserdatapairData: VoicecallsiddeleteuserdatapairData,
     /**
      * The VoicecallsidinitiateconferenceData model constructor.
      * @property {module:model/VoicecallsidinitiateconferenceData}
@@ -575,11 +545,6 @@
      */
     VoicecallsidsinglesteptransferData: VoicecallsidsinglesteptransferData,
     /**
-     * The VoicecallsidswitchtolisteninData model constructor.
-     * @property {module:model/VoicecallsidswitchtolisteninData}
-     */
-    VoicecallsidswitchtolisteninData: VoicecallsidswitchtolisteninData,
-    /**
      * The VoicemakecallData model constructor.
      * @property {module:model/VoicemakecallData}
      */
@@ -589,11 +554,6 @@
      * @property {module:model/VoicenotreadyData}
      */
     VoicenotreadyData: VoicenotreadyData,
-    /**
-     * The VoicesendusereventData model constructor.
-     * @property {module:model/VoicesendusereventData}
-     */
-    VoicesendusereventData: VoicesendusereventData,
     /**
      * The VoicesetforwardData model constructor.
      * @property {module:model/VoicesetforwardData}

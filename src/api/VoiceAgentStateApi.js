@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters1'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/NotReadyData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters1'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/NotReadyData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceAgentStateApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters1);
+    root.WorkspaceApi.VoiceAgentStateApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.NotReadyData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters1) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, NotReadyData) {
   'use strict';
 
   /**
@@ -46,163 +46,8 @@
 
 
     /**
-     * Callback function to receive the result of the dndOff operation.
-     * @callback module:api/VoiceAgentStateApi~dndOffCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Set dnd off for voice
-     * @param {module:api/VoiceAgentStateApi~dndOffCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
-     */
-    this.dndOff = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/voice/dnd-off', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the dndOn operation.
-     * @callback module:api/VoiceAgentStateApi~dndOnCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Set dnd on for voice
-     * @param {module:api/VoiceAgentStateApi~dndOnCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
-     */
-    this.dndOn = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/voice/dnd-on', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the notReady operation.
-     * @callback module:api/VoiceAgentStateApi~notReadyCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Change to the not ready state for voice
-     * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters1} opts.parameters 
-     * @param {module:api/VoiceAgentStateApi~notReadyCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
-     */
-    this.notReady = function(opts, callback) {
-      opts = opts || {};
-      var postBody = opts['parameters'];
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/voice/not-ready', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the ready operation.
-     * @callback module:api/VoiceAgentStateApi~readyCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Change to the ready state for voice
-     * @param {module:api/VoiceAgentStateApi~readyCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
-     */
-    this.ready = function(callback) {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/voice/ready', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the voiceLogin operation.
-     * @callback module:api/VoiceAgentStateApi~voiceLoginCallback
+     * Callback function to receive the result of the loginVoice operation.
+     * @callback module:api/VoiceAgentStateApi~loginVoiceCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -210,10 +55,10 @@
 
     /**
      * Login the media voice
-     * @param {module:api/VoiceAgentStateApi~voiceLoginCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/VoiceAgentStateApi~loginVoiceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.voiceLogin = function(callback) {
+    this.loginVoice = function(callback) {
       var postBody = null;
 
 
@@ -239,8 +84,8 @@
     }
 
     /**
-     * Callback function to receive the result of the voiceLogout operation.
-     * @callback module:api/VoiceAgentStateApi~voiceLogoutCallback
+     * Callback function to receive the result of the logoutVoice operation.
+     * @callback module:api/VoiceAgentStateApi~logoutVoiceCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -248,10 +93,10 @@
 
     /**
      * Logout the media voice
-     * @param {module:api/VoiceAgentStateApi~voiceLogoutCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/VoiceAgentStateApi~logoutVoiceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.voiceLogout = function(callback) {
+    this.logoutVoice = function(callback) {
       var postBody = null;
 
 
@@ -271,6 +116,161 @@
 
       return this.apiClient.callApi(
         '/voice/logout', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the setAgentStateDNDOff operation.
+     * @callback module:api/VoiceAgentStateApi~setAgentStateDNDOffCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Set dnd off for voice
+     * @param {module:api/VoiceAgentStateApi~setAgentStateDNDOffCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.setAgentStateDNDOff = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/voice/dnd-off', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the setAgentStateDNDOn operation.
+     * @callback module:api/VoiceAgentStateApi~setAgentStateDNDOnCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Set dnd on for voice
+     * @param {module:api/VoiceAgentStateApi~setAgentStateDNDOnCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.setAgentStateDNDOn = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/voice/dnd-on', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the setAgentStateNotReady operation.
+     * @callback module:api/VoiceAgentStateApi~setAgentStateNotReadyCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Change to the not ready state for voice
+     * @param {Object} opts Optional parameters
+     * @param {module:model/NotReadyData} opts.notReadyData 
+     * @param {module:api/VoiceAgentStateApi~setAgentStateNotReadyCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.setAgentStateNotReady = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['notReadyData'];
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/voice/not-ready', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the setAgentStateReady operation.
+     * @callback module:api/VoiceAgentStateApi~setAgentStateReadyCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Change to the ready state for voice
+     * @param {module:api/VoiceAgentStateApi~setAgentStateReadyCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.setAgentStateReady = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/voice/ready', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

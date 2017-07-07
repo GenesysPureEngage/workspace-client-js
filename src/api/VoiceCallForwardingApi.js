@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters2'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ForwardData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters2'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ForwardData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceCallForwardingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters2);
+    root.WorkspaceApi.VoiceCallForwardingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ForwardData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters2) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, ForwardData) {
   'use strict';
 
   /**
@@ -93,16 +93,16 @@
 
     /**
      * Forward to other dn
-     * @param {module:model/Parameters2} parameters Request parameters.
+     * @param {module:model/ForwardData} forwardData Request parameters.
      * @param {module:api/VoiceCallForwardingApi~forwardCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.forward = function(parameters, callback) {
-      var postBody = parameters;
+    this.forward = function(forwardData, callback) {
+      var postBody = forwardData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling forward");
+      // verify the required parameter 'forwardData' is set
+      if (forwardData == undefined || forwardData == null) {
+        throw new Error("Missing the required parameter 'forwardData' when calling forward");
       }
 
 

@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ConfigResponse', 'model/CurrentUser', 'model/Login', 'model/Parameters'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ChannelsData', 'model/ConfigResponse', 'model/CurrentUser', 'model/LoginData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ConfigResponse'), require('../model/CurrentUser'), require('../model/Login'), require('../model/Parameters'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ChannelsData'), require('../model/ConfigResponse'), require('../model/CurrentUser'), require('../model/LoginData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.SessionApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.CurrentUser, root.WorkspaceApi.Login, root.WorkspaceApi.Parameters);
+    root.WorkspaceApi.SessionApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ChannelsData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.CurrentUser, root.WorkspaceApi.LoginData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, ConfigResponse, CurrentUser, Login, Parameters) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, ChannelsData, ConfigResponse, CurrentUser, LoginData) {
   'use strict';
 
   /**
@@ -56,16 +56,16 @@
     /**
      * Activate channels for the user with the specified resources
      * The activate-channels request is used to activate voice/media for the user by declaring the channels and resources that should be used. If the channels are is successfully activated, additional information about the state of active resources (dns, channels) will be received via events. 
-     * @param {module:model/Parameters} parameters 
+     * @param {module:model/ChannelsData} channelsData 
      * @param {module:api/SessionApi~activateChannelsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.activateChannels = function(parameters, callback) {
-      var postBody = parameters;
+    this.activateChannels = function(channelsData, callback) {
+      var postBody = channelsData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling activateChannels");
+      // verify the required parameter 'channelsData' is set
+      if (channelsData == undefined || channelsData == null) {
+        throw new Error("Missing the required parameter 'channelsData' when calling activateChannels");
       }
 
 
@@ -91,8 +91,8 @@
     }
 
     /**
-     * Callback function to receive the result of the businessAttributeHierarchy operation.
-     * @callback module:api/SessionApi~businessAttributeHierarchyCallback
+     * Callback function to receive the result of the getBusinessAttributeHierarchy operation.
+     * @callback module:api/SessionApi~getBusinessAttributeHierarchyCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -101,15 +101,15 @@
     /**
      * Get the business attribute hierarchy
      * @param {Number} id id of the business attribute
-     * @param {module:api/SessionApi~businessAttributeHierarchyCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/SessionApi~getBusinessAttributeHierarchyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.businessAttributeHierarchy = function(id, callback) {
+    this.getBusinessAttributeHierarchy = function(id, callback) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling businessAttributeHierarchy");
+        throw new Error("Missing the required parameter 'id' when calling getBusinessAttributeHierarchy");
       }
 
 
@@ -136,8 +136,8 @@
     }
 
     /**
-     * Callback function to receive the result of the configuration operation.
-     * @callback module:api/SessionApi~configurationCallback
+     * Callback function to receive the result of the getConfiguration operation.
+     * @callback module:api/SessionApi~getConfigurationCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ConfigResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -148,10 +148,10 @@
      * This request returns all necessary configuration items to be used by the UI. This includes action codes, business attributes, transactions and settings at the moment. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.types use to return transactions having this particular key in userProperties
-     * @param {module:api/SessionApi~configurationCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/SessionApi~getConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ConfigResponse}
      */
-    this.configuration = function(opts, callback) {
+    this.getConfiguration = function(opts, callback) {
       opts = opts || {};
       var postBody = null;
 
@@ -228,16 +228,16 @@
     /**
      * login the specified user (HTTP session only)
      * The login request authenticates the user and creates the HTTP session. 
-     * @param {module:model/Login} body Authentication Data
+     * @param {module:model/LoginData} loginData Authentication Data
      * @param {module:api/SessionApi~loginCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.login = function(body, callback) {
-      var postBody = body;
+    this.login = function(loginData, callback) {
+      var postBody = loginData;
 
-      // verify the required parameter 'body' is set
-      if (body == undefined || body == null) {
-        throw new Error("Missing the required parameter 'body' when calling login");
+      // verify the required parameter 'loginData' is set
+      if (loginData == undefined || loginData == null) {
+        throw new Error("Missing the required parameter 'loginData' when calling login");
       }
 
 

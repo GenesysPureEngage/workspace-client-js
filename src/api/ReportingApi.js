@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters40', 'model/Statistics', 'model/Statistics1'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/StatisticsData', 'model/UnsubscribeData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters40'), require('../model/Statistics'), require('../model/Statistics1'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/StatisticsData'), require('../model/UnsubscribeData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ReportingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters40, root.WorkspaceApi.Statistics, root.WorkspaceApi.Statistics1);
+    root.WorkspaceApi.ReportingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.StatisticsData, root.WorkspaceApi.UnsubscribeData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters40, Statistics, Statistics1) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, StatisticsData, UnsubscribeData) {
   'use strict';
 
   /**
@@ -100,16 +100,16 @@
 
     /**
      * Subscribe to Statistics and store values server side. Values will only be returned on GET /reporting/{subscriptionId}
-     * @param {module:model/Statistics1} statistics Requested Statistics
+     * @param {module:model/StatisticsData} statisticsData Requested Statistics
      * @param {module:api/ReportingApi~registerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.register = function(statistics, callback) {
-      var postBody = statistics;
+    this.register = function(statisticsData, callback) {
+      var postBody = statisticsData;
 
-      // verify the required parameter 'statistics' is set
-      if (statistics == undefined || statistics == null) {
-        throw new Error("Missing the required parameter 'statistics' when calling register");
+      // verify the required parameter 'statisticsData' is set
+      if (statisticsData == undefined || statisticsData == null) {
+        throw new Error("Missing the required parameter 'statisticsData' when calling register");
       }
 
 
@@ -144,16 +144,16 @@
 
     /**
      * Subscribe to Statistics
-     * @param {module:model/Statistics} statistics Requested Statistics
+     * @param {module:model/StatisticsData} statisticsData Requested Statistics
      * @param {module:api/ReportingApi~subscribeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.subscribe = function(statistics, callback) {
-      var postBody = statistics;
+    this.subscribe = function(statisticsData, callback) {
+      var postBody = statisticsData;
 
-      // verify the required parameter 'statistics' is set
-      if (statistics == undefined || statistics == null) {
-        throw new Error("Missing the required parameter 'statistics' when calling subscribe");
+      // verify the required parameter 'statisticsData' is set
+      if (statisticsData == undefined || statisticsData == null) {
+        throw new Error("Missing the required parameter 'statisticsData' when calling subscribe");
       }
 
 
@@ -188,16 +188,16 @@
 
     /**
      * Unsubscribe to availability notifications for previous search result
-     * @param {module:model/Parameters40} parameters Request parameters.
+     * @param {module:model/UnsubscribeData} unsubscribeData Request parameters.
      * @param {module:api/ReportingApi~unsubscribeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.unsubscribe = function(parameters, callback) {
-      var postBody = parameters;
+    this.unsubscribe = function(unsubscribeData, callback) {
+      var postBody = unsubscribeData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling unsubscribe");
+      // verify the required parameter 'unsubscribeData' is set
+      if (unsubscribeData == undefined || unsubscribeData == null) {
+        throw new Error("Missing the required parameter 'unsubscribeData' when calling unsubscribe");
       }
 
 

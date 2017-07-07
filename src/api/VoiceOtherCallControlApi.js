@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters15', 'model/Parameters16', 'model/Parameters17', 'model/Parameters18'], factory);
+    define(['ApiClient', 'model/AlternateData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ClearData', 'model/ReconnectData', 'model/RedirectData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters15'), require('../model/Parameters16'), require('../model/Parameters17'), require('../model/Parameters18'));
+    module.exports = factory(require('../ApiClient'), require('../model/AlternateData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ClearData'), require('../model/ReconnectData'), require('../model/RedirectData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceOtherCallControlApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters15, root.WorkspaceApi.Parameters16, root.WorkspaceApi.Parameters17, root.WorkspaceApi.Parameters18);
+    root.WorkspaceApi.VoiceOtherCallControlApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AlternateData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ClearData, root.WorkspaceApi.ReconnectData, root.WorkspaceApi.RedirectData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters15, Parameters16, Parameters17, Parameters18) {
+}(this, function(ApiClient, AlternateData, ApiErrorResponse, ApiSuccessResponse, ClearData, ReconnectData, RedirectData) {
   'use strict';
 
   /**
@@ -57,21 +57,21 @@
      * Alternate between calls
      * On behalf of the telephony object specified by the parameter dn, places the active call specified by the parameter current_conn_id on hold and connects the call specified by the parameter held_conn_id.
      * @param {String} id Connection identifier of the call that is requested to be connected.
-     * @param {module:model/Parameters16} parameters 
+     * @param {module:model/AlternateData} alternateData 
      * @param {module:api/VoiceOtherCallControlApi~alternateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.alternate = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.alternate = function(id, alternateData, callback) {
+      var postBody = alternateData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling alternate");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling alternate");
+      // verify the required parameter 'alternateData' is set
+      if (alternateData == undefined || alternateData == null) {
+        throw new Error("Missing the required parameter 'alternateData' when calling alternate");
       }
 
 
@@ -109,21 +109,21 @@
      * Clear all the parties in the call.
      * Deletes all parties, that is, all telephony objects, from the call specified by conn_id and disconnects the call.
      * @param {String} id Connection identifier of the call, from which the telephony object in question is requested to be released.
-     * @param {module:model/Parameters17} parameters 
+     * @param {module:model/ClearData} clearData 
      * @param {module:api/VoiceOtherCallControlApi~clearCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.clear = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.clear = function(id, clearData, callback) {
+      var postBody = clearData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling clear");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling clear");
+      // verify the required parameter 'clearData' is set
+      if (clearData == undefined || clearData == null) {
+        throw new Error("Missing the required parameter 'clearData' when calling clear");
       }
 
 
@@ -161,21 +161,21 @@
      * Reconnect a call
      * Releases the telephony object specified by the parameter dn from the active call specified by the parameter current_conn_id and retrieves the previously held call, specified by the parameter held_conn_id, to the same object. This function is commonly used to clear an active call and to return to a held call, or to cancel a consult call (because of no answer, called device busy, and so on) and then to return to a held call.
      * @param {String} id Connection identifier of the original call that should be retrieved.
-     * @param {module:model/Parameters15} parameters 
+     * @param {module:model/ReconnectData} reconnectData 
      * @param {module:api/VoiceOtherCallControlApi~reconnectCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.reconnect = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.reconnect = function(id, reconnectData, callback) {
+      var postBody = reconnectData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling reconnect");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling reconnect");
+      // verify the required parameter 'reconnectData' is set
+      if (reconnectData == undefined || reconnectData == null) {
+        throw new Error("Missing the required parameter 'reconnectData' when calling reconnect");
       }
 
 
@@ -213,21 +213,21 @@
      * Redirect the call.
      * Requests that the call be redirected, without an answer, from the party specified by the parameter dn to the party specified by the parameter dest_dn.
      * @param {String} id Connection ID of the current call handled by the DN.
-     * @param {module:model/Parameters18} parameters 
+     * @param {module:model/RedirectData} redirectData 
      * @param {module:api/VoiceOtherCallControlApi~redirectCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.redirect = function(id, parameters, callback) {
-      var postBody = parameters;
+    this.redirect = function(id, redirectData, callback) {
+      var postBody = redirectData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw new Error("Missing the required parameter 'id' when calling redirect");
       }
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling redirect");
+      // verify the required parameter 'redirectData' is set
+      if (redirectData == undefined || redirectData == null) {
+        throw new Error("Missing the required parameter 'redirectData' when calling redirect");
       }
 
 

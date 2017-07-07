@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters20', 'model/Parameters21', 'model/Parameters22', 'model/Parameters23', 'model/Parameters24'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/MonitoringScopeData', 'model/StartMonitoringData', 'model/StopMonitoringData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters20'), require('../model/Parameters21'), require('../model/Parameters22'), require('../model/Parameters23'), require('../model/Parameters24'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/MonitoringScopeData'), require('../model/StartMonitoringData'), require('../model/StopMonitoringData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceCallMonitoringApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters20, root.WorkspaceApi.Parameters21, root.WorkspaceApi.Parameters22, root.WorkspaceApi.Parameters23, root.WorkspaceApi.Parameters24);
+    root.WorkspaceApi.VoiceCallMonitoringApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.MonitoringScopeData, root.WorkspaceApi.StartMonitoringData, root.WorkspaceApi.StopMonitoringData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters20, Parameters21, Parameters22, Parameters23, Parameters24) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, MonitoringScopeData, StartMonitoringData, StopMonitoringData) {
   'use strict';
 
   /**
@@ -56,16 +56,16 @@
     /**
      * Start the monitoring of an agent.
      * Start the monitoring of an agent, providing monitoring information (deviceId to be monitored, operationMode (Monitor/Coach), monitoringMode (NextCall/AllCalls), monitoringScope (Agent/Call)).
-     * @param {module:model/Parameters20} parameters 
+     * @param {module:model/StartMonitoringData} startMonitoringData 
      * @param {module:api/VoiceCallMonitoringApi~startMonitoringCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.startMonitoring = function(parameters, callback) {
-      var postBody = parameters;
+    this.startMonitoring = function(startMonitoringData, callback) {
+      var postBody = startMonitoringData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling startMonitoring");
+      // verify the required parameter 'startMonitoringData' is set
+      if (startMonitoringData == undefined || startMonitoringData == null) {
+        throw new Error("Missing the required parameter 'startMonitoringData' when calling startMonitoring");
       }
 
 
@@ -101,16 +101,16 @@
     /**
      * Stop the monitoring of an agent.
      * Stop the monitoring of an agent, providing monitoring information (deviceId to be monitored).
-     * @param {module:model/Parameters21} parameters 
+     * @param {module:model/StopMonitoringData} stopMonitoringData 
      * @param {module:api/VoiceCallMonitoringApi~stopMonitoringCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.stopMonitoring = function(parameters, callback) {
-      var postBody = parameters;
+    this.stopMonitoring = function(stopMonitoringData, callback) {
+      var postBody = stopMonitoringData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling stopMonitoring");
+      // verify the required parameter 'stopMonitoringData' is set
+      if (stopMonitoringData == undefined || stopMonitoringData == null) {
+        throw new Error("Missing the required parameter 'stopMonitoringData' when calling stopMonitoring");
       }
 
 
@@ -148,13 +148,13 @@
      * Switch the currently monitored voice interaction to barge in mode
      * @param {String} id Connection identifier of the call in question.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters24} opts.parameters 
+     * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @param {module:api/VoiceCallMonitoringApi~switchToBargeInCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
     this.switchToBargeIn = function(id, opts, callback) {
       opts = opts || {};
-      var postBody = opts['parameters'];
+      var postBody = opts['monitoringScopeData'];
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
@@ -197,13 +197,13 @@
      * Switch the currently monitored voice interaction to coaching mode
      * @param {String} id Connection identifier of the call in question.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters23} opts.parameters 
+     * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @param {module:api/VoiceCallMonitoringApi~switchToCoachingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
     this.switchToCoaching = function(id, opts, callback) {
       opts = opts || {};
-      var postBody = opts['parameters'];
+      var postBody = opts['monitoringScopeData'];
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
@@ -246,13 +246,13 @@
      * Switch the currently monitored voice interaction to listen in mode
      * @param {String} id Connection identifier of the call in question.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters22} opts.parameters 
+     * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @param {module:api/VoiceCallMonitoringApi~switchToListenInCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
     this.switchToListenIn = function(id, opts, callback) {
       opts = opts || {};
-      var postBody = opts['parameters'];
+      var postBody = opts['monitoringScopeData'];
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {

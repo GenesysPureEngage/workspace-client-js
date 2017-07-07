@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Key', 'model/UserData', 'model/UserData1'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/KeyData', 'model/UserData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Key'), require('../model/UserData'), require('../model/UserData1'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/KeyData'), require('../model/UserData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceUserdataApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Key, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData1);
+    root.WorkspaceApi.VoiceUserdataApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.KeyData, root.WorkspaceApi.UserData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Key, UserData, UserData1) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, KeyData, UserData) {
   'use strict';
 
   /**
@@ -97,8 +97,8 @@
     }
 
     /**
-     * Callback function to receive the result of the deletePair operation.
-     * @callback module:api/VoiceUserdataApi~deletePairCallback
+     * Callback function to receive the result of the deleteUserDataPair operation.
+     * @callback module:api/VoiceUserdataApi~deleteUserDataPairCallback
      * @param {String} error Error message, if any.
      * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -107,21 +107,21 @@
     /**
      * Remove one key/value pair in the user data
      * @param {String} id id of the call
-     * @param {module:model/Key} key The key of the key/value pairs to delete.
-     * @param {module:api/VoiceUserdataApi~deletePairCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:model/KeyData} keyData The key of the key/value pairs to delete.
+     * @param {module:api/VoiceUserdataApi~deleteUserDataPairCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.deletePair = function(id, key, callback) {
-      var postBody = key;
+    this.deleteUserDataPair = function(id, keyData, callback) {
+      var postBody = keyData;
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw new Error("Missing the required parameter 'id' when calling deletePair");
+        throw new Error("Missing the required parameter 'id' when calling deleteUserDataPair");
       }
 
-      // verify the required parameter 'key' is set
-      if (key == undefined || key == null) {
-        throw new Error("Missing the required parameter 'key' when calling deletePair");
+      // verify the required parameter 'keyData' is set
+      if (keyData == undefined || keyData == null) {
+        throw new Error("Missing the required parameter 'keyData' when calling deleteUserDataPair");
       }
 
 
@@ -141,7 +141,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/voice/calls/{id}/delete-pair', 'POST',
+        '/voice/calls/{id}/delete-user-data-pair', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -158,7 +158,7 @@
     /**
      * Update user data to a call
      * @param {String} id id of the call
-     * @param {module:model/UserData1} userData An array of key/value pairs.
+     * @param {module:model/UserData} userData An array of key/value pairs.
      * @param {module:api/VoiceUserdataApi~updateUserDataCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */

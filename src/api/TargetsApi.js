@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Parameters39'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/RecentTargetData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Parameters39'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/RecentTargetData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.TargetsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Parameters39);
+    root.WorkspaceApi.TargetsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.RecentTargetData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Parameters39) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, RecentTargetData) {
   'use strict';
 
   /**
@@ -55,16 +55,16 @@
 
     /**
      * Add a recent target
-     * @param {module:model/Parameters39} parameters 
+     * @param {module:model/RecentTargetData} recentTargetData 
      * @param {module:api/TargetsApi~addRecentTargetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.addRecentTarget = function(parameters, callback) {
-      var postBody = parameters;
+    this.addRecentTarget = function(recentTargetData, callback) {
+      var postBody = recentTargetData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling addRecentTarget");
+      // verify the required parameter 'recentTargetData' is set
+      if (recentTargetData == undefined || recentTargetData == null) {
+        throw new Error("Missing the required parameter 'recentTargetData' when calling addRecentTarget");
       }
 
 

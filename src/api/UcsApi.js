@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ConfigResponse', 'model/Parameters25', 'model/Parameters26', 'model/Parameters27', 'model/Parameters28', 'model/Parameters29', 'model/Parameters30', 'model/Parameters31', 'model/Parameters32', 'model/Parameters33', 'model/Parameters34', 'model/Parameters35', 'model/Parameters36', 'model/Parameters37', 'model/Parameters38'], factory);
+    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCompletedData', 'model/CallNoteData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/DeleteContactData', 'model/GetContactsData', 'model/IdentifyContactData', 'model/InteractionContentData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/PhoneCallData', 'model/UpdateContactData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ConfigResponse'), require('../model/Parameters25'), require('../model/Parameters26'), require('../model/Parameters27'), require('../model/Parameters28'), require('../model/Parameters29'), require('../model/Parameters30'), require('../model/Parameters31'), require('../model/Parameters32'), require('../model/Parameters33'), require('../model/Parameters34'), require('../model/Parameters35'), require('../model/Parameters36'), require('../model/Parameters37'), require('../model/Parameters38'));
+    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCompletedData'), require('../model/CallNoteData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/DeleteContactData'), require('../model/GetContactsData'), require('../model/IdentifyContactData'), require('../model/InteractionContentData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/PhoneCallData'), require('../model/UpdateContactData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.Parameters25, root.WorkspaceApi.Parameters26, root.WorkspaceApi.Parameters27, root.WorkspaceApi.Parameters28, root.WorkspaceApi.Parameters29, root.WorkspaceApi.Parameters30, root.WorkspaceApi.Parameters31, root.WorkspaceApi.Parameters32, root.WorkspaceApi.Parameters33, root.WorkspaceApi.Parameters34, root.WorkspaceApi.Parameters35, root.WorkspaceApi.Parameters36, root.WorkspaceApi.Parameters37, root.WorkspaceApi.Parameters38);
+    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.CallNoteData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.DeleteContactData, root.WorkspaceApi.GetContactsData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.InteractionContentData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.PhoneCallData, root.WorkspaceApi.UpdateContactData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, ConfigResponse, Parameters25, Parameters26, Parameters27, Parameters28, Parameters29, Parameters30, Parameters31, Parameters32, Parameters33, Parameters34, Parameters35, Parameters36, Parameters37, Parameters38) {
+}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCompletedData, CallNoteData, ConfigResponse, ContactDetailsData, ContactHistoryData, DeleteContactData, GetContactsData, IdentifyContactData, InteractionContentData, LuceneSearchData, LuceneSearchInteractionData, PhoneCallData, UpdateContactData) {
   'use strict';
 
   /**
@@ -55,16 +55,16 @@
 
     /**
      * Assign the interaction to a contact
-     * @param {module:model/Parameters38} parameters 
+     * @param {module:model/AssignInteractionToContactData} assignInteractionToContactData 
      * @param {module:api/UcsApi~assignInteractionToContactCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.assignInteractionToContact = function(parameters, callback) {
-      var postBody = parameters;
+    this.assignInteractionToContact = function(assignInteractionToContactData, callback) {
+      var postBody = assignInteractionToContactData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling assignInteractionToContact");
+      // verify the required parameter 'assignInteractionToContactData' is set
+      if (assignInteractionToContactData == undefined || assignInteractionToContactData == null) {
+        throw new Error("Missing the required parameter 'assignInteractionToContactData' when calling assignInteractionToContact");
       }
 
 
@@ -137,16 +137,16 @@
 
     /**
      * Delete an existing contact
-     * @param {module:model/Parameters29} parameters 
+     * @param {module:model/DeleteContactData} deleteContactData 
      * @param {module:api/UcsApi~deleteContactCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.deleteContact = function(parameters, callback) {
-      var postBody = parameters;
+    this.deleteContact = function(deleteContactData, callback) {
+      var postBody = deleteContactData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling deleteContact");
+      // verify the required parameter 'deleteContactData' is set
+      if (deleteContactData == undefined || deleteContactData == null) {
+        throw new Error("Missing the required parameter 'deleteContactData' when calling deleteContact");
       }
 
 
@@ -181,16 +181,16 @@
 
     /**
      * Find or create phone call in UCS
-     * @param {module:model/Parameters33} parameters 
+     * @param {module:model/PhoneCallData} phoneCallData 
      * @param {module:api/UcsApi~findOrCreatePhoneCallCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.findOrCreatePhoneCall = function(parameters, callback) {
-      var postBody = parameters;
+    this.findOrCreatePhoneCall = function(phoneCallData, callback) {
+      var postBody = phoneCallData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling findOrCreatePhoneCall");
+      // verify the required parameter 'phoneCallData' is set
+      if (phoneCallData == undefined || phoneCallData == null) {
+        throw new Error("Missing the required parameter 'phoneCallData' when calling findOrCreatePhoneCall");
       }
 
 
@@ -226,13 +226,13 @@
     /**
      * Get the history of interactions for the agent
      * @param {Object} opts Optional parameters
-     * @param {module:model/Parameters32} opts.parameters 
+     * @param {module:model/AgentHistoryData} opts.agentHistoryData 
      * @param {module:api/UcsApi~getAgentHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
     this.getAgentHistory = function(opts, callback) {
       opts = opts || {};
-      var postBody = opts['parameters'];
+      var postBody = opts['agentHistoryData'];
 
 
       var pathParams = {
@@ -266,16 +266,16 @@
 
     /**
      * Get the details of a contact
-     * @param {module:model/Parameters30} parameters 
+     * @param {module:model/ContactDetailsData} contactDetailsData 
      * @param {module:api/UcsApi~getContactDetailsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.getContactDetails = function(parameters, callback) {
-      var postBody = parameters;
+    this.getContactDetails = function(contactDetailsData, callback) {
+      var postBody = contactDetailsData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling getContactDetails");
+      // verify the required parameter 'contactDetailsData' is set
+      if (contactDetailsData == undefined || contactDetailsData == null) {
+        throw new Error("Missing the required parameter 'contactDetailsData' when calling getContactDetails");
       }
 
 
@@ -310,16 +310,16 @@
 
     /**
      * Get the history of interactions for a contact
-     * @param {module:model/Parameters31} parameters 
+     * @param {module:model/ContactHistoryData} contactHistoryData 
      * @param {module:api/UcsApi~getContactHistoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.getContactHistory = function(parameters, callback) {
-      var postBody = parameters;
+    this.getContactHistory = function(contactHistoryData, callback) {
+      var postBody = contactHistoryData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling getContactHistory");
+      // verify the required parameter 'contactHistoryData' is set
+      if (contactHistoryData == undefined || contactHistoryData == null) {
+        throw new Error("Missing the required parameter 'contactHistoryData' when calling getContactHistory");
       }
 
 
@@ -354,16 +354,16 @@
 
     /**
      * Get contacts based on search criteria.
-     * @param {module:model/Parameters27} parameters 
+     * @param {module:model/GetContactsData} getContactsData 
      * @param {module:api/UcsApi~getContactsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.getContacts = function(parameters, callback) {
-      var postBody = parameters;
+    this.getContacts = function(getContactsData, callback) {
+      var postBody = getContactsData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling getContacts");
+      // verify the required parameter 'getContactsData' is set
+      if (getContactsData == undefined || getContactsData == null) {
+        throw new Error("Missing the required parameter 'getContactsData' when calling getContacts");
       }
 
 
@@ -437,16 +437,16 @@
 
     /**
      * Get the content of the interaction
-     * @param {module:model/Parameters34} parameters 
+     * @param {module:model/InteractionContentData} interactionContentData 
      * @param {module:api/UcsApi~getInteractionContentCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.getInteractionContent = function(parameters, callback) {
-      var postBody = parameters;
+    this.getInteractionContent = function(interactionContentData, callback) {
+      var postBody = interactionContentData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling getInteractionContent");
+      // verify the required parameter 'interactionContentData' is set
+      if (interactionContentData == undefined || interactionContentData == null) {
+        throw new Error("Missing the required parameter 'interactionContentData' when calling getInteractionContent");
       }
 
 
@@ -481,16 +481,16 @@
 
     /**
      * Identify the contact for the interaction
-     * @param {module:model/Parameters37} parameters 
+     * @param {module:model/IdentifyContactData} identifyContactData 
      * @param {module:api/UcsApi~identifyContactCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.identifyContact = function(parameters, callback) {
-      var postBody = parameters;
+    this.identifyContact = function(identifyContactData, callback) {
+      var postBody = identifyContactData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling identifyContact");
+      // verify the required parameter 'identifyContactData' is set
+      if (identifyContactData == undefined || identifyContactData == null) {
+        throw new Error("Missing the required parameter 'identifyContactData' when calling identifyContact");
       }
 
 
@@ -525,16 +525,16 @@
 
     /**
      * Search for contacts based on search query, using lucene search
-     * @param {module:model/Parameters25} parameters 
+     * @param {module:model/LuceneSearchData} luceneSearchData 
      * @param {module:api/UcsApi~luceneSearchCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.luceneSearch = function(parameters, callback) {
-      var postBody = parameters;
+    this.luceneSearch = function(luceneSearchData, callback) {
+      var postBody = luceneSearchData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling luceneSearch");
+      // verify the required parameter 'luceneSearchData' is set
+      if (luceneSearchData == undefined || luceneSearchData == null) {
+        throw new Error("Missing the required parameter 'luceneSearchData' when calling luceneSearch");
       }
 
 
@@ -569,16 +569,16 @@
 
     /**
      * Search for interactions based on search query, using lucene search
-     * @param {module:model/Parameters26} parameters 
+     * @param {module:model/LuceneSearchInteractionData} luceneSearchInteractionData 
      * @param {module:api/UcsApi~luceneSearchInteractionCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.luceneSearchInteraction = function(parameters, callback) {
-      var postBody = parameters;
+    this.luceneSearchInteraction = function(luceneSearchInteractionData, callback) {
+      var postBody = luceneSearchInteractionData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling luceneSearchInteraction");
+      // verify the required parameter 'luceneSearchInteractionData' is set
+      if (luceneSearchInteractionData == undefined || luceneSearchInteractionData == null) {
+        throw new Error("Missing the required parameter 'luceneSearchInteractionData' when calling luceneSearchInteraction");
       }
 
 
@@ -613,16 +613,16 @@
 
     /**
      * Set the call as being completed
-     * @param {module:model/Parameters35} parameters 
+     * @param {module:model/CallCompletedData} callCompletedData 
      * @param {module:api/UcsApi~setCallCompletedCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.setCallCompleted = function(parameters, callback) {
-      var postBody = parameters;
+    this.setCallCompleted = function(callCompletedData, callback) {
+      var postBody = callCompletedData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling setCallCompleted");
+      // verify the required parameter 'callCompletedData' is set
+      if (callCompletedData == undefined || callCompletedData == null) {
+        throw new Error("Missing the required parameter 'callCompletedData' when calling setCallCompleted");
       }
 
 
@@ -657,16 +657,16 @@
 
     /**
      * Set the note for the call
-     * @param {module:model/Parameters36} parameters 
+     * @param {module:model/CallNoteData} callNoteData 
      * @param {module:api/UcsApi~setCallNoteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.setCallNote = function(parameters, callback) {
-      var postBody = parameters;
+    this.setCallNote = function(callNoteData, callback) {
+      var postBody = callNoteData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling setCallNote");
+      // verify the required parameter 'callNoteData' is set
+      if (callNoteData == undefined || callNoteData == null) {
+        throw new Error("Missing the required parameter 'callNoteData' when calling setCallNote");
       }
 
 
@@ -701,16 +701,16 @@
 
     /**
      * Update attributes of an existing contact
-     * @param {module:model/Parameters28} parameters 
+     * @param {module:model/UpdateContactData} updateContactData 
      * @param {module:api/UcsApi~updateContactCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.updateContact = function(parameters, callback) {
-      var postBody = parameters;
+    this.updateContact = function(updateContactData, callback) {
+      var postBody = updateContactData;
 
-      // verify the required parameter 'parameters' is set
-      if (parameters == undefined || parameters == null) {
-        throw new Error("Missing the required parameter 'parameters' when calling updateContact");
+      // verify the required parameter 'updateContactData' is set
+      if (updateContactData == undefined || updateContactData == null) {
+        throw new Error("Missing the required parameter 'updateContactData' when calling updateContact");
       }
 
 

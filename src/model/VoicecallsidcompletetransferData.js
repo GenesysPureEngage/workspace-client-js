@@ -41,12 +41,11 @@
    * Constructs a new <code>VoicecallsidcompletetransferData</code>.
    * @alias module:model/VoicecallsidcompletetransferData
    * @class
-   * @param currentConnId {String} Connection identifier of the consultation call; will be deleted after completion of operation.
    */
-  var exports = function(currentConnId) {
+  var exports = function() {
     var _this = this;
 
-    _this['currentConnId'] = currentConnId;
+
 
 
   };
@@ -62,8 +61,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('currentConnId')) {
-        obj['currentConnId'] = ApiClient.convertToType(data['currentConnId'], 'String');
+      if (data.hasOwnProperty('parentConnId')) {
+        obj['parentConnId'] = ApiClient.convertToType(data['parentConnId'], 'String');
       }
       if (data.hasOwnProperty('reasons')) {
         obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
@@ -76,10 +75,10 @@
   }
 
   /**
-   * Connection identifier of the consultation call; will be deleted after completion of operation.
-   * @member {String} currentConnId
+   * The connId of the parent call can optionally be specified. In most cases this is not required.
+   * @member {String} parentConnId
    */
-  exports.prototype['currentConnId'] = undefined;
+  exports.prototype['parentConnId'] = undefined;
   /**
    * A key/value pairs list of a data structure that provides additional information associated with this action.
    * @member {Array.<module:model/Kvpair>} reasons

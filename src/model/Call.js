@@ -61,8 +61,6 @@
 
 
 
-
-
   };
 
   /**
@@ -76,23 +74,17 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
-      }
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
-      if (data.hasOwnProperty('previousCallId')) {
-        obj['previousCallId'] = ApiClient.convertToType(data['previousCallId'], 'String');
+      if (data.hasOwnProperty('previousConnId')) {
+        obj['previousConnId'] = ApiClient.convertToType(data['previousConnId'], 'String');
       }
-      if (data.hasOwnProperty('parentCallPath')) {
-        obj['parentCallPath'] = ApiClient.convertToType(data['parentCallPath'], 'String');
-      }
-      if (data.hasOwnProperty('parentCallUri')) {
-        obj['parentCallUri'] = ApiClient.convertToType(data['parentCallUri'], 'String');
+      if (data.hasOwnProperty('parentConnId')) {
+        obj['parentConnId'] = ApiClient.convertToType(data['parentConnId'], 'String');
       }
       if (data.hasOwnProperty('phoneNumber')) {
         obj['phoneNumber'] = ApiClient.convertToType(data['phoneNumber'], 'String');
@@ -135,10 +127,6 @@
   }
 
   /**
-   * @member {String} key
-   */
-  exports.prototype['key'] = undefined;
-  /**
    * @member {String} type
    */
   exports.prototype['type'] = undefined;
@@ -147,17 +135,13 @@
    */
   exports.prototype['id'] = undefined;
   /**
-   * @member {String} previousCallId
+   * @member {String} previousConnId
    */
-  exports.prototype['previousCallId'] = undefined;
+  exports.prototype['previousConnId'] = undefined;
   /**
-   * @member {String} parentCallPath
+   * @member {String} parentConnId
    */
-  exports.prototype['parentCallPath'] = undefined;
-  /**
-   * @member {String} parentCallUri
-   */
-  exports.prototype['parentCallUri'] = undefined;
+  exports.prototype['parentConnId'] = undefined;
   /**
    * @member {String} phoneNumber
    */
