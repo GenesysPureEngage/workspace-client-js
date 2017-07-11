@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Kvpair'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Kvpair'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsupdatecontactData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.UcsupdatecontactData = factory(root.WorkspaceApi.ApiClient);
   }
-}(this, function(ApiClient, Kvpair) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -42,9 +42,9 @@
    * @alias module:model/UcsupdatecontactData
    * @class
    * @param contactId {String} The id of the contact
-   * @param addedProperties {Array.<module:model/Kvpair>} The list of contact attributes to be added to the contact
-   * @param changedProperties {Array.<module:model/Kvpair>} The list of contact attributes to be updated for the contact
-   * @param deletedProperties {Array.<module:model/Kvpair>} The list of contact attributes to be deleted for the contact
+   * @param addedProperties {Array.<Object>} The list of contact attributes to be added to the contact
+   * @param changedProperties {Array.<Object>} The list of contact attributes to be updated for the contact
+   * @param deletedProperties {Array.<Object>} The list of contact attributes to be deleted for the contact
    */
   var exports = function(contactId, addedProperties, changedProperties, deletedProperties) {
     var _this = this;
@@ -70,13 +70,13 @@
         obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
       }
       if (data.hasOwnProperty('addedProperties')) {
-        obj['addedProperties'] = ApiClient.convertToType(data['addedProperties'], [Kvpair]);
+        obj['addedProperties'] = ApiClient.convertToType(data['addedProperties'], [Object]);
       }
       if (data.hasOwnProperty('changedProperties')) {
-        obj['changedProperties'] = ApiClient.convertToType(data['changedProperties'], [Kvpair]);
+        obj['changedProperties'] = ApiClient.convertToType(data['changedProperties'], [Object]);
       }
       if (data.hasOwnProperty('deletedProperties')) {
-        obj['deletedProperties'] = ApiClient.convertToType(data['deletedProperties'], [Kvpair]);
+        obj['deletedProperties'] = ApiClient.convertToType(data['deletedProperties'], [Object]);
       }
     }
     return obj;
@@ -89,17 +89,17 @@
   exports.prototype['contactId'] = undefined;
   /**
    * The list of contact attributes to be added to the contact
-   * @member {Array.<module:model/Kvpair>} addedProperties
+   * @member {Array.<Object>} addedProperties
    */
   exports.prototype['addedProperties'] = undefined;
   /**
    * The list of contact attributes to be updated for the contact
-   * @member {Array.<module:model/Kvpair>} changedProperties
+   * @member {Array.<Object>} changedProperties
    */
   exports.prototype['changedProperties'] = undefined;
   /**
    * The list of contact attributes to be deleted for the contact
-   * @member {Array.<module:model/Kvpair>} deletedProperties
+   * @member {Array.<Object>} deletedProperties
    */
   exports.prototype['deletedProperties'] = undefined;
 

@@ -46,6 +46,44 @@
 
 
     /**
+     * Callback function to receive the result of the ackRecentMissedCalls operation.
+     * @callback module:api/TargetsApi~ackRecentMissedCallsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Ack the missed calls in recent target
+     * @param {module:api/TargetsApi~ackRecentMissedCallsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.ackRecentMissedCalls = function(callback) {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/targets/recents/ack-missed-calls', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the addRecentTarget operation.
      * @callback module:api/TargetsApi~addRecentTargetCallback
      * @param {String} error Error message, if any.

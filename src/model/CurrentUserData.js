@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CurrentUserDataUser'], factory);
+    define(['ApiClient', 'model/CurrentUserDataPendingloginasync', 'model/CurrentUserDataUser'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CurrentUserDataUser'));
+    module.exports = factory(require('../ApiClient'), require('./CurrentUserDataPendingloginasync'), require('./CurrentUserDataUser'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentUserData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.CurrentUserDataUser);
+    root.WorkspaceApi.CurrentUserData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.CurrentUserDataPendingloginasync, root.WorkspaceApi.CurrentUserDataUser);
   }
-}(this, function(ApiClient, CurrentUserDataUser) {
+}(this, function(ApiClient, CurrentUserDataPendingloginasync, CurrentUserDataUser) {
   'use strict';
 
 
@@ -46,6 +46,7 @@
     var _this = this;
 
 
+
   };
 
   /**
@@ -59,6 +60,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('pending-login-async')) {
+        obj['pending-login-async'] = CurrentUserDataPendingloginasync.constructFromObject(data['pending-login-async']);
+      }
       if (data.hasOwnProperty('user')) {
         obj['user'] = CurrentUserDataUser.constructFromObject(data['user']);
       }
@@ -66,6 +70,10 @@
     return obj;
   }
 
+  /**
+   * @member {module:model/CurrentUserDataPendingloginasync} pending-login-async
+   */
+  exports.prototype['pending-login-async'] = undefined;
   /**
    * @member {module:model/CurrentUserDataUser} user
    */
