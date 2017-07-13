@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/Kvpair'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./Kvpair'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoicenotreadyData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.VoicenotreadyData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, Kvpair) {
   'use strict';
 
 
@@ -44,6 +44,8 @@
    */
   var exports = function() {
     var _this = this;
+
+
 
 
 
@@ -66,6 +68,12 @@
       if (data.hasOwnProperty('agentWorkMode')) {
         obj['agentWorkMode'] = ApiClient.convertToType(data['agentWorkMode'], 'String');
       }
+      if (data.hasOwnProperty('reasons')) {
+        obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
+      }
+      if (data.hasOwnProperty('extensions')) {
+        obj['extensions'] = ApiClient.convertToType(data['extensions'], [Kvpair]);
+      }
     }
     return obj;
   }
@@ -77,10 +85,52 @@
   exports.prototype['reasonCode'] = undefined;
   /**
    * the agent workmode.
-   * @member {String} agentWorkMode
+   * @member {module:model/VoicenotreadyData.AgentWorkModeEnum} agentWorkMode
    */
   exports.prototype['agentWorkMode'] = undefined;
+  /**
+   * A key/value pairs list of a data structure that provides additional information associated with this action.
+   * @member {Array.<module:model/Kvpair>} reasons
+   */
+  exports.prototype['reasons'] = undefined;
+  /**
+   * A key/value pairs list of additional data.
+   * @member {Array.<module:model/Kvpair>} extensions
+   */
+  exports.prototype['extensions'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>agentWorkMode</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.AgentWorkModeEnum = {
+    /**
+     * value: "AfterCallWork"
+     * @const
+     */
+    "AfterCallWork": "AfterCallWork",
+    /**
+     * value: "AuxWork"
+     * @const
+     */
+    "AuxWork": "AuxWork",
+    /**
+     * value: "LegalGuard"
+     * @const
+     */
+    "LegalGuard": "LegalGuard",
+    /**
+     * value: "NoCallDisconnect"
+     * @const
+     */
+    "NoCallDisconnect": "NoCallDisconnect",
+    /**
+     * value: "WalkAway"
+     * @const
+     */
+    "WalkAway": "WalkAway"  };
 
 
   return exports;

@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AlternateData', 'model/AnswerData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ClearData', 'model/CompleteConferenceData', 'model/CompleteTransferData', 'model/DeleteFromConferenceData', 'model/ForwardData', 'model/HoldData', 'model/InitiateConferenceData', 'model/InitiateTransferData', 'model/InlineResponse200', 'model/KeyData', 'model/MakeCallData', 'model/MonitoringScopeData', 'model/NotReadyData', 'model/ReconnectData', 'model/RedirectData', 'model/ReleaseData', 'model/RetrieveData', 'model/SendDTMFData', 'model/SendUserEventData', 'model/SingleStepConferenceData', 'model/SingleStepTransferData', 'model/StartMonitoringData', 'model/StopMonitoringData', 'model/UserData'], factory);
+    define(['ApiClient', 'model/AlternateData', 'model/AnswerData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ClearData', 'model/CompleteConferenceData', 'model/CompleteTransferData', 'model/DeleteFromConferenceData', 'model/ForwardData', 'model/HoldData', 'model/InitiateConferenceData', 'model/InitiateTransferData', 'model/InlineResponse200', 'model/KeyData', 'model/MakeCallData', 'model/MergeData', 'model/MonitoringScopeData', 'model/NotReadyData', 'model/ReadyData', 'model/ReconnectData', 'model/RedirectData', 'model/ReleaseData', 'model/RetrieveData', 'model/SendDTMFData', 'model/SendUserEventData', 'model/SingleStepConferenceData', 'model/SingleStepTransferData', 'model/StartMonitoringData', 'model/StopMonitoringData', 'model/UserData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AlternateData'), require('../model/AnswerData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ClearData'), require('../model/CompleteConferenceData'), require('../model/CompleteTransferData'), require('../model/DeleteFromConferenceData'), require('../model/ForwardData'), require('../model/HoldData'), require('../model/InitiateConferenceData'), require('../model/InitiateTransferData'), require('../model/InlineResponse200'), require('../model/KeyData'), require('../model/MakeCallData'), require('../model/MonitoringScopeData'), require('../model/NotReadyData'), require('../model/ReconnectData'), require('../model/RedirectData'), require('../model/ReleaseData'), require('../model/RetrieveData'), require('../model/SendDTMFData'), require('../model/SendUserEventData'), require('../model/SingleStepConferenceData'), require('../model/SingleStepTransferData'), require('../model/StartMonitoringData'), require('../model/StopMonitoringData'), require('../model/UserData'));
+    module.exports = factory(require('../ApiClient'), require('../model/AlternateData'), require('../model/AnswerData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ClearData'), require('../model/CompleteConferenceData'), require('../model/CompleteTransferData'), require('../model/DeleteFromConferenceData'), require('../model/ForwardData'), require('../model/HoldData'), require('../model/InitiateConferenceData'), require('../model/InitiateTransferData'), require('../model/InlineResponse200'), require('../model/KeyData'), require('../model/MakeCallData'), require('../model/MergeData'), require('../model/MonitoringScopeData'), require('../model/NotReadyData'), require('../model/ReadyData'), require('../model/ReconnectData'), require('../model/RedirectData'), require('../model/ReleaseData'), require('../model/RetrieveData'), require('../model/SendDTMFData'), require('../model/SendUserEventData'), require('../model/SingleStepConferenceData'), require('../model/SingleStepTransferData'), require('../model/StartMonitoringData'), require('../model/StopMonitoringData'), require('../model/UserData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoiceApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AlternateData, root.WorkspaceApi.AnswerData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ClearData, root.WorkspaceApi.CompleteConferenceData, root.WorkspaceApi.CompleteTransferData, root.WorkspaceApi.DeleteFromConferenceData, root.WorkspaceApi.ForwardData, root.WorkspaceApi.HoldData, root.WorkspaceApi.InitiateConferenceData, root.WorkspaceApi.InitiateTransferData, root.WorkspaceApi.InlineResponse200, root.WorkspaceApi.KeyData, root.WorkspaceApi.MakeCallData, root.WorkspaceApi.MonitoringScopeData, root.WorkspaceApi.NotReadyData, root.WorkspaceApi.ReconnectData, root.WorkspaceApi.RedirectData, root.WorkspaceApi.ReleaseData, root.WorkspaceApi.RetrieveData, root.WorkspaceApi.SendDTMFData, root.WorkspaceApi.SendUserEventData, root.WorkspaceApi.SingleStepConferenceData, root.WorkspaceApi.SingleStepTransferData, root.WorkspaceApi.StartMonitoringData, root.WorkspaceApi.StopMonitoringData, root.WorkspaceApi.UserData);
+    root.WorkspaceApi.VoiceApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AlternateData, root.WorkspaceApi.AnswerData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ClearData, root.WorkspaceApi.CompleteConferenceData, root.WorkspaceApi.CompleteTransferData, root.WorkspaceApi.DeleteFromConferenceData, root.WorkspaceApi.ForwardData, root.WorkspaceApi.HoldData, root.WorkspaceApi.InitiateConferenceData, root.WorkspaceApi.InitiateTransferData, root.WorkspaceApi.InlineResponse200, root.WorkspaceApi.KeyData, root.WorkspaceApi.MakeCallData, root.WorkspaceApi.MergeData, root.WorkspaceApi.MonitoringScopeData, root.WorkspaceApi.NotReadyData, root.WorkspaceApi.ReadyData, root.WorkspaceApi.ReconnectData, root.WorkspaceApi.RedirectData, root.WorkspaceApi.ReleaseData, root.WorkspaceApi.RetrieveData, root.WorkspaceApi.SendDTMFData, root.WorkspaceApi.SendUserEventData, root.WorkspaceApi.SingleStepConferenceData, root.WorkspaceApi.SingleStepTransferData, root.WorkspaceApi.StartMonitoringData, root.WorkspaceApi.StopMonitoringData, root.WorkspaceApi.UserData);
   }
-}(this, function(ApiClient, AlternateData, AnswerData, ApiErrorResponse, ApiSuccessResponse, ClearData, CompleteConferenceData, CompleteTransferData, DeleteFromConferenceData, ForwardData, HoldData, InitiateConferenceData, InitiateTransferData, InlineResponse200, KeyData, MakeCallData, MonitoringScopeData, NotReadyData, ReconnectData, RedirectData, ReleaseData, RetrieveData, SendDTMFData, SendUserEventData, SingleStepConferenceData, SingleStepTransferData, StartMonitoringData, StopMonitoringData, UserData) {
+}(this, function(ApiClient, AlternateData, AnswerData, ApiErrorResponse, ApiSuccessResponse, ClearData, CompleteConferenceData, CompleteTransferData, DeleteFromConferenceData, ForwardData, HoldData, InitiateConferenceData, InitiateTransferData, InlineResponse200, KeyData, MakeCallData, MergeData, MonitoringScopeData, NotReadyData, ReadyData, ReconnectData, RedirectData, ReleaseData, RetrieveData, SendDTMFData, SendUserEventData, SingleStepConferenceData, SingleStepTransferData, StartMonitoringData, StopMonitoringData, UserData) {
   'use strict';
 
   /**
@@ -55,7 +55,7 @@
 
     /**
      * Alternate between calls
-     * On behalf of the telephony object specified by the parameter dn, places the active call specified by the parameter current_conn_id on hold and connects the call specified by the parameter held_conn_id.
+     * Alternate between two calls when one call is held and the other is established.
      * @param {String} id Connection identifier of the call that is requested to be connected.
      * @param {module:model/AlternateData} alternateData 
      * @param {module:api/VoiceApi~alternateCallback} callback The callback function, accepting three arguments: error, data, response
@@ -205,7 +205,8 @@
      */
 
     /**
-     * Cancel active forward
+     * Cancel call forwardarding
+     * Cancel call forwardarding
      * @param {module:api/VoiceApi~cancelForwardCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -499,7 +500,8 @@
      */
 
     /**
-     * Forward to other dn
+     * Fordward calls
+     * Turn on call forwarding to the specified destination. 
      * @param {module:model/ForwardData} forwardData Request parameters.
      * @param {module:api/VoiceApi~forwardCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -732,6 +734,7 @@
 
     /**
      * Login the media voice
+     * Login on the voice channel. This can be used to login the voice channel if it is logge out. (ex. after using /voice/logout). Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
      * @param {module:api/VoiceApi~loginVoiceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -770,6 +773,7 @@
 
     /**
      * Logout the media voice
+     * Logout on the voice channel. Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
      * @param {module:api/VoiceApi~logoutVoiceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -808,6 +812,7 @@
 
     /**
      * Make a new call to the specified destination
+     * Make a new call to the specified destination
      * @param {module:model/MakeCallData} makeCallData Request parameters.
      * @param {module:api/VoiceApi~makeCallCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -837,6 +842,58 @@
 
       return this.apiClient.callApi(
         '/voice/make-call', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the merge operation.
+     * @callback module:api/VoiceApi~mergeCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Merge two calls
+     * Merge two calls 
+     * @param {String} id Connection identifier of the first call to be merged
+     * @param {module:model/MergeData} mergeData 
+     * @param {module:api/VoiceApi~mergeCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.merge = function(id, mergeData, callback) {
+      var postBody = mergeData;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw new Error("Missing the required parameter 'id' when calling merge");
+      }
+
+      // verify the required parameter 'mergeData' is set
+      if (mergeData == undefined || mergeData == null) {
+        throw new Error("Missing the required parameter 'mergeData' when calling merge");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/voice/calls/{id}/merge', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -1279,11 +1336,14 @@
 
     /**
      * Change to the ready state for voice
+     * @param {Object} opts Optional parameters
+     * @param {module:model/ReadyData} opts.readyData 
      * @param {module:api/VoiceApi~setAgentStateReadyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.setAgentStateReady = function(callback) {
-      var postBody = null;
+    this.setAgentStateReady = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['readyData'];
 
 
       var pathParams = {
@@ -1316,7 +1376,8 @@
      */
 
     /**
-     * Set dnd off for voice
+     * Turn off do not disturb for voice
+     * Turn off do not disturb for voice
      * @param {module:api/VoiceApi~setDNDOffCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -1354,7 +1415,8 @@
      */
 
     /**
-     * Set dnd on for voice
+     * Turn on do not disturb for voice
+     * Turn on do not disturb for voice
      * @param {module:api/VoiceApi~setDNDOnCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -1497,7 +1559,7 @@
 
     /**
      * Start the monitoring of an agent.
-     * Start the monitoring of an agent, providing monitoring information (deviceId to be monitored, operationMode (Monitor/Coach), monitoringMode (NextCall/AllCalls), monitoringScope (Agent/Call)).
+     * Start the monitoring of an agent, providing monitoring information (phone number to be monitored, monitoringMode (Monitor/Coach), monitoringNextCallType (NextCall/AllCalls), monitoringScope (Agent/Call)).
      * @param {module:model/StartMonitoringData} startMonitoringData 
      * @param {module:api/VoiceApi~startMonitoringCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -1587,7 +1649,7 @@
 
     /**
      * Stop the monitoring of an agent.
-     * Stop the monitoring of an agent, providing monitoring information (deviceId to be monitored).
+     * Stop the monitoring of an agent, providing monitoring information (phoneNumber to be monitored).
      * @param {module:model/StopMonitoringData} stopMonitoringData 
      * @param {module:api/VoiceApi~stopMonitoringCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}

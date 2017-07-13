@@ -52,7 +52,6 @@
 
 
 
-
   };
 
   /**
@@ -71,9 +70,6 @@
       }
       if (data.hasOwnProperty('location')) {
         obj['location'] = ApiClient.convertToType(data['location'], 'String');
-      }
-      if (data.hasOwnProperty('makeCallType')) {
-        obj['makeCallType'] = ApiClient.convertToType(data['makeCallType'], 'Number');
       }
       if (data.hasOwnProperty('userData')) {
         obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
@@ -101,11 +97,6 @@
    * @member {String} location
    */
   exports.prototype['location'] = undefined;
-  /**
-   * Refer to the type TMakeCallType.
-   * @member {Number} makeCallType
-   */
-  exports.prototype['makeCallType'] = undefined;
   /**
    * A key/value pairs list of the user data that should be attached to the call.
    * @member {Array.<module:model/Kvpair>} userData

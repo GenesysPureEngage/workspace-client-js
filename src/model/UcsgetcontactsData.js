@@ -80,7 +80,7 @@
         obj['maxCount'] = ApiClient.convertToType(data['maxCount'], 'Number');
       }
       if (data.hasOwnProperty('sortCriteria')) {
-        obj['sortCriteria'] = ApiClient.convertToType(data['sortCriteria'], ['String']);
+        obj['sortCriteria'] = ApiClient.convertToType(data['sortCriteria'], [Object]);
       }
     }
     return obj;
@@ -108,7 +108,7 @@
   exports.prototype['maxCount'] = undefined;
   /**
    * The sorting criteria
-   * @member {Array.<String>} sortCriteria
+   * @member {Array.<Object>} sortCriteria
    */
   exports.prototype['sortCriteria'] = undefined;
 

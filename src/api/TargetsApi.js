@@ -140,9 +140,10 @@
      * @param {String} searchTerm The text to search for
      * @param {Object} opts Optional parameters
      * @param {String} opts.filterName The filter to specify on which fields the search is applied
-     * @param {String} opts.types Comma separated list of types to include in the search
-     * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
+     * @param {String} opts.types Comma separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
+     * @param {module:model/String} opts.sort Desired sort order (asc or desc). asc if not specified
      * @param {Number} opts.limit Number of results. 100 if not specified.
+     * @param {module:model/String} opts.matchType Type of behavior for the field matching (exact for exact match search).
      * @param {module:api/TargetsApi~getCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -163,7 +164,8 @@
         'filterName': opts['filterName'],
         'types': opts['types'],
         'sort': opts['sort'],
-        'limit': opts['limit']
+        'limit': opts['limit'],
+        'matchType': opts['matchType']
       };
       var headerParams = {
       };
@@ -235,7 +237,7 @@
     /**
      * Get a target
      * @param {Number} id The id of the target
-     * @param {String} type the type of the target
+     * @param {module:model/String} type the type of the target
      * @param {module:api/TargetsApi~getTargetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */

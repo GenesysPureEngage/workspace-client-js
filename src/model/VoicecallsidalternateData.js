@@ -41,12 +41,12 @@
    * Constructs a new <code>VoicecallsidalternateData</code>.
    * @alias module:model/VoicecallsidalternateData
    * @class
-   * @param currentConnId {String} Connection identifier of the active call that is requested to be placed on hold. This parameter can be either a dn or a party_id, where party_id is the party identifier given by the switch.
+   * @param heldConnId {String} Connection identifier of the active call that is requested to be placed on hold. This parameter can be either a dn or a party_id, where party_id is the party identifier given by the switch.
    */
-  var exports = function(currentConnId) {
+  var exports = function(heldConnId) {
     var _this = this;
 
-    _this['currentConnId'] = currentConnId;
+    _this['heldConnId'] = heldConnId;
 
 
   };
@@ -62,8 +62,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('currentConnId')) {
-        obj['currentConnId'] = ApiClient.convertToType(data['currentConnId'], 'String');
+      if (data.hasOwnProperty('heldConnId')) {
+        obj['heldConnId'] = ApiClient.convertToType(data['heldConnId'], 'String');
       }
       if (data.hasOwnProperty('reasons')) {
         obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
@@ -77,9 +77,9 @@
 
   /**
    * Connection identifier of the active call that is requested to be placed on hold. This parameter can be either a dn or a party_id, where party_id is the party identifier given by the switch.
-   * @member {String} currentConnId
+   * @member {String} heldConnId
    */
-  exports.prototype['currentConnId'] = undefined;
+  exports.prototype['heldConnId'] = undefined;
   /**
    * A key/value pairs list of a data structure that provides additional information associated with this action.
    * @member {Array.<module:model/Kvpair>} reasons

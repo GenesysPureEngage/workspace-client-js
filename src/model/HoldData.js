@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/VoicecallsidanswerData'], factory);
+    define(['ApiClient', 'model/VoicereadyData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./VoicecallsidanswerData'));
+    module.exports = factory(require('../ApiClient'), require('./VoicereadyData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.HoldData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicecallsidanswerData);
+    root.WorkspaceApi.HoldData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicereadyData);
   }
-}(this, function(ApiClient, VoicecallsidanswerData) {
+}(this, function(ApiClient, VoicereadyData) {
   'use strict';
 
 
@@ -60,14 +60,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = VoicecallsidanswerData.constructFromObject(data['data']);
+        obj['data'] = VoicereadyData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/VoicecallsidanswerData} data
+   * @member {module:model/VoicereadyData} data
    */
   exports.prototype['data'] = undefined;
 

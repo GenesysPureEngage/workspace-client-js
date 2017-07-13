@@ -23,7 +23,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoicecallsidreconnectData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.VoicecallsidmergeData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
   }
 }(this, function(ApiClient, Kvpair) {
   'use strict';
@@ -32,38 +32,38 @@
 
 
   /**
-   * The VoicecallsidreconnectData model module.
-   * @module model/VoicecallsidreconnectData
+   * The VoicecallsidmergeData model module.
+   * @module model/VoicecallsidmergeData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>VoicecallsidreconnectData</code>.
-   * @alias module:model/VoicecallsidreconnectData
+   * Constructs a new <code>VoicecallsidmergeData</code>.
+   * @alias module:model/VoicecallsidmergeData
    * @class
-   * @param heldConnId {String} Connection identifier of the active call from which the telephony object in question should be released.
+   * @param otherConnId {String} Connection id of the other call to merge with
    */
-  var exports = function(heldConnId) {
+  var exports = function(otherConnId) {
     var _this = this;
 
-    _this['heldConnId'] = heldConnId;
+    _this['otherConnId'] = otherConnId;
 
 
   };
 
   /**
-   * Constructs a <code>VoicecallsidreconnectData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>VoicecallsidmergeData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/VoicecallsidreconnectData} obj Optional instance to populate.
-   * @return {module:model/VoicecallsidreconnectData} The populated <code>VoicecallsidreconnectData</code> instance.
+   * @param {module:model/VoicecallsidmergeData} obj Optional instance to populate.
+   * @return {module:model/VoicecallsidmergeData} The populated <code>VoicecallsidmergeData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('heldConnId')) {
-        obj['heldConnId'] = ApiClient.convertToType(data['heldConnId'], 'String');
+      if (data.hasOwnProperty('otherConnId')) {
+        obj['otherConnId'] = ApiClient.convertToType(data['otherConnId'], 'String');
       }
       if (data.hasOwnProperty('reasons')) {
         obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
@@ -76,10 +76,10 @@
   }
 
   /**
-   * Connection identifier of the active call from which the telephony object in question should be released.
-   * @member {String} heldConnId
+   * Connection id of the other call to merge with
+   * @member {String} otherConnId
    */
-  exports.prototype['heldConnId'] = undefined;
+  exports.prototype['otherConnId'] = undefined;
   /**
    * A key/value pairs list of a data structure that provides additional information associated with this action.
    * @member {Array.<module:model/Kvpair>} reasons

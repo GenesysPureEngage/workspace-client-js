@@ -14,32 +14,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/VoicereadyData'], factory);
+    define(['ApiClient', 'model/VoicecallsidmergeData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./VoicereadyData'));
+    module.exports = factory(require('../ApiClient'), require('./VoicecallsidmergeData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.RetrieveData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicereadyData);
+    root.WorkspaceApi.MergeData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicecallsidmergeData);
   }
-}(this, function(ApiClient, VoicereadyData) {
+}(this, function(ApiClient, VoicecallsidmergeData) {
   'use strict';
 
 
 
 
   /**
-   * The RetrieveData model module.
-   * @module model/RetrieveData
+   * The MergeData model module.
+   * @module model/MergeData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>RetrieveData</code>.
-   * @alias module:model/RetrieveData
+   * Constructs a new <code>MergeData</code>.
+   * @alias module:model/MergeData
    * @class
    */
   var exports = function() {
@@ -49,25 +49,25 @@
   };
 
   /**
-   * Constructs a <code>RetrieveData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MergeData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/RetrieveData} obj Optional instance to populate.
-   * @return {module:model/RetrieveData} The populated <code>RetrieveData</code> instance.
+   * @param {module:model/MergeData} obj Optional instance to populate.
+   * @return {module:model/MergeData} The populated <code>MergeData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = VoicereadyData.constructFromObject(data['data']);
+        obj['data'] = VoicecallsidmergeData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/VoicereadyData} data
+   * @member {module:model/VoicecallsidmergeData} data
    */
   exports.prototype['data'] = undefined;
 

@@ -147,7 +147,7 @@
      * Read settings, action codes, business attributes and other configuration.
      * This request returns all necessary configuration items to be used by the UI. This includes action codes, business attributes, transactions and settings at the moment. 
      * @param {Object} opts Optional parameters
-     * @param {String} opts.types use to return transactions having this particular key in userProperties
+     * @param {String} opts.types An undercore delimited list of types used to specify what content should be returned. If not specified the default is  actionCodes, agentGroups, and settings. Valid values are actionCodes, agentGroups, settings, workspaceTransactions, and businessAttributes.
      * @param {module:api/SessionApi~getConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ConfigResponse}
      */

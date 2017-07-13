@@ -64,8 +64,8 @@
       if (data.hasOwnProperty('userData')) {
         obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
       }
-      if (data.hasOwnProperty('callId')) {
-        obj['callId'] = ApiClient.convertToType(data['callId'], 'String');
+      if (data.hasOwnProperty('callUuid')) {
+        obj['callUuid'] = ApiClient.convertToType(data['callUuid'], 'String');
       }
     }
     return obj;
@@ -76,9 +76,9 @@
    */
   exports.prototype['userData'] = undefined;
   /**
-   * @member {String} callId
+   * @member {String} callUuid
    */
-  exports.prototype['callId'] = undefined;
+  exports.prototype['callUuid'] = undefined;
 
 
 

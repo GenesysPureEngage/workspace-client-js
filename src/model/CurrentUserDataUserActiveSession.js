@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CurrentUserDataUserActiveSessionDn'], factory);
+    define(['ApiClient', 'model/Call', 'model/CurrentUserDataUserActiveSessionDn'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CurrentUserDataUserActiveSessionDn'));
+    module.exports = factory(require('../ApiClient'), require('./Call'), require('./CurrentUserDataUserActiveSessionDn'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentUserDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.CurrentUserDataUserActiveSessionDn);
+    root.WorkspaceApi.CurrentUserDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.CurrentUserDataUserActiveSessionDn);
   }
-}(this, function(ApiClient, CurrentUserDataUserActiveSessionDn) {
+}(this, function(ApiClient, Call, CurrentUserDataUserActiveSessionDn) {
   'use strict';
 
 
@@ -46,6 +46,7 @@
     var _this = this;
 
 
+
   };
 
   /**
@@ -62,6 +63,9 @@
       if (data.hasOwnProperty('dn')) {
         obj['dn'] = CurrentUserDataUserActiveSessionDn.constructFromObject(data['dn']);
       }
+      if (data.hasOwnProperty('calls')) {
+        obj['calls'] = ApiClient.convertToType(data['calls'], [Call]);
+      }
     }
     return obj;
   }
@@ -70,6 +74,11 @@
    * @member {module:model/CurrentUserDataUserActiveSessionDn} dn
    */
   exports.prototype['dn'] = undefined;
+  /**
+   * An array containing any active calls.
+   * @member {Array.<module:model/Call>} calls
+   */
+  exports.prototype['calls'] = undefined;
 
 
 
