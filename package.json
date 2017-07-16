@@ -1,11 +1,27 @@
 {
-  "name": "workspace_api",
+  "name": "genesys-workspace-client-js",
   "version": "1.0.0",
-  "description": "Application_API_used_by_Workspace_Web_Edition",
-  "license": "Unlicense",
+  "description": "Workspace application API used by Workspace Web Edition",
+  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "keywords": [
+    "http",
+    "js",
+    "genesys",
+    "workspace",
+    "voice",
+    "calls",
+    "conferences",
+    "call-transfer",
+    "call-recording",
+    "agent-state"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GenesysPureEngage/workspace-client-js.git"
   },
   "dependencies": {
     "superagent": "1.7.1"
@@ -14,5 +30,8 @@
     "mocha": "~2.3.4",
     "sinon": "1.17.3",
     "expect.js": "~0.3.1"
+  },
+  "engines": {
+    "node": ">= 4.0"
   }
 }
