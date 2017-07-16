@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/ApiRequestData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiRequestData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.NotificationsApi = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.NotificationsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiRequestData);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, ApiRequestData) {
   'use strict';
 
   /**
@@ -56,10 +56,13 @@
     /**
      * Enables subscription to CometD notification API
      * Enables subscription to CometD notification API
+     * @param {Object} opts Optional parameters
+     * @param {module:model/ApiRequestData} opts.notificationsData 
      * @param {module:api/NotificationsApi~notificationsCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.notifications = function(callback) {
-      var postBody = null;
+    this.notifications = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['notificationsData'];
 
 
       var pathParams = {
@@ -94,10 +97,13 @@
     /**
      * Subscribes to CometD notifications
      * Subscribes to CometD notifications
+     * @param {Object} opts Optional parameters
+     * @param {module:model/ApiRequestData} opts.notificationsData 
      * @param {module:api/NotificationsApi~notificationsConnectCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.notificationsConnect = function(callback) {
-      var postBody = null;
+    this.notificationsConnect = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['notificationsData'];
 
 
       var pathParams = {
@@ -132,10 +138,13 @@
     /**
      * Close CometD notification subscriptions
      * Close CometD notification subscriptions
+     * @param {Object} opts Optional parameters
+     * @param {module:model/ApiRequestData} opts.notificationsData 
      * @param {module:api/NotificationsApi~notificationsDisconnectCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.notificationsDisconnect = function(callback) {
-      var postBody = null;
+    this.notificationsDisconnect = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['notificationsData'];
 
 
       var pathParams = {
@@ -170,10 +179,13 @@
     /**
      * Subscribes to CometD notifications
      * Subscribes to CometD notifications
+     * @param {Object} opts Optional parameters
+     * @param {module:model/ApiRequestData} opts.notificationsData 
      * @param {module:api/NotificationsApi~notificationsHandshakeCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.notificationsHandshake = function(callback) {
-      var postBody = null;
+    this.notificationsHandshake = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['notificationsData'];
 
 
       var pathParams = {
@@ -208,10 +220,13 @@
     /**
      * Enables subscription to SocketIO notifications
      * Enables subscription to SocketIO notifications
+     * @param {Object} opts Optional parameters
+     * @param {module:model/ApiRequestData} opts.socketIOData 
      * @param {module:api/NotificationsApi~socketioCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.socketio = function(callback) {
-      var postBody = null;
+    this.socketio = function(opts, callback) {
+      opts = opts || {};
+      var postBody = opts['socketIOData'];
 
 
       var pathParams = {
