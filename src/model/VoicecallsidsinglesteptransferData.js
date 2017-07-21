@@ -41,7 +41,7 @@
    * Constructs a new <code>VoicecallsidsinglesteptransferData</code>.
    * @alias module:model/VoicecallsidsinglesteptransferData
    * @class
-   * @param destination {String} Directory number of the party the call will be transferred to.
+   * @param destination {String} The number to transfer the call to.
    */
   var exports = function(destination) {
     var _this = this;
@@ -84,7 +84,7 @@
   }
 
   /**
-   * Directory number of the party the call will be transferred to.
+   * The number to transfer the call to.
    * @member {String} destination
    */
   exports.prototype['destination'] = undefined;

@@ -55,8 +55,8 @@
 
     /**
      * Alternate between calls
-     * Alternate between two calls when one call is held and the other is established.
-     * @param {String} id Connection identifier of the call that is requested to be connected.
+     * Alternate between two calls when one call is held and the other is established. This is a quick way to put a call on hold and retrieve another held call in one step.
+     * @param {String} id id of the active call that should be placed on hold
      * @param {module:model/AlternateData} alternateData 
      * @param {module:api/VoiceApi~alternateCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -107,7 +107,8 @@
 
     /**
      * Answer a call
-     * @param {String} id id of the call
+     * Answer the call specified in the id path parameter
+     * @param {String} id id of the call to answer
      * @param {Object} opts Optional parameters
      * @param {module:model/AnswerData} opts.answerData Request parameters.
      * @param {module:api/VoiceApi~answerCallback} callback The callback function, accepting three arguments: error, data, response
@@ -155,8 +156,9 @@
 
     /**
      * Attach user data to a call
+     * Attach the provided key/value pairs to the call.
      * @param {String} id id of the call
-     * @param {module:model/UserData} userData An array of key/value pairs.
+     * @param {module:model/UserData} userData An array of key/value pairs to attach.
      * @param {module:api/VoiceApi~attachUserDataCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -245,8 +247,8 @@
 
     /**
      * Clear all the parties in the call.
-     * Deletes all parties, that is, all telephony objects, from the call specified by conn_id and disconnects the call.
-     * @param {String} id Connection identifier of the call, from which the telephony object in question is requested to be released.
+     * Deletes all parties from the specified call and releases it.
+     * @param {String} id id of the call to be cleared
      * @param {module:model/ClearData} clearData 
      * @param {module:api/VoiceApi~clearCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -297,7 +299,8 @@
 
     /**
      * Complete a conference
-     * @param {String} id Connection identifier of the consult call
+     * Completes a previously initiated conference. Once completed, the two separate calls  are brought together so that all three parties are participating in the same call.
+     * @param {String} id Id of the active call
      * @param {module:model/CompleteConferenceData} completeConferenceData 
      * @param {module:api/VoiceApi~completeConferenceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -348,7 +351,8 @@
 
     /**
      * Complete a transfer
-     * @param {String} id Connection identifier of the consult call
+     * Completes a previously initiated two-step transfer.
+     * @param {String} id Id of the active call
      * @param {module:model/CompleteTransferData} completeTransferData 
      * @param {module:api/VoiceApi~completeTransferCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -398,8 +402,9 @@
      */
 
     /**
-     * Complete a conference
-     * @param {String} id Connection identifier of the conference call from which the object is requested to be deleted.
+     * Delete a party from a conference call
+     * Removes the specified participant from the conference call. This operation can only be performed  by the owner of the conference call
+     * @param {String} id The id of the conference call
      * @param {module:model/DeleteFromConferenceData} deleteFromConferenceData 
      * @param {module:api/VoiceApi~deleteFromConferenceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -449,7 +454,8 @@
      */
 
     /**
-     * Remove one key/value pair in the user data
+     * Remove key/value pair from user data
+     * Deletes the specified key from the call data.
      * @param {String} id id of the call
      * @param {module:model/KeyData} keyData The key of the key/value pairs to delete.
      * @param {module:api/VoiceApi~deleteUserDataPairCallback} callback The callback function, accepting three arguments: error, data, response
@@ -546,6 +552,7 @@
 
     /**
      * Get all the calls
+     * Returns an array containing any active calls for the user.
      * @param {module:api/VoiceApi~getCallsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/InlineResponse200}
      */
@@ -568,7 +575,7 @@
       var returnType = InlineResponse200;
 
       return this.apiClient.callApi(
-        '/voice/calls/', 'GET',
+        '/voice/calls', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -584,6 +591,7 @@
 
     /**
      * Place a call on hold
+     * Place the call specified by the id path parameter on hold.
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
      * @param {module:model/HoldData} opts.holdData Request parameters.
@@ -632,7 +640,8 @@
 
     /**
      * Initiate a conference
-     * @param {String} id Connection identifier of the call that is requested to be placed on hold.
+     * Initiates a two-step conference to the specified destination. This operation places the existing call on hold  and creates a new call in the dialing state. After initiating the conference you can use /complete-conference  to complete the conference and bring all parties into the same call.
+     * @param {String} id id of the call to initiate the conference from. This call will be placed on hold.
      * @param {module:model/InitiateConferenceData} initiateConferenceData 
      * @param {module:api/VoiceApi~initiateConferenceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -683,6 +692,7 @@
 
     /**
      * Initiate a transfer
+     * Initiates a two-step transfer to the specified destination. After initiating the transfer,  you can use complete-transfer to complete the transfer.
      * @param {String} id Connection identifier of the call that is requested to be placed on hold.
      * @param {module:model/InitiateTransferData} initiateTransferData 
      * @param {module:api/VoiceApi~initiateTransferCallback} callback The callback function, accepting three arguments: error, data, response
@@ -734,7 +744,7 @@
 
     /**
      * Login the media voice
-     * Login on the voice channel. This can be used to login the voice channel if it is logge out. (ex. after using /voice/logout). Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
+     * Login on the voice channel. This can be used to login the voice channel if it is logged out. (ex. after using /voice/logout). Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
      * @param {module:api/VoiceApi~loginVoiceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -909,6 +919,7 @@
 
     /**
      * Pauses call recording.
+     * Pauses call recording.
      * @param {String} id id of the call
      * @param {module:api/VoiceApi~pauseRecordingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -954,8 +965,8 @@
 
     /**
      * Reconnect a call
-     * Releases the telephony object specified by the parameter dn from the active call specified by the parameter current_conn_id and retrieves the previously held call, specified by the parameter held_conn_id, to the same object. This function is commonly used to clear an active call and to return to a held call, or to cancel a consult call (because of no answer, called device busy, and so on) and then to return to a held call.
-     * @param {String} id Connection identifier of the original call that should be retrieved.
+     * Release the active call and retrieve another call from hold. This is a quick way to to do  /release and /retrieve in one step. 
+     * @param {String} id The id of the active call
      * @param {module:model/ReconnectData} reconnectData 
      * @param {module:api/VoiceApi~reconnectCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -1058,6 +1069,7 @@
 
     /**
      * Release a call
+     * Release the call specified by the id path parameter.
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
      * @param {module:model/ReleaseData} opts.releaseData Request parameters.
@@ -1106,6 +1118,7 @@
 
     /**
      * Resumes call recording.
+     * Resumes call recording.
      * @param {String} id id of the call
      * @param {module:api/VoiceApi~resumeRecordingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -1151,6 +1164,7 @@
 
     /**
      * Retrieve a held call
+     * Retrieve the held call specified by the id path parameter.
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
      * @param {module:model/RetrieveData} opts.retrieveData Request parameters.
@@ -1199,8 +1213,8 @@
 
     /**
      * Send digits as DTMF.
-     * On behalf of the telephony object specified by the parameter dn, sends digits that are expected by an interactive voice response system.
-     * @param {String} id Connection identifier of the call in question.
+     * Sends the provided DTMF digits. You can send DTMF digits individually with multiple requests  or together with multiple digits in one request.
+     * @param {String} id Id of the cal
      * @param {module:model/SendDTMFData} sendDTMFData 
      * @param {module:api/VoiceApi~sendDTMFCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -1251,6 +1265,7 @@
 
     /**
      * Send a userEvent event to TServer with provided attached data.
+     * Send a userEvent event to TServer with provided attached data.
      * @param {module:model/SendUserEventData} userEventData Data defining the user event to be distributed
      * @param {module:api/VoiceApi~sendUserEventCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -1295,6 +1310,7 @@
 
     /**
      * Change to the not ready state for voice
+     * Change to the not ready state for voice
      * @param {Object} opts Optional parameters
      * @param {module:model/NotReadyData} opts.notReadyData 
      * @param {module:api/VoiceApi~setAgentStateNotReadyCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1335,6 +1351,7 @@
      */
 
     /**
+     * Change to the ready state for voice
      * Change to the ready state for voice
      * @param {Object} opts Optional parameters
      * @param {module:model/ReadyData} opts.readyData 
@@ -1455,7 +1472,7 @@
 
     /**
      * Create a conference in a single step
-     * Adds a new party to an existing call and creates a conference.
+     * Performs a single-step conference, adding the specified participant to the call.
      * @param {String} id Connection identifier of the call that is requested to be conferenced.
      * @param {module:model/SingleStepConferenceData} singleStepConferenceData 
      * @param {module:api/VoiceApi~singleStepConferenceCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1507,8 +1524,8 @@
 
     /**
      * Transfer a call in a single step
-     * Transfers the call from a specified directory number dn that is currently engaged in the call specified by the parameter conn_id to a destination DN that is specified by the parameter destination.
-     * @param {String} id Connection identifier of the call that is requested to be transferred.
+     * Performs a single-step transfer to the specified destination.
+     * @param {String} id The id of the call to be transferred.
      * @param {module:model/SingleStepTransferData} singleStepTransferData 
      * @param {module:api/VoiceApi~singleStepTransferCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -1604,6 +1621,7 @@
 
     /**
      * Starts call recording.
+     * Starts call recording.
      * @param {String} id id of the call
      * @param {module:api/VoiceApi~startRecordingCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
@@ -1693,6 +1711,7 @@
      */
 
     /**
+     * Stops call recording.
      * Stops call recording.
      * @param {String} id id of the call
      * @param {module:api/VoiceApi~stopRecordingCallback} callback The callback function, accepting three arguments: error, data, response
@@ -1886,6 +1905,7 @@
 
     /**
      * Update user data to a call
+     * Update the call userdata with the provided key/value pairs.
      * @param {String} id id of the call
      * @param {module:model/UserData} userData An array of key/value pairs.
      * @param {module:api/VoiceApi~updateUserDataCallback} callback The callback function, accepting three arguments: error, data, response

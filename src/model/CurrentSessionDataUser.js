@@ -14,32 +14,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CurrentUserDataUserActiveSession', 'model/Kvpair'], factory);
+    define(['ApiClient', 'model/CurrentSessionDataUserActiveSession', 'model/Kvpair'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./CurrentUserDataUserActiveSession'), require('./Kvpair'));
+    module.exports = factory(require('../ApiClient'), require('./CurrentSessionDataUserActiveSession'), require('./Kvpair'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentUserDataUser = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.CurrentUserDataUserActiveSession, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.CurrentSessionDataUser = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.CurrentSessionDataUserActiveSession, root.WorkspaceApi.Kvpair);
   }
-}(this, function(ApiClient, CurrentUserDataUserActiveSession, Kvpair) {
+}(this, function(ApiClient, CurrentSessionDataUserActiveSession, Kvpair) {
   'use strict';
 
 
 
 
   /**
-   * The CurrentUserDataUser model module.
-   * @module model/CurrentUserDataUser
+   * The CurrentSessionDataUser model module.
+   * @module model/CurrentSessionDataUser
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>CurrentUserDataUser</code>.
-   * @alias module:model/CurrentUserDataUser
+   * Constructs a new <code>CurrentSessionDataUser</code>.
+   * @alias module:model/CurrentSessionDataUser
    * @class
    * @param userName {String} 
    * @param employeeId {String} 
@@ -59,11 +59,11 @@
   };
 
   /**
-   * Constructs a <code>CurrentUserDataUser</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CurrentSessionDataUser</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUserDataUser} obj Optional instance to populate.
-   * @return {module:model/CurrentUserDataUser} The populated <code>CurrentUserDataUser</code> instance.
+   * @param {module:model/CurrentSessionDataUser} obj Optional instance to populate.
+   * @return {module:model/CurrentSessionDataUser} The populated <code>CurrentSessionDataUser</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -94,7 +94,7 @@
         obj['userProperties'] = ApiClient.convertToType(data['userProperties'], [Kvpair]);
       }
       if (data.hasOwnProperty('activeSession')) {
-        obj['activeSession'] = CurrentUserDataUserActiveSession.constructFromObject(data['activeSession']);
+        obj['activeSession'] = CurrentSessionDataUserActiveSession.constructFromObject(data['activeSession']);
       }
     }
     return obj;
@@ -133,7 +133,7 @@
    */
   exports.prototype['userProperties'] = undefined;
   /**
-   * @member {module:model/CurrentUserDataUserActiveSession} activeSession
+   * @member {module:model/CurrentSessionDataUserActiveSession} activeSession
    */
   exports.prototype['activeSession'] = undefined;
 

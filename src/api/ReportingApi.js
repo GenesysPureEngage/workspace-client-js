@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/StatisticsData', 'model/UnsubscribeData'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/StatisticsRegisterData', 'model/StatisticsSubscribeData', 'model/UnsubscribeData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/StatisticsData'), require('../model/UnsubscribeData'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/StatisticsRegisterData'), require('../model/StatisticsSubscribeData'), require('../model/UnsubscribeData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ReportingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.StatisticsData, root.WorkspaceApi.UnsubscribeData);
+    root.WorkspaceApi.ReportingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.StatisticsRegisterData, root.WorkspaceApi.StatisticsSubscribeData, root.WorkspaceApi.UnsubscribeData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, StatisticsData, UnsubscribeData) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, StatisticsRegisterData, StatisticsSubscribeData, UnsubscribeData) {
   'use strict';
 
   /**
@@ -100,16 +100,16 @@
 
     /**
      * Subscribe to Statistics and store values server side. Values will only be returned on GET /reporting/{subscriptionId}
-     * @param {module:model/StatisticsData} statisticsData Requested Statistics
+     * @param {module:model/StatisticsRegisterData} statisticsRegisterData Requested Statistics
      * @param {module:api/ReportingApi~registerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.register = function(statisticsData, callback) {
-      var postBody = statisticsData;
+    this.register = function(statisticsRegisterData, callback) {
+      var postBody = statisticsRegisterData;
 
-      // verify the required parameter 'statisticsData' is set
-      if (statisticsData == undefined || statisticsData == null) {
-        throw new Error("Missing the required parameter 'statisticsData' when calling register");
+      // verify the required parameter 'statisticsRegisterData' is set
+      if (statisticsRegisterData == undefined || statisticsRegisterData == null) {
+        throw new Error("Missing the required parameter 'statisticsRegisterData' when calling register");
       }
 
 
@@ -144,16 +144,16 @@
 
     /**
      * Subscribe to Statistics
-     * @param {module:model/StatisticsData} statisticsData Requested Statistics
+     * @param {module:model/StatisticsSubscribeData} statisticsSubscribeData Requested Statistics
      * @param {module:api/ReportingApi~subscribeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.subscribe = function(statisticsData, callback) {
-      var postBody = statisticsData;
+    this.subscribe = function(statisticsSubscribeData, callback) {
+      var postBody = statisticsSubscribeData;
 
-      // verify the required parameter 'statisticsData' is set
-      if (statisticsData == undefined || statisticsData == null) {
-        throw new Error("Missing the required parameter 'statisticsData' when calling subscribe");
+      // verify the required parameter 'statisticsSubscribeData' is set
+      if (statisticsSubscribeData == undefined || statisticsSubscribeData == null) {
+        throw new Error("Missing the required parameter 'statisticsSubscribeData' when calling subscribe");
       }
 
 

@@ -23,7 +23,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentUserStatus = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.StatisticsSubscribeDataData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -32,52 +32,54 @@
 
 
   /**
-   * The CurrentUserStatus model module.
-   * @module model/CurrentUserStatus
+   * The StatisticsSubscribeDataData model module.
+   * @module model/StatisticsSubscribeDataData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>CurrentUserStatus</code>.
-   * @alias module:model/CurrentUserStatus
+   * Constructs a new <code>StatisticsSubscribeDataData</code>.
+   * @alias module:model/StatisticsSubscribeDataData
    * @class
+   * @param connectionId {String} 
+   * @param statistics {Array.<Object>} 
    */
-  var exports = function() {
+  var exports = function(connectionId, statistics) {
     var _this = this;
 
-
-
+    _this['connectionId'] = connectionId;
+    _this['statistics'] = statistics;
   };
 
   /**
-   * Constructs a <code>CurrentUserStatus</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>StatisticsSubscribeDataData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUserStatus} obj Optional instance to populate.
-   * @return {module:model/CurrentUserStatus} The populated <code>CurrentUserStatus</code> instance.
+   * @param {module:model/StatisticsSubscribeDataData} obj Optional instance to populate.
+   * @return {module:model/StatisticsSubscribeDataData} The populated <code>StatisticsSubscribeDataData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('code')) {
-        obj['code'] = ApiClient.convertToType(data['code'], 'Number');
+      if (data.hasOwnProperty('connectionId')) {
+        obj['connectionId'] = ApiClient.convertToType(data['connectionId'], 'String');
       }
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
+      if (data.hasOwnProperty('statistics')) {
+        obj['statistics'] = ApiClient.convertToType(data['statistics'], [Object]);
       }
     }
     return obj;
   }
 
   /**
-   * @member {Number} code
+   * @member {String} connectionId
    */
-  exports.prototype['code'] = undefined;
+  exports.prototype['connectionId'] = undefined;
   /**
-   * @member {String} message
+   * @member {Array.<Object>} statistics
    */
-  exports.prototype['message'] = undefined;
+  exports.prototype['statistics'] = undefined;
 
 
 

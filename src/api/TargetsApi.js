@@ -55,6 +55,7 @@
 
     /**
      * Ack the missed calls in recent target
+     * Ack the missed calls in recent target
      * @param {module:api/TargetsApi~ackRecentMissedCallsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -92,6 +93,7 @@
      */
 
     /**
+     * Add a recent target
      * Add a recent target
      * @param {module:model/RecentTargetData} recentTargetData 
      * @param {module:api/TargetsApi~addRecentTargetCallback} callback The callback function, accepting three arguments: error, data, response
@@ -136,6 +138,7 @@
      */
 
     /**
+     * Search for targets
      * Search for targets
      * @param {String} searchTerm The text to search for
      * @param {Object} opts Optional parameters
@@ -194,6 +197,7 @@
 
     /**
      * Get recent targets
+     * Get recent targets
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Number of results. 50 if not specified.
      * @param {module:api/TargetsApi~getRecentTargetsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -236,6 +240,7 @@
 
     /**
      * Get a target
+     * Get a specific target by type and id
      * @param {Number} id The id of the target
      * @param {module:model/String} type the type of the target
      * @param {module:api/TargetsApi~getTargetCallback} callback The callback function, accepting three arguments: error, data, response

@@ -41,7 +41,7 @@
    * Constructs a new <code>VoicecallsidsinglestepconferenceData</code>.
    * @alias module:model/VoicecallsidsinglestepconferenceData
    * @class
-   * @param destination {String} Directory number of the party to which the call will be conferenced.
+   * @param destination {String} Number of the party to conference.
    */
   var exports = function(destination) {
     var _this = this;
@@ -84,7 +84,7 @@
   }
 
   /**
-   * Directory number of the party to which the call will be conferenced.
+   * Number of the party to conference.
    * @member {String} destination
    */
   exports.prototype['destination'] = undefined;

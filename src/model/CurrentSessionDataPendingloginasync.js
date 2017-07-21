@@ -23,7 +23,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentUserDataPendingloginasync = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.CurrentSessionDataPendingloginasync = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -32,16 +32,16 @@
 
 
   /**
-   * The CurrentUserDataPendingloginasync model module.
-   * @module model/CurrentUserDataPendingloginasync
+   * The CurrentSessionDataPendingloginasync model module.
+   * @module model/CurrentSessionDataPendingloginasync
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>CurrentUserDataPendingloginasync</code>.
-   * @alias module:model/CurrentUserDataPendingloginasync
+   * Constructs a new <code>CurrentSessionDataPendingloginasync</code>.
+   * @alias module:model/CurrentSessionDataPendingloginasync
    * @class
-   * @param state {module:model/CurrentUserDataPendingloginasync.StateEnum} 
+   * @param state {module:model/CurrentSessionDataPendingloginasync.StateEnum} 
    * @param actualWaitTime {Number} 
    * @param submittedAt {String} 
    */
@@ -55,11 +55,11 @@
   };
 
   /**
-   * Constructs a <code>CurrentUserDataPendingloginasync</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CurrentSessionDataPendingloginasync</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUserDataPendingloginasync} obj Optional instance to populate.
-   * @return {module:model/CurrentUserDataPendingloginasync} The populated <code>CurrentUserDataPendingloginasync</code> instance.
+   * @param {module:model/CurrentSessionDataPendingloginasync} obj Optional instance to populate.
+   * @return {module:model/CurrentSessionDataPendingloginasync} The populated <code>CurrentSessionDataPendingloginasync</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -82,7 +82,7 @@
   }
 
   /**
-   * @member {module:model/CurrentUserDataPendingloginasync.StateEnum} state
+   * @member {module:model/CurrentSessionDataPendingloginasync.StateEnum} state
    */
   exports.prototype['state'] = undefined;
   /**

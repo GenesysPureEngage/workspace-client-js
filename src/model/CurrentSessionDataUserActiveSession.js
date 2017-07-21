@@ -14,32 +14,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Call', 'model/CurrentUserDataUserActiveSessionDn'], factory);
+    define(['ApiClient', 'model/Call', 'model/CurrentSessionDataUserActiveSessionDn'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Call'), require('./CurrentUserDataUserActiveSessionDn'));
+    module.exports = factory(require('../ApiClient'), require('./Call'), require('./CurrentSessionDataUserActiveSessionDn'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentUserDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.CurrentUserDataUserActiveSessionDn);
+    root.WorkspaceApi.CurrentSessionDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.CurrentSessionDataUserActiveSessionDn);
   }
-}(this, function(ApiClient, Call, CurrentUserDataUserActiveSessionDn) {
+}(this, function(ApiClient, Call, CurrentSessionDataUserActiveSessionDn) {
   'use strict';
 
 
 
 
   /**
-   * The CurrentUserDataUserActiveSession model module.
-   * @module model/CurrentUserDataUserActiveSession
+   * The CurrentSessionDataUserActiveSession model module.
+   * @module model/CurrentSessionDataUserActiveSession
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>CurrentUserDataUserActiveSession</code>.
-   * @alias module:model/CurrentUserDataUserActiveSession
+   * Constructs a new <code>CurrentSessionDataUserActiveSession</code>.
+   * @alias module:model/CurrentSessionDataUserActiveSession
    * @class
    */
   var exports = function() {
@@ -50,18 +50,18 @@
   };
 
   /**
-   * Constructs a <code>CurrentUserDataUserActiveSession</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CurrentSessionDataUserActiveSession</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentUserDataUserActiveSession} obj Optional instance to populate.
-   * @return {module:model/CurrentUserDataUserActiveSession} The populated <code>CurrentUserDataUserActiveSession</code> instance.
+   * @param {module:model/CurrentSessionDataUserActiveSession} obj Optional instance to populate.
+   * @return {module:model/CurrentSessionDataUserActiveSession} The populated <code>CurrentSessionDataUserActiveSession</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('dn')) {
-        obj['dn'] = CurrentUserDataUserActiveSessionDn.constructFromObject(data['dn']);
+        obj['dn'] = CurrentSessionDataUserActiveSessionDn.constructFromObject(data['dn']);
       }
       if (data.hasOwnProperty('calls')) {
         obj['calls'] = ApiClient.convertToType(data['calls'], [Call]);
@@ -71,7 +71,7 @@
   }
 
   /**
-   * @member {module:model/CurrentUserDataUserActiveSessionDn} dn
+   * @member {module:model/CurrentSessionDataUserActiveSessionDn} dn
    */
   exports.prototype['dn'] = undefined;
   /**

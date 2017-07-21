@@ -41,7 +41,7 @@
    * Constructs a new <code>VoicecallsiddeletefromconferenceData</code>.
    * @alias module:model/VoicecallsiddeletefromconferenceData
    * @class
-   * @param dnToDrop {String} Reference to the telephony object that is requested to be deleted from the conference call. This parameter can be either a dn or a party_id, where party_id is the party identifier given by the switch.
+   * @param dnToDrop {String} The party to be deleted from the conference
    */
   var exports = function(dnToDrop) {
     var _this = this;
@@ -76,7 +76,7 @@
   }
 
   /**
-   * Reference to the telephony object that is requested to be deleted from the conference call. This parameter can be either a dn or a party_id, where party_id is the party identifier given by the switch.
+   * The party to be deleted from the conference
    * @member {String} dnToDrop
    */
   exports.prototype['dnToDrop'] = undefined;

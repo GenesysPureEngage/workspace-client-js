@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ChannelsData', 'model/ConfigResponse', 'model/CurrentUser', 'model/LoginData'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ChannelsData', 'model/ConfigResponse', 'model/CurrentSession'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ChannelsData'), require('../model/ConfigResponse'), require('../model/CurrentUser'), require('../model/LoginData'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ChannelsData'), require('../model/ConfigResponse'), require('../model/CurrentSession'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.SessionApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ChannelsData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.CurrentUser, root.WorkspaceApi.LoginData);
+    root.WorkspaceApi.SessionApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ChannelsData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.CurrentSession);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, ChannelsData, ConfigResponse, CurrentUser, LoginData) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, ChannelsData, ConfigResponse, CurrentSession) {
   'use strict';
 
   /**
@@ -99,6 +99,7 @@
      */
 
     /**
+     * Get the business attribute hierarchy
      * Get the business attribute hierarchy
      * @param {Number} id id of the business attribute
      * @param {module:api/SessionApi~getBusinessAttributeHierarchyCallback} callback The callback function, accepting three arguments: error, data, response
@@ -179,20 +180,20 @@
     }
 
     /**
-     * Callback function to receive the result of the getCurrentUser operation.
-     * @callback module:api/SessionApi~getCurrentUserCallback
+     * Callback function to receive the result of the getCurrentSession operation.
+     * @callback module:api/SessionApi~getCurrentSessionCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/CurrentUser} data The data returned by the service call.
+     * @param {module:model/CurrentSession} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Read information about the logged in user including any existing media logins and calls
      * This request can be used to retrieve information about the current user. This can be done at startup to check for an existing session. The returned user information includes state recovery information about the active session. 
-     * @param {module:api/SessionApi~getCurrentUserCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CurrentUser}
+     * @param {module:api/SessionApi~getCurrentSessionCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CurrentSession}
      */
-    this.getCurrentUser = function(callback) {
+    this.getCurrentSession = function(callback) {
       var postBody = null;
 
 
@@ -208,10 +209,10 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = CurrentUser;
+      var returnType = CurrentSession;
 
       return this.apiClient.callApi(
-        '/current-user', 'GET',
+        '/current-session', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -227,18 +228,12 @@
 
     /**
      * login the specified user (HTTP session only)
-     * The login request authenticates the user and creates the HTTP session. 
-     * @param {module:model/LoginData} loginData Authentication Data
+     * The login request authenticates the user and retrieves the authorization code. 
      * @param {module:api/SessionApi~loginCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.login = function(loginData, callback) {
-      var postBody = loginData;
-
-      // verify the required parameter 'loginData' is set
-      if (loginData == undefined || loginData == null) {
-        throw new Error("Missing the required parameter 'loginData' when calling login");
-      }
+    this.login = function(callback) {
+      var postBody = null;
 
 
       var pathParams = {

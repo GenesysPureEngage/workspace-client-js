@@ -23,7 +23,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ApiRequestData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.StatisticsRegisterDataData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -32,36 +32,45 @@
 
 
   /**
-   * The ApiRequestData model module.
-   * @module model/ApiRequestData
+   * The StatisticsRegisterDataData model module.
+   * @module model/StatisticsRegisterDataData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>ApiRequestData</code>.
-   * @alias module:model/ApiRequestData
+   * Constructs a new <code>StatisticsRegisterDataData</code>.
+   * @alias module:model/StatisticsRegisterDataData
    * @class
+   * @param statistics {Array.<Object>} 
    */
-  var exports = function() {
+  var exports = function(statistics) {
     var _this = this;
 
+    _this['statistics'] = statistics;
   };
 
   /**
-   * Constructs a <code>ApiRequestData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>StatisticsRegisterDataData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ApiRequestData} obj Optional instance to populate.
-   * @return {module:model/ApiRequestData} The populated <code>ApiRequestData</code> instance.
+   * @param {module:model/StatisticsRegisterDataData} obj Optional instance to populate.
+   * @return {module:model/StatisticsRegisterDataData} The populated <code>StatisticsRegisterDataData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('statistics')) {
+        obj['statistics'] = ApiClient.convertToType(data['statistics'], [Object]);
+      }
     }
     return obj;
   }
 
+  /**
+   * @member {Array.<Object>} statistics
+   */
+  exports.prototype['statistics'] = undefined;
 
 
 

@@ -41,7 +41,7 @@
    * Constructs a new <code>VoicecallsidreconnectData</code>.
    * @alias module:model/VoicecallsidreconnectData
    * @class
-   * @param heldConnId {String} Connection identifier of the active call from which the telephony object in question should be released.
+   * @param heldConnId {String} The id of the held call that should be retrieved
    */
   var exports = function(heldConnId) {
     var _this = this;
@@ -76,7 +76,7 @@
   }
 
   /**
-   * Connection identifier of the active call from which the telephony object in question should be released.
+   * The id of the held call that should be retrieved
    * @member {String} heldConnId
    */
   exports.prototype['heldConnId'] = undefined;

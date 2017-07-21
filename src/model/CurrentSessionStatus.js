@@ -23,7 +23,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.LoginData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.CurrentSessionStatus = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -32,56 +32,52 @@
 
 
   /**
-   * The LoginData model module.
-   * @module model/LoginData
+   * The CurrentSessionStatus model module.
+   * @module model/CurrentSessionStatus
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>LoginData</code>.
-   * @alias module:model/LoginData
+   * Constructs a new <code>CurrentSessionStatus</code>.
+   * @alias module:model/CurrentSessionStatus
    * @class
-   * @param username {String} The username of the user, including domain if appropiate (domain\\username)
-   * @param password {String} Password to use for authentication
    */
-  var exports = function(username, password) {
+  var exports = function() {
     var _this = this;
 
-    _this['username'] = username;
-    _this['password'] = password;
+
+
   };
 
   /**
-   * Constructs a <code>LoginData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CurrentSessionStatus</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/LoginData} obj Optional instance to populate.
-   * @return {module:model/LoginData} The populated <code>LoginData</code> instance.
+   * @param {module:model/CurrentSessionStatus} obj Optional instance to populate.
+   * @return {module:model/CurrentSessionStatus} The populated <code>CurrentSessionStatus</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      if (data.hasOwnProperty('code')) {
+        obj['code'] = ApiClient.convertToType(data['code'], 'Number');
       }
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
+      if (data.hasOwnProperty('message')) {
+        obj['message'] = ApiClient.convertToType(data['message'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The username of the user, including domain if appropiate (domain\\username)
-   * @member {String} username
+   * @member {Number} code
    */
-  exports.prototype['username'] = undefined;
+  exports.prototype['code'] = undefined;
   /**
-   * Password to use for authentication
-   * @member {String} password
+   * @member {String} message
    */
-  exports.prototype['password'] = undefined;
+  exports.prototype['message'] = undefined;
 
 
 

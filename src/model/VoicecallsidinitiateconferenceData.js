@@ -41,7 +41,7 @@
    * Constructs a new <code>VoicecallsidinitiateconferenceData</code>.
    * @alias module:model/VoicecallsidinitiateconferenceData
    * @class
-   * @param destination {String} Directory number of the party to be dialed.
+   * @param destination {String} The number to be dialed
    */
   var exports = function(destination) {
     var _this = this;
@@ -88,7 +88,7 @@
   }
 
   /**
-   * Directory number of the party to be dialed.
+   * The number to be dialed
    * @member {String} destination
    */
   exports.prototype['destination'] = undefined;

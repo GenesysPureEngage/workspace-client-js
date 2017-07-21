@@ -41,7 +41,7 @@
    * Constructs a new <code>VoicecallsidalternateData</code>.
    * @alias module:model/VoicecallsidalternateData
    * @class
-   * @param heldConnId {String} Connection identifier of the active call that is requested to be placed on hold. This parameter can be either a dn or a party_id, where party_id is the party identifier given by the switch.
+   * @param heldConnId {String} ConnId of the held call that should be retrieved.
    */
   var exports = function(heldConnId) {
     var _this = this;
@@ -76,7 +76,7 @@
   }
 
   /**
-   * Connection identifier of the active call that is requested to be placed on hold. This parameter can be either a dn or a party_id, where party_id is the party identifier given by the switch.
+   * ConnId of the held call that should be retrieved.
    * @member {String} heldConnId
    */
   exports.prototype['heldConnId'] = undefined;
