@@ -219,6 +219,51 @@
     }
 
     /**
+     * Callback function to receive the result of the initializeWorkspace operation.
+     * @callback module:api/SessionApi~initializeWorkspaceCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieves authorization token and registers it
+     * The initialize-workspace request retrieves the authorization token using the authorization code.  The token is then registered and the user&#39;s environment is prepared. 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.code the authorization code
+     * @param {String} opts.redirectUri the same redirect_uri used in the initial login step
+     * @param {module:api/SessionApi~initializeWorkspaceCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/ApiSuccessResponse}
+     */
+    this.initializeWorkspace = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'code': opts['code'],
+        'redirect_uri': opts['redirectUri']
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/initialize-workspace', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the login operation.
      * @callback module:api/SessionApi~loginCallback
      * @param {String} error Error message, if any.
@@ -229,16 +274,23 @@
     /**
      * login the specified user (HTTP session only)
      * The login request authenticates the user and retrieves the authorization code. 
+     * @param {String} redirectUri this the URI the AUTH service uses to redirect the user after authentication
      * @param {module:api/SessionApi~loginCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
-    this.login = function(callback) {
+    this.login = function(redirectUri, callback) {
       var postBody = null;
+
+      // verify the required parameter 'redirectUri' is set
+      if (redirectUri == undefined || redirectUri == null) {
+        throw new Error("Missing the required parameter 'redirectUri' when calling login");
+      }
 
 
       var pathParams = {
       };
       var queryParams = {
+        'redirect_uri': redirectUri
       };
       var headerParams = {
       };
