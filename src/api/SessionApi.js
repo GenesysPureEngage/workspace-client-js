@@ -232,6 +232,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.code the authorization code
      * @param {String} opts.redirectUri the same redirect_uri used in the initial login step
+     * @param {String} opts.authorization For OAuth resource owner password credentials grant should contains Bearer authorization. Example: &#39;Authorization: Bearer access_token&#39;
      * @param {module:api/SessionApi~initializeWorkspaceCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiSuccessResponse}
      */
@@ -247,6 +248,7 @@
         'redirect_uri': opts['redirectUri']
       };
       var headerParams = {
+        'Authorization': opts['authorization']
       };
       var formParams = {
       };
