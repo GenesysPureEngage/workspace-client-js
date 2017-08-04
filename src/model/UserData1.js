@@ -23,7 +23,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UserData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicecallsidcompleteData);
+    root.WorkspaceApi.UserData1 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicecallsidcompleteData);
   }
 }(this, function(ApiClient, VoicecallsidcompleteData) {
   'use strict';
@@ -32,14 +32,14 @@
 
 
   /**
-   * The UserData model module.
-   * @module model/UserData
+   * The UserData1 model module.
+   * @module model/UserData1
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UserData</code>.
-   * @alias module:model/UserData
+   * Constructs a new <code>UserData1</code>.
+   * @alias module:model/UserData1
    * @class
    */
   var exports = function() {
@@ -49,11 +49,11 @@
   };
 
   /**
-   * Constructs a <code>UserData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UserData1</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UserData} obj Optional instance to populate.
-   * @return {module:model/UserData} The populated <code>UserData</code> instance.
+   * @param {module:model/UserData1} obj Optional instance to populate.
+   * @return {module:model/UserData1} The populated <code>UserData1</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

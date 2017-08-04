@@ -14,18 +14,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/RecentTargetData'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/RecentTargetData', 'model/TargetsResponse'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/RecentTargetData'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/RecentTargetData'), require('../model/TargetsResponse'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.TargetsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.RecentTargetData);
+    root.WorkspaceApi.TargetsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.RecentTargetData, root.WorkspaceApi.TargetsResponse);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, RecentTargetData) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, RecentTargetData, TargetsResponse) {
   'use strict';
 
   /**
@@ -133,7 +133,7 @@
      * Callback function to receive the result of the get operation.
      * @callback module:api/TargetsApi~getCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
+     * @param {module:model/TargetsResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -148,7 +148,7 @@
      * @param {Number} opts.limit Number of results. 100 if not specified.
      * @param {module:model/String} opts.matchType Type of behavior for the field matching (exact for exact match search).
      * @param {module:api/TargetsApi~getCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * data is of type: {@link module:model/TargetsResponse}
      */
     this.get = function(searchTerm, opts, callback) {
       opts = opts || {};
@@ -178,7 +178,7 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
+      var returnType = TargetsResponse;
 
       return this.apiClient.callApi(
         '/targets', 'GET',
