@@ -45,22 +45,14 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the activateChannels operation.
-     * @callback module:api/SessionApi~activateChannelsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Activate channels for the user with the specified resources
      * The activate-channels request is used to activate voice/media for the user by declaring the channels and resources that should be used. If the channels are is successfully activated, additional information about the state of active resources (dns, channels) will be received via events. 
      * @param {module:model/ChannelsData} channelsData 
-     * @param {module:api/SessionApi~activateChannelsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.activateChannels = function(channelsData, callback) {
+    this.activateChannels = function(channelsData) {
       var postBody = channelsData;
 
       // verify the required parameter 'channelsData' is set
@@ -86,26 +78,18 @@
       return this.apiClient.callApi(
         '/activate-channels', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getBusinessAttributeHierarchy operation.
-     * @callback module:api/SessionApi~getBusinessAttributeHierarchyCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get the business attribute hierarchy
      * Get the business attribute hierarchy
      * @param {Number} id id of the business attribute
-     * @param {module:api/SessionApi~getBusinessAttributeHierarchyCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getBusinessAttributeHierarchy = function(id, callback) {
+    this.getBusinessAttributeHierarchy = function(id) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -132,27 +116,19 @@
       return this.apiClient.callApi(
         '/configuration/business-attribute/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getConfiguration operation.
-     * @callback module:api/SessionApi~getConfigurationCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ConfigResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Read settings, action codes, business attributes and other configuration.
      * This request returns all necessary configuration items to be used by the UI. This includes action codes, business attributes, transactions and settings at the moment. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.types A comma delimited list of types used to specify what content should be returned. If not specified the default is  actionCodes, agentGroups, and settings. Valid values are actionCodes, agentGroups, settings, workspaceTransactions, and businessAttributes.
-     * @param {module:api/SessionApi~getConfigurationCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ConfigResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ConfigResponse}
      */
-    this.getConfiguration = function(opts, callback) {
+    this.getConfiguration = function(opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -175,25 +151,17 @@
       return this.apiClient.callApi(
         '/configuration', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getCurrentSession operation.
-     * @callback module:api/SessionApi~getCurrentSessionCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CurrentSession} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Read information about the logged in user including any existing media logins and calls
      * This request can be used to retrieve information about the current user. This can be done at startup to check for an existing session. The returned user information includes state recovery information about the active session. 
-     * @param {module:api/SessionApi~getCurrentSessionCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CurrentSession}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CurrentSession}
      */
-    this.getCurrentSession = function(callback) {
+    this.getCurrentSession = function() {
       var postBody = null;
 
 
@@ -214,17 +182,10 @@
       return this.apiClient.callApi(
         '/current-session', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the initializeWorkspace operation.
-     * @callback module:api/SessionApi~initializeWorkspaceCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Retrieves authorization token and registers it
@@ -233,10 +194,9 @@
      * @param {String} opts.code the authorization code
      * @param {String} opts.redirectUri the same redirect_uri used in the initial login step
      * @param {String} opts.authorization For OAuth resource owner password credentials grant should contains Bearer authorization. Example: &#39;Authorization: Bearer access_token&#39;
-     * @param {module:api/SessionApi~initializeWorkspaceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.initializeWorkspace = function(opts, callback) {
+    this.initializeWorkspace = function(opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -261,26 +221,18 @@
       return this.apiClient.callApi(
         '/initialize-workspace', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the login operation.
-     * @callback module:api/SessionApi~loginCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * login the specified user (HTTP session only)
      * The login request authenticates the user and retrieves the authorization code. 
      * @param {String} redirectUri this the URI the AUTH service uses to redirect the user after authentication
-     * @param {module:api/SessionApi~loginCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.login = function(redirectUri, callback) {
+    this.login = function(redirectUri) {
       var postBody = null;
 
       // verify the required parameter 'redirectUri' is set
@@ -307,25 +259,17 @@
       return this.apiClient.callApi(
         '/login', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the logout operation.
-     * @callback module:api/SessionApi~logoutCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Logout of media and end the session
      * This request is used to end the user session. It will log the agent out for voice/channels, end the HTTP session and clean up related resources. The suggested shutdown sequence is to disconnect socket.io and then make this request. After ending the session the login request is required before making any new calls to the API. 
-     * @param {module:api/SessionApi~logoutCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.logout = function(callback) {
+    this.logout = function() {
       var postBody = null;
 
 
@@ -346,7 +290,7 @@
       return this.apiClient.callApi(
         '/logout', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };

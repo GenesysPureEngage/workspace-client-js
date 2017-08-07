@@ -45,20 +45,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the notifications operation.
-     * @callback module:api/NotificationsApi~notificationsCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Enables subscription to CometD notification API
      * Enables subscription to CometD notification API
-     * @param {module:api/NotificationsApi~notificationsCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.notifications = function(callback) {
+    this.notifications = function() {
       var postBody = null;
 
 
@@ -79,24 +72,17 @@
       return this.apiClient.callApi(
         '/notifications', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the notificationsConnect operation.
-     * @callback module:api/NotificationsApi~notificationsConnectCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Subscribes to CometD notifications
      * Subscribes to CometD notifications
-     * @param {module:api/NotificationsApi~notificationsConnectCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.notificationsConnect = function(callback) {
+    this.notificationsConnect = function() {
       var postBody = null;
 
 
@@ -117,24 +103,17 @@
       return this.apiClient.callApi(
         '/notifications/connect', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the notificationsDisconnect operation.
-     * @callback module:api/NotificationsApi~notificationsDisconnectCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Close CometD notification subscriptions
      * Close CometD notification subscriptions
-     * @param {module:api/NotificationsApi~notificationsDisconnectCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.notificationsDisconnect = function(callback) {
+    this.notificationsDisconnect = function() {
       var postBody = null;
 
 
@@ -155,24 +134,17 @@
       return this.apiClient.callApi(
         '/notifications/disconnect', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the notificationsHandshake operation.
-     * @callback module:api/NotificationsApi~notificationsHandshakeCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Subscribes to CometD notifications
      * Subscribes to CometD notifications
-     * @param {module:api/NotificationsApi~notificationsHandshakeCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.notificationsHandshake = function(callback) {
+    this.notificationsHandshake = function() {
       var postBody = null;
 
 
@@ -193,24 +165,17 @@
       return this.apiClient.callApi(
         '/notifications/handshake', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the notificationsSubscribe operation.
-     * @callback module:api/NotificationsApi~notificationsSubscribeCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Subscribes CometD channel notification
      * Subscribes CometD channel notification
-     * @param {module:api/NotificationsApi~notificationsSubscribeCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.notificationsSubscribe = function(callback) {
+    this.notificationsSubscribe = function() {
       var postBody = null;
 
 
@@ -231,24 +196,17 @@
       return this.apiClient.callApi(
         '/notifications/subscribe', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the notificationsUnsubscribe operation.
-     * @callback module:api/NotificationsApi~notificationsUnsubscribeCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Unsubscribes CometD channel notification
      * Unsubscribes CometD channel notification
-     * @param {module:api/NotificationsApi~notificationsUnsubscribeCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.notificationsUnsubscribe = function(callback) {
+    this.notificationsUnsubscribe = function() {
       var postBody = null;
 
 
@@ -269,24 +227,17 @@
       return this.apiClient.callApi(
         '/notifications/unsubscribe', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the socketio operation.
-     * @callback module:api/NotificationsApi~socketioCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Enables subscription to SocketIO notifications
      * Enables subscription to SocketIO notifications
-     * @param {module:api/NotificationsApi~socketioCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.socketio = function(callback) {
+    this.socketio = function() {
       var postBody = null;
 
 
@@ -307,7 +258,7 @@
       return this.apiClient.callApi(
         '/socket.io', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };

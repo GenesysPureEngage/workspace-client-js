@@ -45,21 +45,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the peek operation.
-     * @callback module:api/ReportingApi~peekCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get peek values for subscriptionId
      * @param {String} subscriptionId id of the subscription
-     * @param {module:api/ReportingApi~peekCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.peek = function(subscriptionId, callback) {
+    this.peek = function(subscriptionId) {
       var postBody = null;
 
       // verify the required parameter 'subscriptionId' is set
@@ -86,25 +78,17 @@
       return this.apiClient.callApi(
         '/reporting/{subscriptionId}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the register operation.
-     * @callback module:api/ReportingApi~registerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Subscribe to Statistics and store values server side. Values will only be returned on GET /reporting/{subscriptionId}
      * @param {module:model/StatisticsRegisterData} statisticsRegisterData Requested Statistics
-     * @param {module:api/ReportingApi~registerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.register = function(statisticsRegisterData, callback) {
+    this.register = function(statisticsRegisterData) {
       var postBody = statisticsRegisterData;
 
       // verify the required parameter 'statisticsRegisterData' is set
@@ -130,25 +114,17 @@
       return this.apiClient.callApi(
         '/reporting/register', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the subscribe operation.
-     * @callback module:api/ReportingApi~subscribeCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Subscribe to Statistics
      * @param {module:model/StatisticsSubscribeData} statisticsSubscribeData Requested Statistics
-     * @param {module:api/ReportingApi~subscribeCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.subscribe = function(statisticsSubscribeData, callback) {
+    this.subscribe = function(statisticsSubscribeData) {
       var postBody = statisticsSubscribeData;
 
       // verify the required parameter 'statisticsSubscribeData' is set
@@ -174,25 +150,17 @@
       return this.apiClient.callApi(
         '/reporting/subscribe', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the unsubscribe operation.
-     * @callback module:api/ReportingApi~unsubscribeCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Unsubscribe to availability notifications for previous search result
      * @param {module:model/UnsubscribeData} unsubscribeData Request parameters.
-     * @param {module:api/ReportingApi~unsubscribeCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.unsubscribe = function(unsubscribeData, callback) {
+    this.unsubscribe = function(unsubscribeData) {
       var postBody = unsubscribeData;
 
       // verify the required parameter 'unsubscribeData' is set
@@ -218,7 +186,7 @@
       return this.apiClient.callApi(
         '/reporting/unsubscribe', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };

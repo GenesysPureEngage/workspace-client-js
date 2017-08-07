@@ -45,23 +45,15 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the alternate operation.
-     * @callback module:api/VoiceApi~alternateCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Alternate between calls
      * Alternate between two calls when one call is held and the other is established. This is a quick way to put a call on hold and retrieve another held call in one step.
      * @param {String} id id of the active call that should be placed on hold
      * @param {module:model/AlternateData} alternateData 
-     * @param {module:api/VoiceApi~alternateCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.alternate = function(id, alternateData, callback) {
+    this.alternate = function(id, alternateData) {
       var postBody = alternateData;
 
       // verify the required parameter 'id' is set
@@ -93,17 +85,10 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/alternate', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the answer operation.
-     * @callback module:api/VoiceApi~answerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Answer a call
@@ -111,10 +96,9 @@
      * @param {String} id id of the call to answer
      * @param {Object} opts Optional parameters
      * @param {module:model/AnswerData} opts.answerData Request parameters.
-     * @param {module:api/VoiceApi~answerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.answer = function(id, opts, callback) {
+    this.answer = function(id, opts) {
       opts = opts || {};
       var postBody = opts['answerData'];
 
@@ -142,27 +126,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/answer', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the attachUserData operation.
-     * @callback module:api/VoiceApi~attachUserDataCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Attach user data to a call
      * Attach the provided key/value pairs to the call.
      * @param {String} id id of the call
      * @param {module:model/UserData} userData An array of key/value pairs to attach.
-     * @param {module:api/VoiceApi~attachUserDataCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.attachUserData = function(id, userData, callback) {
+    this.attachUserData = function(id, userData) {
       var postBody = userData;
 
       // verify the required parameter 'id' is set
@@ -194,25 +170,17 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/attach-user-data', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the cancelForward operation.
-     * @callback module:api/VoiceApi~cancelForwardCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Cancel call forwardarding
      * Cancel call forwardarding
-     * @param {module:api/VoiceApi~cancelForwardCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.cancelForward = function(callback) {
+    this.cancelForward = function() {
       var postBody = null;
 
 
@@ -233,27 +201,19 @@
       return this.apiClient.callApi(
         '/voice/cancel-forward', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the clear operation.
-     * @callback module:api/VoiceApi~clearCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Clear all the parties in the call.
      * Deletes all parties from the specified call and releases it.
      * @param {String} id id of the call to be cleared
      * @param {module:model/ClearData} clearData 
-     * @param {module:api/VoiceApi~clearCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.clear = function(id, clearData, callback) {
+    this.clear = function(id, clearData) {
       var postBody = clearData;
 
       // verify the required parameter 'id' is set
@@ -285,27 +245,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/clear', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the completeCall operation.
-     * @callback module:api/VoiceApi~completeCallCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Complete a call
      * Complete and clean up the telephony object specified by the parameter conn_id. The userData parameter is sent throught the DistributeUserEvent operation.
      * @param {String} id id of the call
      * @param {module:model/UserData1} userData An array of key/value pairs.
-     * @param {module:api/VoiceApi~completeCallCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.completeCall = function(id, userData, callback) {
+    this.completeCall = function(id, userData) {
       var postBody = userData;
 
       // verify the required parameter 'id' is set
@@ -337,27 +289,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/complete', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the completeConference operation.
-     * @callback module:api/VoiceApi~completeConferenceCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Complete a conference
      * Completes a previously initiated conference. Once completed, the two separate calls  are brought together so that all three parties are participating in the same call.
      * @param {String} id Id of the active call
      * @param {module:model/CompleteConferenceData} completeConferenceData 
-     * @param {module:api/VoiceApi~completeConferenceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.completeConference = function(id, completeConferenceData, callback) {
+    this.completeConference = function(id, completeConferenceData) {
       var postBody = completeConferenceData;
 
       // verify the required parameter 'id' is set
@@ -389,27 +333,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/complete-conference', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the completeTransfer operation.
-     * @callback module:api/VoiceApi~completeTransferCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Complete a transfer
      * Completes a previously initiated two-step transfer.
      * @param {String} id Id of the active call
      * @param {module:model/CompleteTransferData} completeTransferData 
-     * @param {module:api/VoiceApi~completeTransferCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.completeTransfer = function(id, completeTransferData, callback) {
+    this.completeTransfer = function(id, completeTransferData) {
       var postBody = completeTransferData;
 
       // verify the required parameter 'id' is set
@@ -441,27 +377,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/complete-transfer', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the deleteFromConference operation.
-     * @callback module:api/VoiceApi~deleteFromConferenceCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Delete a party from a conference call
      * Removes the specified participant from the conference call. This operation can only be performed  by the owner of the conference call
      * @param {String} id The id of the conference call
      * @param {module:model/DeleteFromConferenceData} deleteFromConferenceData 
-     * @param {module:api/VoiceApi~deleteFromConferenceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.deleteFromConference = function(id, deleteFromConferenceData, callback) {
+    this.deleteFromConference = function(id, deleteFromConferenceData) {
       var postBody = deleteFromConferenceData;
 
       // verify the required parameter 'id' is set
@@ -493,27 +421,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/delete-from-conference', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the deleteUserDataPair operation.
-     * @callback module:api/VoiceApi~deleteUserDataPairCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Remove key/value pair from user data
      * Deletes the specified key from the call data.
      * @param {String} id id of the call
      * @param {module:model/KeyData} keyData The key of the key/value pairs to delete.
-     * @param {module:api/VoiceApi~deleteUserDataPairCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.deleteUserDataPair = function(id, keyData, callback) {
+    this.deleteUserDataPair = function(id, keyData) {
       var postBody = keyData;
 
       // verify the required parameter 'id' is set
@@ -545,26 +465,18 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/delete-user-data-pair', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the forward operation.
-     * @callback module:api/VoiceApi~forwardCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Fordward calls
      * Turn on call forwarding to the specified destination. 
      * @param {module:model/ForwardData} forwardData Request parameters.
-     * @param {module:api/VoiceApi~forwardCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.forward = function(forwardData, callback) {
+    this.forward = function(forwardData) {
       var postBody = forwardData;
 
       // verify the required parameter 'forwardData' is set
@@ -590,25 +502,17 @@
       return this.apiClient.callApi(
         '/voice/set-forward', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getCalls operation.
-     * @callback module:api/VoiceApi~getCallsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse200} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get all the calls
      * Returns an array containing any active calls for the user.
-     * @param {module:api/VoiceApi~getCallsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse200}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
      */
-    this.getCalls = function(callback) {
+    this.getCalls = function() {
       var postBody = null;
 
 
@@ -629,17 +533,10 @@
       return this.apiClient.callApi(
         '/voice/calls', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the hold operation.
-     * @callback module:api/VoiceApi~holdCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Place a call on hold
@@ -647,10 +544,9 @@
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
      * @param {module:model/HoldData} opts.holdData Request parameters.
-     * @param {module:api/VoiceApi~holdCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.hold = function(id, opts, callback) {
+    this.hold = function(id, opts) {
       opts = opts || {};
       var postBody = opts['holdData'];
 
@@ -678,27 +574,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/hold', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the initiateConference operation.
-     * @callback module:api/VoiceApi~initiateConferenceCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Initiate a conference
      * Initiates a two-step conference to the specified destination. This operation places the existing call on hold  and creates a new call in the dialing state. After initiating the conference you can use /complete-conference  to complete the conference and bring all parties into the same call.
      * @param {String} id id of the call to initiate the conference from. This call will be placed on hold.
      * @param {module:model/InitiateConferenceData} initiateConferenceData 
-     * @param {module:api/VoiceApi~initiateConferenceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.initiateConference = function(id, initiateConferenceData, callback) {
+    this.initiateConference = function(id, initiateConferenceData) {
       var postBody = initiateConferenceData;
 
       // verify the required parameter 'id' is set
@@ -730,27 +618,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/initiate-conference', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the initiateTransfer operation.
-     * @callback module:api/VoiceApi~initiateTransferCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Initiate a transfer
      * Initiates a two-step transfer to the specified destination. After initiating the transfer,  you can use complete-transfer to complete the transfer.
      * @param {String} id Connection identifier of the call that is requested to be placed on hold.
      * @param {module:model/InitiateTransferData} initiateTransferData 
-     * @param {module:api/VoiceApi~initiateTransferCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.initiateTransfer = function(id, initiateTransferData, callback) {
+    this.initiateTransfer = function(id, initiateTransferData) {
       var postBody = initiateTransferData;
 
       // verify the required parameter 'id' is set
@@ -782,25 +662,17 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/initiate-transfer', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the loginVoice operation.
-     * @callback module:api/VoiceApi~loginVoiceCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Login the media voice
      * Login on the voice channel. This can be used to login the voice channel if it is logged out. (ex. after using /voice/logout). Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
-     * @param {module:api/VoiceApi~loginVoiceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.loginVoice = function(callback) {
+    this.loginVoice = function() {
       var postBody = null;
 
 
@@ -821,25 +693,17 @@
       return this.apiClient.callApi(
         '/voice/login', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the logoutVoice operation.
-     * @callback module:api/VoiceApi~logoutVoiceCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Logout the media voice
      * Logout on the voice channel. Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
-     * @param {module:api/VoiceApi~logoutVoiceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.logoutVoice = function(callback) {
+    this.logoutVoice = function() {
       var postBody = null;
 
 
@@ -860,26 +724,18 @@
       return this.apiClient.callApi(
         '/voice/logout', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the makeCall operation.
-     * @callback module:api/VoiceApi~makeCallCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Make a new call to the specified destination
      * Make a new call to the specified destination
      * @param {module:model/MakeCallData} makeCallData Request parameters.
-     * @param {module:api/VoiceApi~makeCallCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.makeCall = function(makeCallData, callback) {
+    this.makeCall = function(makeCallData) {
       var postBody = makeCallData;
 
       // verify the required parameter 'makeCallData' is set
@@ -905,27 +761,19 @@
       return this.apiClient.callApi(
         '/voice/make-call', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the merge operation.
-     * @callback module:api/VoiceApi~mergeCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Merge two calls
      * Merge two calls 
      * @param {String} id Connection identifier of the first call to be merged
      * @param {module:model/MergeData} mergeData 
-     * @param {module:api/VoiceApi~mergeCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.merge = function(id, mergeData, callback) {
+    this.merge = function(id, mergeData) {
       var postBody = mergeData;
 
       // verify the required parameter 'id' is set
@@ -957,26 +805,18 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/merge', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the pauseRecording operation.
-     * @callback module:api/VoiceApi~pauseRecordingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Pauses call recording.
      * Pauses call recording.
      * @param {String} id id of the call
-     * @param {module:api/VoiceApi~pauseRecordingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.pauseRecording = function(id, callback) {
+    this.pauseRecording = function(id) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -1003,27 +843,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/pause-recording', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the reconnect operation.
-     * @callback module:api/VoiceApi~reconnectCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Reconnect a call
      * Release the active call and retrieve another call from hold. This is a quick way to to do  /release and /retrieve in one step. 
      * @param {String} id The id of the active call
      * @param {module:model/ReconnectData} reconnectData 
-     * @param {module:api/VoiceApi~reconnectCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.reconnect = function(id, reconnectData, callback) {
+    this.reconnect = function(id, reconnectData) {
       var postBody = reconnectData;
 
       // verify the required parameter 'id' is set
@@ -1055,27 +887,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/reconnect', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the redirect operation.
-     * @callback module:api/VoiceApi~redirectCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Redirect the call.
      * Requests that the call be redirected, without an answer, from the party specified by the parameter dn to the party specified by the parameter dest_dn.
      * @param {String} id Connection ID of the current call handled by the DN.
      * @param {module:model/RedirectData} redirectData 
-     * @param {module:api/VoiceApi~redirectCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.redirect = function(id, redirectData, callback) {
+    this.redirect = function(id, redirectData) {
       var postBody = redirectData;
 
       // verify the required parameter 'id' is set
@@ -1107,17 +931,10 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/redirect', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the release operation.
-     * @callback module:api/VoiceApi~releaseCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Release a call
@@ -1125,10 +942,9 @@
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
      * @param {module:model/ReleaseData} opts.releaseData Request parameters.
-     * @param {module:api/VoiceApi~releaseCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.release = function(id, opts, callback) {
+    this.release = function(id, opts) {
       opts = opts || {};
       var postBody = opts['releaseData'];
 
@@ -1156,26 +972,18 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/release', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the resumeRecording operation.
-     * @callback module:api/VoiceApi~resumeRecordingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Resumes call recording.
      * Resumes call recording.
      * @param {String} id id of the call
-     * @param {module:api/VoiceApi~resumeRecordingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.resumeRecording = function(id, callback) {
+    this.resumeRecording = function(id) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -1202,17 +1010,10 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/resume-recording', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the retrieve operation.
-     * @callback module:api/VoiceApi~retrieveCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Retrieve a held call
@@ -1220,10 +1021,9 @@
      * @param {String} id id of the call
      * @param {Object} opts Optional parameters
      * @param {module:model/RetrieveData} opts.retrieveData Request parameters.
-     * @param {module:api/VoiceApi~retrieveCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.retrieve = function(id, opts, callback) {
+    this.retrieve = function(id, opts) {
       opts = opts || {};
       var postBody = opts['retrieveData'];
 
@@ -1251,27 +1051,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/retrieve', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the sendDTMF operation.
-     * @callback module:api/VoiceApi~sendDTMFCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Send digits as DTMF.
      * Sends the provided DTMF digits. You can send DTMF digits individually with multiple requests  or together with multiple digits in one request.
      * @param {String} id Id of the cal
      * @param {module:model/SendDTMFData} sendDTMFData 
-     * @param {module:api/VoiceApi~sendDTMFCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.sendDTMF = function(id, sendDTMFData, callback) {
+    this.sendDTMF = function(id, sendDTMFData) {
       var postBody = sendDTMFData;
 
       // verify the required parameter 'id' is set
@@ -1303,26 +1095,18 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/send-dtmf', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the sendUserEvent operation.
-     * @callback module:api/VoiceApi~sendUserEventCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Send a userEvent event to TServer with provided attached data.
      * Send a userEvent event to TServer with provided attached data.
      * @param {module:model/SendUserEventData} userEventData Data defining the user event to be distributed
-     * @param {module:api/VoiceApi~sendUserEventCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.sendUserEvent = function(userEventData, callback) {
+    this.sendUserEvent = function(userEventData) {
       var postBody = userEventData;
 
       // verify the required parameter 'userEventData' is set
@@ -1348,27 +1132,19 @@
       return this.apiClient.callApi(
         '/voice/send-user-event', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the setAgentStateNotReady operation.
-     * @callback module:api/VoiceApi~setAgentStateNotReadyCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Change to the not ready state for voice
      * Change to the not ready state for voice
      * @param {Object} opts Optional parameters
      * @param {module:model/NotReadyData} opts.notReadyData 
-     * @param {module:api/VoiceApi~setAgentStateNotReadyCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.setAgentStateNotReady = function(opts, callback) {
+    this.setAgentStateNotReady = function(opts) {
       opts = opts || {};
       var postBody = opts['notReadyData'];
 
@@ -1390,27 +1166,19 @@
       return this.apiClient.callApi(
         '/voice/not-ready', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the setAgentStateReady operation.
-     * @callback module:api/VoiceApi~setAgentStateReadyCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Change to the ready state for voice
      * Change to the ready state for voice
      * @param {Object} opts Optional parameters
      * @param {module:model/ReadyData} opts.readyData 
-     * @param {module:api/VoiceApi~setAgentStateReadyCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.setAgentStateReady = function(opts, callback) {
+    this.setAgentStateReady = function(opts) {
       opts = opts || {};
       var postBody = opts['readyData'];
 
@@ -1432,25 +1200,17 @@
       return this.apiClient.callApi(
         '/voice/ready', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the setDNDOff operation.
-     * @callback module:api/VoiceApi~setDNDOffCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Turn off do not disturb for voice
      * Turn off do not disturb for voice
-     * @param {module:api/VoiceApi~setDNDOffCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.setDNDOff = function(callback) {
+    this.setDNDOff = function() {
       var postBody = null;
 
 
@@ -1471,25 +1231,17 @@
       return this.apiClient.callApi(
         '/voice/dnd-off', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the setDNDOn operation.
-     * @callback module:api/VoiceApi~setDNDOnCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Turn on do not disturb for voice
      * Turn on do not disturb for voice
-     * @param {module:api/VoiceApi~setDNDOnCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.setDNDOn = function(callback) {
+    this.setDNDOn = function() {
       var postBody = null;
 
 
@@ -1510,27 +1262,19 @@
       return this.apiClient.callApi(
         '/voice/dnd-on', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the singleStepConference operation.
-     * @callback module:api/VoiceApi~singleStepConferenceCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Create a conference in a single step
      * Performs a single-step conference, adding the specified participant to the call.
      * @param {String} id Connection identifier of the call that is requested to be conferenced.
      * @param {module:model/SingleStepConferenceData} singleStepConferenceData 
-     * @param {module:api/VoiceApi~singleStepConferenceCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.singleStepConference = function(id, singleStepConferenceData, callback) {
+    this.singleStepConference = function(id, singleStepConferenceData) {
       var postBody = singleStepConferenceData;
 
       // verify the required parameter 'id' is set
@@ -1562,27 +1306,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/single-step-conference', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the singleStepTransfer operation.
-     * @callback module:api/VoiceApi~singleStepTransferCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Transfer a call in a single step
      * Performs a single-step transfer to the specified destination.
      * @param {String} id The id of the call to be transferred.
      * @param {module:model/SingleStepTransferData} singleStepTransferData 
-     * @param {module:api/VoiceApi~singleStepTransferCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.singleStepTransfer = function(id, singleStepTransferData, callback) {
+    this.singleStepTransfer = function(id, singleStepTransferData) {
       var postBody = singleStepTransferData;
 
       // verify the required parameter 'id' is set
@@ -1614,26 +1350,18 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/single-step-transfer', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the startMonitoring operation.
-     * @callback module:api/VoiceApi~startMonitoringCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Start the monitoring of an agent.
      * Start the monitoring of an agent, providing monitoring information (phone number to be monitored, monitoringMode (Monitor/Coach), monitoringNextCallType (NextCall/AllCalls), monitoringScope (Agent/Call)).
      * @param {module:model/StartMonitoringData} startMonitoringData 
-     * @param {module:api/VoiceApi~startMonitoringCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.startMonitoring = function(startMonitoringData, callback) {
+    this.startMonitoring = function(startMonitoringData) {
       var postBody = startMonitoringData;
 
       // verify the required parameter 'startMonitoringData' is set
@@ -1659,26 +1387,18 @@
       return this.apiClient.callApi(
         '/voice/start-monitoring', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the startRecording operation.
-     * @callback module:api/VoiceApi~startRecordingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Starts call recording.
      * Starts call recording.
      * @param {String} id id of the call
-     * @param {module:api/VoiceApi~startRecordingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.startRecording = function(id, callback) {
+    this.startRecording = function(id) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -1705,26 +1425,18 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/start-recording', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the stopMonitoring operation.
-     * @callback module:api/VoiceApi~stopMonitoringCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Stop the monitoring of an agent.
      * Stop the monitoring of an agent, providing monitoring information (phoneNumber to be monitored).
      * @param {module:model/StopMonitoringData} stopMonitoringData 
-     * @param {module:api/VoiceApi~stopMonitoringCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.stopMonitoring = function(stopMonitoringData, callback) {
+    this.stopMonitoring = function(stopMonitoringData) {
       var postBody = stopMonitoringData;
 
       // verify the required parameter 'stopMonitoringData' is set
@@ -1750,26 +1462,18 @@
       return this.apiClient.callApi(
         '/voice/stop-monitoring', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the stopRecording operation.
-     * @callback module:api/VoiceApi~stopRecordingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Stops call recording.
      * Stops call recording.
      * @param {String} id id of the call
-     * @param {module:api/VoiceApi~stopRecordingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.stopRecording = function(id, callback) {
+    this.stopRecording = function(id) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -1796,17 +1500,10 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/stop-recording', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the switchToBargeIn operation.
-     * @callback module:api/VoiceApi~switchToBargeInCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Switch to barge in monitoring mode.
@@ -1814,10 +1511,9 @@
      * @param {String} id Connection identifier of the call in question.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
-     * @param {module:api/VoiceApi~switchToBargeInCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.switchToBargeIn = function(id, opts, callback) {
+    this.switchToBargeIn = function(id, opts) {
       opts = opts || {};
       var postBody = opts['monitoringScopeData'];
 
@@ -1845,17 +1541,10 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/switch-to-barge-in', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the switchToCoaching operation.
-     * @callback module:api/VoiceApi~switchToCoachingCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Switch to coaching monitoring mode.
@@ -1863,10 +1552,9 @@
      * @param {String} id Connection identifier of the call in question.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
-     * @param {module:api/VoiceApi~switchToCoachingCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.switchToCoaching = function(id, opts, callback) {
+    this.switchToCoaching = function(id, opts) {
       opts = opts || {};
       var postBody = opts['monitoringScopeData'];
 
@@ -1894,17 +1582,10 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/switch-to-coaching', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the switchToListenIn operation.
-     * @callback module:api/VoiceApi~switchToListenInCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Switch to listen in monitoring mode.
@@ -1912,10 +1593,9 @@
      * @param {String} id Connection identifier of the call in question.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
-     * @param {module:api/VoiceApi~switchToListenInCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.switchToListenIn = function(id, opts, callback) {
+    this.switchToListenIn = function(id, opts) {
       opts = opts || {};
       var postBody = opts['monitoringScopeData'];
 
@@ -1943,27 +1623,19 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/switch-to-listen-in', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the updateUserData operation.
-     * @callback module:api/VoiceApi~updateUserDataCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Update user data to a call
      * Update the call userdata with the provided key/value pairs.
      * @param {String} id id of the call
      * @param {module:model/UserData} userData An array of key/value pairs.
-     * @param {module:api/VoiceApi~updateUserDataCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.updateUserData = function(id, userData, callback) {
+    this.updateUserData = function(id, userData) {
       var postBody = userData;
 
       // verify the required parameter 'id' is set
@@ -1995,7 +1667,7 @@
       return this.apiClient.callApi(
         '/voice/calls/{id}/update-user-data', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };

@@ -45,21 +45,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the ackRecentMissedCalls operation.
-     * @callback module:api/TargetsApi~ackRecentMissedCallsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Ack the missed calls in recent target
      * Ack the missed calls in recent target
-     * @param {module:api/TargetsApi~ackRecentMissedCallsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.ackRecentMissedCalls = function(callback) {
+    this.ackRecentMissedCalls = function() {
       var postBody = null;
 
 
@@ -80,26 +72,18 @@
       return this.apiClient.callApi(
         '/targets/recents/ack-missed-calls', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the addRecentTarget operation.
-     * @callback module:api/TargetsApi~addRecentTargetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Add a recent target
      * Add a recent target
      * @param {module:model/RecentTargetData} recentTargetData 
-     * @param {module:api/TargetsApi~addRecentTargetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.addRecentTarget = function(recentTargetData, callback) {
+    this.addRecentTarget = function(recentTargetData) {
       var postBody = recentTargetData;
 
       // verify the required parameter 'recentTargetData' is set
@@ -125,17 +109,10 @@
       return this.apiClient.callApi(
         '/targets/recents/add', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the get operation.
-     * @callback module:api/TargetsApi~getCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TargetsResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Search for targets
@@ -147,10 +124,9 @@
      * @param {module:model/String} opts.sort Desired sort order (asc or desc). asc if not specified
      * @param {Number} opts.limit Number of results. 100 if not specified.
      * @param {module:model/String} opts.matchType Type of behavior for the field matching (exact for exact match search).
-     * @param {module:api/TargetsApi~getCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TargetsResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
      */
-    this.get = function(searchTerm, opts, callback) {
+    this.get = function(searchTerm, opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -183,27 +159,19 @@
       return this.apiClient.callApi(
         '/targets', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getRecentTargets operation.
-     * @callback module:api/TargetsApi~getRecentTargetsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get recent targets
      * Get recent targets
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Number of results. 50 if not specified.
-     * @param {module:api/TargetsApi~getRecentTargetsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getRecentTargets = function(opts, callback) {
+    this.getRecentTargets = function(opts) {
       opts = opts || {};
       var postBody = null;
 
@@ -226,27 +194,19 @@
       return this.apiClient.callApi(
         '/targets/recents', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getTarget operation.
-     * @callback module:api/TargetsApi~getTargetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get a target
      * Get a specific target by type and id
      * @param {Number} id The id of the target
      * @param {module:model/String} type the type of the target
-     * @param {module:api/TargetsApi~getTargetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getTarget = function(id, type, callback) {
+    this.getTarget = function(id, type) {
       var postBody = null;
 
       // verify the required parameter 'id' is set
@@ -279,7 +239,7 @@
       return this.apiClient.callApi(
         '/targets/{type}/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };

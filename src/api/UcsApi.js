@@ -45,21 +45,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the assignInteractionToContact operation.
-     * @callback module:api/UcsApi~assignInteractionToContactCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Assign the interaction to a contact
      * @param {module:model/AssignInteractionToContactData} assignInteractionToContactData 
-     * @param {module:api/UcsApi~assignInteractionToContactCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.assignInteractionToContact = function(assignInteractionToContactData, callback) {
+    this.assignInteractionToContact = function(assignInteractionToContactData) {
       var postBody = assignInteractionToContactData;
 
       // verify the required parameter 'assignInteractionToContactData' is set
@@ -85,24 +77,16 @@
       return this.apiClient.callApi(
         '/ucs/assign-interaction-to-contact', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the createContact operation.
-     * @callback module:api/UcsApi~createContactCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Create a new contact
-     * @param {module:api/UcsApi~createContactCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.createContact = function(callback) {
+    this.createContact = function() {
       var postBody = null;
 
 
@@ -123,25 +107,17 @@
       return this.apiClient.callApi(
         '/ucs/create-contact', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the deleteContact operation.
-     * @callback module:api/UcsApi~deleteContactCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Delete an existing contact
      * @param {module:model/DeleteContactData} deleteContactData 
-     * @param {module:api/UcsApi~deleteContactCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.deleteContact = function(deleteContactData, callback) {
+    this.deleteContact = function(deleteContactData) {
       var postBody = deleteContactData;
 
       // verify the required parameter 'deleteContactData' is set
@@ -167,25 +143,17 @@
       return this.apiClient.callApi(
         '/ucs/delete-contact', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the findOrCreatePhoneCall operation.
-     * @callback module:api/UcsApi~findOrCreatePhoneCallCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Find or create phone call in UCS
      * @param {module:model/PhoneCallData} phoneCallData 
-     * @param {module:api/UcsApi~findOrCreatePhoneCallCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.findOrCreatePhoneCall = function(phoneCallData, callback) {
+    this.findOrCreatePhoneCall = function(phoneCallData) {
       var postBody = phoneCallData;
 
       // verify the required parameter 'phoneCallData' is set
@@ -211,26 +179,18 @@
       return this.apiClient.callApi(
         '/ucs/find-or-create-phone-call', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getAgentHistory operation.
-     * @callback module:api/UcsApi~getAgentHistoryCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get the history of interactions for the agent
      * @param {Object} opts Optional parameters
      * @param {module:model/AgentHistoryData} opts.agentHistoryData 
-     * @param {module:api/UcsApi~getAgentHistoryCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getAgentHistory = function(opts, callback) {
+    this.getAgentHistory = function(opts) {
       opts = opts || {};
       var postBody = opts['agentHistoryData'];
 
@@ -252,25 +212,17 @@
       return this.apiClient.callApi(
         '/ucs/get-agent-history', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getContactDetails operation.
-     * @callback module:api/UcsApi~getContactDetailsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get the details of a contact
      * @param {module:model/ContactDetailsData} contactDetailsData 
-     * @param {module:api/UcsApi~getContactDetailsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getContactDetails = function(contactDetailsData, callback) {
+    this.getContactDetails = function(contactDetailsData) {
       var postBody = contactDetailsData;
 
       // verify the required parameter 'contactDetailsData' is set
@@ -296,25 +248,17 @@
       return this.apiClient.callApi(
         '/ucs/get-contact-details', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getContactHistory operation.
-     * @callback module:api/UcsApi~getContactHistoryCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get the history of interactions for a contact
      * @param {module:model/ContactHistoryData} contactHistoryData 
-     * @param {module:api/UcsApi~getContactHistoryCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getContactHistory = function(contactHistoryData, callback) {
+    this.getContactHistory = function(contactHistoryData) {
       var postBody = contactHistoryData;
 
       // verify the required parameter 'contactHistoryData' is set
@@ -340,25 +284,17 @@
       return this.apiClient.callApi(
         '/ucs/get-contact-history', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getContacts operation.
-     * @callback module:api/UcsApi~getContactsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get contacts based on search criteria.
      * @param {module:model/GetContactsData} getContactsData 
-     * @param {module:api/UcsApi~getContactsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getContacts = function(getContactsData, callback) {
+    this.getContacts = function(getContactsData) {
       var postBody = getContactsData;
 
       // verify the required parameter 'getContactsData' is set
@@ -384,25 +320,17 @@
       return this.apiClient.callApi(
         '/ucs/get-contacts', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getIndexProperties operation.
-     * @callback module:api/UcsApi~getIndexPropertiesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ConfigResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get the lucene indexes for ucs
      * This request returns all the lucene indexes for contact 
-     * @param {module:api/UcsApi~getIndexPropertiesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ConfigResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ConfigResponse}
      */
-    this.getIndexProperties = function(callback) {
+    this.getIndexProperties = function() {
       var postBody = null;
 
 
@@ -423,25 +351,17 @@
       return this.apiClient.callApi(
         '/ucs/get-index-properties', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the getInteractionContent operation.
-     * @callback module:api/UcsApi~getInteractionContentCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Get the content of the interaction
      * @param {module:model/InteractionContentData} interactionContentData 
-     * @param {module:api/UcsApi~getInteractionContentCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getInteractionContent = function(interactionContentData, callback) {
+    this.getInteractionContent = function(interactionContentData) {
       var postBody = interactionContentData;
 
       // verify the required parameter 'interactionContentData' is set
@@ -467,25 +387,17 @@
       return this.apiClient.callApi(
         '/ucs/get-interaction-content', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the identifyContact operation.
-     * @callback module:api/UcsApi~identifyContactCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Identify the contact for the interaction
      * @param {module:model/IdentifyContactData} identifyContactData 
-     * @param {module:api/UcsApi~identifyContactCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.identifyContact = function(identifyContactData, callback) {
+    this.identifyContact = function(identifyContactData) {
       var postBody = identifyContactData;
 
       // verify the required parameter 'identifyContactData' is set
@@ -511,25 +423,17 @@
       return this.apiClient.callApi(
         '/ucs/identify-contact', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the luceneSearch operation.
-     * @callback module:api/UcsApi~luceneSearchCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Search for contacts based on search query, using lucene search
      * @param {module:model/LuceneSearchData} luceneSearchData 
-     * @param {module:api/UcsApi~luceneSearchCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.luceneSearch = function(luceneSearchData, callback) {
+    this.luceneSearch = function(luceneSearchData) {
       var postBody = luceneSearchData;
 
       // verify the required parameter 'luceneSearchData' is set
@@ -555,25 +459,17 @@
       return this.apiClient.callApi(
         '/ucs/lucene-search', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the luceneSearchInteraction operation.
-     * @callback module:api/UcsApi~luceneSearchInteractionCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Search for interactions based on search query, using lucene search
      * @param {module:model/LuceneSearchInteractionData} luceneSearchInteractionData 
-     * @param {module:api/UcsApi~luceneSearchInteractionCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.luceneSearchInteraction = function(luceneSearchInteractionData, callback) {
+    this.luceneSearchInteraction = function(luceneSearchInteractionData) {
       var postBody = luceneSearchInteractionData;
 
       // verify the required parameter 'luceneSearchInteractionData' is set
@@ -599,25 +495,17 @@
       return this.apiClient.callApi(
         '/ucs/lucene-search-interaction', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the setCallCompleted operation.
-     * @callback module:api/UcsApi~setCallCompletedCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Set the call as being completed
      * @param {module:model/CallCompletedData} callCompletedData 
-     * @param {module:api/UcsApi~setCallCompletedCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.setCallCompleted = function(callCompletedData, callback) {
+    this.setCallCompleted = function(callCompletedData) {
       var postBody = callCompletedData;
 
       // verify the required parameter 'callCompletedData' is set
@@ -643,25 +531,17 @@
       return this.apiClient.callApi(
         '/ucs/set-call-completed', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the setCallNote operation.
-     * @callback module:api/UcsApi~setCallNoteCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Set the note for the call
      * @param {module:model/CallNoteData} callNoteData 
-     * @param {module:api/UcsApi~setCallNoteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.setCallNote = function(callNoteData, callback) {
+    this.setCallNote = function(callNoteData) {
       var postBody = callNoteData;
 
       // verify the required parameter 'callNoteData' is set
@@ -687,25 +567,17 @@
       return this.apiClient.callApi(
         '/ucs/set-call-note', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
 
-    /**
-     * Callback function to receive the result of the updateContact operation.
-     * @callback module:api/UcsApi~updateContactCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ApiSuccessResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Update attributes of an existing contact
      * @param {module:model/UpdateContactData} updateContactData 
-     * @param {module:api/UcsApi~updateContactCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.updateContact = function(updateContactData, callback) {
+    this.updateContact = function(updateContactData) {
       var postBody = updateContactData;
 
       // verify the required parameter 'updateContactData' is set
@@ -731,7 +603,7 @@
       return this.apiClient.callApi(
         '/ucs/update-contact', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };

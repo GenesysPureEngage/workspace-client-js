@@ -45,20 +45,13 @@
     this.apiClient = apiClient || ApiClient.instance;
 
 
-    /**
-     * Callback function to receive the result of the swaggerDoc operation.
-     * @callback module:api/DocumentationApi~swaggerDocCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
      * Returns API description in Swagger format
      * Returns API description in Swagger format
-     * @param {module:api/DocumentationApi~swaggerDocCallback} callback The callback function, accepting three arguments: error, data, response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    this.swaggerDoc = function(callback) {
+    this.swaggerDoc = function() {
       var postBody = null;
 
 
@@ -79,7 +72,7 @@
       return this.apiClient.callApi(
         '/doc', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        authNames, contentTypes, accepts, returnType
       );
     }
   };
