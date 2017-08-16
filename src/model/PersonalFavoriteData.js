@@ -14,32 +14,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/VoicecallsidinitiatetransferData'], factory);
+    define(['ApiClient', 'model/TargetspersonalfavoritessaveData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./VoicecallsidinitiatetransferData'));
+    module.exports = factory(require('../ApiClient'), require('./TargetspersonalfavoritessaveData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.InitiateTransferData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.VoicecallsidinitiatetransferData);
+    root.WorkspaceApi.PersonalFavoriteData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.TargetspersonalfavoritessaveData);
   }
-}(this, function(ApiClient, VoicecallsidinitiatetransferData) {
+}(this, function(ApiClient, TargetspersonalfavoritessaveData) {
   'use strict';
 
 
 
 
   /**
-   * The InitiateTransferData model module.
-   * @module model/InitiateTransferData
+   * The PersonalFavoriteData model module.
+   * @module model/PersonalFavoriteData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>InitiateTransferData</code>.
-   * @alias module:model/InitiateTransferData
+   * Constructs a new <code>PersonalFavoriteData</code>.
+   * @alias module:model/PersonalFavoriteData
    * @class
    */
   var exports = function() {
@@ -49,25 +49,25 @@
   };
 
   /**
-   * Constructs a <code>InitiateTransferData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>PersonalFavoriteData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/InitiateTransferData} obj Optional instance to populate.
-   * @return {module:model/InitiateTransferData} The populated <code>InitiateTransferData</code> instance.
+   * @param {module:model/PersonalFavoriteData} obj Optional instance to populate.
+   * @return {module:model/PersonalFavoriteData} The populated <code>PersonalFavoriteData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = VoicecallsidinitiatetransferData.constructFromObject(data['data']);
+        obj['data'] = TargetspersonalfavoritessaveData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/VoicecallsidinitiatetransferData} data
+   * @member {module:model/TargetspersonalfavoritessaveData} data
    */
   exports.prototype['data'] = undefined;
 
