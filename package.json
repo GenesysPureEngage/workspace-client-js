@@ -24,7 +24,11 @@
     "url": "git://github.com/GenesysPureEngage/workspace-client-js.git"
   },
   "dependencies": {
-    "superagent": "1.7.1"
+    "cometd": "^3.1.2",
+    "cometd-nodejs-client": "^1.0.1",
+    "events": "^1.1.1",
+    "superagent": "1.7.1",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "mocha": "~2.3.4",
