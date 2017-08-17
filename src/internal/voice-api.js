@@ -28,14 +28,14 @@ class VoiceApi {
     }
   }
 
-  _onCallStateChanged(msg) {
-    let call = msg.data.call;
+  _onCallStateChanged(cometdMsg) {
+    let call = cometdMsg.data.call;
 
+    let connIdChanged = false;
     if (call.previousConnId && this.calls.has(call.previousConnId)) {
       this.calls.delete(call.previousConnId);
       this.calls.set(call.id, call);
-      this._eventEmitter.emit('voice.call.id-changed', call);
-      return;
+      connIdChanged = true;
     }
 
     switch (call.state) {
@@ -43,27 +43,31 @@ class VoiceApi {
       case 'Dialing':
         this._log(`Call [${call.id}] added...`);
         this.calls.set(call.id, call);
-        this._eventEmitter.emit('voice.call.added', call);
         break;
 
       case 'Released':
         this._log(`Call [${call.id}] removed...`);
         this.calls.delete(call.id);
-        this._eventEmitter.emit('voice.call.removed', call);
         break;
 
       default:
         this._log(`Call [${call.id}] updated...`);
         this.calls.set(call.id, call);
-        this._eventEmitter.emit('voice.call.updated', call);
         break;
     }
+
+    let msg = { call };
+    if (connIdChanged) {
+      msg.previousConnId = call.previousConnId;
+    }
+
+    this._eventEmitter.emit('CallStateChanged', msg);
   }
 
   _onDnStateChanged(msg) {
     let dn = msg.data.dn;
     this.dn = dn;
-    this._eventEmitter.emit('voice.dn.updated', dn);
+    this._eventEmitter.emit('DnStateChanged', {dn});
   }
 
   async ready() {
@@ -73,21 +77,24 @@ class VoiceApi {
   }
 
   async notReady(workMode, reasonCode) {
-    this._log(`Sending not-ready with workMode [${workMode}] and reasonCode [${reasonCode}]...`);
-    let data = {};
+    let msg = `Sending not-ready`;
+    let data = { notReadyData: {} };
 
     if (workMode || reasonCode) {
-      data.data = {};
+      data.notReadyData.data = {};
     }
 
     if (workMode) {
-      data.data.agentWorkMode = workMode;
+      msg += ` with workMode [${workMode}]`;
+      data.notReadyData.data.agentWorkMode = workMode;
     }
 
     if (reasonCode) {
-      data.data.reasonCode = reasonCode;
+      msg += ` reasonCode [${reasonCode}]...`;
+      data.notReadyData.reasonCode = reasonCode;
     }
-
+    
+    this._log(msg);
     let response = await this._api.setAgentStateNotReady(data);
     return response;
   }
