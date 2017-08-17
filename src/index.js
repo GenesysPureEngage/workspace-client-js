@@ -130,15 +130,17 @@ class WorkspaceApi extends EventEmitter {
   }
 
   async destroy() {
-    if (this._cometd) {
-      this._log('Disconnecting cometd...');
-      this._cometd.disconnect();
+    if (this.initialized) {
+      if (this._cometd) {
+        this._log('Disconnecting cometd...');
+        this._cometd.disconnect();
+      }
+
+      this._log('Logging out...');
+      this._sessionApi.logout();
+
+      this.initialized = false;
     }
-
-    this._log('Logging out...');
-    this._sessionApi.logout();
-
-    this.initialized = false;
   }
 
   async activateChannels(agentId, dn) {

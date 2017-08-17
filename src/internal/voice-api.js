@@ -181,7 +181,7 @@ class VoiceApi {
 
   async alternateCalls(connId, heldConnId) {
     this._log(`Sending alternate for call [${connId}] and heldConnId [${heldConnId}]...`);
-    let response = await this._api.alternate(callId, {
+    let response = await this._api.alternate(connId, {
       data: {
         heldConnId: heldConnId
       }
