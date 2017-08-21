@@ -1,7 +1,6 @@
 const url = require('url');
 const EventEmitter = require('events');
 
-const auth = require('./internal/code-gen/auth-api');
 const workspace = require('./internal/code-gen/workspace-api');
 const cometDLib = require('cometd');
 require('cometd-nodejs-client').adapt();
@@ -84,13 +83,7 @@ class WorkspaceApi extends EventEmitter {
     });
   }
 
-  async initialize() {
-    this._authClient = new auth.ApiClient();
-    this._authClient.basePath = this.baseUrl;
-    this._authClient.enableCookies = true;
-    this._authClient.defaultHeaders = { 'x-api-key': this.apiKey };
-    this._authApi = new auth.AuthenticationApi(this._authClient);
-
+  async initialize({ code, redirectUri, token}) {
     this._workspaceClient = new workspace.ApiClient();
     this._workspaceClient.basePath = this._workspaceUrl;
     this._workspaceClient.enableCookies = true;
@@ -100,25 +93,17 @@ class WorkspaceApi extends EventEmitter {
     this.voice = new VoiceApi(this, this._workspaceClient, this._debugEnabled);
     this.targets = new TargetsApi(this._workspaceClient, this._debugEnabled);
 
-    const opts = {
-      authorization: 'Basic ' + new Buffer(`${this.clientId}:${this.clientSecret}`).toString('base64'),
-      clientId: 'external_api_client',
-      username: this.username,
-      password: this.password
-    };
+    let options = {};
 
-    this._log('Getting access token...');
-    let response = await this._authApi.retrieveTokenWithHttpInfo('password', 'scope', opts);
-    if(!response.data || !response.data.access_token) {
-      throw new Error('Cannot get access token');
+    if (code) {
+      options.code = code;
+      options.redirectUri = redirectUri;
+    } else if (token) {
+      options.authorization = 'Bearer ' + token;
     }
 
-    this._accessToken = response.data.access_token;
-    this._log('Access token is: ' + this._accessToken);
-
     this._log('Initializing workspace...');
-    response = await this._sessionApi.initializeWorkspaceWithHttpInfo(
-      { authorization : 'Bearer ' + this._accessToken});
+    let response = await this._sessionApi.initializeWorkspaceWithHttpInfo(options);
 
     this._sessionCookie = response.response.header['set-cookie'].find(v => v.startsWith('WORKSPACE_SESSIONID'));
 		this._workspaceClient.defaultHeaders['Cookie'] = this._sessionCookie;
