@@ -56,7 +56,7 @@ class WorkspaceApi extends EventEmitter {
           this._log('Handshake successful');
           this._cometd.subscribe('/workspace/v3/initialization', msg => {
             if(msg.data.state === 'Complete') {
-              resolve(msg.data.data.user);
+              resolve(msg.data.data);
               //CM: TODO: store config
             } else if (msg.data.state == 'Failed') {
               reject('Workspace initialization failed.');
@@ -109,7 +109,10 @@ class WorkspaceApi extends EventEmitter {
 		this._workspaceClient.defaultHeaders['Cookie'] = this._sessionCookie;
     this._log('WORKSPACE_SESSIONID is: ' + this._sessionCookie);
 
-    this.user = await this._initializeCometd();
+    let data = await this._initializeCometd();
+    this.user = data.user;
+    this.configuration = data.configuration;
+    
     this.initialized = true;
     this._log('Initialization complete.');
   }
