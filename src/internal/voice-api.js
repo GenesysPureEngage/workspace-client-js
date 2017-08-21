@@ -189,6 +189,51 @@ class VoiceApi {
 
     return response;
   }
+
+  async reconnectCall(connId, heldConnId) {
+    this._log(`Sending reconnect for call [${connId}] and heldConnId [${heldConnId}]...`);
+    let response = await this._api.reconnect(connId, {
+      data: {
+        heldConnId: heldConnId
+      }
+    });
+
+    return response;
+  }
+
+  async singleStepConference(connId, destination) {
+    this._log(`Sending single-step-conference to destination [${destination}] for call [${connId}]...`);
+    let response = await this._api.singleStepConference(connId, {
+      data: {
+        destination: destination
+      }
+    });
+
+    return response;
+  }
+
+  async singleStepTransfer(connId, destination) {
+    this._log(`Sending single-step-transfer to destination [${destination}] for call [${connId}]...`);
+    let response = await this._api.singleStepTransfer(connId, {
+      data: {
+        destination: destination
+      }
+    });
+
+    return response;
+  }
+
+  async dndOn() {
+    this._log('Sending dnd-on...');
+    let response = await this._api.setDNDOn();
+    return response;
+  }
+
+  async dndOff() {
+    this._log('Sending dnd-off...');
+    let response = await this._api.setDNDOff();
+    return response;
+  }
 }
 
 module.exports = VoiceApi;
