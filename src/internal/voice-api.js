@@ -178,7 +178,7 @@ class VoiceApi {
 
   async clearCall(connId) {
     this._log(`Sending clear for call [${connId}]...`);
-    let response = await this._api.clear(connId);
+    let response = await this._api.clear(connId, {});
     return response;
   }
 
@@ -304,7 +304,7 @@ class VoiceApi {
   }
 
   async attachUserData(connId, userData) {
-    this._log(`Sending attach-user-data for call [${connId}: ${JSON.stringify(data)}...`);
+    this._log(`Sending attach-user-data for call [${connId}: ${JSON.stringify(userData)}...`);
     let response = await this._api.attachUserData(connId, {
       data: {
         userData: userData
@@ -314,7 +314,7 @@ class VoiceApi {
   }
 
   async updateUserData(connId, userData) {
-    this._log(`Sending update-user-data for call [${connId}: ${JSON.stringify(data)}...`);
+    this._log(`Sending update-user-data for call [${connId}: ${JSON.stringify(userData)}...`);
     let response = await this._api.updateUserData(connId, {
       data: {
         userData: userData
@@ -334,9 +334,9 @@ class VoiceApi {
     return response;
   }
 
-  async sendDtmf(connId, digits) {
+  async sendDTMF(connId, digits) {
     this._log(`Sending send-dtmf for call [${connId}] with dtmfDigits [${digits}]...`);
-    let response = await this._api.sendDtmf(connId, {
+    let response = await this._api.sendDTMF(connId, {
       data: {
         dtmfDigits: digits
       }
