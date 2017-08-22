@@ -1,5 +1,21 @@
 # workspace-lib-js
-A Javascript wrapper around the Workspace API 
+A Javascript wrapper around the Workspace API for nodejs
+
+# Examples
+There are several examples available for nodejs:
+
+* [Changing agent state](https://github.com/GenesysPureEngage/tutorials/tree/master/voice-ready-workspace-nodejs)
+* [Basic call control](https://github.com/GenesysPureEngage/tutorials/tree/master/basic-call-control-workspace-nodejs)
+* [Conferences](https://github.com/GenesysPureEngage/tutorials/tree/master/conference-call-workspace-nodejs)
+* [Transfers](https://github.com/GenesysPureEngage/tutorials/tree/master/transfer-call-workspace-nodejs)
+* [Alternating calls](https://github.com/GenesysPureEngage/tutorials/tree/master/alternate-calls-workspace-nodejs)
+
+There is also a [Console Sample](https://github.com/GenesysPureEngage/console-agent-app-js) that provides a command line to test and play with the API.
+
+# Related Links
+* [Provisioning API](https://github.com/GenesysPureEngage/provisioning-client-js)
+* [Authorization API](https://github.com/GenesysPureEngage/authorization-client-js)
+
 
 # Quick Start
 
