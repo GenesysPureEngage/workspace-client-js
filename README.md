@@ -91,7 +91,7 @@ After the API has been initialized, the next step is to activate the voice chann
   api.voice.sendDTMF(connId, digits);
 ```
 
-# Conference and Transfers
+## Conference and Transfers
 
 ```javascript
   // Two-step transfer
@@ -110,7 +110,7 @@ After the API has been initialized, the next step is to activate the voice chann
   api.voice.singleStepConference(connId, destination);
 ```
 
-# UserData
+## UserData
 
 ```javascript
   // Attach
@@ -123,7 +123,7 @@ After the API has been initialized, the next step is to activate the voice chann
   api.voice.deleteUserDataPair(connId, key);
 ```
 
-# Call Recording
+## Call Recording
 
 ```javascript
   // Start and stop
