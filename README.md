@@ -48,33 +48,91 @@ After the API has been initialized, the next step is to activate the voice chann
 ```javascript
   // Activate the voice channel providing the agentId
   // and dn to be used for login.
-  await api.activateChannels(agentId, dn);
+  api.activateChannels(agentId, dn);
 
   // After the process completes a DnStateChanged message will be published.
 
 ```
 
-
 ## Agent State
 
 ```javascript
-  // Set the agent state to ready, which will result in
-  // a DnStateChanged message.
-  await api.voice.ready();
-
-  // Set the agent state to not-ready. This will also result
-  // in a DnStateChanged message.
-  await api.voice.notReady();
-
+  // Ready
+  api.voice.ready();
+  
+  // NotReady with optional workmode and reason
+  api.voice.notReady();
+  api.voice.notReady(workMode);
+  api.voice.notReady(workMode, reasonCode);
+  
+  // DND
+  api.voice.dndOn();
+  api.voice.dndOff();
 ```
 
 
 ## Basic Call Control
 
 ```javascript
-  // Make a new call to DN 5001. This will result in a CallStateChange message
-  // being published.
-  await api.voice.makeCall('5001');
-
-
+  // Make a new call
+  api.voice.makeCall(destination);
+  
+  // Answer
+  api.voice.answerCall(connId);
+  
+  // Hold and retrieve
+  api.voice.holdCall(connId);
+  api.voice.retrieveCall(connId);
+  
+  // Release
+  api.voice.releaseCall(connId);
+  
+  // Send DTMF tones
+  api.voice.sendDTMF(connId, digits);
 ```
+
+# Conference and Transfers
+
+```javascript
+  // Two-step transfer
+  api.voice.initiateTransfer(connId, destination);
+  api.voice.completerTransfer(connId, parentConnId);
+  
+  // Two-step conference
+  api.voice.initiateConference(connId, destination);
+  api.voice.completeConference(connId, parentConnId);
+  
+  // Delete a participant
+  api.voice.deleteFromConference(connId, dnToDrop);
+  
+  // Single-step versions
+  api.voice.singleStepTransfer(connId, destination);
+  api.voice.singleStepConference(connId, destination);
+```
+
+# UserData
+
+```javascript
+  // Attach
+  api.voice.attachUserData(connId, userData);
+  
+  // Update
+  api.voice.updateUserData(connId, userData);
+  
+  // Delete a key
+  api.voice.deleteUserDataPair(connId, key);
+```
+
+# Call Recording
+
+```javascript
+  // Start and stop
+  api.voice.startRecording(connId);
+  api.voice.stopRecording(connId);
+  
+  // Pause and resume
+  api.voice.pauseRecording(connId);
+  api.voice.resumeRecording(connId);
+  
+```
+
