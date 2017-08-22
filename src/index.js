@@ -9,17 +9,16 @@ const VoiceApi = require('./internal/voice-api');
 const TargetsApi = require('./internal/targets-api');
 
 class WorkspaceApi extends EventEmitter {
-  constructor(options) {
+  /**
+   * @param {String} baseUrl - The base URL of the Genesys API
+   * @param {String} apiKey - API key to be included in HTTP requests
+   */
+  constructor(baseUrl, apiKey, debugEnabled) {
     super();
-    this.apiKey = options.apiKey;
-    this.baseUrl = options.baseUrl;
-    this.username = options.username;
-    this.password = options.password;
-    this.clientId = options.clientId;
-    this.clientSecret = options.clientSecret;
-
+    this.apiKey = apiKey;
+    this.baseUrl = baseUrl;
     this._workspaceUrl = `${this.baseUrl}/workspace/v3`;
-    this._debugEnabled = (options.debugEnabled === 'true')
+    this._debugEnabled = (debugEnabled === 'true')
     this.initialized = false;
   }
 
@@ -83,11 +82,17 @@ class WorkspaceApi extends EventEmitter {
     });
   }
 
+  /**
+   * Initializes the API using either a an auth code and redirectUri or an auth token. The
+   * preferred approach is to use the code grant flow and provide code/redirectUri.
+   */
   async initialize({ code, redirectUri, token}) {
     this._workspaceClient = new workspace.ApiClient();
     this._workspaceClient.basePath = this._workspaceUrl;
     this._workspaceClient.enableCookies = true;
-    this._workspaceClient.defaultHeaders = { 'x-api-key': this.apiKey };
+    if (this.apiKey) {
+      this._workspaceClient.defaultHeaders = { 'x-api-key': this.apiKey };
+    }
     this._sessionApi = new workspace.SessionApi(this._workspaceClient);
 
     this.voice = new VoiceApi(this, this._workspaceClient, this._debugEnabled);
@@ -117,6 +122,9 @@ class WorkspaceApi extends EventEmitter {
     this._log('Initialization complete.');
   }
 
+  /**
+   * Logout the agent and cleanup resources.
+   */
   async destroy() {
     if (this.initialized) {
       if (this._cometd) {
@@ -131,6 +139,11 @@ class WorkspaceApi extends EventEmitter {
     }
   }
 
+  /**
+   * Initializes the voice channel using the specified resources.
+   * @param {String} agentId - AgentId to be used for login
+   * @param {String} dn - DN to be used for login
+   */
   async activateChannels(agentId, dn) {
     this._log(`Sending activate-channels with agentId [${agentId}] and dn [${dn}]...`);
     let data = { data: {} };
