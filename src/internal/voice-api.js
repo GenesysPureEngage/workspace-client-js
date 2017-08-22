@@ -81,8 +81,8 @@ class VoiceApi {
 
   /**
    * Set the agent state to not ready.
-   * @param {*} workMode - optional workMode to use in the request.
-   * @param {*} reasonCode - optional reasonCode to use in the request.
+   * @param {String} workMode - optional workMode to use in the request.
+   * @param {String} reasonCode - optional reasonCode to use in the request.
    */
   async notReady(workMode, reasonCode) {
     let msg = `Sending not-ready`;
