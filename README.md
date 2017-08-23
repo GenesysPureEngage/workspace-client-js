@@ -31,8 +31,7 @@ let api = new WorkspaceApi(baseUrl, apiKey);
 api.on('CallStateChanged', msg => { console.log('CallStateChanged!', msg.call); });
 api.on('DnStateChanged', msg => { console.log('DnStateChanged!', msg.dn); });
 
-// Initialize the API providing authCode. How to obtain an auth code 
-// is explained separately.
+// Initialize the API providing authCode. See the OAuth2 section for more details.
 await api.initialize({code: authCode, redirectUri: redirectUri});
 
 // After the API is initialized, user details are available.
