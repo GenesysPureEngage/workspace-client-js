@@ -156,3 +156,63 @@ Note that the redirect uri provided to /authorize and to the workspace api initi
 Non-UI samples implement the code grant flow by including a basic authentication header with the username and password which results in a code being returned without going through the login pages. This is convenient for demonstration purposes but should not be used in production and does not support environments where saml is configured. 
 
 For more details on OAuth2 and the authorization code grant flow refer to the [RFC](https://tools.ietf.org/html/rfc6749#section-4.1).
+
+# DN and Calls
+
+The two main resources used in the voice portion of the workspace API and calls and DNs. Their respective properties are outlined below. 
+
+## DN 
+
+The DN or directory number is the phone number the agent is using for their session. The DN to be used is specified as a parameter to the actviateChannels() method - either directly or by giving the name of the place. After activateChannels() has been called, the api will publish events whenever there is a change in the state of the DN. This occurs when the agent moves from ready to not-ready, turns dnd on/off or sets call forwarding.
+
+The DN has the following properties:
+
+| Name          | Description                   |
+| --------------|------------------------------ |
+| number        | the dn number (phone number)  |
+| agentId       | the agent id used to login    |
+| agentState    | the current state - one of LoggedOut, LoggedIn, Ready, or NotReady |
+| workMode      | the current workmode -one of AuxWork, AfterCallWork (NotReady) or AutoIn, ManualIn (Ready) |
+| forwardTo     | the call forwarding destination, if call forwarding is set |
+| dnd           | flag denoting whether do-not-disturb is turned on |
+
+### DN Events
+
+Changes to the DN state will result in a DnStateChanged message being published. In addition to publishing this event the API keeps the current state of the DN and makes it available as a property.
+
+## Calls 
+
+The call resource provides information relating to active phone calls. It has the following properties:
+
+| Name          | Description                   |
+| --------------|------------------------------ |
+| id            | the id of the call. this is the Genesys connectionId or connId and can be provided to other methods as a parameter to identify the call you want to manipulate            |
+| callUuid      | UUID of the call. This is a separate identifier that is specifically required by some requests  |
+| state         | state of the call - one of Ringing, Dialing, Established, Held, Released, or Completed. Unless specifically configured, calls are automatically completed upon release. |
+| parentConnId  | parent conn id. this is present on consult calls and identifies the call from which the conference or transfer was initiated.
+| previousConnId | previousConnId if the id has changed (as would be the case if an agent is the target of a two-step conference or transfer)
+| ani            | ani from the call |
+| dnis           | dnis from the call |
+| recordingState | call recording state, one of Stopped, Recording, Paused. If recording was never started for a call this property will be absent. |
+| participant    | a list of call participants - i.e. the phone numbers of those currently on the call |
+| userData.      | data associated with the call |
+
+### Call Events
+
+As with the DN, changes to call state result in publication of a CallStateChanged message. This message includes the updated call object along with some supporting details that help identify what has changed. The notificationType property is included for this purpose and can have the following values:
+
+| NotificationType          | Description                   |
+| --------------|------------------------------ |
+| StateChange  | the state of the call changed. ex. Dialing -> Established |
+| ParticipantsUpdated | the list of participants was updated. ex. new party adding on completion of a conference |
+| AttachedDataChanged | the userData property was updated |
+| CallRecovered | when first connecting or reconnecting, if there are any calls in progress, they are recovered and published with this type |
+
+Note that in addition to publishing the CallStateChanged message the workspace API keeps track of all active calls and makes them available as a property.
+
+#### Call Id Changes
+
+In some scenarios, the id of the call can change. An example of this would be when an agent is the target of a two-step conference. When the call is first ringing for the agent, the consult call is assigned a new id and is separate from the original call that the conference was initiated from. When the conference is completed and all parties
+are brought together, the consult call is released and the id is changed for the target agent. The workspace API detects this scenario and will include the previousConnId property in CallStateChanged.
+
+If you are indexing calls based on id this is a hint that you need to update that index.
