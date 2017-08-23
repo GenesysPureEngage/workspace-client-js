@@ -10,10 +10,10 @@ const TargetsApi = require('./internal/targets-api');
 
 class WorkspaceApi extends EventEmitter {
   /**
-   * @param {String} baseUrl - The base URL of the Genesys API
    * @param {String} apiKey - API key to be included in HTTP requests
+   * @param {String} baseUrl - The base URL of the Genesys API
    */
-  constructor(baseUrl, apiKey, debugEnabled) {
+  constructor(apiKey, baseUrl, debugEnabled) {
     super();
     this.apiKey = apiKey;
     this.baseUrl = baseUrl;
