@@ -1,5 +1,5 @@
 # workspace-lib-js
-A Javascript wrapper around the Workspace API for nodejs
+A Workspace API client library for Node.js.
 
 # Examples
 There are several examples available for nodejs:
