@@ -13,8 +13,8 @@ There are several examples available for nodejs:
 There is also a [Console Sample](https://github.com/GenesysPureEngage/console-agent-app-js) that provides a command line to test and play with the API.
 
 # Related Links
-* [Provisioning API](https://github.com/GenesysPureEngage/provisioning-client-js)
-* [Authorization API](https://github.com/GenesysPureEngage/authorization-client-js)
+* [Provisioning API client library for Node.js](https://github.com/GenesysPureEngage/provisioning-client-js)
+* [Authorization API client library for Node.js](https://github.com/GenesysPureEngage/authorization-client-js)
 
 
 # Quick Start
