@@ -62,24 +62,24 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = InlineResponse200Status.constructFromObject(data['status']);
-      }
       if (data.hasOwnProperty('data')) {
         obj['data'] = ConfigResponseData.constructFromObject(data['data']);
+      }
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = InlineResponse200Status.constructFromObject(data['status']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/InlineResponse200Status} status
-   */
-  exports.prototype['status'] = undefined;
-  /**
    * @member {module:model/ConfigResponseData} data
    */
   exports.prototype['data'] = undefined;
+  /**
+   * @member {module:model/InlineResponse200Status} status
+   */
+  exports.prototype['status'] = undefined;
 
 
 

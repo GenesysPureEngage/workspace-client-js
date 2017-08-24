@@ -62,24 +62,24 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
-      }
       if (data.hasOwnProperty('key')) {
         obj['key'] = ApiClient.convertToType(data['key'], 'String');
+      }
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} type
-   */
-  exports.prototype['type'] = undefined;
-  /**
    * @member {String} key
    */
   exports.prototype['key'] = undefined;
+  /**
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
 
 
 

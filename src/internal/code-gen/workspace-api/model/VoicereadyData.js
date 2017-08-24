@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoicecallsidholdData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.VoicereadyData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
   }
 }(this, function(ApiClient, Kvpair) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The VoicecallsidholdData model module.
-   * @module model/VoicecallsidholdData
+   * The VoicereadyData model module.
+   * @module model/VoicereadyData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>VoicecallsidholdData</code>.
-   * @alias module:model/VoicecallsidholdData
+   * Constructs a new <code>VoicereadyData</code>.
+   * @alias module:model/VoicereadyData
    * @class
    */
   var exports = function() {
@@ -52,11 +52,11 @@
   };
 
   /**
-   * Constructs a <code>VoicecallsidholdData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>VoicereadyData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/VoicecallsidholdData} obj Optional instance to populate.
-   * @return {module:model/VoicecallsidholdData} The populated <code>VoicecallsidholdData</code> instance.
+   * @param {module:model/VoicereadyData} obj Optional instance to populate.
+   * @return {module:model/VoicereadyData} The populated <code>VoicereadyData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

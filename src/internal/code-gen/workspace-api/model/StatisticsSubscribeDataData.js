@@ -43,14 +43,14 @@
    * Constructs a new <code>StatisticsSubscribeDataData</code>.
    * @alias module:model/StatisticsSubscribeDataData
    * @class
-   * @param statistics {Array.<Object>} 
    * @param connectionId {String} 
+   * @param statistics {Array.<Object>} 
    */
-  var exports = function(statistics, connectionId) {
+  var exports = function(connectionId, statistics) {
     var _this = this;
 
-    _this['statistics'] = statistics;
     _this['connectionId'] = connectionId;
+    _this['statistics'] = statistics;
   };
 
   /**
@@ -64,24 +64,24 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('statistics')) {
-        obj['statistics'] = ApiClient.convertToType(data['statistics'], [Object]);
-      }
       if (data.hasOwnProperty('connectionId')) {
         obj['connectionId'] = ApiClient.convertToType(data['connectionId'], 'String');
+      }
+      if (data.hasOwnProperty('statistics')) {
+        obj['statistics'] = ApiClient.convertToType(data['statistics'], [Object]);
       }
     }
     return obj;
   }
 
   /**
-   * @member {Array.<Object>} statistics
-   */
-  exports.prototype['statistics'] = undefined;
-  /**
    * @member {String} connectionId
    */
   exports.prototype['connectionId'] = undefined;
+  /**
+   * @member {Array.<Object>} statistics
+   */
+  exports.prototype['statistics'] = undefined;
 
 
 

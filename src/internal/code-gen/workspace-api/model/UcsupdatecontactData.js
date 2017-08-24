@@ -43,17 +43,17 @@
    * Constructs a new <code>UcsupdatecontactData</code>.
    * @alias module:model/UcsupdatecontactData
    * @class
-   * @param changedProperties {Array.<Object>} The list of contact attributes to be updated for the contact
    * @param contactId {String} The id of the contact
    * @param addedProperties {Array.<Object>} The list of contact attributes to be added to the contact
+   * @param changedProperties {Array.<Object>} The list of contact attributes to be updated for the contact
    * @param deletedProperties {Array.<Object>} The list of contact attributes to be deleted for the contact
    */
-  var exports = function(changedProperties, contactId, addedProperties, deletedProperties) {
+  var exports = function(contactId, addedProperties, changedProperties, deletedProperties) {
     var _this = this;
 
-    _this['changedProperties'] = changedProperties;
     _this['contactId'] = contactId;
     _this['addedProperties'] = addedProperties;
+    _this['changedProperties'] = changedProperties;
     _this['deletedProperties'] = deletedProperties;
   };
 
@@ -68,14 +68,14 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('changedProperties')) {
-        obj['changedProperties'] = ApiClient.convertToType(data['changedProperties'], [Object]);
-      }
       if (data.hasOwnProperty('contactId')) {
         obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
       }
       if (data.hasOwnProperty('addedProperties')) {
         obj['addedProperties'] = ApiClient.convertToType(data['addedProperties'], [Object]);
+      }
+      if (data.hasOwnProperty('changedProperties')) {
+        obj['changedProperties'] = ApiClient.convertToType(data['changedProperties'], [Object]);
       }
       if (data.hasOwnProperty('deletedProperties')) {
         obj['deletedProperties'] = ApiClient.convertToType(data['deletedProperties'], [Object]);
@@ -84,11 +84,6 @@
     return obj;
   }
 
-  /**
-   * The list of contact attributes to be updated for the contact
-   * @member {Array.<Object>} changedProperties
-   */
-  exports.prototype['changedProperties'] = undefined;
   /**
    * The id of the contact
    * @member {String} contactId
@@ -99,6 +94,11 @@
    * @member {Array.<Object>} addedProperties
    */
   exports.prototype['addedProperties'] = undefined;
+  /**
+   * The list of contact attributes to be updated for the contact
+   * @member {Array.<Object>} changedProperties
+   */
+  exports.prototype['changedProperties'] = undefined;
   /**
    * The list of contact attributes to be deleted for the contact
    * @member {Array.<Object>} deletedProperties

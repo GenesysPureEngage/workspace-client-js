@@ -64,14 +64,14 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('dn')) {
-        obj['dn'] = ApiClient.convertToType(data['dn'], 'String');
+      if (data.hasOwnProperty('agentId')) {
+        obj['agentId'] = ApiClient.convertToType(data['agentId'], 'String');
       }
       if (data.hasOwnProperty('placeName')) {
         obj['placeName'] = ApiClient.convertToType(data['placeName'], 'String');
       }
-      if (data.hasOwnProperty('agentId')) {
-        obj['agentId'] = ApiClient.convertToType(data['agentId'], 'String');
+      if (data.hasOwnProperty('dn')) {
+        obj['dn'] = ApiClient.convertToType(data['dn'], 'String');
       }
       if (data.hasOwnProperty('queueName')) {
         obj['queueName'] = ApiClient.convertToType(data['queueName'], 'String');
@@ -81,20 +81,20 @@
   }
 
   /**
-   * The dn (number) that should be used to login the agent.
-   * @member {String} dn
+   * agentId (switch login code) that should be used to log the agent in
+   * @member {String} agentId
    */
-  exports.prototype['dn'] = undefined;
+  exports.prototype['agentId'] = undefined;
   /**
    * The name of the place that should be used to log the agent in. Either placeName or dn must be provided.
    * @member {String} placeName
    */
   exports.prototype['placeName'] = undefined;
   /**
-   * agentId (switch login code) that should be used to log the agent in
-   * @member {String} agentId
+   * The dn (number) that should be used to login the agent.
+   * @member {String} dn
    */
-  exports.prototype['agentId'] = undefined;
+  exports.prototype['dn'] = undefined;
   /**
    * The queue name that should be used to login the agent.
    * @member {String} queueName

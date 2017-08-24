@@ -43,14 +43,14 @@
    * Constructs a new <code>UcssetcallnoteData</code>.
    * @alias module:model/UcssetcallnoteData
    * @class
-   * @param note {String} The note to be set
    * @param interactionId {String} The id of the interaction
+   * @param note {String} The note to be set
    */
-  var exports = function(note, interactionId) {
+  var exports = function(interactionId, note) {
     var _this = this;
 
-    _this['note'] = note;
     _this['interactionId'] = interactionId;
+    _this['note'] = note;
   };
 
   /**
@@ -64,26 +64,26 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('note')) {
-        obj['note'] = ApiClient.convertToType(data['note'], 'String');
-      }
       if (data.hasOwnProperty('interactionId')) {
         obj['interactionId'] = ApiClient.convertToType(data['interactionId'], 'String');
+      }
+      if (data.hasOwnProperty('note')) {
+        obj['note'] = ApiClient.convertToType(data['note'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The note to be set
-   * @member {String} note
-   */
-  exports.prototype['note'] = undefined;
-  /**
    * The id of the interaction
    * @member {String} interactionId
    */
   exports.prototype['interactionId'] = undefined;
+  /**
+   * The note to be set
+   * @member {String} note
+   */
+  exports.prototype['note'] = undefined;
 
 
 

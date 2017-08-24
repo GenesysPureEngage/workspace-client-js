@@ -48,8 +48,8 @@
   var exports = function(query) {
     var _this = this;
 
-    _this['query'] = query;
 
+    _this['query'] = query;
 
   };
 
@@ -64,19 +64,24 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('maxResults')) {
+        obj['maxResults'] = ApiClient.convertToType(data['maxResults'], 'Number');
+      }
       if (data.hasOwnProperty('query')) {
         obj['query'] = ApiClient.convertToType(data['query'], 'String');
       }
       if (data.hasOwnProperty('customAttributes')) {
         obj['customAttributes'] = ApiClient.convertToType(data['customAttributes'], ['String']);
       }
-      if (data.hasOwnProperty('maxResults')) {
-        obj['maxResults'] = ApiClient.convertToType(data['maxResults'], 'Number');
-      }
     }
     return obj;
   }
 
+  /**
+   * The maximum number of contacts to be returned
+   * @member {Number} maxResults
+   */
+  exports.prototype['maxResults'] = undefined;
   /**
    * The query to do the lucene search for contacts
    * @member {String} query
@@ -87,11 +92,6 @@
    * @member {Array.<String>} customAttributes
    */
   exports.prototype['customAttributes'] = undefined;
-  /**
-   * The maximum number of contacts to be returned
-   * @member {Number} maxResults
-   */
-  exports.prototype['maxResults'] = undefined;
 
 
 

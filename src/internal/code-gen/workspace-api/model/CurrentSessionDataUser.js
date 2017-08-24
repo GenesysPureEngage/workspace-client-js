@@ -49,11 +49,11 @@
   var exports = function(userName, employeeId) {
     var _this = this;
 
+
+
+
     _this['userName'] = userName;
-
     _this['employeeId'] = employeeId;
-
-
 
 
 
@@ -71,73 +71,73 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('userName')) {
-        obj['userName'] = ApiClient.convertToType(data['userName'], 'String');
-      }
-      if (data.hasOwnProperty('userProperties')) {
-        obj['userProperties'] = ApiClient.convertToType(data['userProperties'], [Kvpair]);
-      }
-      if (data.hasOwnProperty('employeeId')) {
-        obj['employeeId'] = ApiClient.convertToType(data['employeeId'], 'String');
+      if (data.hasOwnProperty('dbid')) {
+        obj['dbid'] = ApiClient.convertToType(data['dbid'], 'Number');
       }
       if (data.hasOwnProperty('firstName')) {
         obj['firstName'] = ApiClient.convertToType(data['firstName'], 'String');
       }
-      if (data.hasOwnProperty('dbid')) {
-        obj['dbid'] = ApiClient.convertToType(data['dbid'], 'Number');
+      if (data.hasOwnProperty('lastName')) {
+        obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
       }
-      if (data.hasOwnProperty('activeSession')) {
-        obj['activeSession'] = CurrentSessionDataUserActiveSession.constructFromObject(data['activeSession']);
+      if (data.hasOwnProperty('userName')) {
+        obj['userName'] = ApiClient.convertToType(data['userName'], 'String');
+      }
+      if (data.hasOwnProperty('employeeId')) {
+        obj['employeeId'] = ApiClient.convertToType(data['employeeId'], 'String');
       }
       if (data.hasOwnProperty('defaultPlace')) {
         obj['defaultPlace'] = ApiClient.convertToType(data['defaultPlace'], 'String');
       }
-      if (data.hasOwnProperty('lastName')) {
-        obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
-      }
       if (data.hasOwnProperty('agentLogin')) {
         obj['agentLogin'] = ApiClient.convertToType(data['agentLogin'], 'String');
+      }
+      if (data.hasOwnProperty('userProperties')) {
+        obj['userProperties'] = ApiClient.convertToType(data['userProperties'], [Kvpair]);
+      }
+      if (data.hasOwnProperty('activeSession')) {
+        obj['activeSession'] = CurrentSessionDataUserActiveSession.constructFromObject(data['activeSession']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} userName
+   * @member {Number} dbid
    */
-  exports.prototype['userName'] = undefined;
-  /**
-   * @member {Array.<module:model/Kvpair>} userProperties
-   */
-  exports.prototype['userProperties'] = undefined;
-  /**
-   * @member {String} employeeId
-   */
-  exports.prototype['employeeId'] = undefined;
+  exports.prototype['dbid'] = undefined;
   /**
    * @member {String} firstName
    */
   exports.prototype['firstName'] = undefined;
   /**
-   * @member {Number} dbid
+   * @member {String} lastName
    */
-  exports.prototype['dbid'] = undefined;
+  exports.prototype['lastName'] = undefined;
   /**
-   * @member {module:model/CurrentSessionDataUserActiveSession} activeSession
+   * @member {String} userName
    */
-  exports.prototype['activeSession'] = undefined;
+  exports.prototype['userName'] = undefined;
+  /**
+   * @member {String} employeeId
+   */
+  exports.prototype['employeeId'] = undefined;
   /**
    * @member {String} defaultPlace
    */
   exports.prototype['defaultPlace'] = undefined;
   /**
-   * @member {String} lastName
-   */
-  exports.prototype['lastName'] = undefined;
-  /**
    * @member {String} agentLogin
    */
   exports.prototype['agentLogin'] = undefined;
+  /**
+   * @member {Array.<module:model/Kvpair>} userProperties
+   */
+  exports.prototype['userProperties'] = undefined;
+  /**
+   * @member {module:model/CurrentSessionDataUserActiveSession} activeSession
+   */
+  exports.prototype['activeSession'] = undefined;
 
 
 

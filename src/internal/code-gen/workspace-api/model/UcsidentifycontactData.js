@@ -43,17 +43,17 @@
    * Constructs a new <code>UcsidentifycontactData</code>.
    * @alias module:model/UcsidentifycontactData
    * @class
-   * @param userData {Array.<module:model/Kvpair>} A key/value pairs list of the user data of the call.
    * @param mediaType {String} The media type of the interaction
+   * @param userData {Array.<module:model/Kvpair>} A key/value pairs list of the user data of the call.
    */
-  var exports = function(userData, mediaType) {
+  var exports = function(mediaType, userData) {
     var _this = this;
 
 
-    _this['userData'] = userData;
-
     _this['mediaType'] = mediaType;
 
+
+    _this['userData'] = userData;
   };
 
   /**
@@ -67,25 +67,40 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('createContactEnabled')) {
+        obj['createContactEnabled'] = ApiClient.convertToType(data['createContactEnabled'], 'Boolean');
+      }
+      if (data.hasOwnProperty('mediaType')) {
+        obj['mediaType'] = ApiClient.convertToType(data['mediaType'], 'String');
+      }
+      if (data.hasOwnProperty('phoneNumber')) {
+        obj['phoneNumber'] = ApiClient.convertToType(data['phoneNumber'], 'String');
+      }
       if (data.hasOwnProperty('emailAddress')) {
         obj['emailAddress'] = ApiClient.convertToType(data['emailAddress'], 'String');
       }
       if (data.hasOwnProperty('userData')) {
         obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
       }
-      if (data.hasOwnProperty('phoneNumber')) {
-        obj['phoneNumber'] = ApiClient.convertToType(data['phoneNumber'], 'String');
-      }
-      if (data.hasOwnProperty('mediaType')) {
-        obj['mediaType'] = ApiClient.convertToType(data['mediaType'], 'String');
-      }
-      if (data.hasOwnProperty('createContactEnabled')) {
-        obj['createContactEnabled'] = ApiClient.convertToType(data['createContactEnabled'], 'Boolean');
-      }
     }
     return obj;
   }
 
+  /**
+   * Indicates if a contact should be created if no matching contact found
+   * @member {Boolean} createContactEnabled
+   */
+  exports.prototype['createContactEnabled'] = undefined;
+  /**
+   * The media type of the interaction
+   * @member {String} mediaType
+   */
+  exports.prototype['mediaType'] = undefined;
+  /**
+   * The phone number of the interaction, if interaction is a voice call
+   * @member {String} phoneNumber
+   */
+  exports.prototype['phoneNumber'] = undefined;
   /**
    * The email address of the interaction, if interaction is an email
    * @member {String} emailAddress
@@ -96,21 +111,6 @@
    * @member {Array.<module:model/Kvpair>} userData
    */
   exports.prototype['userData'] = undefined;
-  /**
-   * The phone number of the interaction, if interaction is a voice call
-   * @member {String} phoneNumber
-   */
-  exports.prototype['phoneNumber'] = undefined;
-  /**
-   * The media type of the interaction
-   * @member {String} mediaType
-   */
-  exports.prototype['mediaType'] = undefined;
-  /**
-   * Indicates if a contact should be created if no matching contact found
-   * @member {Boolean} createContactEnabled
-   */
-  exports.prototype['createContactEnabled'] = undefined;
 
 
 

@@ -65,25 +65,37 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('displayName')) {
+        obj['displayName'] = ApiClient.convertToType(data['displayName'], 'String');
+      }
+      if (data.hasOwnProperty('description')) {
+        obj['description'] = ApiClient.convertToType(data['description'], 'String');
+      }
       if (data.hasOwnProperty('default')) {
         obj['default'] = ApiClient.convertToType(data['default'], 'Boolean');
       }
       if (data.hasOwnProperty('userProperties')) {
         obj['userProperties'] = ApiClient.convertToType(data['userProperties'], [Kvpair]);
       }
-      if (data.hasOwnProperty('displayName')) {
-        obj['displayName'] = ApiClient.convertToType(data['displayName'], 'String');
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
-      if (data.hasOwnProperty('description')) {
-        obj['description'] = ApiClient.convertToType(data['description'], 'String');
-      }
     }
     return obj;
   }
 
+  /**
+   * @member {String} name
+   */
+  exports.prototype['name'] = undefined;
+  /**
+   * @member {String} displayName
+   */
+  exports.prototype['displayName'] = undefined;
+  /**
+   * @member {String} description
+   */
+  exports.prototype['description'] = undefined;
   /**
    * @member {Boolean} default
    */
@@ -92,18 +104,6 @@
    * @member {Array.<module:model/Kvpair>} userProperties
    */
   exports.prototype['userProperties'] = undefined;
-  /**
-   * @member {String} displayName
-   */
-  exports.prototype['displayName'] = undefined;
-  /**
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
-   * @member {String} description
-   */
-  exports.prototype['description'] = undefined;
 
 
 

@@ -48,9 +48,9 @@
   var exports = function(dtmfDigits) {
     var _this = this;
 
-
-
     _this['dtmfDigits'] = dtmfDigits;
+
+
   };
 
   /**
@@ -64,19 +64,24 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('dtmfDigits')) {
+        obj['dtmfDigits'] = ApiClient.convertToType(data['dtmfDigits'], 'String');
+      }
       if (data.hasOwnProperty('reasons')) {
         obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
       }
       if (data.hasOwnProperty('extensions')) {
         obj['extensions'] = ApiClient.convertToType(data['extensions'], [Kvpair]);
       }
-      if (data.hasOwnProperty('dtmfDigits')) {
-        obj['dtmfDigits'] = ApiClient.convertToType(data['dtmfDigits'], 'String');
-      }
     }
     return obj;
   }
 
+  /**
+   * The digits that should be sent.
+   * @member {String} dtmfDigits
+   */
+  exports.prototype['dtmfDigits'] = undefined;
   /**
    * A key/value pairs list of a data structure that provides additional information associated with this action.
    * @member {Array.<module:model/Kvpair>} reasons
@@ -87,11 +92,6 @@
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;
-  /**
-   * The digits that should be sent.
-   * @member {String} dtmfDigits
-   */
-  exports.prototype['dtmfDigits'] = undefined;
 
 
 

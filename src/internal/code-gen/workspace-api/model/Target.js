@@ -70,90 +70,90 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('userName')) {
-        obj['userName'] = ApiClient.convertToType(data['userName'], 'String');
-      }
-      if (data.hasOwnProperty('employeeID')) {
-        obj['employeeID'] = ApiClient.convertToType(data['employeeID'], 'String');
-      }
-      if (data.hasOwnProperty('firstName')) {
-        obj['firstName'] = ApiClient.convertToType(data['firstName'], 'String');
-      }
       if (data.hasOwnProperty('DBID')) {
         obj['DBID'] = ApiClient.convertToType(data['DBID'], 'Number');
       }
-      if (data.hasOwnProperty('switchName')) {
-        obj['switchName'] = ApiClient.convertToType(data['switchName'], 'String');
-      }
-      if (data.hasOwnProperty('number')) {
-        obj['number'] = ApiClient.convertToType(data['number'], 'String');
-      }
-      if (data.hasOwnProperty('lastName')) {
-        obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
+      if (data.hasOwnProperty('firstName')) {
+        obj['firstName'] = ApiClient.convertToType(data['firstName'], 'String');
+      }
+      if (data.hasOwnProperty('lastName')) {
+        obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
+      }
+      if (data.hasOwnProperty('employeeID')) {
+        obj['employeeID'] = ApiClient.convertToType(data['employeeID'], 'String');
+      }
+      if (data.hasOwnProperty('userName')) {
+        obj['userName'] = ApiClient.convertToType(data['userName'], 'String');
+      }
+      if (data.hasOwnProperty('number')) {
+        obj['number'] = ApiClient.convertToType(data['number'], 'String');
+      }
+      if (data.hasOwnProperty('switchName')) {
+        obj['switchName'] = ApiClient.convertToType(data['switchName'], 'String');
+      }
       if (data.hasOwnProperty('availability')) {
         obj['availability'] = ApiClient.convertToType(data['availability'], Object);
-      }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Username - only applicable to agents.
-   * @member {String} userName
-   */
-  exports.prototype['userName'] = undefined;
-  /**
-   * Employee id - only applicable to agents.
-   * @member {String} employeeID
-   */
-  exports.prototype['employeeID'] = undefined;
-  /**
-   * First name - only applicable to agents.
-   * @member {String} firstName
-   */
-  exports.prototype['firstName'] = undefined;
-  /**
    * DBID of the object
    * @member {Number} DBID
    */
   exports.prototype['DBID'] = undefined;
   /**
-   * Only applicable to acd-queue and route-point
-   * @member {String} switchName
+   * For agents firstname and lastname (or username if neither is defined), for other types the name field is used.
+   * @member {String} name
    */
-  exports.prototype['switchName'] = undefined;
-  /**
-   * Only applicable to acd-queue and route-point
-   * @member {String} number
-   */
-  exports.prototype['number'] = undefined;
-  /**
-   * Last name - only applicable to agents.
-   * @member {String} lastName
-   */
-  exports.prototype['lastName'] = undefined;
+  exports.prototype['name'] = undefined;
   /**
    * The type of the target - agent, agent-group, acd-queue, route-point, skill or custom-contact.
    * @member {module:model/Target.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
+   * First name - only applicable to agents.
+   * @member {String} firstName
+   */
+  exports.prototype['firstName'] = undefined;
+  /**
+   * Last name - only applicable to agents.
+   * @member {String} lastName
+   */
+  exports.prototype['lastName'] = undefined;
+  /**
+   * Employee id - only applicable to agents.
+   * @member {String} employeeID
+   */
+  exports.prototype['employeeID'] = undefined;
+  /**
+   * Username - only applicable to agents.
+   * @member {String} userName
+   */
+  exports.prototype['userName'] = undefined;
+  /**
+   * Only applicable to acd-queue and route-point
+   * @member {String} number
+   */
+  exports.prototype['number'] = undefined;
+  /**
+   * Only applicable to acd-queue and route-point
+   * @member {String} switchName
+   */
+  exports.prototype['switchName'] = undefined;
+  /**
    * The structure depends on the target type. For agents, availability includes channel details. For acd-queues and route-points, waiting calls. For agent-groups, the number of ready agents.
    * @member {Object} availability
    */
   exports.prototype['availability'] = undefined;
-  /**
-   * For agents firstname and lastname (or username if neither is defined), for other types the name field is used.
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
 
 
   /**

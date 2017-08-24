@@ -43,24 +43,24 @@
    * Constructs a new <code>UcsfindorcreatephonecallData</code>.
    * @alias module:model/UcsfindorcreatephonecallData
    * @class
-   * @param status {String} The status of the call
-   * @param userData {Array.<module:model/Kvpair>} A key/value pairs list of the user data of the call.
    * @param callId {String} The id of the call
    * @param contactId {String} The id of the contact
    * @param type {String} The type of the call
+   * @param status {String} The status of the call
+   * @param userData {Array.<module:model/Kvpair>} A key/value pairs list of the user data of the call.
    */
-  var exports = function(status, userData, callId, contactId, type) {
+  var exports = function(callId, contactId, type, status, userData) {
     var _this = this;
 
-    _this['status'] = status;
-    _this['userData'] = userData;
     _this['callId'] = callId;
-
     _this['contactId'] = contactId;
-
-
     _this['type'] = type;
+    _this['status'] = status;
 
+
+
+
+    _this['userData'] = userData;
   };
 
   /**
@@ -74,20 +74,17 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = ApiClient.convertToType(data['status'], 'String');
-      }
-      if (data.hasOwnProperty('userData')) {
-        obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
-      }
       if (data.hasOwnProperty('callId')) {
         obj['callId'] = ApiClient.convertToType(data['callId'], 'String');
       }
-      if (data.hasOwnProperty('threadId')) {
-        obj['threadId'] = ApiClient.convertToType(data['threadId'], 'String');
-      }
       if (data.hasOwnProperty('contactId')) {
         obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
+      }
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'String');
       }
       if (data.hasOwnProperty('phoneNumber')) {
         obj['phoneNumber'] = ApiClient.convertToType(data['phoneNumber'], 'String');
@@ -95,41 +92,39 @@
       if (data.hasOwnProperty('parentId')) {
         obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
       }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      if (data.hasOwnProperty('threadId')) {
+        obj['threadId'] = ApiClient.convertToType(data['threadId'], 'String');
       }
       if (data.hasOwnProperty('subject')) {
         obj['subject'] = ApiClient.convertToType(data['subject'], 'String');
+      }
+      if (data.hasOwnProperty('userData')) {
+        obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
       }
     }
     return obj;
   }
 
   /**
-   * The status of the call
-   * @member {String} status
-   */
-  exports.prototype['status'] = undefined;
-  /**
-   * A key/value pairs list of the user data of the call.
-   * @member {Array.<module:model/Kvpair>} userData
-   */
-  exports.prototype['userData'] = undefined;
-  /**
    * The id of the call
    * @member {String} callId
    */
   exports.prototype['callId'] = undefined;
   /**
-   * The thread id
-   * @member {String} threadId
-   */
-  exports.prototype['threadId'] = undefined;
-  /**
    * The id of the contact
    * @member {String} contactId
    */
   exports.prototype['contactId'] = undefined;
+  /**
+   * The type of the call
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * The status of the call
+   * @member {String} status
+   */
+  exports.prototype['status'] = undefined;
   /**
    * The phone number of the call
    * @member {String} phoneNumber
@@ -141,15 +136,20 @@
    */
   exports.prototype['parentId'] = undefined;
   /**
-   * The type of the call
-   * @member {String} type
+   * The thread id
+   * @member {String} threadId
    */
-  exports.prototype['type'] = undefined;
+  exports.prototype['threadId'] = undefined;
   /**
    * The subject of the call
    * @member {String} subject
    */
   exports.prototype['subject'] = undefined;
+  /**
+   * A key/value pairs list of the user data of the call.
+   * @member {Array.<module:model/Kvpair>} userData
+   */
+  exports.prototype['userData'] = undefined;
 
 
 

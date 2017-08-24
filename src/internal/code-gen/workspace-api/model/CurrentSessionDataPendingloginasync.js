@@ -43,15 +43,15 @@
    * Constructs a new <code>CurrentSessionDataPendingloginasync</code>.
    * @alias module:model/CurrentSessionDataPendingloginasync
    * @class
-   * @param actualWaitTime {Number} 
    * @param state {module:model/CurrentSessionDataPendingloginasync.StateEnum} 
+   * @param actualWaitTime {Number} 
    * @param submittedAt {String} 
    */
-  var exports = function(actualWaitTime, state, submittedAt) {
+  var exports = function(state, actualWaitTime, submittedAt) {
     var _this = this;
 
-    _this['actualWaitTime'] = actualWaitTime;
     _this['state'] = state;
+    _this['actualWaitTime'] = actualWaitTime;
     _this['submittedAt'] = submittedAt;
 
   };
@@ -67,11 +67,11 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('actualWaitTime')) {
-        obj['actualWaitTime'] = ApiClient.convertToType(data['actualWaitTime'], 'Number');
-      }
       if (data.hasOwnProperty('state')) {
         obj['state'] = ApiClient.convertToType(data['state'], 'String');
+      }
+      if (data.hasOwnProperty('actualWaitTime')) {
+        obj['actualWaitTime'] = ApiClient.convertToType(data['actualWaitTime'], 'Number');
       }
       if (data.hasOwnProperty('submittedAt')) {
         obj['submittedAt'] = ApiClient.convertToType(data['submittedAt'], 'String');
@@ -84,13 +84,13 @@
   }
 
   /**
-   * @member {Number} actualWaitTime
-   */
-  exports.prototype['actualWaitTime'] = undefined;
-  /**
    * @member {module:model/CurrentSessionDataPendingloginasync.StateEnum} state
    */
   exports.prototype['state'] = undefined;
+  /**
+   * @member {Number} actualWaitTime
+   */
+  exports.prototype['actualWaitTime'] = undefined;
   /**
    * @member {String} submittedAt
    */

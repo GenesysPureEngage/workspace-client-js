@@ -62,26 +62,26 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
-      }
       if (data.hasOwnProperty('code')) {
         obj['code'] = ApiClient.convertToType(data['code'], 'Number');
+      }
+      if (data.hasOwnProperty('message')) {
+        obj['message'] = ApiClient.convertToType(data['message'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.
-   * @member {String} message
-   */
-  exports.prototype['message'] = undefined;
-  /**
    * On error will provide a code that can be used to get more detail about the error.
    * @member {Number} code
    */
   exports.prototype['code'] = undefined;
+  /**
+   * On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.
+   * @member {String} message
+   */
+  exports.prototype['message'] = undefined;
 
 
 

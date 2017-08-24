@@ -49,8 +49,8 @@
     var _this = this;
 
 
-    _this['query'] = query;
 
+    _this['query'] = query;
 
   };
 
@@ -65,42 +65,42 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('contactAttributes')) {
-        obj['contactAttributes'] = ApiClient.convertToType(data['contactAttributes'], ['String']);
-      }
-      if (data.hasOwnProperty('query')) {
-        obj['query'] = ApiClient.convertToType(data['query'], 'String');
+      if (data.hasOwnProperty('maxResults')) {
+        obj['maxResults'] = ApiClient.convertToType(data['maxResults'], 'Number');
       }
       if (data.hasOwnProperty('searchMyHistory')) {
         obj['searchMyHistory'] = ApiClient.convertToType(data['searchMyHistory'], 'Boolean');
       }
-      if (data.hasOwnProperty('maxResults')) {
-        obj['maxResults'] = ApiClient.convertToType(data['maxResults'], 'Number');
+      if (data.hasOwnProperty('query')) {
+        obj['query'] = ApiClient.convertToType(data['query'], 'String');
+      }
+      if (data.hasOwnProperty('contactAttributes')) {
+        obj['contactAttributes'] = ApiClient.convertToType(data['contactAttributes'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * The list of contact attributes to be returned for each contact in response
-   * @member {Array.<String>} contactAttributes
+   * The maximum number of contacts to be returned
+   * @member {Number} maxResults
    */
-  exports.prototype['contactAttributes'] = undefined;
-  /**
-   * The query to do the lucene search for contacts
-   * @member {String} query
-   */
-  exports.prototype['query'] = undefined;
+  exports.prototype['maxResults'] = undefined;
   /**
    * Indicates if the search is performed among the history of interactions of the logged in agent
    * @member {Boolean} searchMyHistory
    */
   exports.prototype['searchMyHistory'] = undefined;
   /**
-   * The maximum number of contacts to be returned
-   * @member {Number} maxResults
+   * The query to do the lucene search for contacts
+   * @member {String} query
    */
-  exports.prototype['maxResults'] = undefined;
+  exports.prototype['query'] = undefined;
+  /**
+   * The list of contact attributes to be returned for each contact in response
+   * @member {Array.<String>} contactAttributes
+   */
+  exports.prototype['contactAttributes'] = undefined;
 
 
 

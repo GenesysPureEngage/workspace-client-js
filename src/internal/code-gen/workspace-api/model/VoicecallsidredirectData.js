@@ -48,8 +48,8 @@
   var exports = function(destination) {
     var _this = this;
 
-
     _this['destination'] = destination;
+
 
   };
 
@@ -64,11 +64,11 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('reasons')) {
-        obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
-      }
       if (data.hasOwnProperty('destination')) {
         obj['destination'] = ApiClient.convertToType(data['destination'], 'String');
+      }
+      if (data.hasOwnProperty('reasons')) {
+        obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
       }
       if (data.hasOwnProperty('extensions')) {
         obj['extensions'] = ApiClient.convertToType(data['extensions'], [Kvpair]);
@@ -78,15 +78,15 @@
   }
 
   /**
-   * A key/value pairs list of a data structure that provides additional information associated with this action.
-   * @member {Array.<module:model/Kvpair>} reasons
-   */
-  exports.prototype['reasons'] = undefined;
-  /**
    * The other main Directory Number (which your application did not register) involved in this request or event. For instance, the DN of the main party of the call.
    * @member {String} destination
    */
   exports.prototype['destination'] = undefined;
+  /**
+   * A key/value pairs list of a data structure that provides additional information associated with this action.
+   * @member {Array.<module:model/Kvpair>} reasons
+   */
+  exports.prototype['reasons'] = undefined;
   /**
    * A key/value pairs list of additional data.
    * @member {Array.<module:model/Kvpair>} extensions

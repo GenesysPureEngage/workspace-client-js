@@ -48,9 +48,9 @@
   var exports = function(heldConnId) {
     var _this = this;
 
-
-
     _this['heldConnId'] = heldConnId;
+
+
   };
 
   /**
@@ -64,19 +64,24 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('heldConnId')) {
+        obj['heldConnId'] = ApiClient.convertToType(data['heldConnId'], 'String');
+      }
       if (data.hasOwnProperty('reasons')) {
         obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
       }
       if (data.hasOwnProperty('extensions')) {
         obj['extensions'] = ApiClient.convertToType(data['extensions'], [Kvpair]);
       }
-      if (data.hasOwnProperty('heldConnId')) {
-        obj['heldConnId'] = ApiClient.convertToType(data['heldConnId'], 'String');
-      }
     }
     return obj;
   }
 
+  /**
+   * ConnId of the held call that should be retrieved.
+   * @member {String} heldConnId
+   */
+  exports.prototype['heldConnId'] = undefined;
   /**
    * A key/value pairs list of a data structure that provides additional information associated with this action.
    * @member {Array.<module:model/Kvpair>} reasons
@@ -87,11 +92,6 @@
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;
-  /**
-   * ConnId of the held call that should be retrieved.
-   * @member {String} heldConnId
-   */
-  exports.prototype['heldConnId'] = undefined;
 
 
 

@@ -63,31 +63,31 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('userProperties')) {
-        obj['userProperties'] = ApiClient.convertToType(data['userProperties'], [Kvpair]);
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
       if (data.hasOwnProperty('code')) {
         obj['code'] = ApiClient.convertToType(data['code'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('userProperties')) {
+        obj['userProperties'] = ApiClient.convertToType(data['userProperties'], [Kvpair]);
       }
     }
     return obj;
   }
 
   /**
-   * @member {Array.<module:model/Kvpair>} userProperties
+   * @member {String} name
    */
-  exports.prototype['userProperties'] = undefined;
+  exports.prototype['name'] = undefined;
   /**
    * @member {String} code
    */
   exports.prototype['code'] = undefined;
   /**
-   * @member {String} name
+   * @member {Array.<module:model/Kvpair>} userProperties
    */
-  exports.prototype['name'] = undefined;
+  exports.prototype['userProperties'] = undefined;
 
 
 

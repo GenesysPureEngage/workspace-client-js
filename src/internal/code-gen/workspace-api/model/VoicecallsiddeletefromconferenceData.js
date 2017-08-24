@@ -48,9 +48,9 @@
   var exports = function(dnToDrop) {
     var _this = this;
 
-
-
     _this['dnToDrop'] = dnToDrop;
+
+
   };
 
   /**
@@ -64,19 +64,24 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('dnToDrop')) {
+        obj['dnToDrop'] = ApiClient.convertToType(data['dnToDrop'], 'String');
+      }
       if (data.hasOwnProperty('reasons')) {
         obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
       }
       if (data.hasOwnProperty('extensions')) {
         obj['extensions'] = ApiClient.convertToType(data['extensions'], [Kvpair]);
       }
-      if (data.hasOwnProperty('dnToDrop')) {
-        obj['dnToDrop'] = ApiClient.convertToType(data['dnToDrop'], 'String');
-      }
     }
     return obj;
   }
 
+  /**
+   * The party to be deleted from the conference
+   * @member {String} dnToDrop
+   */
+  exports.prototype['dnToDrop'] = undefined;
   /**
    * A key/value pairs list of a data structure that provides additional information associated with this action.
    * @member {Array.<module:model/Kvpair>} reasons
@@ -87,11 +92,6 @@
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;
-  /**
-   * The party to be deleted from the conference
-   * @member {String} dnToDrop
-   */
-  exports.prototype['dnToDrop'] = undefined;
 
 
 

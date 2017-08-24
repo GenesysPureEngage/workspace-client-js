@@ -43,14 +43,14 @@
    * Constructs a new <code>TargetsrecentsaddData</code>.
    * @alias module:model/TargetsrecentsaddData
    * @class
-   * @param recentInformation {module:model/RecentData} data about recent interaction with the target
    * @param target {module:model/TargetInformation} The recent target
+   * @param recentInformation {module:model/RecentData} data about recent interaction with the target
    */
-  var exports = function(recentInformation, target) {
+  var exports = function(target, recentInformation) {
     var _this = this;
 
-    _this['recentInformation'] = recentInformation;
     _this['target'] = target;
+    _this['recentInformation'] = recentInformation;
   };
 
   /**
@@ -64,26 +64,26 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('recentInformation')) {
-        obj['recentInformation'] = RecentData.constructFromObject(data['recentInformation']);
-      }
       if (data.hasOwnProperty('target')) {
         obj['target'] = TargetInformation.constructFromObject(data['target']);
+      }
+      if (data.hasOwnProperty('recentInformation')) {
+        obj['recentInformation'] = RecentData.constructFromObject(data['recentInformation']);
       }
     }
     return obj;
   }
 
   /**
-   * data about recent interaction with the target
-   * @member {module:model/RecentData} recentInformation
-   */
-  exports.prototype['recentInformation'] = undefined;
-  /**
    * The recent target
    * @member {module:model/TargetInformation} target
    */
   exports.prototype['target'] = undefined;
+  /**
+   * data about recent interaction with the target
+   * @member {module:model/RecentData} recentInformation
+   */
+  exports.prototype['recentInformation'] = undefined;
 
 
 

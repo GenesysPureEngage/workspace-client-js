@@ -63,19 +63,23 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('actionCodes')) {
+        obj['actionCodes'] = ApiClient.convertToType(data['actionCodes'], [ConfigResponseDataActionCodes]);
+      }
       if (data.hasOwnProperty('transactions')) {
         obj['transactions'] = ApiClient.convertToType(data['transactions'], [ConfigResponseDataTransactions]);
       }
       if (data.hasOwnProperty('businessAttributes')) {
         obj['businessAttributes'] = ApiClient.convertToType(data['businessAttributes'], [ConfigResponseDataBusinessAttributes]);
       }
-      if (data.hasOwnProperty('actionCodes')) {
-        obj['actionCodes'] = ApiClient.convertToType(data['actionCodes'], [ConfigResponseDataActionCodes]);
-      }
     }
     return obj;
   }
 
+  /**
+   * @member {Array.<module:model/ConfigResponseDataActionCodes>} actionCodes
+   */
+  exports.prototype['actionCodes'] = undefined;
   /**
    * @member {Array.<module:model/ConfigResponseDataTransactions>} transactions
    */
@@ -84,10 +88,6 @@
    * @member {Array.<module:model/ConfigResponseDataBusinessAttributes>} businessAttributes
    */
   exports.prototype['businessAttributes'] = undefined;
-  /**
-   * @member {Array.<module:model/ConfigResponseDataActionCodes>} actionCodes
-   */
-  exports.prototype['actionCodes'] = undefined;
 
 
 

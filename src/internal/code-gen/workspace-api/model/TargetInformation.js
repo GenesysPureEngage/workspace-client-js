@@ -66,28 +66,36 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('firstName')) {
-        obj['firstName'] = ApiClient.convertToType(data['firstName'], 'String');
-      }
-      if (data.hasOwnProperty('lastName')) {
-        obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
-      }
-      if (data.hasOwnProperty('numbers')) {
-        obj['numbers'] = ApiClient.convertToType(data['numbers'], ['String']);
-      }
-      if (data.hasOwnProperty('emailAddresses')) {
-        obj['emailAddresses'] = ApiClient.convertToType(data['emailAddresses'], ['String']);
-      }
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
+      if (data.hasOwnProperty('firstName')) {
+        obj['firstName'] = ApiClient.convertToType(data['firstName'], 'String');
+      }
+      if (data.hasOwnProperty('lastName')) {
+        obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
+      }
+      if (data.hasOwnProperty('emailAddresses')) {
+        obj['emailAddresses'] = ApiClient.convertToType(data['emailAddresses'], ['String']);
+      }
+      if (data.hasOwnProperty('numbers')) {
+        obj['numbers'] = ApiClient.convertToType(data['numbers'], ['String']);
+      }
     }
     return obj;
   }
 
+  /**
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * @member {String} id
+   */
+  exports.prototype['id'] = undefined;
   /**
    * @member {String} firstName
    */
@@ -97,21 +105,13 @@
    */
   exports.prototype['lastName'] = undefined;
   /**
-   * @member {Array.<String>} numbers
-   */
-  exports.prototype['numbers'] = undefined;
-  /**
    * @member {Array.<String>} emailAddresses
    */
   exports.prototype['emailAddresses'] = undefined;
   /**
-   * @member {String} type
+   * @member {Array.<String>} numbers
    */
-  exports.prototype['type'] = undefined;
-  /**
-   * @member {String} id
-   */
-  exports.prototype['id'] = undefined;
+  exports.prototype['numbers'] = undefined;
 
 
 

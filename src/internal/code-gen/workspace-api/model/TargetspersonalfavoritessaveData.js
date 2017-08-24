@@ -43,14 +43,14 @@
    * Constructs a new <code>TargetspersonalfavoritessaveData</code>.
    * @alias module:model/TargetspersonalfavoritessaveData
    * @class
-   * @param category {String} category of the favorite target
    * @param target {module:model/TargetInformation} The personal favorite target
+   * @param category {String} category of the favorite target
    */
-  var exports = function(category, target) {
+  var exports = function(target, category) {
     var _this = this;
 
-    _this['category'] = category;
     _this['target'] = target;
+    _this['category'] = category;
   };
 
   /**
@@ -64,26 +64,26 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('category')) {
-        obj['category'] = ApiClient.convertToType(data['category'], 'String');
-      }
       if (data.hasOwnProperty('target')) {
         obj['target'] = TargetInformation.constructFromObject(data['target']);
+      }
+      if (data.hasOwnProperty('category')) {
+        obj['category'] = ApiClient.convertToType(data['category'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * category of the favorite target
-   * @member {String} category
-   */
-  exports.prototype['category'] = undefined;
-  /**
    * The personal favorite target
    * @member {module:model/TargetInformation} target
    */
   exports.prototype['target'] = undefined;
+  /**
+   * category of the favorite target
+   * @member {String} category
+   */
+  exports.prototype['category'] = undefined;
 
 
 

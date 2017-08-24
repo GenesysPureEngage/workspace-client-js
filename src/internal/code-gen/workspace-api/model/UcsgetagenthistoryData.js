@@ -65,17 +65,17 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('sort')) {
-        obj['sort'] = ApiClient.convertToType(data['sort'], 'String');
-      }
-      if (data.hasOwnProperty('toDate')) {
-        obj['toDate'] = ApiClient.convertToType(data['toDate'], 'String');
-      }
       if (data.hasOwnProperty('customAttributes')) {
         obj['customAttributes'] = ApiClient.convertToType(data['customAttributes'], ['String']);
       }
+      if (data.hasOwnProperty('sort')) {
+        obj['sort'] = ApiClient.convertToType(data['sort'], 'String');
+      }
       if (data.hasOwnProperty('fromDate')) {
         obj['fromDate'] = ApiClient.convertToType(data['fromDate'], 'String');
+      }
+      if (data.hasOwnProperty('toDate')) {
+        obj['toDate'] = ApiClient.convertToType(data['toDate'], 'String');
       }
       if (data.hasOwnProperty('userId')) {
         obj['userId'] = ApiClient.convertToType(data['userId'], 'String');
@@ -85,25 +85,25 @@
   }
 
   /**
-   * The sorting order (desc or asc)
-   * @member {String} sort
-   */
-  exports.prototype['sort'] = undefined;
-  /**
-   * The date to which the interactions should be retrieved (UCS format)
-   * @member {String} toDate
-   */
-  exports.prototype['toDate'] = undefined;
-  /**
    * The list of custom contact attributes to be returned for each interaction
    * @member {Array.<String>} customAttributes
    */
   exports.prototype['customAttributes'] = undefined;
   /**
+   * The sorting order (desc or asc)
+   * @member {String} sort
+   */
+  exports.prototype['sort'] = undefined;
+  /**
    * The date from which the interactions should be retrieved (UCS format)
    * @member {String} fromDate
    */
   exports.prototype['fromDate'] = undefined;
+  /**
+   * The date to which the interactions should be retrieved (UCS format)
+   * @member {String} toDate
+   */
+  exports.prototype['toDate'] = undefined;
   /**
    * The id of the agent for which the interactions should be retrieved (if not set, current user is used)
    * @member {String} userId

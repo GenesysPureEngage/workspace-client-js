@@ -64,42 +64,42 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('agentWorkMode')) {
-        obj['agentWorkMode'] = ApiClient.convertToType(data['agentWorkMode'], 'String');
-      }
       if (data.hasOwnProperty('reasonCode')) {
         obj['reasonCode'] = ApiClient.convertToType(data['reasonCode'], 'String');
       }
-      if (data.hasOwnProperty('extensions')) {
-        obj['extensions'] = ApiClient.convertToType(data['extensions'], [Kvpair]);
+      if (data.hasOwnProperty('agentWorkMode')) {
+        obj['agentWorkMode'] = ApiClient.convertToType(data['agentWorkMode'], 'String');
       }
       if (data.hasOwnProperty('reasons')) {
         obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
+      }
+      if (data.hasOwnProperty('extensions')) {
+        obj['extensions'] = ApiClient.convertToType(data['extensions'], [Kvpair]);
       }
     }
     return obj;
   }
 
   /**
-   * the agent workmode.
-   * @member {module:model/VoicenotreadyData.AgentWorkModeEnum} agentWorkMode
-   */
-  exports.prototype['agentWorkMode'] = undefined;
-  /**
    * the reason code
    * @member {String} reasonCode
    */
   exports.prototype['reasonCode'] = undefined;
   /**
-   * A key/value pairs list of additional data.
-   * @member {Array.<module:model/Kvpair>} extensions
+   * the agent workmode.
+   * @member {module:model/VoicenotreadyData.AgentWorkModeEnum} agentWorkMode
    */
-  exports.prototype['extensions'] = undefined;
+  exports.prototype['agentWorkMode'] = undefined;
   /**
    * A key/value pairs list of a data structure that provides additional information associated with this action.
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
+  /**
+   * A key/value pairs list of additional data.
+   * @member {Array.<module:model/Kvpair>} extensions
+   */
+  exports.prototype['extensions'] = undefined;
 
 
   /**

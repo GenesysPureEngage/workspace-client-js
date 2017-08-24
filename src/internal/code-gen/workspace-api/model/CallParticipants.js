@@ -62,24 +62,24 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('role')) {
-        obj['role'] = ApiClient.convertToType(data['role'], 'String');
-      }
       if (data.hasOwnProperty('number')) {
         obj['number'] = ApiClient.convertToType(data['number'], 'String');
+      }
+      if (data.hasOwnProperty('role')) {
+        obj['role'] = ApiClient.convertToType(data['role'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} role
-   */
-  exports.prototype['role'] = undefined;
-  /**
    * @member {String} number
    */
   exports.prototype['number'] = undefined;
+  /**
+   * @member {String} role
+   */
+  exports.prototype['role'] = undefined;
 
 
 

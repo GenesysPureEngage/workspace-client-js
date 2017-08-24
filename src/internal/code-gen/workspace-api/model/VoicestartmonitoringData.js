@@ -48,8 +48,8 @@
   var exports = function(phoneNumberToMonitor) {
     var _this = this;
 
-
     _this['phoneNumberToMonitor'] = phoneNumberToMonitor;
+
 
 
 
@@ -66,68 +66,51 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('location')) {
-        obj['location'] = ApiClient.convertToType(data['location'], 'String');
-      }
       if (data.hasOwnProperty('phoneNumberToMonitor')) {
         obj['phoneNumberToMonitor'] = ApiClient.convertToType(data['phoneNumberToMonitor'], 'String');
-      }
-      if (data.hasOwnProperty('monitoringNextCallType')) {
-        obj['monitoringNextCallType'] = ApiClient.convertToType(data['monitoringNextCallType'], 'String');
       }
       if (data.hasOwnProperty('monitoringMode')) {
         obj['monitoringMode'] = ApiClient.convertToType(data['monitoringMode'], 'String');
       }
+      if (data.hasOwnProperty('monitoringNextCallType')) {
+        obj['monitoringNextCallType'] = ApiClient.convertToType(data['monitoringNextCallType'], 'String');
+      }
       if (data.hasOwnProperty('monitoringScope')) {
         obj['monitoringScope'] = ApiClient.convertToType(data['monitoringScope'], 'String');
+      }
+      if (data.hasOwnProperty('location')) {
+        obj['location'] = ApiClient.convertToType(data['location'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The switch name where the phone number to be monitored is located (optional)
-   * @member {String} location
-   */
-  exports.prototype['location'] = undefined;
-  /**
    * The phone number that should be monitored
    * @member {String} phoneNumberToMonitor
    */
   exports.prototype['phoneNumberToMonitor'] = undefined;
-  /**
-   * The monitoring call type (NextCall/AllCalls).
-   * @member {module:model/VoicestartmonitoringData.MonitoringNextCallTypeEnum} monitoringNextCallType
-   */
-  exports.prototype['monitoringNextCallType'] = undefined;
   /**
    * The monitoring mode (Mute,Coach)
    * @member {module:model/VoicestartmonitoringData.MonitoringModeEnum} monitoringMode
    */
   exports.prototype['monitoringMode'] = undefined;
   /**
+   * The monitoring call type (NextCall/AllCalls).
+   * @member {module:model/VoicestartmonitoringData.MonitoringNextCallTypeEnum} monitoringNextCallType
+   */
+  exports.prototype['monitoringNextCallType'] = undefined;
+  /**
    * The monitoring scope (Call/Agent).
    * @member {module:model/VoicestartmonitoringData.MonitoringScopeEnum} monitoringScope
    */
   exports.prototype['monitoringScope'] = undefined;
-
-
   /**
-   * Allowed values for the <code>monitoringNextCallType</code> property.
-   * @enum {String}
-   * @readonly
+   * The switch name where the phone number to be monitored is located (optional)
+   * @member {String} location
    */
-  exports.MonitoringNextCallTypeEnum = {
-    /**
-     * value: "OneCall"
-     * @const
-     */
-    "OneCall": "OneCall",
-    /**
-     * value: "AllCalls"
-     * @const
-     */
-    "AllCalls": "AllCalls"  };
+  exports.prototype['location'] = undefined;
+
 
   /**
    * Allowed values for the <code>monitoringMode</code> property.
@@ -145,6 +128,23 @@
      * @const
      */
     "Coach": "Coach"  };
+
+  /**
+   * Allowed values for the <code>monitoringNextCallType</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.MonitoringNextCallTypeEnum = {
+    /**
+     * value: "OneCall"
+     * @const
+     */
+    "OneCall": "OneCall",
+    /**
+     * value: "AllCalls"
+     * @const
+     */
+    "AllCalls": "AllCalls"  };
 
   /**
    * Allowed values for the <code>monitoringScope</code> property.

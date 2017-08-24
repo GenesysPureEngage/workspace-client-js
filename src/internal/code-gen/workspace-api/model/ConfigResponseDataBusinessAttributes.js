@@ -65,45 +65,45 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('userProperties')) {
-        obj['userProperties'] = ApiClient.convertToType(data['userProperties'], [Kvpair]);
-      }
-      if (data.hasOwnProperty('values')) {
-        obj['values'] = ApiClient.convertToType(data['values'], [ConfigResponseDataValues]);
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
       if (data.hasOwnProperty('displayName')) {
         obj['displayName'] = ApiClient.convertToType(data['displayName'], 'String');
       }
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
-      }
       if (data.hasOwnProperty('description')) {
         obj['description'] = ApiClient.convertToType(data['description'], 'String');
+      }
+      if (data.hasOwnProperty('values')) {
+        obj['values'] = ApiClient.convertToType(data['values'], [ConfigResponseDataValues]);
+      }
+      if (data.hasOwnProperty('userProperties')) {
+        obj['userProperties'] = ApiClient.convertToType(data['userProperties'], [Kvpair]);
       }
     }
     return obj;
   }
 
   /**
-   * @member {Array.<module:model/Kvpair>} userProperties
+   * @member {String} name
    */
-  exports.prototype['userProperties'] = undefined;
-  /**
-   * @member {Array.<module:model/ConfigResponseDataValues>} values
-   */
-  exports.prototype['values'] = undefined;
+  exports.prototype['name'] = undefined;
   /**
    * @member {String} displayName
    */
   exports.prototype['displayName'] = undefined;
   /**
-   * @member {String} name
-   */
-  exports.prototype['name'] = undefined;
-  /**
    * @member {String} description
    */
   exports.prototype['description'] = undefined;
+  /**
+   * @member {Array.<module:model/ConfigResponseDataValues>} values
+   */
+  exports.prototype['values'] = undefined;
+  /**
+   * @member {Array.<module:model/Kvpair>} userProperties
+   */
+  exports.prototype['userProperties'] = undefined;
 
 
 

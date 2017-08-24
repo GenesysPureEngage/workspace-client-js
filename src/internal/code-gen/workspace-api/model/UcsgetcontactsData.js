@@ -43,19 +43,19 @@
    * Constructs a new <code>UcsgetcontactsData</code>.
    * @alias module:model/UcsgetcontactsData
    * @class
-   * @param startIndex {Number} The start index
-   * @param maxCount {Number} The maximum number of contacts to be returned
    * @param searchCriteria {Object} The search criteria
    * @param attributeList {Array.<String>} The list of contact attributes to be returned for each contact in response
+   * @param startIndex {Number} The start index
+   * @param maxCount {Number} The maximum number of contacts to be returned
    */
-  var exports = function(startIndex, maxCount, searchCriteria, attributeList) {
+  var exports = function(searchCriteria, attributeList, startIndex, maxCount) {
     var _this = this;
 
-
-    _this['startIndex'] = startIndex;
-    _this['maxCount'] = maxCount;
     _this['searchCriteria'] = searchCriteria;
     _this['attributeList'] = attributeList;
+    _this['startIndex'] = startIndex;
+    _this['maxCount'] = maxCount;
+
   };
 
   /**
@@ -69,8 +69,11 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('sortCriteria')) {
-        obj['sortCriteria'] = ApiClient.convertToType(data['sortCriteria'], [Object]);
+      if (data.hasOwnProperty('searchCriteria')) {
+        obj['searchCriteria'] = ApiClient.convertToType(data['searchCriteria'], Object);
+      }
+      if (data.hasOwnProperty('attributeList')) {
+        obj['attributeList'] = ApiClient.convertToType(data['attributeList'], ['String']);
       }
       if (data.hasOwnProperty('startIndex')) {
         obj['startIndex'] = ApiClient.convertToType(data['startIndex'], 'Number');
@@ -78,21 +81,23 @@
       if (data.hasOwnProperty('maxCount')) {
         obj['maxCount'] = ApiClient.convertToType(data['maxCount'], 'Number');
       }
-      if (data.hasOwnProperty('searchCriteria')) {
-        obj['searchCriteria'] = ApiClient.convertToType(data['searchCriteria'], Object);
-      }
-      if (data.hasOwnProperty('attributeList')) {
-        obj['attributeList'] = ApiClient.convertToType(data['attributeList'], ['String']);
+      if (data.hasOwnProperty('sortCriteria')) {
+        obj['sortCriteria'] = ApiClient.convertToType(data['sortCriteria'], [Object]);
       }
     }
     return obj;
   }
 
   /**
-   * The sorting criteria
-   * @member {Array.<Object>} sortCriteria
+   * The search criteria
+   * @member {Object} searchCriteria
    */
-  exports.prototype['sortCriteria'] = undefined;
+  exports.prototype['searchCriteria'] = undefined;
+  /**
+   * The list of contact attributes to be returned for each contact in response
+   * @member {Array.<String>} attributeList
+   */
+  exports.prototype['attributeList'] = undefined;
   /**
    * The start index
    * @member {Number} startIndex
@@ -104,15 +109,10 @@
    */
   exports.prototype['maxCount'] = undefined;
   /**
-   * The search criteria
-   * @member {Object} searchCriteria
+   * The sorting criteria
+   * @member {Array.<Object>} sortCriteria
    */
-  exports.prototype['searchCriteria'] = undefined;
-  /**
-   * The list of contact attributes to be returned for each contact in response
-   * @member {Array.<String>} attributeList
-   */
-  exports.prototype['attributeList'] = undefined;
+  exports.prototype['sortCriteria'] = undefined;
 
 
 

@@ -64,8 +64,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('agentWorkMode')) {
-        obj['agentWorkMode'] = ApiClient.convertToType(data['agentWorkMode'], 'String');
+      if (data.hasOwnProperty('number')) {
+        obj['number'] = ApiClient.convertToType(data['number'], 'String');
       }
       if (data.hasOwnProperty('agentId')) {
         obj['agentId'] = ApiClient.convertToType(data['agentId'], 'String');
@@ -73,17 +73,17 @@
       if (data.hasOwnProperty('agentState')) {
         obj['agentState'] = ApiClient.convertToType(data['agentState'], 'String');
       }
-      if (data.hasOwnProperty('number')) {
-        obj['number'] = ApiClient.convertToType(data['number'], 'String');
+      if (data.hasOwnProperty('agentWorkMode')) {
+        obj['agentWorkMode'] = ApiClient.convertToType(data['agentWorkMode'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} agentWorkMode
+   * @member {String} number
    */
-  exports.prototype['agentWorkMode'] = undefined;
+  exports.prototype['number'] = undefined;
   /**
    * @member {String} agentId
    */
@@ -93,9 +93,9 @@
    */
   exports.prototype['agentState'] = undefined;
   /**
-   * @member {String} number
+   * @member {String} agentWorkMode
    */
-  exports.prototype['number'] = undefined;
+  exports.prototype['agentWorkMode'] = undefined;
 
 
 

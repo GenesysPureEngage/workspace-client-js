@@ -43,16 +43,16 @@
    * Constructs a new <code>UcssetcallcompletedData</code>.
    * @alias module:model/UcssetcallcompletedData
    * @class
-   * @param userData {Array.<module:model/Kvpair>} A key/value pairs list of the user data of the call.
    * @param interactionId {String} The id of the interaction
    * @param callDuration {Number} The duration of the call
+   * @param userData {Array.<module:model/Kvpair>} A key/value pairs list of the user data of the call.
    */
-  var exports = function(userData, interactionId, callDuration) {
+  var exports = function(interactionId, callDuration, userData) {
     var _this = this;
 
-    _this['userData'] = userData;
     _this['interactionId'] = interactionId;
     _this['callDuration'] = callDuration;
+    _this['userData'] = userData;
   };
 
   /**
@@ -66,24 +66,19 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('userData')) {
-        obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
-      }
       if (data.hasOwnProperty('interactionId')) {
         obj['interactionId'] = ApiClient.convertToType(data['interactionId'], 'String');
       }
       if (data.hasOwnProperty('callDuration')) {
         obj['callDuration'] = ApiClient.convertToType(data['callDuration'], 'Number');
       }
+      if (data.hasOwnProperty('userData')) {
+        obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
+      }
     }
     return obj;
   }
 
-  /**
-   * A key/value pairs list of the user data of the call.
-   * @member {Array.<module:model/Kvpair>} userData
-   */
-  exports.prototype['userData'] = undefined;
   /**
    * The id of the interaction
    * @member {String} interactionId
@@ -94,6 +89,11 @@
    * @member {Number} callDuration
    */
   exports.prototype['callDuration'] = undefined;
+  /**
+   * A key/value pairs list of the user data of the call.
+   * @member {Array.<module:model/Kvpair>} userData
+   */
+  exports.prototype['userData'] = undefined;
 
 
 

@@ -48,8 +48,8 @@
   var exports = function(contactId) {
     var _this = this;
 
-
     _this['contactId'] = contactId;
+
 
 
   };
@@ -65,42 +65,42 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('toDate')) {
-        obj['toDate'] = ApiClient.convertToType(data['toDate'], 'String');
-      }
       if (data.hasOwnProperty('contactId')) {
         obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
+      }
+      if (data.hasOwnProperty('customAttributes')) {
+        obj['customAttributes'] = ApiClient.convertToType(data['customAttributes'], ['String']);
       }
       if (data.hasOwnProperty('fromDate')) {
         obj['fromDate'] = ApiClient.convertToType(data['fromDate'], 'String');
       }
-      if (data.hasOwnProperty('customAttributes')) {
-        obj['customAttributes'] = ApiClient.convertToType(data['customAttributes'], ['String']);
+      if (data.hasOwnProperty('toDate')) {
+        obj['toDate'] = ApiClient.convertToType(data['toDate'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The date to which the interactions should be retrieved (UCS format)
-   * @member {String} toDate
-   */
-  exports.prototype['toDate'] = undefined;
-  /**
    * The id of the contact
    * @member {String} contactId
    */
   exports.prototype['contactId'] = undefined;
+  /**
+   * The list of custom contact attributes to be returned for each interaction of the contact
+   * @member {Array.<String>} customAttributes
+   */
+  exports.prototype['customAttributes'] = undefined;
   /**
    * The date from which the interactions should be retrieved (UCS format)
    * @member {String} fromDate
    */
   exports.prototype['fromDate'] = undefined;
   /**
-   * The list of custom contact attributes to be returned for each interaction of the contact
-   * @member {Array.<String>} customAttributes
+   * The date to which the interactions should be retrieved (UCS format)
+   * @member {String} toDate
    */
-  exports.prototype['customAttributes'] = undefined;
+  exports.prototype['toDate'] = undefined;
 
 
 
