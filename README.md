@@ -2,7 +2,7 @@
 A Workspace API client library for Node.js.
 
 # Examples
-There are several examples available for nodejs:
+The following Workspace API tutorials demonstrate some ways you can use this client library:
 
 * [Changing agent state](https://github.com/GenesysPureEngage/tutorials/tree/master/voice-ready-workspace-nodejs)
 * [Basic call control](https://github.com/GenesysPureEngage/tutorials/tree/master/basic-call-control-workspace-nodejs)
@@ -10,7 +10,7 @@ There are several examples available for nodejs:
 * [Transfers](https://github.com/GenesysPureEngage/tutorials/tree/master/transfer-call-workspace-nodejs)
 * [Alternating calls](https://github.com/GenesysPureEngage/tutorials/tree/master/alternate-calls-workspace-nodejs)
 
-There is also a [Console Sample](https://github.com/GenesysPureEngage/console-agent-app-js) that provides a command line to test and play with the API.
+You can also test and play with the API using the [Console Sample](https://github.com/GenesysPureEngage/console-agent-app-js).
 
 # Related Links
 * [Provisioning API client library for Node.js](https://github.com/GenesysPureEngage/provisioning-client-js)
@@ -24,14 +24,14 @@ There is also a [Console Sample](https://github.com/GenesysPureEngage/console-ag
 ```javascript
 let WorkspaceApi = require('genesys-workspace-client-js');
 
-// Create a new instance providing the url and api key.
+// Create a new instance providing the URL and API key.
 let api = new WorkspaceApi(baseUrl, apiKey);
 
-// Register handlers to run on DN and call related events
+// Register handlers to run on DN and call-related events
 api.on('CallStateChanged', msg => { console.log('CallStateChanged!', msg.call); });
 api.on('DnStateChanged', msg => { console.log('DnStateChanged!', msg.dn); });
 
-// Initialize the API providing authCode. See the OAuth2 section for more details.
+// Initialize the API providing the authCode. See the OAuth2 section for more details.
 await api.initialize({code: authCode, redirectUri: redirectUri});
 
 // After the API is initialized, user details are available.
@@ -42,18 +42,20 @@ let defaultPlace = api.user.defaultPlace;
 
 ## Activating the Voice Channel
 
-After the API has been initialized, the next step is to activate the voice channel. 
+After initializing the API, next activate the voice channel. 
 
 ```javascript
 // Activate the voice channel providing the agentId
 // and dn to be used for login.
 api.activateChannels(agentId, dn);
 
-// After the process completes a DnStateChanged message will be published.
+// After the process completes, the API publishes a DnStateChanged message.
 
 ```
 
 ## Agent State
+
+Set the agent's state on the voice channel. The API includes the standard Genesys states: Ready, NotReady, NotReady with workmode and do-not-disturb.
 
 ```javascript
 // Ready
@@ -71,6 +73,8 @@ api.voice.dndOff();
 
 
 ## Basic Call Control
+
+The Workspace API offers the typical Genesys call control capabilities.
 
 ```javascript
 // Make a new call
@@ -92,6 +96,8 @@ api.voice.sendDTMF(connId, digits);
 
 ## Conference and Transfers
 
+The API includes both single-step and two-step conferences and transfers.
+
 ```javascript
 // Two-step transfer
 api.voice.initiateTransfer(connId, destination);
@@ -111,6 +117,8 @@ api.voice.singleStepConference(connId, destination);
 
 ## UserData
 
+You can use the API to manipulate user data for the call.
+
 ```javascript
 // Attach
 api.voice.attachUserData(connId, userData);
@@ -123,6 +131,8 @@ api.voice.deleteUserDataPair(connId, key);
 ```
 
 ## Call Recording
+
+You can use the API to record voice calls.
 
 ```javascript
 // Start and stop
@@ -137,48 +147,46 @@ api.voice.resumeRecording(connId);
 
 # OAuth2
 
-The workspace API uses OAuth2 for authentication and authorization. When initializing the API, you can provide either an authorization code and redirect uri or an access token.
+The Workspace API uses OAuth2 for authentication and authorization. If you're creating a web-based agent application, Genesys recommends following the [OAuth2 authorization code grant type flow](https://tools.ietf.org/html/rfc6749#section-4.1). This means you need to provide an autorization code and redirect URI when you initialize the Workspace API. 
 
-The recommended flow for web based agent applications is the authorization code grant type. For web apps that include a server side, the UI should redirect the agent to:
+If your web app includes a server side, the UI should send the agent to:
 
 ```
 https://<host>/auth/v3/oauth/authorize?response_type=code&client_id=<client_id>&redirect_uri=http://<agent ui location>
 ```
 
-The host and client id are provided by Genesys and the agent ui location should point back to the requesting application.
+The `<host>` and `<client_id>` are provided by Genesys and the `<agent ui location>` should point back to the requesting application.
 
-The Genesys auth service will redirect the agent to the login page to enter credentials. Upon completion and authentication, the auth service will redirect the agent back to the provided uri and include the auth code as a url parameter (ex. http://my-agent-desktop/index.html?code=12345). This code can then be provided to your server side and passed on to the initialize() method of the workspace api. 
+The Genesys authorization service redirects the agent to the login page to enter credentials. After the agent is authenticated, the service redirects the agent back to the provided URI and includes the authorization code as a URL parameter (ex. http://my-agent-desktop/index.html?code=12345). You can then provide this code to your server side and pass it on to the `initialize()` method of the Workspace API. 
 
-Note that the redirect uri provided to /authorize and to the workspace api initialize() method must match or an error will be returned.
+**Note:** The redirect URI provided to `/authorize` and to the Workspace API `initialize()` method must match or an error will be returned.
 
 ### Samples
 
-Non-UI samples implement the code grant flow by including a basic authentication header with the username and password which results in a code being returned without going through the login pages. This is convenient for demonstration purposes but should not be used in production and does not support environments where saml is configured. 
-
-For more details on OAuth2 and the authorization code grant flow refer to the [RFC](https://tools.ietf.org/html/rfc6749#section-4.1).
+The non-UI samples mentioned in the "Examples" section above implement the authorization code grant flow by including a basic authentication header with the username and password, which returns a code without going through the login pages. This is convenient for demonstration purposes but should not be used in production and does not support environments where Security Assertion Markup Language (SAML) is configured. 
 
 # DN and Calls
 
-The two main resources used in the voice portion of the workspace API and calls and DNs. Their respective properties are outlined below. 
+There are two main resources used in the voice channel part of the Workspace API: DNs and calls. Their respective properties are outlined below. 
 
 ## DN 
 
-The DN or directory number is the phone number the agent is using for their session. The DN to be used is specified as a parameter to the actviateChannels() method - either directly or by giving the name of the place. After activateChannels() has been called, the api will publish events whenever there is a change in the state of the DN. This occurs when the agent moves from ready to not-ready, turns dnd on/off or sets call forwarding.
+The DN, or directory number, is the phone number the agent uses for their session. The DN is specified as a parameter to the `actviateChannels()` method - either directly or by giving the name of the place. After `activateChannels()` is called, the API publishes events whenever there is a change in the state of the DN. This occurs when the agent moves from Ready to NotReady, turns do-not-disturb on/off or sets call forwarding.
 
 The DN has the following properties:
 
 | Name          | Description                   |
 | --------------|------------------------------ |
-| number        | the dn number (phone number)  |
-| agentId       | the agent id used to login    |
-| agentState    | the current state - one of LoggedOut, LoggedIn, Ready, or NotReady |
-| workMode      | the current workmode -one of AuxWork, AfterCallWork (NotReady) or AutoIn, ManualIn (Ready) |
-| forwardTo     | the call forwarding destination, if call forwarding is set |
-| dnd           | flag denoting whether do-not-disturb is turned on |
+| number        | The DN number (phone number).  |
+| agentId       | The agent ID used to login.    |
+| agentState    | The current state - one of LoggedOut, LoggedIn, Ready, or NotReady. |
+| workMode      | The current workmode - one of AuxWork, AfterCallWork (NotReady) or AutoIn, ManualIn (Ready). |
+| forwardTo     | The call forwarding destination, if call forwarding is set. |
+| dnd           | A flag specifying whether do-not-disturb is turned on. |
 
 ### DN Events
 
-Changes to the DN state will result in a DnStateChanged message being published. In addition to publishing this event the API keeps the current state of the DN and makes it available as a property.
+When there are changes to the DN state, the Workspace API publishes a DnStateChanged message. It also keeps the current state of the DN and makes it available as a property on the message.
 
 ## Calls 
 
@@ -186,33 +194,33 @@ The call resource provides information relating to active phone calls. It has th
 
 | Name          | Description                   |
 | --------------|------------------------------ |
-| id            | the id of the call. this is the Genesys connectionId or connId and can be provided to other methods as a parameter to identify the call you want to manipulate            |
-| callUuid      | UUID of the call. This is a separate identifier that is specifically required by some requests  |
-| state         | state of the call - one of Ringing, Dialing, Established, Held, Released, or Completed. Unless specifically configured, calls are automatically completed upon release. |
-| parentConnId  | parent conn id. this is present on consult calls and identifies the call from which the conference or transfer was initiated.
-| previousConnId | previousConnId if the id has changed (as would be the case if an agent is the target of a two-step conference or transfer)
-| ani            | ani from the call |
-| dnis           | dnis from the call |
-| recordingState | call recording state, one of Stopped, Recording, Paused. If recording was never started for a call this property will be absent. |
-| participant    | a list of call participants - i.e. the phone numbers of those currently on the call |
-| userData.      | data associated with the call |
+| id            | This is the Genesys `connectionId` or `connId` and can be provided to other methods as a parameter to identify the call you want to manipulate.            |
+| callUuid      | The universally unique identifier associated with the call. This is a separate identifier that is specifically required by some requests.  |
+| state         | The state of the call - one of Ringing, Dialing, Established, Held, Released, or Completed. Unless specifically configured, calls are automatically completed upon release. |
+| parentConnId  | The parent connection ID is present on consult calls and identifies the call from which the conference or transfer was initiated.
+| previousConnId | The previous connection ID is present if the ID has changed, as would be the case if an agent is the target of a two-step conference or transfer.
+| ani            | The ANI from the call. |
+| dnis           | The DNIS from the call. |
+| recordingState | The call recording state, one of Stopped, Recording, Paused. If the recording was never started for a call this property is absent. |
+| participant    | A list of call participants - i.e. the phone numbers of those currently on the call. |
+| userData      | Data associated with the call. |
 
 ### Call Events
 
-As with the DN, changes to call state result in publication of a CallStateChanged message. This message includes the updated call object along with some supporting details that help identify what has changed. The notificationType property is included for this purpose and can have the following values:
+As with the DN, when there are changes to the call state the Workspace API publishes a CallStateChanged message. This message includes the updated call object along with some supporting details that help identify what has changed. The `notificationType` property is included for this purpose and can have the following values:
 
 | NotificationType          | Description                   |
 | --------------|------------------------------ |
-| StateChange  | the state of the call changed. ex. Dialing -> Established |
-| ParticipantsUpdated | the list of participants was updated. ex. new party adding on completion of a conference |
-| AttachedDataChanged | the userData property was updated |
-| CallRecovered | when first connecting or reconnecting, if there are any calls in progress, they are recovered and published with this type |
+| StateChange  | The state of the call changed. For example, Dialing -> Established |
+| ParticipantsUpdated | The list of participants was updated. For example, a new party added completion of a conference. |
+| AttachedDataChanged | The userData property was updated. |
+| CallRecovered | Any calls in progress are recovered and published when first connecting or reconnecting. |
 
-Note that in addition to publishing the CallStateChanged message the workspace API keeps track of all active calls and makes them available as a property.
+**Note:** In addition to publishing the CallStateChanged message, the Workspace API keeps track of all active calls and makes them available as a property.
 
-#### Call Id Changes
+#### Call ID Changes
 
-In some scenarios, the id of the call can change. An example of this would be when an agent is the target of a two-step conference. When the call is first ringing for the agent, the consult call is assigned a new id and is separate from the original call that the conference was initiated from. When the conference is completed and all parties
-are brought together, the consult call is released and the id is changed for the target agent. The workspace API detects this scenario and will include the previousConnId property in CallStateChanged.
+In some scenarios, the ID of the call can change. For example, when an agent is the target of a two-step conference. When the call rings for the agent, the consult call is assigned a new ID that is separate from the original call where conference was initiated. When the conference is completed and all parties
+are brought together, the consult call is released and the ID is changed for the target agent. The Workspace API detects this scenario and will include the `previousConnId` property in CallStateChanged.
 
-If you are indexing calls based on id this is a hint that you need to update that index.
+If you index calls based on ID, this is a hint that you need to update that index.
