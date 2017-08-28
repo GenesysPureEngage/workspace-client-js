@@ -25,7 +25,7 @@ You can also test and play with the API using the [Console Sample](https://githu
 let WorkspaceApi = require('genesys-workspace-client-js');
 
 // Create a new instance providing the URL and API key.
-let api = new WorkspaceApi(baseUrl, apiKey);
+let api = new WorkspaceApi(apiKey, baseUrl);
 
 // Register handlers to run on DN and call-related events
 api.on('CallStateChanged', msg => { console.log('CallStateChanged!', msg.call); });
