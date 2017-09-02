@@ -1,6 +1,6 @@
 /**
  * Workspace API
- * Application API used by Workspace Web Edition
+ * Agent API
  *
  * OpenAPI spec version: 1.0.0
  *
@@ -25,7 +25,7 @@
   'use strict';
 
   /**
-   * Application_API_used_by_Workspace_Web_Edition.<br>
+   * Agent_API.<br>
    * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
