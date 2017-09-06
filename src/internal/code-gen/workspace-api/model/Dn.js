@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentSessionDataUserActiveSessionDn = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.Dn = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The CurrentSessionDataUserActiveSessionDn model module.
-   * @module model/CurrentSessionDataUserActiveSessionDn
+   * The Dn model module.
+   * @module model/Dn
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>CurrentSessionDataUserActiveSessionDn</code>.
-   * @alias module:model/CurrentSessionDataUserActiveSessionDn
+   * Constructs a new <code>Dn</code>.
+   * @alias module:model/Dn
    * @class
    */
   var exports = function() {
@@ -54,11 +54,11 @@
   };
 
   /**
-   * Constructs a <code>CurrentSessionDataUserActiveSessionDn</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Dn</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CurrentSessionDataUserActiveSessionDn} obj Optional instance to populate.
-   * @return {module:model/CurrentSessionDataUserActiveSessionDn} The populated <code>CurrentSessionDataUserActiveSessionDn</code> instance.
+   * @param {module:model/Dn} obj Optional instance to populate.
+   * @return {module:model/Dn} The populated <code>Dn</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

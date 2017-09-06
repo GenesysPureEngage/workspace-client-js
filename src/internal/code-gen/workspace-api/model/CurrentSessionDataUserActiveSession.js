@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Call', 'model/CurrentSessionDataUserActiveSessionDn'], factory);
+    define(['ApiClient', 'model/Call', 'model/Dn'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Call'), require('./CurrentSessionDataUserActiveSessionDn'));
+    module.exports = factory(require('../ApiClient'), require('./Call'), require('./Dn'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentSessionDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.CurrentSessionDataUserActiveSessionDn);
+    root.WorkspaceApi.CurrentSessionDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.Dn);
   }
-}(this, function(ApiClient, Call, CurrentSessionDataUserActiveSessionDn) {
+}(this, function(ApiClient, Call, Dn) {
   'use strict';
 
 
@@ -63,7 +63,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('dn')) {
-        obj['dn'] = CurrentSessionDataUserActiveSessionDn.constructFromObject(data['dn']);
+        obj['dn'] = Dn.constructFromObject(data['dn']);
       }
       if (data.hasOwnProperty('calls')) {
         obj['calls'] = ApiClient.convertToType(data['calls'], [Call]);
@@ -73,7 +73,7 @@
   }
 
   /**
-   * @member {module:model/CurrentSessionDataUserActiveSessionDn} dn
+   * @member {module:model/Dn} dn
    */
   exports.prototype['dn'] = undefined;
   /**
