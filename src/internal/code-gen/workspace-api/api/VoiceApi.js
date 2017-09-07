@@ -1808,7 +1808,7 @@
 
     /**
      * Start the monitoring of an agent.
-     * Start the monitoring of an agent, providing monitoring information (phone number to be monitored, monitoringMode (Monitor/Coach), monitoringNextCallType (NextCall/AllCalls), monitoringScope (Agent/Call)).
+     * Start the monitoring of an agent, providing monitoring information (phone number to be monitored, monitoringMode (Mute/Coach/Connect), monitoringNextCallType (OneCall/AllCalls), monitoringScope (Agent/Call)).
      * @param {module:model/StartMonitoringData} startMonitoringData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1844,7 +1844,7 @@
 
     /**
      * Start the monitoring of an agent.
-     * Start the monitoring of an agent, providing monitoring information (phone number to be monitored, monitoringMode (Monitor/Coach), monitoringNextCallType (NextCall/AllCalls), monitoringScope (Agent/Call)).
+     * Start the monitoring of an agent, providing monitoring information (phone number to be monitored, monitoringMode (Mute/Coach/Connect), monitoringNextCallType (OneCall/AllCalls), monitoringScope (Agent/Call)).
      * @param {module:model/StartMonitoringData} startMonitoringData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */

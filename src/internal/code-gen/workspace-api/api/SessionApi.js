@@ -99,6 +99,57 @@
 
 
     /**
+     * DEPRECATED login the specified user (HTTP session only)
+     * The login request authenticates the user and retrieves the authorization code. 
+     * @param {String} redirectUri this the URI the AUTH service uses to redirect the user after authentication
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.deprecatedLoginWithHttpInfo = function(redirectUri) {
+      var postBody = null;
+
+      // verify the required parameter 'redirectUri' is set
+      if (redirectUri === undefined || redirectUri === null) {
+        throw new Error("Missing the required parameter 'redirectUri' when calling deprecatedLogin");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'redirect_uri': redirectUri
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/login', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * DEPRECATED login the specified user (HTTP session only)
+     * The login request authenticates the user and retrieves the authorization code. 
+     * @param {String} redirectUri this the URI the AUTH service uses to redirect the user after authentication
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.deprecatedLogin = function(redirectUri) {
+      return this.deprecatedLoginWithHttpInfo(redirectUri)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Get the business attribute hierarchy
      * Get the business attribute hierarchy
      * @param {Number} id id of the business attribute
@@ -378,7 +429,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/login', 'POST',
+        '/login', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );

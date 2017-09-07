@@ -50,7 +50,7 @@
 
     /**
      * Enables subscription to CometD notification API
-     * Receives one of CometD notification events The following events are available &lt;h3&gt;/workspace/v3/initialization&lt;/h3&gt; Field &lt;b&gt;data.state&lt;/b&gt; Value   \&quot;Complete\&quot; Initialization was completed successfully   \&quot;Failed\&quot;   Initialization failed &lt;h3&gt;/workspace/v3/voice&lt;/h3&gt; Field &lt;b&gt;data.messageType&lt;/b&gt; Value   \&quot;CallStateChanged\&quot;  Call status or state changed   \&quot;DnStateChanged\&quot;    DN state changed   \&quot;EventError\&quot;        Error occured &lt;h3&gt;CallStateChanged&lt;/h3&gt; Field &lt;b&gt;data.call.stat&lt;/b&gt; Value   \&quot;Ringing\&quot;   Ringing in progressl   \&quot;Dialing\&quot;   Dialing in progress   \&quot;Released\&quot;  Call released &lt;h3&gt;DnStateChanged&lt;/h3&gt; Field &lt;b&gt;data.dn&lt;/b&gt; Value   message   DN state changed 
+     * Receives one of CometD notification events The following events are available&lt;br&gt; &lt;h5&gt;Channel: /workspace/v3/initialization&lt;/h5&gt; Field: &lt;b&gt;message.data.state&lt;/b&gt;&lt;br&gt; Value: &lt;ul&gt;   &lt;li&gt;&lt;b&gt;\&quot;Complete\&quot;&lt;/b&gt; Initialization was completed successfully&lt;/li&gt;   &lt;li&gt;&lt;b&gt;\&quot;Failed\&quot;&lt;/b&gt;   Initialization failed&lt;/li&gt; &lt;/ul&gt; &lt;h5&gt;Channel: /workspace/v3/voice&lt;/h5&gt; Field: &lt;b&gt;message.data.messageType&lt;/b&gt;&lt;br&gt; Value: &lt;ul&gt;   &lt;li&gt;&lt;b&gt;\&quot;CallStateChanged\&quot;&lt;/b&gt;  Call status or state changed&lt;/li&gt;   Field: &lt;b&gt;message.data.call.state&lt;/b&gt;&lt;br&gt;   Value:   &lt;ul&gt;     &lt;li&gt;&lt;b&gt;\&quot;Ringing\&quot;&lt;/b&gt;  Ringing in progress     &lt;li&gt;&lt;b&gt;\&quot;Dialing\&quot;&lt;/b&gt;  Dialing in progress     &lt;li&gt;&lt;b&gt;\&quot;Established&lt;/b&gt;  Call established     &lt;li&gt;&lt;b&gt;\&quot;Released&lt;/b&gt;  Call released   &lt;/ul&gt;     &lt;li&gt;&lt;b&gt;\&quot;DnStateChanged\&quot;&lt;/b&gt;  DN state changed&lt;/li&gt;   Field: &lt;b&gt;message.data.dn&lt;/b&gt;&lt;br&gt;   Value:   &lt;ul&gt;     &lt;li&gt;&lt;b&gt;message&lt;/b&gt; DN state changed&lt;/li&gt;   &lt;/ul&gt;     &lt;li&gt;&lt;b&gt;\&quot;EventError\&quot;&lt;/b&gt;  Error occured&lt;/li&gt; &lt;/ul&gt;  
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsWithHttpInfo = function() {
@@ -80,7 +80,7 @@
 
     /**
      * Enables subscription to CometD notification API
-     * Receives one of CometD notification events The following events are available &lt;h3&gt;/workspace/v3/initialization&lt;/h3&gt; Field &lt;b&gt;data.state&lt;/b&gt; Value   \&quot;Complete\&quot; Initialization was completed successfully   \&quot;Failed\&quot;   Initialization failed &lt;h3&gt;/workspace/v3/voice&lt;/h3&gt; Field &lt;b&gt;data.messageType&lt;/b&gt; Value   \&quot;CallStateChanged\&quot;  Call status or state changed   \&quot;DnStateChanged\&quot;    DN state changed   \&quot;EventError\&quot;        Error occured &lt;h3&gt;CallStateChanged&lt;/h3&gt; Field &lt;b&gt;data.call.stat&lt;/b&gt; Value   \&quot;Ringing\&quot;   Ringing in progressl   \&quot;Dialing\&quot;   Dialing in progress   \&quot;Released\&quot;  Call released &lt;h3&gt;DnStateChanged&lt;/h3&gt; Field &lt;b&gt;data.dn&lt;/b&gt; Value   message   DN state changed 
+     * Receives one of CometD notification events The following events are available&lt;br&gt; &lt;h5&gt;Channel: /workspace/v3/initialization&lt;/h5&gt; Field: &lt;b&gt;message.data.state&lt;/b&gt;&lt;br&gt; Value: &lt;ul&gt;   &lt;li&gt;&lt;b&gt;\&quot;Complete\&quot;&lt;/b&gt; Initialization was completed successfully&lt;/li&gt;   &lt;li&gt;&lt;b&gt;\&quot;Failed\&quot;&lt;/b&gt;   Initialization failed&lt;/li&gt; &lt;/ul&gt; &lt;h5&gt;Channel: /workspace/v3/voice&lt;/h5&gt; Field: &lt;b&gt;message.data.messageType&lt;/b&gt;&lt;br&gt; Value: &lt;ul&gt;   &lt;li&gt;&lt;b&gt;\&quot;CallStateChanged\&quot;&lt;/b&gt;  Call status or state changed&lt;/li&gt;   Field: &lt;b&gt;message.data.call.state&lt;/b&gt;&lt;br&gt;   Value:   &lt;ul&gt;     &lt;li&gt;&lt;b&gt;\&quot;Ringing\&quot;&lt;/b&gt;  Ringing in progress     &lt;li&gt;&lt;b&gt;\&quot;Dialing\&quot;&lt;/b&gt;  Dialing in progress     &lt;li&gt;&lt;b&gt;\&quot;Established&lt;/b&gt;  Call established     &lt;li&gt;&lt;b&gt;\&quot;Released&lt;/b&gt;  Call released   &lt;/ul&gt;     &lt;li&gt;&lt;b&gt;\&quot;DnStateChanged\&quot;&lt;/b&gt;  DN state changed&lt;/li&gt;   Field: &lt;b&gt;message.data.dn&lt;/b&gt;&lt;br&gt;   Value:   &lt;ul&gt;     &lt;li&gt;&lt;b&gt;message&lt;/b&gt; DN state changed&lt;/li&gt;   &lt;/ul&gt;     &lt;li&gt;&lt;b&gt;\&quot;EventError\&quot;&lt;/b&gt;  Error occured&lt;/li&gt; &lt;/ul&gt;  
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notifications = function() {
@@ -222,7 +222,7 @@
 
     /**
      * Subscribes CometD channel notification
-     * Subscribes CometD channel notification. The following channels are available right now&lt;br&gt;  &lt;b&gt;/workspace/v3/initialization&lt;/b&gt; Subscribe for initialization (login) event &lt;b&gt;/workspace/v3/voice&lt;/b&gt; Subscribe for call state change notification event 
+     * Subscribes CometD channel notification.&lt;br&gt;  &lt;h5&gt;The following channels are available right now:&lt;/h5&gt; &lt;ul&gt;   &lt;li&gt;&lt;b&gt;/workspace/v3/initialization&lt;/b&gt; Subscribe for initialization (login) event&lt;/li&gt; &lt;li&gt;&lt;b&gt;/workspace/v3/voice&lt;/b&gt; Subscribe for call state change notification event&lt;/li&gt; &lt;/ul&gt; 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsSubscribeWithHttpInfo = function() {
@@ -252,7 +252,7 @@
 
     /**
      * Subscribes CometD channel notification
-     * Subscribes CometD channel notification. The following channels are available right now&lt;br&gt;  &lt;b&gt;/workspace/v3/initialization&lt;/b&gt; Subscribe for initialization (login) event &lt;b&gt;/workspace/v3/voice&lt;/b&gt; Subscribe for call state change notification event 
+     * Subscribes CometD channel notification.&lt;br&gt;  &lt;h5&gt;The following channels are available right now:&lt;/h5&gt; &lt;ul&gt;   &lt;li&gt;&lt;b&gt;/workspace/v3/initialization&lt;/b&gt; Subscribe for initialization (login) event&lt;/li&gt; &lt;li&gt;&lt;b&gt;/workspace/v3/voice&lt;/b&gt; Subscribe for call state change notification event&lt;/li&gt; &lt;/ul&gt; 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notificationsSubscribe = function() {

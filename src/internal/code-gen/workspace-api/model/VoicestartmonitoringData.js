@@ -91,12 +91,12 @@
    */
   exports.prototype['phoneNumberToMonitor'] = undefined;
   /**
-   * The monitoring mode (Mute,Coach)
+   * The monitoring mode (Mute,Coach,Connect)
    * @member {module:model/VoicestartmonitoringData.MonitoringModeEnum} monitoringMode
    */
   exports.prototype['monitoringMode'] = undefined;
   /**
-   * The monitoring call type (NextCall/AllCalls).
+   * The monitoring call type (OneCall/AllCalls).
    * @member {module:model/VoicestartmonitoringData.MonitoringNextCallTypeEnum} monitoringNextCallType
    */
   exports.prototype['monitoringNextCallType'] = undefined;
@@ -127,7 +127,12 @@
      * value: "Coach"
      * @const
      */
-    "Coach": "Coach"  };
+    "Coach": "Coach",
+    /**
+     * value: "Connect"
+     * @const
+     */
+    "Connect": "Connect"  };
 
   /**
    * Allowed values for the <code>monitoringNextCallType</code> property.
