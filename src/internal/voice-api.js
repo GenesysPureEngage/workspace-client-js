@@ -56,7 +56,7 @@ class VoiceApi {
         break;
     }
 
-    let msg = { call };
+    let msg = { call, notificationType: cometdMsg.data.notificationType };
     if (connIdChanged) {
       msg.previousConnId = call.previousConnId;
     }
