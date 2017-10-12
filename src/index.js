@@ -7,6 +7,7 @@ require('cometd-nodejs-client').adapt();
 
 const VoiceApi = require('./internal/voice-api');
 const TargetsApi = require('./internal/targets-api');
+const ReportingApi = require('./internal/reporting-api');
 
 class WorkspaceApi extends EventEmitter {
   /**
@@ -97,6 +98,7 @@ class WorkspaceApi extends EventEmitter {
 
     this.voice = new VoiceApi(this, this._workspaceClient, this._debugEnabled);
     this.targets = new TargetsApi(this._workspaceClient, this._debugEnabled);
+	this.reporting = new ReportingApi(this._workspaceClient, this._debugEnabled);
 
     let options = {};
 
