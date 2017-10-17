@@ -99,57 +99,6 @@
 
 
     /**
-     * DEPRECATED login the specified user (HTTP session only)
-     * The login request authenticates the user and retrieves the authorization code. 
-     * @param {String} redirectUri this the URI the AUTH service uses to redirect the user after authentication
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.deprecatedLoginWithHttpInfo = function(redirectUri) {
-      var postBody = null;
-
-      // verify the required parameter 'redirectUri' is set
-      if (redirectUri === undefined || redirectUri === null) {
-        throw new Error("Missing the required parameter 'redirectUri' when calling deprecatedLogin");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'redirect_uri': redirectUri
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/login', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * DEPRECATED login the specified user (HTTP session only)
-     * The login request authenticates the user and retrieves the authorization code. 
-     * @param {String} redirectUri this the URI the AUTH service uses to redirect the user after authentication
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.deprecatedLogin = function(redirectUri) {
-      return this.deprecatedLoginWithHttpInfo(redirectUri)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
      * Get the business attribute hierarchy
      * Get the business attribute hierarchy
      * @param {Number} id id of the business attribute
@@ -294,21 +243,21 @@
 
     /**
      * get devices from place
-     * This request can be used to retrieve information about the devices of the user. The returned devices are the devices attached to the place where the user logs in. 
-     * @param {String} place The name of the place
+     * This request can be used to retrieve information about the devices of a place. The returned devices are the devices attached to the place where the user logs in. 
+     * @param {String} placeName The name of the place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Devices} and HTTP response
      */
-    this.getDevicesWithHttpInfo = function(place) {
+    this.getDevicesForPlaceWithHttpInfo = function(placeName) {
       var postBody = null;
 
-      // verify the required parameter 'place' is set
-      if (place === undefined || place === null) {
-        throw new Error("Missing the required parameter 'place' when calling getDevices");
+      // verify the required parameter 'placeName' is set
+      if (placeName === undefined || placeName === null) {
+        throw new Error("Missing the required parameter 'placeName' when calling getDevicesForPlace");
       }
 
 
       var pathParams = {
-        'place': place
+        'placeName': placeName
       };
       var queryParams = {
       };
@@ -323,7 +272,7 @@
       var returnType = Devices;
 
       return this.apiClient.callApi(
-        '/devices/{place}', 'GET',
+        '/configuration/places/{placeName}/dns', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -331,12 +280,12 @@
 
     /**
      * get devices from place
-     * This request can be used to retrieve information about the devices of the user. The returned devices are the devices attached to the place where the user logs in. 
-     * @param {String} place The name of the place
+     * This request can be used to retrieve information about the devices of a place. The returned devices are the devices attached to the place where the user logs in. 
+     * @param {String} placeName The name of the place
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Devices}
      */
-    this.getDevices = function(place) {
-      return this.getDevicesWithHttpInfo(place)
+    this.getDevicesForPlace = function(placeName) {
+      return this.getDevicesForPlaceWithHttpInfo(placeName)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -345,7 +294,7 @@
 
     /**
      * Retrieves authorization token and registers it
-     * The initialize-workspace request retrieves the authorization token using the authorization code.  The token is then registered and the user&#39;s environment is prepared. 
+     * The initialize-workspace request retrieves the authorization token using the authorization code. The token is then registered and the user&#39;s environment is prepared. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.code the authorization code
      * @param {String} opts.redirectUri the same redirect_uri used in the initial login step
@@ -383,7 +332,7 @@
 
     /**
      * Retrieves authorization token and registers it
-     * The initialize-workspace request retrieves the authorization token using the authorization code.  The token is then registered and the user&#39;s environment is prepared. 
+     * The initialize-workspace request retrieves the authorization token using the authorization code. The token is then registered and the user&#39;s environment is prepared. 
      * @param {Object} opts Optional parameters
      * @param {String} opts.code the authorization code
      * @param {String} opts.redirectUri the same redirect_uri used in the initial login step

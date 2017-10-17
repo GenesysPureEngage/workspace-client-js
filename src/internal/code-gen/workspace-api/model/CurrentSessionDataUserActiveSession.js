@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Call', 'model/Dn'], factory);
+    define(['ApiClient', 'model/Call', 'model/Dn', 'model/Media'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Call'), require('./Dn'));
+    module.exports = factory(require('../ApiClient'), require('./Call'), require('./Dn'), require('./Media'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentSessionDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.Dn);
+    root.WorkspaceApi.CurrentSessionDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.Dn, root.WorkspaceApi.Media);
   }
-}(this, function(ApiClient, Call, Dn) {
+}(this, function(ApiClient, Call, Dn, Media) {
   'use strict';
 
 
@@ -49,6 +49,8 @@
 
 
 
+
+
   };
 
   /**
@@ -62,16 +64,26 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('currentPlace')) {
+        obj['currentPlace'] = ApiClient.convertToType(data['currentPlace'], 'String');
+      }
       if (data.hasOwnProperty('dn')) {
         obj['dn'] = Dn.constructFromObject(data['dn']);
       }
       if (data.hasOwnProperty('calls')) {
         obj['calls'] = ApiClient.convertToType(data['calls'], [Call]);
       }
+      if (data.hasOwnProperty('media')) {
+        obj['media'] = Media.constructFromObject(data['media']);
+      }
     }
     return obj;
   }
 
+  /**
+   * @member {String} currentPlace
+   */
+  exports.prototype['currentPlace'] = undefined;
   /**
    * @member {module:model/Dn} dn
    */
@@ -81,6 +93,10 @@
    * @member {Array.<module:model/Call>} calls
    */
   exports.prototype['calls'] = undefined;
+  /**
+   * @member {module:model/Media} media
+   */
+  exports.prototype['media'] = undefined;
 
 
 

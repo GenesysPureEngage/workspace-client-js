@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ActivatechannelsData', 'model/AgentHistoryData', 'model/AlternateData', 'model/AnswerData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/Call', 'model/CallCompletedData', 'model/CallNoteData', 'model/CallParticipants', 'model/ChannelsData', 'model/ClearData', 'model/CompleteConferenceData', 'model/CompleteTransferData', 'model/ConfigResponse', 'model/ConfigResponseData', 'model/ConfigResponseDataActionCodes', 'model/ConfigResponseDataBusinessAttributes', 'model/ConfigResponseDataTransactions', 'model/ConfigResponseDataValues', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CurrentSession', 'model/CurrentSessionData', 'model/CurrentSessionDataPendingloginasync', 'model/CurrentSessionDataUser', 'model/CurrentSessionDataUserActiveSession', 'model/CurrentSessionStatus', 'model/DeleteContactData', 'model/DeleteFromConferenceData', 'model/Devices', 'model/DevicesData', 'model/Dn', 'model/ForwardData', 'model/GetContactsData', 'model/HoldData', 'model/IdentifyContactData', 'model/InitiateConferenceData', 'model/InitiateTransferData', 'model/InlineResponse200', 'model/InlineResponse200Data', 'model/InlineResponse200Status', 'model/InteractionContentData', 'model/KeyData', 'model/Kvpair', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/MakeCallData', 'model/MergeData', 'model/MonitoringScopeData', 'model/MonitoringScopeDataData', 'model/NotReadyData', 'model/PersonalFavoriteData', 'model/PhoneCallData', 'model/ReadyData', 'model/RecentData', 'model/RecentTargetData', 'model/ReconnectData', 'model/RedirectData', 'model/ReleaseData', 'model/ReportingunsubscribeData', 'model/RetrieveData', 'model/SendDTMFData', 'model/SendUserEventData', 'model/SendUserEventDataData', 'model/SingleStepConferenceData', 'model/SingleStepTransferData', 'model/StartMonitoringData', 'model/StatisticsRegisterData', 'model/StatisticsRegisterDataData', 'model/StatisticsSubscribeData', 'model/StatisticsSubscribeDataData', 'model/StopMonitoringData', 'model/Target', 'model/TargetInformation', 'model/TargetsResponse', 'model/TargetsResponseData', 'model/TargetspersonalfavoritessaveData', 'model/TargetsrecentsaddData', 'model/UcsassigninteractiontocontactData', 'model/UcsdeletecontactData', 'model/UcsfindorcreatephonecallData', 'model/UcsgetagenthistoryData', 'model/UcsgetcontactdetailsData', 'model/UcsgetcontacthistoryData', 'model/UcsgetcontactsData', 'model/UcsgetinteractioncontentData', 'model/UcsidentifycontactData', 'model/UcslucenesearchData', 'model/UcslucenesearchinteractionData', 'model/UcssetcallcompletedData', 'model/UcssetcallnoteData', 'model/UcsupdatecontactData', 'model/UnsubscribeData', 'model/UpdateContactData', 'model/UserData', 'model/UserData1', 'model/VoicecallsidalternateData', 'model/VoicecallsidcompleteData', 'model/VoicecallsidcompletetransferData', 'model/VoicecallsiddeletefromconferenceData', 'model/VoicecallsiddeleteuserdatapairData', 'model/VoicecallsidinitiateconferenceData', 'model/VoicecallsidinitiatetransferData', 'model/VoicecallsidmergeData', 'model/VoicecallsidreconnectData', 'model/VoicecallsidredirectData', 'model/VoicecallsidsenddtmfData', 'model/VoicecallsidsinglestepconferenceData', 'model/VoicecallsidsinglesteptransferData', 'model/VoicemakecallData', 'model/VoicenotreadyData', 'model/VoicereadyData', 'model/VoicesetforwardData', 'model/VoicestartmonitoringData', 'model/VoicestopmonitoringData', 'api/DocumentationApi', 'api/NotificationsApi', 'api/ReportingApi', 'api/SessionApi', 'api/TargetsApi', 'api/UcsApi', 'api/VoiceApi'], factory);
+    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/ActivatechannelsData', 'model/AgentHistoryData', 'model/AlternateData', 'model/AnswerData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/Call', 'model/CallCompletedData', 'model/CallNoteData', 'model/CallParticipants', 'model/ChannelsData', 'model/ClearData', 'model/CompleteConferenceData', 'model/CompleteTransferData', 'model/ConfigResponse', 'model/ConfigResponseData', 'model/ConfigResponseDataActionCodes', 'model/ConfigResponseDataBusinessAttributes', 'model/ConfigResponseDataTransactions', 'model/ConfigResponseDataValues', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CurrentSession', 'model/CurrentSessionData', 'model/CurrentSessionDataPendingloginasync', 'model/CurrentSessionDataUser', 'model/CurrentSessionDataUserActiveSession', 'model/CurrentSessionStatus', 'model/DeleteContactData', 'model/DeleteFromConferenceData', 'model/Devices', 'model/DevicesData', 'model/Dn', 'model/ForwardData', 'model/GetCategoryData', 'model/GetContactsData', 'model/GetStandardResponseData', 'model/HoldData', 'model/IdentifyContactData', 'model/InitiateConferenceData', 'model/InitiateTransferData', 'model/InlineResponse200', 'model/InlineResponse200Data', 'model/InlineResponse200Status', 'model/InteractionContentData', 'model/IxnReasonCode', 'model/KeyData', 'model/Kvpair', 'model/LogoutMediaData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/MakeCallData', 'model/Media', 'model/MediamediatypeinteractionsidacceptData', 'model/MediamediatypeinteractionsiddeleteuserdataData', 'model/MediamediatypelogoutData', 'model/MediamediatypenotreadyData', 'model/MergeData', 'model/MonitoringScopeData', 'model/MonitoringScopeDataData', 'model/NotReadyData', 'model/NotReadyForMediaData', 'model/OpenMediaChannel', 'model/PersonalFavoriteData', 'model/PhoneCallData', 'model/ReadyData', 'model/ReadyForMediaData', 'model/RecentData', 'model/RecentTargetData', 'model/ReconnectData', 'model/RedirectData', 'model/ReleaseData', 'model/ReportingunsubscribeData', 'model/RetrieveData', 'model/SendDTMFData', 'model/SendUserEventData', 'model/SendUserEventDataData', 'model/SingleStepConferenceData', 'model/SingleStepTransferData', 'model/StartMonitoringData', 'model/StatisticsRegisterData', 'model/StatisticsRegisterDataData', 'model/StatisticsSubscribeData', 'model/StatisticsSubscribeDataData', 'model/StopMonitoringData', 'model/Target', 'model/TargetInformation', 'model/TargetsResponse', 'model/TargetsResponseData', 'model/TargetspersonalfavoritessaveData', 'model/TargetsrecentsaddData', 'model/UcsassigninteractiontocontactData', 'model/UcsdeletecontactData', 'model/UcsfindorcreatephonecallData', 'model/UcsgetagenthistoryData', 'model/UcsgetcontactdetailsData', 'model/UcsgetcontacthistoryData', 'model/UcsgetcontactsData', 'model/UcsgetinteractioncontentData', 'model/UcsidentifycontactData', 'model/UcslucenesearchData', 'model/UcslucenesearchinteractionData', 'model/UcsresponsescategoriesidgetdetailsData', 'model/UcsresponsesidgetdetailsData', 'model/UcssetcallcompletedData', 'model/UcssetcallnoteData', 'model/UcsupdatecontactData', 'model/UnsubscribeData', 'model/UpdateContactData', 'model/UserData', 'model/UserData1', 'model/UserData2', 'model/VoicecallsidalternateData', 'model/VoicecallsidcompleteData', 'model/VoicecallsidcompletetransferData', 'model/VoicecallsiddeletefromconferenceData', 'model/VoicecallsiddeleteuserdatapairData', 'model/VoicecallsidinitiateconferenceData', 'model/VoicecallsidinitiatetransferData', 'model/VoicecallsidmergeData', 'model/VoicecallsidreconnectData', 'model/VoicecallsidredirectData', 'model/VoicecallsidsenddtmfData', 'model/VoicecallsidsinglestepconferenceData', 'model/VoicecallsidsinglesteptransferData', 'model/VoicemakecallData', 'model/VoicenotreadyData', 'model/VoicereadyData', 'model/VoicesetforwardData', 'model/VoicestartmonitoringData', 'model/VoicestopmonitoringData', 'api/DocumentationApi', 'api/GroupsApi', 'api/MediaApi', 'api/NotificationsApi', 'api/ReportingApi', 'api/SessionApi', 'api/TargetsApi', 'api/UcsApi', 'api/UsersApi', 'api/VoiceApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/ActivatechannelsData'), require('./model/AgentHistoryData'), require('./model/AlternateData'), require('./model/AnswerData'), require('./model/ApiErrorResponse'), require('./model/ApiSuccessResponse'), require('./model/AssignInteractionToContactData'), require('./model/Call'), require('./model/CallCompletedData'), require('./model/CallNoteData'), require('./model/CallParticipants'), require('./model/ChannelsData'), require('./model/ClearData'), require('./model/CompleteConferenceData'), require('./model/CompleteTransferData'), require('./model/ConfigResponse'), require('./model/ConfigResponseData'), require('./model/ConfigResponseDataActionCodes'), require('./model/ConfigResponseDataBusinessAttributes'), require('./model/ConfigResponseDataTransactions'), require('./model/ConfigResponseDataValues'), require('./model/ContactDetailsData'), require('./model/ContactHistoryData'), require('./model/CurrentSession'), require('./model/CurrentSessionData'), require('./model/CurrentSessionDataPendingloginasync'), require('./model/CurrentSessionDataUser'), require('./model/CurrentSessionDataUserActiveSession'), require('./model/CurrentSessionStatus'), require('./model/DeleteContactData'), require('./model/DeleteFromConferenceData'), require('./model/Devices'), require('./model/DevicesData'), require('./model/Dn'), require('./model/ForwardData'), require('./model/GetContactsData'), require('./model/HoldData'), require('./model/IdentifyContactData'), require('./model/InitiateConferenceData'), require('./model/InitiateTransferData'), require('./model/InlineResponse200'), require('./model/InlineResponse200Data'), require('./model/InlineResponse200Status'), require('./model/InteractionContentData'), require('./model/KeyData'), require('./model/Kvpair'), require('./model/LuceneSearchData'), require('./model/LuceneSearchInteractionData'), require('./model/MakeCallData'), require('./model/MergeData'), require('./model/MonitoringScopeData'), require('./model/MonitoringScopeDataData'), require('./model/NotReadyData'), require('./model/PersonalFavoriteData'), require('./model/PhoneCallData'), require('./model/ReadyData'), require('./model/RecentData'), require('./model/RecentTargetData'), require('./model/ReconnectData'), require('./model/RedirectData'), require('./model/ReleaseData'), require('./model/ReportingunsubscribeData'), require('./model/RetrieveData'), require('./model/SendDTMFData'), require('./model/SendUserEventData'), require('./model/SendUserEventDataData'), require('./model/SingleStepConferenceData'), require('./model/SingleStepTransferData'), require('./model/StartMonitoringData'), require('./model/StatisticsRegisterData'), require('./model/StatisticsRegisterDataData'), require('./model/StatisticsSubscribeData'), require('./model/StatisticsSubscribeDataData'), require('./model/StopMonitoringData'), require('./model/Target'), require('./model/TargetInformation'), require('./model/TargetsResponse'), require('./model/TargetsResponseData'), require('./model/TargetspersonalfavoritessaveData'), require('./model/TargetsrecentsaddData'), require('./model/UcsassigninteractiontocontactData'), require('./model/UcsdeletecontactData'), require('./model/UcsfindorcreatephonecallData'), require('./model/UcsgetagenthistoryData'), require('./model/UcsgetcontactdetailsData'), require('./model/UcsgetcontacthistoryData'), require('./model/UcsgetcontactsData'), require('./model/UcsgetinteractioncontentData'), require('./model/UcsidentifycontactData'), require('./model/UcslucenesearchData'), require('./model/UcslucenesearchinteractionData'), require('./model/UcssetcallcompletedData'), require('./model/UcssetcallnoteData'), require('./model/UcsupdatecontactData'), require('./model/UnsubscribeData'), require('./model/UpdateContactData'), require('./model/UserData'), require('./model/UserData1'), require('./model/VoicecallsidalternateData'), require('./model/VoicecallsidcompleteData'), require('./model/VoicecallsidcompletetransferData'), require('./model/VoicecallsiddeletefromconferenceData'), require('./model/VoicecallsiddeleteuserdatapairData'), require('./model/VoicecallsidinitiateconferenceData'), require('./model/VoicecallsidinitiatetransferData'), require('./model/VoicecallsidmergeData'), require('./model/VoicecallsidreconnectData'), require('./model/VoicecallsidredirectData'), require('./model/VoicecallsidsenddtmfData'), require('./model/VoicecallsidsinglestepconferenceData'), require('./model/VoicecallsidsinglesteptransferData'), require('./model/VoicemakecallData'), require('./model/VoicenotreadyData'), require('./model/VoicereadyData'), require('./model/VoicesetforwardData'), require('./model/VoicestartmonitoringData'), require('./model/VoicestopmonitoringData'), require('./api/DocumentationApi'), require('./api/NotificationsApi'), require('./api/ReportingApi'), require('./api/SessionApi'), require('./api/TargetsApi'), require('./api/UcsApi'), require('./api/VoiceApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/AcceptData'), require('./model/AcceptData1'), require('./model/ActivatechannelsData'), require('./model/AgentHistoryData'), require('./model/AlternateData'), require('./model/AnswerData'), require('./model/ApiErrorResponse'), require('./model/ApiSuccessResponse'), require('./model/AssignInteractionToContactData'), require('./model/Call'), require('./model/CallCompletedData'), require('./model/CallNoteData'), require('./model/CallParticipants'), require('./model/ChannelsData'), require('./model/ClearData'), require('./model/CompleteConferenceData'), require('./model/CompleteTransferData'), require('./model/ConfigResponse'), require('./model/ConfigResponseData'), require('./model/ConfigResponseDataActionCodes'), require('./model/ConfigResponseDataBusinessAttributes'), require('./model/ConfigResponseDataTransactions'), require('./model/ConfigResponseDataValues'), require('./model/ContactDetailsData'), require('./model/ContactHistoryData'), require('./model/CurrentSession'), require('./model/CurrentSessionData'), require('./model/CurrentSessionDataPendingloginasync'), require('./model/CurrentSessionDataUser'), require('./model/CurrentSessionDataUserActiveSession'), require('./model/CurrentSessionStatus'), require('./model/DeleteContactData'), require('./model/DeleteFromConferenceData'), require('./model/Devices'), require('./model/DevicesData'), require('./model/Dn'), require('./model/ForwardData'), require('./model/GetCategoryData'), require('./model/GetContactsData'), require('./model/GetStandardResponseData'), require('./model/HoldData'), require('./model/IdentifyContactData'), require('./model/InitiateConferenceData'), require('./model/InitiateTransferData'), require('./model/InlineResponse200'), require('./model/InlineResponse200Data'), require('./model/InlineResponse200Status'), require('./model/InteractionContentData'), require('./model/IxnReasonCode'), require('./model/KeyData'), require('./model/Kvpair'), require('./model/LogoutMediaData'), require('./model/LuceneSearchData'), require('./model/LuceneSearchInteractionData'), require('./model/MakeCallData'), require('./model/Media'), require('./model/MediamediatypeinteractionsidacceptData'), require('./model/MediamediatypeinteractionsiddeleteuserdataData'), require('./model/MediamediatypelogoutData'), require('./model/MediamediatypenotreadyData'), require('./model/MergeData'), require('./model/MonitoringScopeData'), require('./model/MonitoringScopeDataData'), require('./model/NotReadyData'), require('./model/NotReadyForMediaData'), require('./model/OpenMediaChannel'), require('./model/PersonalFavoriteData'), require('./model/PhoneCallData'), require('./model/ReadyData'), require('./model/ReadyForMediaData'), require('./model/RecentData'), require('./model/RecentTargetData'), require('./model/ReconnectData'), require('./model/RedirectData'), require('./model/ReleaseData'), require('./model/ReportingunsubscribeData'), require('./model/RetrieveData'), require('./model/SendDTMFData'), require('./model/SendUserEventData'), require('./model/SendUserEventDataData'), require('./model/SingleStepConferenceData'), require('./model/SingleStepTransferData'), require('./model/StartMonitoringData'), require('./model/StatisticsRegisterData'), require('./model/StatisticsRegisterDataData'), require('./model/StatisticsSubscribeData'), require('./model/StatisticsSubscribeDataData'), require('./model/StopMonitoringData'), require('./model/Target'), require('./model/TargetInformation'), require('./model/TargetsResponse'), require('./model/TargetsResponseData'), require('./model/TargetspersonalfavoritessaveData'), require('./model/TargetsrecentsaddData'), require('./model/UcsassigninteractiontocontactData'), require('./model/UcsdeletecontactData'), require('./model/UcsfindorcreatephonecallData'), require('./model/UcsgetagenthistoryData'), require('./model/UcsgetcontactdetailsData'), require('./model/UcsgetcontacthistoryData'), require('./model/UcsgetcontactsData'), require('./model/UcsgetinteractioncontentData'), require('./model/UcsidentifycontactData'), require('./model/UcslucenesearchData'), require('./model/UcslucenesearchinteractionData'), require('./model/UcsresponsescategoriesidgetdetailsData'), require('./model/UcsresponsesidgetdetailsData'), require('./model/UcssetcallcompletedData'), require('./model/UcssetcallnoteData'), require('./model/UcsupdatecontactData'), require('./model/UnsubscribeData'), require('./model/UpdateContactData'), require('./model/UserData'), require('./model/UserData1'), require('./model/UserData2'), require('./model/VoicecallsidalternateData'), require('./model/VoicecallsidcompleteData'), require('./model/VoicecallsidcompletetransferData'), require('./model/VoicecallsiddeletefromconferenceData'), require('./model/VoicecallsiddeleteuserdatapairData'), require('./model/VoicecallsidinitiateconferenceData'), require('./model/VoicecallsidinitiatetransferData'), require('./model/VoicecallsidmergeData'), require('./model/VoicecallsidreconnectData'), require('./model/VoicecallsidredirectData'), require('./model/VoicecallsidsenddtmfData'), require('./model/VoicecallsidsinglestepconferenceData'), require('./model/VoicecallsidsinglesteptransferData'), require('./model/VoicemakecallData'), require('./model/VoicenotreadyData'), require('./model/VoicereadyData'), require('./model/VoicesetforwardData'), require('./model/VoicestartmonitoringData'), require('./model/VoicestopmonitoringData'), require('./api/DocumentationApi'), require('./api/GroupsApi'), require('./api/MediaApi'), require('./api/NotificationsApi'), require('./api/ReportingApi'), require('./api/SessionApi'), require('./api/TargetsApi'), require('./api/UcsApi'), require('./api/UsersApi'), require('./api/VoiceApi'));
   }
-}(function(ApiClient, ActivatechannelsData, AgentHistoryData, AlternateData, AnswerData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, Call, CallCompletedData, CallNoteData, CallParticipants, ChannelsData, ClearData, CompleteConferenceData, CompleteTransferData, ConfigResponse, ConfigResponseData, ConfigResponseDataActionCodes, ConfigResponseDataBusinessAttributes, ConfigResponseDataTransactions, ConfigResponseDataValues, ContactDetailsData, ContactHistoryData, CurrentSession, CurrentSessionData, CurrentSessionDataPendingloginasync, CurrentSessionDataUser, CurrentSessionDataUserActiveSession, CurrentSessionStatus, DeleteContactData, DeleteFromConferenceData, Devices, DevicesData, Dn, ForwardData, GetContactsData, HoldData, IdentifyContactData, InitiateConferenceData, InitiateTransferData, InlineResponse200, InlineResponse200Data, InlineResponse200Status, InteractionContentData, KeyData, Kvpair, LuceneSearchData, LuceneSearchInteractionData, MakeCallData, MergeData, MonitoringScopeData, MonitoringScopeDataData, NotReadyData, PersonalFavoriteData, PhoneCallData, ReadyData, RecentData, RecentTargetData, ReconnectData, RedirectData, ReleaseData, ReportingunsubscribeData, RetrieveData, SendDTMFData, SendUserEventData, SendUserEventDataData, SingleStepConferenceData, SingleStepTransferData, StartMonitoringData, StatisticsRegisterData, StatisticsRegisterDataData, StatisticsSubscribeData, StatisticsSubscribeDataData, StopMonitoringData, Target, TargetInformation, TargetsResponse, TargetsResponseData, TargetspersonalfavoritessaveData, TargetsrecentsaddData, UcsassigninteractiontocontactData, UcsdeletecontactData, UcsfindorcreatephonecallData, UcsgetagenthistoryData, UcsgetcontactdetailsData, UcsgetcontacthistoryData, UcsgetcontactsData, UcsgetinteractioncontentData, UcsidentifycontactData, UcslucenesearchData, UcslucenesearchinteractionData, UcssetcallcompletedData, UcssetcallnoteData, UcsupdatecontactData, UnsubscribeData, UpdateContactData, UserData, UserData1, VoicecallsidalternateData, VoicecallsidcompleteData, VoicecallsidcompletetransferData, VoicecallsiddeletefromconferenceData, VoicecallsiddeleteuserdatapairData, VoicecallsidinitiateconferenceData, VoicecallsidinitiatetransferData, VoicecallsidmergeData, VoicecallsidreconnectData, VoicecallsidredirectData, VoicecallsidsenddtmfData, VoicecallsidsinglestepconferenceData, VoicecallsidsinglesteptransferData, VoicemakecallData, VoicenotreadyData, VoicereadyData, VoicesetforwardData, VoicestartmonitoringData, VoicestopmonitoringData, DocumentationApi, NotificationsApi, ReportingApi, SessionApi, TargetsApi, UcsApi, VoiceApi) {
+}(function(ApiClient, AcceptData, AcceptData1, ActivatechannelsData, AgentHistoryData, AlternateData, AnswerData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, Call, CallCompletedData, CallNoteData, CallParticipants, ChannelsData, ClearData, CompleteConferenceData, CompleteTransferData, ConfigResponse, ConfigResponseData, ConfigResponseDataActionCodes, ConfigResponseDataBusinessAttributes, ConfigResponseDataTransactions, ConfigResponseDataValues, ContactDetailsData, ContactHistoryData, CurrentSession, CurrentSessionData, CurrentSessionDataPendingloginasync, CurrentSessionDataUser, CurrentSessionDataUserActiveSession, CurrentSessionStatus, DeleteContactData, DeleteFromConferenceData, Devices, DevicesData, Dn, ForwardData, GetCategoryData, GetContactsData, GetStandardResponseData, HoldData, IdentifyContactData, InitiateConferenceData, InitiateTransferData, InlineResponse200, InlineResponse200Data, InlineResponse200Status, InteractionContentData, IxnReasonCode, KeyData, Kvpair, LogoutMediaData, LuceneSearchData, LuceneSearchInteractionData, MakeCallData, Media, MediamediatypeinteractionsidacceptData, MediamediatypeinteractionsiddeleteuserdataData, MediamediatypelogoutData, MediamediatypenotreadyData, MergeData, MonitoringScopeData, MonitoringScopeDataData, NotReadyData, NotReadyForMediaData, OpenMediaChannel, PersonalFavoriteData, PhoneCallData, ReadyData, ReadyForMediaData, RecentData, RecentTargetData, ReconnectData, RedirectData, ReleaseData, ReportingunsubscribeData, RetrieveData, SendDTMFData, SendUserEventData, SendUserEventDataData, SingleStepConferenceData, SingleStepTransferData, StartMonitoringData, StatisticsRegisterData, StatisticsRegisterDataData, StatisticsSubscribeData, StatisticsSubscribeDataData, StopMonitoringData, Target, TargetInformation, TargetsResponse, TargetsResponseData, TargetspersonalfavoritessaveData, TargetsrecentsaddData, UcsassigninteractiontocontactData, UcsdeletecontactData, UcsfindorcreatephonecallData, UcsgetagenthistoryData, UcsgetcontactdetailsData, UcsgetcontacthistoryData, UcsgetcontactsData, UcsgetinteractioncontentData, UcsidentifycontactData, UcslucenesearchData, UcslucenesearchinteractionData, UcsresponsescategoriesidgetdetailsData, UcsresponsesidgetdetailsData, UcssetcallcompletedData, UcssetcallnoteData, UcsupdatecontactData, UnsubscribeData, UpdateContactData, UserData, UserData1, UserData2, VoicecallsidalternateData, VoicecallsidcompleteData, VoicecallsidcompletetransferData, VoicecallsiddeletefromconferenceData, VoicecallsiddeleteuserdatapairData, VoicecallsidinitiateconferenceData, VoicecallsidinitiatetransferData, VoicecallsidmergeData, VoicecallsidreconnectData, VoicecallsidredirectData, VoicecallsidsenddtmfData, VoicecallsidsinglestepconferenceData, VoicecallsidsinglesteptransferData, VoicemakecallData, VoicenotreadyData, VoicereadyData, VoicesetforwardData, VoicestartmonitoringData, VoicestopmonitoringData, DocumentationApi, GroupsApi, MediaApi, NotificationsApi, ReportingApi, SessionApi, TargetsApi, UcsApi, UsersApi, VoiceApi) {
   'use strict';
 
   /**
@@ -61,6 +61,16 @@
      * @property {module:ApiClient}
      */
     ApiClient: ApiClient,
+    /**
+     * The AcceptData model constructor.
+     * @property {module:model/AcceptData}
+     */
+    AcceptData: AcceptData,
+    /**
+     * The AcceptData1 model constructor.
+     * @property {module:model/AcceptData1}
+     */
+    AcceptData1: AcceptData1,
     /**
      * The ActivatechannelsData model constructor.
      * @property {module:model/ActivatechannelsData}
@@ -237,10 +247,20 @@
      */
     ForwardData: ForwardData,
     /**
+     * The GetCategoryData model constructor.
+     * @property {module:model/GetCategoryData}
+     */
+    GetCategoryData: GetCategoryData,
+    /**
      * The GetContactsData model constructor.
      * @property {module:model/GetContactsData}
      */
     GetContactsData: GetContactsData,
+    /**
+     * The GetStandardResponseData model constructor.
+     * @property {module:model/GetStandardResponseData}
+     */
+    GetStandardResponseData: GetStandardResponseData,
     /**
      * The HoldData model constructor.
      * @property {module:model/HoldData}
@@ -282,6 +302,11 @@
      */
     InteractionContentData: InteractionContentData,
     /**
+     * The IxnReasonCode model constructor.
+     * @property {module:model/IxnReasonCode}
+     */
+    IxnReasonCode: IxnReasonCode,
+    /**
      * The KeyData model constructor.
      * @property {module:model/KeyData}
      */
@@ -291,6 +316,11 @@
      * @property {module:model/Kvpair}
      */
     Kvpair: Kvpair,
+    /**
+     * The LogoutMediaData model constructor.
+     * @property {module:model/LogoutMediaData}
+     */
+    LogoutMediaData: LogoutMediaData,
     /**
      * The LuceneSearchData model constructor.
      * @property {module:model/LuceneSearchData}
@@ -306,6 +336,31 @@
      * @property {module:model/MakeCallData}
      */
     MakeCallData: MakeCallData,
+    /**
+     * The Media model constructor.
+     * @property {module:model/Media}
+     */
+    Media: Media,
+    /**
+     * The MediamediatypeinteractionsidacceptData model constructor.
+     * @property {module:model/MediamediatypeinteractionsidacceptData}
+     */
+    MediamediatypeinteractionsidacceptData: MediamediatypeinteractionsidacceptData,
+    /**
+     * The MediamediatypeinteractionsiddeleteuserdataData model constructor.
+     * @property {module:model/MediamediatypeinteractionsiddeleteuserdataData}
+     */
+    MediamediatypeinteractionsiddeleteuserdataData: MediamediatypeinteractionsiddeleteuserdataData,
+    /**
+     * The MediamediatypelogoutData model constructor.
+     * @property {module:model/MediamediatypelogoutData}
+     */
+    MediamediatypelogoutData: MediamediatypelogoutData,
+    /**
+     * The MediamediatypenotreadyData model constructor.
+     * @property {module:model/MediamediatypenotreadyData}
+     */
+    MediamediatypenotreadyData: MediamediatypenotreadyData,
     /**
      * The MergeData model constructor.
      * @property {module:model/MergeData}
@@ -327,6 +382,16 @@
      */
     NotReadyData: NotReadyData,
     /**
+     * The NotReadyForMediaData model constructor.
+     * @property {module:model/NotReadyForMediaData}
+     */
+    NotReadyForMediaData: NotReadyForMediaData,
+    /**
+     * The OpenMediaChannel model constructor.
+     * @property {module:model/OpenMediaChannel}
+     */
+    OpenMediaChannel: OpenMediaChannel,
+    /**
      * The PersonalFavoriteData model constructor.
      * @property {module:model/PersonalFavoriteData}
      */
@@ -341,6 +406,11 @@
      * @property {module:model/ReadyData}
      */
     ReadyData: ReadyData,
+    /**
+     * The ReadyForMediaData model constructor.
+     * @property {module:model/ReadyForMediaData}
+     */
+    ReadyForMediaData: ReadyForMediaData,
     /**
      * The RecentData model constructor.
      * @property {module:model/RecentData}
@@ -517,6 +587,16 @@
      */
     UcslucenesearchinteractionData: UcslucenesearchinteractionData,
     /**
+     * The UcsresponsescategoriesidgetdetailsData model constructor.
+     * @property {module:model/UcsresponsescategoriesidgetdetailsData}
+     */
+    UcsresponsescategoriesidgetdetailsData: UcsresponsescategoriesidgetdetailsData,
+    /**
+     * The UcsresponsesidgetdetailsData model constructor.
+     * @property {module:model/UcsresponsesidgetdetailsData}
+     */
+    UcsresponsesidgetdetailsData: UcsresponsesidgetdetailsData,
+    /**
      * The UcssetcallcompletedData model constructor.
      * @property {module:model/UcssetcallcompletedData}
      */
@@ -551,6 +631,11 @@
      * @property {module:model/UserData1}
      */
     UserData1: UserData1,
+    /**
+     * The UserData2 model constructor.
+     * @property {module:model/UserData2}
+     */
+    UserData2: UserData2,
     /**
      * The VoicecallsidalternateData model constructor.
      * @property {module:model/VoicecallsidalternateData}
@@ -652,6 +737,16 @@
      */
     DocumentationApi: DocumentationApi,
     /**
+     * The GroupsApi service constructor.
+     * @property {module:api/GroupsApi}
+     */
+    GroupsApi: GroupsApi,
+    /**
+     * The MediaApi service constructor.
+     * @property {module:api/MediaApi}
+     */
+    MediaApi: MediaApi,
+    /**
      * The NotificationsApi service constructor.
      * @property {module:api/NotificationsApi}
      */
@@ -676,6 +771,11 @@
      * @property {module:api/UcsApi}
      */
     UcsApi: UcsApi,
+    /**
+     * The UsersApi service constructor.
+     * @property {module:api/UsersApi}
+     */
+    UsersApi: UsersApi,
     /**
      * The VoiceApi service constructor.
      * @property {module:api/VoiceApi}

@@ -115,7 +115,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * The type of the target - agent, agent-group, acd-queue, route-point, skill or custom-contact.
+   * The type of the target - agent, agent-group, acd-queue, route-point, skill, custom-contact or contact.
    * @member {module:model/Target.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
@@ -191,7 +191,12 @@
      * value: "custom-contact"
      * @const
      */
-    "custom-contact": "custom-contact"  };
+    "custom-contact": "custom-contact",
+    /**
+     * value: "contact"
+     * @const
+     */
+    "contact": "contact"  };
 
 
   return exports;

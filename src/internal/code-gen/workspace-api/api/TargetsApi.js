@@ -144,7 +144,7 @@
     /**
      * delete a personal favorite
      * delete a personal favorite by type and id
-     * @param {Number} id The id of the target
+     * @param {String} id The id of the target
      * @param {module:model/String} type the type of the target
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -188,7 +188,7 @@
     /**
      * delete a personal favorite
      * delete a personal favorite by type and id
-     * @param {Number} id The id of the target
+     * @param {String} id The id of the target
      * @param {module:model/String} type the type of the target
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -207,6 +207,9 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.filterName The filter to specify on which fields the search is applied
      * @param {String} opts.types Comma separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
+     * @param {String} opts.excludeGroup Comma separated list of types of groups to exclude agent groups from search. Valid values are any agent group names.
+     * @param {String} opts.excludeFromGroup Comma separated list of types of groups to exclude agents from search. Valid values are any agent group names.
+     * @param {String} opts.restrictToGroup Comma separated list of groups to limit the search of agents from. Valid values are any agent group names.
      * @param {module:model/String} opts.sort Desired sort order (asc or desc). asc if not specified
      * @param {Number} opts.limit Number of results. 100 if not specified.
      * @param {module:model/String} opts.matchType Type of behavior for the field matching (exact for exact match search).
@@ -228,6 +231,9 @@
         'searchTerm': searchTerm,
         'filterName': opts['filterName'],
         'types': opts['types'],
+        'excludeGroup': opts['excludeGroup'],
+        'excludeFromGroup': opts['excludeFromGroup'],
+        'restrictToGroup': opts['restrictToGroup'],
         'sort': opts['sort'],
         'limit': opts['limit'],
         'matchType': opts['matchType']
@@ -256,6 +262,9 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.filterName The filter to specify on which fields the search is applied
      * @param {String} opts.types Comma separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
+     * @param {String} opts.excludeGroup Comma separated list of types of groups to exclude agent groups from search. Valid values are any agent group names.
+     * @param {String} opts.excludeFromGroup Comma separated list of types of groups to exclude agents from search. Valid values are any agent group names.
+     * @param {String} opts.restrictToGroup Comma separated list of groups to limit the search of agents from. Valid values are any agent group names.
      * @param {module:model/String} opts.sort Desired sort order (asc or desc). asc if not specified
      * @param {Number} opts.limit Number of results. 100 if not specified.
      * @param {module:model/String} opts.matchType Type of behavior for the field matching (exact for exact match search).
@@ -372,7 +381,7 @@
      * Get a specific target by type and id
      * @param {Number} id The id of the target
      * @param {module:model/String} type the type of the target
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TargetsResponse} and HTTP response
      */
     this.getTargetWithHttpInfo = function(id, type) {
       var postBody = null;
@@ -402,7 +411,7 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
+      var returnType = TargetsResponse;
 
       return this.apiClient.callApi(
         '/targets/{type}/{id}', 'GET',
@@ -416,7 +425,7 @@
      * Get a specific target by type and id
      * @param {Number} id The id of the target
      * @param {module:model/String} type the type of the target
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
      */
     this.getTarget = function(id, type) {
       return this.getTargetWithHttpInfo(id, type)

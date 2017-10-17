@@ -51,6 +51,8 @@
 
 
 
+
+
   };
 
   /**
@@ -76,6 +78,12 @@
       if (data.hasOwnProperty('queueName')) {
         obj['queueName'] = ApiClient.convertToType(data['queueName'], 'String');
       }
+      if (data.hasOwnProperty('agentWorkMode')) {
+        obj['agentWorkMode'] = ApiClient.convertToType(data['agentWorkMode'], 'String');
+      }
+      if (data.hasOwnProperty('channels')) {
+        obj['channels'] = ApiClient.convertToType(data['channels'], ['String']);
+      }
     }
     return obj;
   }
@@ -100,7 +108,34 @@
    * @member {String} queueName
    */
   exports.prototype['queueName'] = undefined;
+  /**
+   * the agent workmode.
+   * @member {module:model/ActivatechannelsData.AgentWorkModeEnum} agentWorkMode
+   */
+  exports.prototype['agentWorkMode'] = undefined;
+  /**
+   * array of string that corresponding to the medias to login
+   * @member {Array.<String>} channels
+   */
+  exports.prototype['channels'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>agentWorkMode</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.AgentWorkModeEnum = {
+    /**
+     * value: "AutoIn"
+     * @const
+     */
+    "AutoIn": "AutoIn",
+    /**
+     * value: "ManualIn"
+     * @const
+     */
+    "ManualIn": "ManualIn"  };
 
 
   return exports;

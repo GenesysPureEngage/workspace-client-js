@@ -1123,7 +1123,7 @@
 
     /**
      * Reconnect a call
-     * Release the active call and retrieve another call from hold. This is a quick way to to do  /release and /retrieve in one step. 
+     * Release the active call and retrieve another call from hold. This is a quick way to to do  /release and /retrieve in one step.
      * @param {String} id The id of the active call
      * @param {module:model/ReconnectData} reconnectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1166,7 +1166,7 @@
 
     /**
      * Reconnect a call
-     * Release the active call and retrieve another call from hold. This is a quick way to to do  /release and /retrieve in one step. 
+     * Release the active call and retrieve another call from hold. This is a quick way to to do  /release and /retrieve in one step.
      * @param {String} id The id of the active call
      * @param {module:model/ReconnectData} reconnectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
