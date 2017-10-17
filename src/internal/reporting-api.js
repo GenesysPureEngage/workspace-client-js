@@ -11,6 +11,14 @@ class ReportingApi {
       console.log(msg);
     }
   }
+  
+  async unsubscribe(subscriptionId) {
+      return this._api.unsubscribe({
+          data: {
+              subscriptionId: subscriptionId
+          }
+      });
+  }
 
   async register(statistics) {
     const resp = await this._api.registerWithHttpInfo({
