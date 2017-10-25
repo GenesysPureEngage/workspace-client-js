@@ -51,6 +51,7 @@
 
 
 
+
   };
 
   /**
@@ -64,6 +65,9 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('autoCompleteCall')) {
+        obj['autoCompleteCall'] = ApiClient.convertToType(data['autoCompleteCall'], 'Boolean');
+      }
       if (data.hasOwnProperty('currentPlace')) {
         obj['currentPlace'] = ApiClient.convertToType(data['currentPlace'], 'String');
       }
@@ -80,6 +84,10 @@
     return obj;
   }
 
+  /**
+   * @member {Boolean} autoCompleteCall
+   */
+  exports.prototype['autoCompleteCall'] = undefined;
   /**
    * @member {String} currentPlace
    */

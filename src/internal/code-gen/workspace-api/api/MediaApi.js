@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/ReadyForMediaData', 'model/UserData', 'model/UserData2'], factory);
+    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/UserData', 'model/UserData2'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/ReadyForMediaData'), require('../model/UserData'), require('../model/UserData2'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/UserData'), require('../model/UserData2'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
+    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
   }
-}(this, function(ApiClient, AcceptData, AcceptData1, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, ReadyForMediaData, UserData, UserData2) {
+}(this, function(ApiClient, AcceptData, AcceptData1, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, UserData, UserData2) {
   'use strict';
 
   /**
@@ -530,6 +530,72 @@
      */
     this.notReadyForMedia = function(mediatype, notReadyForMediaData) {
       return this.notReadyForMediaWithHttpInfo(mediatype, notReadyForMediaData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Place the interaction in queue
+     * Place the interaction in queue with modification of properties pairs.
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/PlaceInQueueData} placeInQueueData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.placeInQueueWithHttpInfo = function(mediatype, id, placeInQueueData) {
+      var postBody = placeInQueueData;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling placeInQueue");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling placeInQueue");
+      }
+
+      // verify the required parameter 'placeInQueueData' is set
+      if (placeInQueueData === undefined || placeInQueueData === null) {
+        throw new Error("Missing the required parameter 'placeInQueueData' when calling placeInQueue");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/place-in-queue', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Place the interaction in queue
+     * Place the interaction in queue with modification of properties pairs.
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/PlaceInQueueData} placeInQueueData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.placeInQueue = function(mediatype, id, placeInQueueData) {
+      return this.placeInQueueWithHttpInfo(mediatype, id, placeInQueueData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

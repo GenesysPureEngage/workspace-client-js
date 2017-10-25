@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/StatisticValueForRegister'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./StatisticValueForRegister'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.StatisticsSubscribeDataData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.StatisticsSubscribeDataData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.StatisticValueForRegister);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, StatisticValueForRegister) {
   'use strict';
 
 
@@ -44,7 +44,7 @@
    * @alias module:model/StatisticsSubscribeDataData
    * @class
    * @param connectionId {String} 
-   * @param statistics {Array.<Object>} 
+   * @param statistics {Array.<module:model/StatisticValueForRegister>} 
    */
   var exports = function(connectionId, statistics) {
     var _this = this;
@@ -68,7 +68,7 @@
         obj['connectionId'] = ApiClient.convertToType(data['connectionId'], 'String');
       }
       if (data.hasOwnProperty('statistics')) {
-        obj['statistics'] = ApiClient.convertToType(data['statistics'], [Object]);
+        obj['statistics'] = ApiClient.convertToType(data['statistics'], [StatisticValueForRegister]);
       }
     }
     return obj;
@@ -79,7 +79,7 @@
    */
   exports.prototype['connectionId'] = undefined;
   /**
-   * @member {Array.<Object>} statistics
+   * @member {Array.<module:model/StatisticValueForRegister>} statistics
    */
   exports.prototype['statistics'] = undefined;
 

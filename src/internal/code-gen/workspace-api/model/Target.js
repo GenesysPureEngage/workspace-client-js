@@ -85,8 +85,8 @@
       if (data.hasOwnProperty('lastName')) {
         obj['lastName'] = ApiClient.convertToType(data['lastName'], 'String');
       }
-      if (data.hasOwnProperty('employeeID')) {
-        obj['employeeID'] = ApiClient.convertToType(data['employeeID'], 'String');
+      if (data.hasOwnProperty('employeeId')) {
+        obj['employeeId'] = ApiClient.convertToType(data['employeeId'], 'String');
       }
       if (data.hasOwnProperty('userName')) {
         obj['userName'] = ApiClient.convertToType(data['userName'], 'String');
@@ -131,9 +131,9 @@
   exports.prototype['lastName'] = undefined;
   /**
    * Employee id - only applicable to agents.
-   * @member {String} employeeID
+   * @member {String} employeeId
    */
-  exports.prototype['employeeID'] = undefined;
+  exports.prototype['employeeId'] = undefined;
   /**
    * Username - only applicable to agents.
    * @member {String} userName
