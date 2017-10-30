@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.Kvpair = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediamediatypeinteractionsidaddcontentData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,36 +34,45 @@
 
 
   /**
-   * The Kvpair model module.
-   * @module model/Kvpair
+   * The MediamediatypeinteractionsidaddcontentData model module.
+   * @module model/MediamediatypeinteractionsidaddcontentData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Kvpair</code>.
-   * @alias module:model/Kvpair
+   * Constructs a new <code>MediamediatypeinteractionsidaddcontentData</code>.
+   * @alias module:model/MediamediatypeinteractionsidaddcontentData
    * @class
    */
   var exports = function() {
     var _this = this;
 
+
   };
 
   /**
-   * Constructs a <code>Kvpair</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediamediatypeinteractionsidaddcontentData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Kvpair} obj Optional instance to populate.
-   * @return {module:model/Kvpair} The populated <code>Kvpair</code> instance.
+   * @param {module:model/MediamediatypeinteractionsidaddcontentData} obj Optional instance to populate.
+   * @return {module:model/MediamediatypeinteractionsidaddcontentData} The populated <code>MediamediatypeinteractionsidaddcontentData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('comment')) {
+        obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
+      }
     }
     return obj;
   }
 
+  /**
+   * The comment to be set
+   * @member {String} comment
+   */
+  exports.prototype['comment'] = undefined;
 
 
 

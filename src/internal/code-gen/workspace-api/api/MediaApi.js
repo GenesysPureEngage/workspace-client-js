@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/UserData', 'model/UserData2'], factory);
+    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/UserData', 'model/UserData2'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/UserData'), require('../model/UserData2'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/UserData'), require('../model/UserData2'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
+    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
   }
-}(this, function(ApiClient, AcceptData, AcceptData1, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, UserData, UserData2) {
+}(this, function(ApiClient, AcceptData, AcceptData1, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, UserData, UserData2) {
   'use strict';
 
   /**
@@ -106,6 +106,195 @@
      */
     this.accept = function(mediatype, id, opts) {
       return this.acceptWithHttpInfo(mediatype, id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Set the comment for the interaction
+     * Set the comment for the interaction
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/AddCommentData} addCommentData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.addCommentWithHttpInfo = function(mediatype, id, addCommentData) {
+      var postBody = addCommentData;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling addComment");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling addComment");
+      }
+
+      // verify the required parameter 'addCommentData' is set
+      if (addCommentData === undefined || addCommentData === null) {
+        throw new Error("Missing the required parameter 'addCommentData' when calling addComment");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/add-comment', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Set the comment for the interaction
+     * Set the comment for the interaction
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/AddCommentData} addCommentData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.addComment = function(mediatype, id, addCommentData) {
+      return this.addCommentWithHttpInfo(mediatype, id, addCommentData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create the interaction in UCS database
+     * Create the interaction in UCS database
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AddContentData} opts.addContentData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.addContentWithHttpInfo = function(mediatype, id, opts) {
+      opts = opts || {};
+      var postBody = opts['addContentData'];
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling addContent");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling addContent");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/add-content', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Create the interaction in UCS database
+     * Create the interaction in UCS database
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AddContentData} opts.addContentData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.addContent = function(mediatype, id, opts) {
+      return this.addContentWithHttpInfo(mediatype, id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Complete open-media interaction
+     * Complete the interaction specified in the id path parameter
+     * @param {String} mediatype media-type of interaction to complete
+     * @param {String} id id of interaction to complete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.completeWithHttpInfo = function(mediatype, id) {
+      var postBody = null;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling complete");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling complete");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/complete', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Complete open-media interaction
+     * Complete the interaction specified in the id path parameter
+     * @param {String} mediatype media-type of interaction to complete
+     * @param {String} id id of interaction to complete
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.complete = function(mediatype, id) {
+      return this.completeWithHttpInfo(mediatype, id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

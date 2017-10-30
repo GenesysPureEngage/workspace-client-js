@@ -16,54 +16,62 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/MediamediatypeinteractionsidaddcontentData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidaddcontentData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.Kvpair = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.AddContentData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidaddcontentData);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, MediamediatypeinteractionsidaddcontentData) {
   'use strict';
 
 
 
 
   /**
-   * The Kvpair model module.
-   * @module model/Kvpair
+   * The AddContentData model module.
+   * @module model/AddContentData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Kvpair</code>.
-   * @alias module:model/Kvpair
+   * Constructs a new <code>AddContentData</code>.
+   * @alias module:model/AddContentData
    * @class
    */
   var exports = function() {
     var _this = this;
 
+
   };
 
   /**
-   * Constructs a <code>Kvpair</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>AddContentData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Kvpair} obj Optional instance to populate.
-   * @return {module:model/Kvpair} The populated <code>Kvpair</code> instance.
+   * @param {module:model/AddContentData} obj Optional instance to populate.
+   * @return {module:model/AddContentData} The populated <code>AddContentData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('data')) {
+        obj['data'] = MediamediatypeinteractionsidaddcontentData.constructFromObject(data['data']);
+      }
     }
     return obj;
   }
 
+  /**
+   * @member {module:model/MediamediatypeinteractionsidaddcontentData} data
+   */
+  exports.prototype['data'] = undefined;
 
 
 
