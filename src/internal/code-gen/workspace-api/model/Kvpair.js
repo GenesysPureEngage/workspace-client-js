@@ -47,6 +47,9 @@
   var exports = function() {
     var _this = this;
 
+
+
+
   };
 
   /**
@@ -60,10 +63,31 @@
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('key')) {
+        obj['key'] = ApiClient.convertToType(data['key'], 'String');
+      }
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      }
+      if (data.hasOwnProperty('value')) {
+        obj['value'] = ApiClient.convertToType(data['value'], Object);
+      }
     }
     return obj;
   }
 
+  /**
+   * @member {String} key
+   */
+  exports.prototype['key'] = undefined;
+  /**
+   * @member {String} type
+   */
+  exports.prototype['type'] = undefined;
+  /**
+   * @member {Object} value
+   */
+  exports.prototype['value'] = undefined;
 
 
 
