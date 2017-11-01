@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "cometd": "^3.1.2",
-    "cometd-nodejs-client": "^1.0.1",
     "events": "^1.1.1",
     "superagent": "1.7.1",
     "url": "^0.11.0"
