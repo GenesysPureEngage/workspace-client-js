@@ -89,7 +89,7 @@ class WorkspaceApi extends EventEmitter {
     this._workspaceClient = new workspace.ApiClient();
     this._workspaceClient.basePath = this._workspaceUrl;
     this._workspaceClient.enableCookies = true;
-    this.cookieJar = this._workspaceClient.cookieJar;
+	this.cookieJar = this._workspaceClient.agent.jar;
     if (this.apiKey) {
       this._workspaceClient.defaultHeaders = { 'x-api-key': this.apiKey };
     }
