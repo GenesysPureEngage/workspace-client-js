@@ -14,13 +14,14 @@ class WorkspaceApi extends EventEmitter {
   /**
    * @param {String} apiKey - API key to be included in HTTP requests
    * @param {String} baseUrl - The base URL of the Genesys API
+   * @param {String} debugEnabled - Enable debug output
    */
   constructor(apiKey, baseUrl, debugEnabled) {
     super();
     this.apiKey = apiKey;
     this.baseUrl = baseUrl;
     this._workspaceUrl = `${this.baseUrl}/workspace/v3`;
-    this._debugEnabled = (String(debugEnabled) === 'true')
+    this._debugEnabled = (String(debugEnabled) === 'true');
     this.initialized = false;
   }
 
