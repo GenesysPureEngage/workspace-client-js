@@ -43,11 +43,12 @@
    * Constructs a new <code>InteractionContentData</code>.
    * @alias module:model/InteractionContentData
    * @class
+   * @param data {module:model/UcsgetinteractioncontentData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

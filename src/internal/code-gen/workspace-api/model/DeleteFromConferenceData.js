@@ -43,11 +43,12 @@
    * Constructs a new <code>DeleteFromConferenceData</code>.
    * @alias module:model/DeleteFromConferenceData
    * @class
+   * @param data {module:model/VoicecallsiddeletefromconferenceData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

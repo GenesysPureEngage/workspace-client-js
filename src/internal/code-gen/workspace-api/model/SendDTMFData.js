@@ -43,11 +43,12 @@
    * Constructs a new <code>SendDTMFData</code>.
    * @alias module:model/SendDTMFData
    * @class
+   * @param data {module:model/VoicecallsidsenddtmfData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

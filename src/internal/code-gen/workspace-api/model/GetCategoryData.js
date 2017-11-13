@@ -43,11 +43,12 @@
    * Constructs a new <code>GetCategoryData</code>.
    * @alias module:model/GetCategoryData
    * @class
+   * @param data {module:model/UcsresponsescategoriesidgetdetailsData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

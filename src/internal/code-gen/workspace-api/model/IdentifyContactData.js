@@ -43,11 +43,12 @@
    * Constructs a new <code>IdentifyContactData</code>.
    * @alias module:model/IdentifyContactData
    * @class
+   * @param data {module:model/UcsidentifycontactData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

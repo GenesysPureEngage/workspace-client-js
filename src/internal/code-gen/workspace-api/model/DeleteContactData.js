@@ -43,11 +43,12 @@
    * Constructs a new <code>DeleteContactData</code>.
    * @alias module:model/DeleteContactData
    * @class
+   * @param data {module:model/UcsdeletecontactData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

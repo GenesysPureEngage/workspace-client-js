@@ -43,11 +43,12 @@
    * Constructs a new <code>GetStandardResponseData</code>.
    * @alias module:model/GetStandardResponseData
    * @class
+   * @param data {module:model/UcsresponsesidgetdetailsData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

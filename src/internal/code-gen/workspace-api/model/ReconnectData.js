@@ -43,11 +43,12 @@
    * Constructs a new <code>ReconnectData</code>.
    * @alias module:model/ReconnectData
    * @class
+   * @param data {module:model/VoicecallsidreconnectData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

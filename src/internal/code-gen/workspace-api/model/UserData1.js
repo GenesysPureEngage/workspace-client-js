@@ -43,11 +43,12 @@
    * Constructs a new <code>UserData1</code>.
    * @alias module:model/UserData1
    * @class
+   * @param data {module:model/VoicecallsidcompleteData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

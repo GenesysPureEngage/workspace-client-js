@@ -43,11 +43,12 @@
    * Constructs a new <code>InitiateConferenceData</code>.
    * @alias module:model/InitiateConferenceData
    * @class
+   * @param data {module:model/VoicecallsidinitiateconferenceData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

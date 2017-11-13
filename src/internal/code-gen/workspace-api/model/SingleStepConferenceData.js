@@ -43,11 +43,12 @@
    * Constructs a new <code>SingleStepConferenceData</code>.
    * @alias module:model/SingleStepConferenceData
    * @class
+   * @param data {module:model/VoicecallsidsinglestepconferenceData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

@@ -44,12 +44,13 @@
    * @alias module:model/InlineResponse2002Data
    * @class
    * @param subscriptionId {String} ID of the requested subscription
+   * @param statistics {module:model/InlineResponse2002DataStatistics} 
    */
-  var exports = function(subscriptionId) {
+  var exports = function(subscriptionId, statistics) {
     var _this = this;
 
     _this['subscriptionId'] = subscriptionId;
-
+    _this['statistics'] = statistics;
   };
 
   /**

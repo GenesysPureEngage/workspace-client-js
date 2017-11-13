@@ -43,11 +43,12 @@
    * Constructs a new <code>PhoneCallData</code>.
    * @alias module:model/PhoneCallData
    * @class
+   * @param data {module:model/UcsfindorcreatephonecallData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

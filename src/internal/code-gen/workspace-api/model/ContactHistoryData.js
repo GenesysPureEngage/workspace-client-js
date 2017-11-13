@@ -43,11 +43,12 @@
    * Constructs a new <code>ContactHistoryData</code>.
    * @alias module:model/ContactHistoryData
    * @class
+   * @param data {module:model/UcsgetcontacthistoryData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

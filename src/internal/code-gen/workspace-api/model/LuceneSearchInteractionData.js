@@ -43,11 +43,12 @@
    * Constructs a new <code>LuceneSearchInteractionData</code>.
    * @alias module:model/LuceneSearchInteractionData
    * @class
+   * @param data {module:model/UcslucenesearchinteractionData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

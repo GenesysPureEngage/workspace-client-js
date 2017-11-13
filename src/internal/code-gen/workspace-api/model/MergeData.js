@@ -43,11 +43,12 @@
    * Constructs a new <code>MergeData</code>.
    * @alias module:model/MergeData
    * @class
+   * @param data {module:model/VoicecallsidmergeData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

@@ -43,11 +43,12 @@
    * Constructs a new <code>KeyData</code>.
    * @alias module:model/KeyData
    * @class
+   * @param data {module:model/VoicecallsiddeleteuserdatapairData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

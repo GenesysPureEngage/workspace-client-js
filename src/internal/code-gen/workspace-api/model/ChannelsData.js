@@ -43,11 +43,12 @@
    * Constructs a new <code>ChannelsData</code>.
    * @alias module:model/ChannelsData
    * @class
+   * @param data {module:model/ActivatechannelsData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

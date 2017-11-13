@@ -43,11 +43,12 @@
    * Constructs a new <code>RedirectData</code>.
    * @alias module:model/RedirectData
    * @class
+   * @param data {module:model/VoicecallsidredirectData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

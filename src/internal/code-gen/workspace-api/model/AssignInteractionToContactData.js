@@ -43,11 +43,12 @@
    * Constructs a new <code>AssignInteractionToContactData</code>.
    * @alias module:model/AssignInteractionToContactData
    * @class
+   * @param data {module:model/UcsassigninteractiontocontactData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

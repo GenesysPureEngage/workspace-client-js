@@ -43,11 +43,12 @@
    * Constructs a new <code>SendUserEventData</code>.
    * @alias module:model/SendUserEventData
    * @class
+   * @param data {module:model/SendUserEventDataData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

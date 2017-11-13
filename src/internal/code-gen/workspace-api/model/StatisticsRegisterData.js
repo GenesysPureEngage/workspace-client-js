@@ -43,11 +43,12 @@
    * Constructs a new <code>StatisticsRegisterData</code>.
    * @alias module:model/StatisticsRegisterData
    * @class
+   * @param data {module:model/StatisticsRegisterDataData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

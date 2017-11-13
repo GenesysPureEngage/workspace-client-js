@@ -43,11 +43,12 @@
    * Constructs a new <code>MakeCallData</code>.
    * @alias module:model/MakeCallData
    * @class
+   * @param data {module:model/VoicemakecallData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

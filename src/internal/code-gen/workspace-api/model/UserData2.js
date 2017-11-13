@@ -43,11 +43,12 @@
    * Constructs a new <code>UserData2</code>.
    * @alias module:model/UserData2
    * @class
+   * @param data {module:model/MediamediatypeinteractionsiddeleteuserdataData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

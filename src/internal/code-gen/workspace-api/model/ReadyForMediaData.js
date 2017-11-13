@@ -43,11 +43,12 @@
    * Constructs a new <code>ReadyForMediaData</code>.
    * @alias module:model/ReadyForMediaData
    * @class
+   * @param data {module:model/MediamediatypelogoutData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

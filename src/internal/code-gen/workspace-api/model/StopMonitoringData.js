@@ -43,11 +43,12 @@
    * Constructs a new <code>StopMonitoringData</code>.
    * @alias module:model/StopMonitoringData
    * @class
+   * @param data {module:model/VoicestopmonitoringData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

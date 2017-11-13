@@ -43,11 +43,12 @@
    * Constructs a new <code>InlineResponse2001</code>.
    * @alias module:model/InlineResponse2001
    * @class
+   * @param status {module:model/InlineResponse200Status} 
    */
-  var exports = function() {
+  var exports = function(status) {
     var _this = this;
 
-
+    _this['status'] = status;
 
   };
 

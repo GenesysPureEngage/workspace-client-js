@@ -43,11 +43,12 @@
    * Constructs a new <code>UnsubscribeData</code>.
    * @alias module:model/UnsubscribeData
    * @class
+   * @param data {module:model/ReportingunsubscribeData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

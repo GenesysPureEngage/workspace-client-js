@@ -43,11 +43,12 @@
    * Constructs a new <code>CallNoteData</code>.
    * @alias module:model/CallNoteData
    * @class
+   * @param data {module:model/UcssetcallnoteData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

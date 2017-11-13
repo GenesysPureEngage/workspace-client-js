@@ -43,11 +43,12 @@
    * Constructs a new <code>AddCommentData</code>.
    * @alias module:model/AddCommentData
    * @class
+   * @param data {module:model/MediamediatypeinteractionsidaddcommentData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

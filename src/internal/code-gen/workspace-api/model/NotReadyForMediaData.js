@@ -43,11 +43,12 @@
    * Constructs a new <code>NotReadyForMediaData</code>.
    * @alias module:model/NotReadyForMediaData
    * @class
+   * @param data {module:model/MediamediatypenotreadyData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

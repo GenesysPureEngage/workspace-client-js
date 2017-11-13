@@ -43,11 +43,12 @@
    * Constructs a new <code>AlternateData</code>.
    * @alias module:model/AlternateData
    * @class
+   * @param data {module:model/VoicecallsidalternateData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

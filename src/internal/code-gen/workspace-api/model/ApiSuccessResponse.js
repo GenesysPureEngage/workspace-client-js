@@ -43,11 +43,12 @@
    * Constructs a new <code>ApiSuccessResponse</code>.
    * @alias module:model/ApiSuccessResponse
    * @class
+   * @param status {module:model/InlineResponse200Status} 
    */
-  var exports = function() {
+  var exports = function(status) {
     var _this = this;
 
-
+    _this['status'] = status;
   };
 
   /**

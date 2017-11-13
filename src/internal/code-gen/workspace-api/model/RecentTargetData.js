@@ -43,11 +43,12 @@
    * Constructs a new <code>RecentTargetData</code>.
    * @alias module:model/RecentTargetData
    * @class
+   * @param data {module:model/TargetsrecentsaddData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

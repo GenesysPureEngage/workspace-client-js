@@ -43,11 +43,12 @@
    * Constructs a new <code>LogoutMediaData</code>.
    * @alias module:model/LogoutMediaData
    * @class
+   * @param data {module:model/MediamediatypelogoutData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

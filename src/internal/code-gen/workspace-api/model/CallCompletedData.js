@@ -43,11 +43,12 @@
    * Constructs a new <code>CallCompletedData</code>.
    * @alias module:model/CallCompletedData
    * @class
+   * @param data {module:model/UcssetcallcompletedData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

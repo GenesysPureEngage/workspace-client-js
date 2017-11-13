@@ -43,11 +43,12 @@
    * Constructs a new <code>StartMonitoringData</code>.
    * @alias module:model/StartMonitoringData
    * @class
+   * @param data {module:model/VoicestartmonitoringData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

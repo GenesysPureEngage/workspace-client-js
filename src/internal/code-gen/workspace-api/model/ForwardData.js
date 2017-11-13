@@ -43,11 +43,12 @@
    * Constructs a new <code>ForwardData</code>.
    * @alias module:model/ForwardData
    * @class
+   * @param data {module:model/VoicesetforwardData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**

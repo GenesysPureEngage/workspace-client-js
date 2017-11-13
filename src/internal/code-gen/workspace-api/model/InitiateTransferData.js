@@ -43,11 +43,12 @@
    * Constructs a new <code>InitiateTransferData</code>.
    * @alias module:model/InitiateTransferData
    * @class
+   * @param data {module:model/VoicecallsidinitiatetransferData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**
