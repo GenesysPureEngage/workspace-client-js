@@ -48,6 +48,9 @@
     var _this = this;
 
 
+
+
+
   };
 
   /**
@@ -64,6 +67,15 @@
       if (data.hasOwnProperty('comment')) {
         obj['comment'] = ApiClient.convertToType(data['comment'], 'String');
       }
+      if (data.hasOwnProperty('threadId')) {
+        obj['threadId'] = ApiClient.convertToType(data['threadId'], 'String');
+      }
+      if (data.hasOwnProperty('parentId')) {
+        obj['parentId'] = ApiClient.convertToType(data['parentId'], 'String');
+      }
+      if (data.hasOwnProperty('contactId')) {
+        obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
+      }
     }
     return obj;
   }
@@ -73,6 +85,21 @@
    * @member {String} comment
    */
   exports.prototype['comment'] = undefined;
+  /**
+   * ThreadId
+   * @member {String} threadId
+   */
+  exports.prototype['threadId'] = undefined;
+  /**
+   * UCS id of parent interaction
+   * @member {String} parentId
+   */
+  exports.prototype['parentId'] = undefined;
+  /**
+   * id of contact
+   * @member {String} contactId
+   */
+  exports.prototype['contactId'] = undefined;
 
 
 

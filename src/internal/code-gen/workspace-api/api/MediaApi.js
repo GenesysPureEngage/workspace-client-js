@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/UserData', 'model/UserData2'], factory);
+    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/UserData'), require('../model/UserData2'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
+    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
   }
-}(this, function(ApiClient, AcceptData, AcceptData1, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, UserData, UserData2) {
+}(this, function(ApiClient, AcceptData, AcceptData1, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, TransferData, UserData, UserData2) {
   'use strict';
 
   /**
@@ -108,6 +108,73 @@
      */
     this.accept = function(mediatype, id, opts) {
       return this.acceptWithHttpInfo(mediatype, id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Add an attachment to the open-media interaction
+     * Add an attachment to the interaction specified in the id path parameter
+     * @param {String} mediatype media-type of interaction to add attachment
+     * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {File} opts.attachment The file to upload.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.addAttachmentWithHttpInfo = function(mediatype, id, opts) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling addAttachment");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling addAttachment");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+        'attachment': opts['attachment']
+      };
+
+      var authNames = [];
+      var contentTypes = ['multipart/form-data'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/add-attachment', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Add an attachment to the open-media interaction
+     * Add an attachment to the interaction specified in the id path parameter
+     * @param {String} mediatype media-type of interaction to add attachment
+     * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {File} opts.attachment The file to upload.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.addAttachment = function(mediatype, id, opts) {
+      return this.addAttachmentWithHttpInfo(mediatype, id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -242,6 +309,212 @@
      */
     this.addContent = function(mediatype, id, opts) {
       return this.addContentWithHttpInfo(mediatype, id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Assign the contact to the open interaction
+     * Assign the contact to the open interaction specified in the contactId path parameter
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of interaction
+     * @param {String} contactId id of contact
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.assignContactWithHttpInfo = function(mediatype, id, contactId) {
+      var postBody = null;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling assignContact");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling assignContact");
+      }
+
+      // verify the required parameter 'contactId' is set
+      if (contactId === undefined || contactId === null) {
+        throw new Error("Missing the required parameter 'contactId' when calling assignContact");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id,
+        'contactId': contactId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/assign-contact/{contactId}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Assign the contact to the open interaction
+     * Assign the contact to the open interaction specified in the contactId path parameter
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of interaction
+     * @param {String} contactId id of contact
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.assignContact = function(mediatype, id, contactId) {
+      return this.assignContactWithHttpInfo(mediatype, id, contactId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Attach user data to an interaction
+     * Attach the interaction userdata with the provided key/value pairs.
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/UserData} userData An array of key/value pairs.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.attachUserDataWithHttpInfo = function(mediatype, id, userData) {
+      var postBody = userData;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling attachUserData");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling attachUserData");
+      }
+
+      // verify the required parameter 'userData' is set
+      if (userData === undefined || userData === null) {
+        throw new Error("Missing the required parameter 'userData' when calling attachUserData");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/attach-user-data', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Attach user data to an interaction
+     * Attach the interaction userdata with the provided key/value pairs.
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/UserData} userData An array of key/value pairs.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.attachUserData = function(mediatype, id, userData) {
+      return this.attachUserDataWithHttpInfo(mediatype, id, userData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get the attachment of the interaction
+     * Get the attachment of the interaction specified in the documentId path parameter
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of interaction
+     * @param {String} documentId id of document to get
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link 'String'} and HTTP response
+     */
+    this.attachmentsWithHttpInfo = function(mediatype, id, documentId) {
+      var postBody = null;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling attachments");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling attachments");
+      }
+
+      // verify the required parameter 'documentId' is set
+      if (documentId === undefined || documentId === null) {
+        throw new Error("Missing the required parameter 'documentId' when calling attachments");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id,
+        'documentId': documentId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/octet-stream'];
+      var returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/attachments/{documentId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Get the attachment of the interaction
+     * Get the attachment of the interaction specified in the documentId path parameter
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of interaction
+     * @param {String} documentId id of document to get
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link 'String'}
+     */
+    this.attachments = function(mediatype, id, documentId) {
+      return this.attachmentsWithHttpInfo(mediatype, id, documentId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -504,142 +777,6 @@
      */
     this.logoutAgentState = function() {
       return this.logoutAgentStateWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Attach user data to an interaction
-     * Attach the interaction userdata with the provided key/value pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData} userData An array of key/value pairs.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.mediaAttachUserDataWithHttpInfo = function(mediatype, id, userData) {
-      var postBody = userData;
-
-      // verify the required parameter 'mediatype' is set
-      if (mediatype === undefined || mediatype === null) {
-        throw new Error("Missing the required parameter 'mediatype' when calling mediaAttachUserData");
-      }
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling mediaAttachUserData");
-      }
-
-      // verify the required parameter 'userData' is set
-      if (userData === undefined || userData === null) {
-        throw new Error("Missing the required parameter 'userData' when calling mediaAttachUserData");
-      }
-
-
-      var pathParams = {
-        'mediatype': mediatype,
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/{mediatype}/interactions/{id}/attach-user-data', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Attach user data to an interaction
-     * Attach the interaction userdata with the provided key/value pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData} userData An array of key/value pairs.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.mediaAttachUserData = function(mediatype, id, userData) {
-      return this.mediaAttachUserDataWithHttpInfo(mediatype, id, userData)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Update user data to an interaction
-     * Update the interaction userdata with the provided key/value pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData} userData An array of key/value pairs.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.mediaUpdateUserDataWithHttpInfo = function(mediatype, id, userData) {
-      var postBody = userData;
-
-      // verify the required parameter 'mediatype' is set
-      if (mediatype === undefined || mediatype === null) {
-        throw new Error("Missing the required parameter 'mediatype' when calling mediaUpdateUserData");
-      }
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling mediaUpdateUserData");
-      }
-
-      // verify the required parameter 'userData' is set
-      if (userData === undefined || userData === null) {
-        throw new Error("Missing the required parameter 'userData' when calling mediaUpdateUserData");
-      }
-
-
-      var pathParams = {
-        'mediatype': mediatype,
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/{mediatype}/interactions/{id}/update-user-data', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Update user data to an interaction
-     * Update the interaction userdata with the provided key/value pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData} userData An array of key/value pairs.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.mediaUpdateUserData = function(mediatype, id, userData) {
-      return this.mediaUpdateUserDataWithHttpInfo(mediatype, id, userData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -985,6 +1122,75 @@
 
 
     /**
+     * Remove the attachment of the open-media interaction
+     * Remove the attachment of the interaction specified in the documentId path parameter
+     * @param {String} mediatype media-type of interaction to remove attachment
+     * @param {String} id id of interaction
+     * @param {String} documentId id of document to remove
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.removeAttachmentWithHttpInfo = function(mediatype, id, documentId) {
+      var postBody = null;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling removeAttachment");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling removeAttachment");
+      }
+
+      // verify the required parameter 'documentId' is set
+      if (documentId === undefined || documentId === null) {
+        throw new Error("Missing the required parameter 'documentId' when calling removeAttachment");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id,
+        'documentId': documentId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/remove-attachment/{documentId}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Remove the attachment of the open-media interaction
+     * Remove the attachment of the interaction specified in the documentId path parameter
+     * @param {String} mediatype media-type of interaction to remove attachment
+     * @param {String} id id of interaction
+     * @param {String} documentId id of document to remove
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.removeAttachment = function(mediatype, id, documentId) {
+      return this.removeAttachmentWithHttpInfo(mediatype, id, documentId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Logout the open media channel
      * Logout the open media channel
      * @param {String} mediatype 
@@ -1038,6 +1244,142 @@
      */
     this.removeMedia = function(mediatype, logoutMediaData) {
       return this.removeMediaWithHttpInfo(mediatype, logoutMediaData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Transfer the interaction to the agent
+     * Place the interaction in queue with modification of properties pairs.
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/TransferData} transferData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.transferAgentWithHttpInfo = function(mediatype, id, transferData) {
+      var postBody = transferData;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling transferAgent");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling transferAgent");
+      }
+
+      // verify the required parameter 'transferData' is set
+      if (transferData === undefined || transferData === null) {
+        throw new Error("Missing the required parameter 'transferData' when calling transferAgent");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/transfer-agent', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Transfer the interaction to the agent
+     * Place the interaction in queue with modification of properties pairs.
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/TransferData} transferData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.transferAgent = function(mediatype, id, transferData) {
+      return this.transferAgentWithHttpInfo(mediatype, id, transferData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Update user data to an interaction
+     * Update the interaction userdata with the provided key/value pairs.
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/UserData} userData An array of key/value pairs.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.updateUserDataWithHttpInfo = function(mediatype, id, userData) {
+      var postBody = userData;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling updateUserData");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateUserData");
+      }
+
+      // verify the required parameter 'userData' is set
+      if (userData === undefined || userData === null) {
+        throw new Error("Missing the required parameter 'userData' when calling updateUserData");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/update-user-data', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Update user data to an interaction
+     * Update the interaction userdata with the provided key/value pairs.
+     * @param {String} mediatype media-type of interaction
+     * @param {String} id id of the interaction
+     * @param {module:model/UserData} userData An array of key/value pairs.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.updateUserData = function(mediatype, id, userData) {
+      return this.updateUserDataWithHttpInfo(mediatype, id, userData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
