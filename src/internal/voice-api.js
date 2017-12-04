@@ -170,66 +170,72 @@ class VoiceApi {
   /**
    * Make a new call to the specified destination.
    * @param {String} destination The destination to call
+   * @param {Object} optional Optional parameters
    */
-  async makeCall(destination) {
+  async makeCall(destination, optional) {
     this._log(`Sending make-call to destination [${destination}]...`);
-    let response = await this._api.makeCall(
-      { 
-        data: {
-          destination: destination
-        }
-      }
-    );
+    let data = {
+        destination: destination
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.makeCall({data: data });
     return response;
   }
 
   /**
    * Answer call.
    * @param {String} connId The connId of the call to answer.
+   * @param {Object} optional Optional parameters
    */
-  async answerCall(connId) {
+  async answerCall(connId, optional) {
     this._log(`Sending answer for call [${connId}]...`);
-    let response = await this._api.answer(connId);
+    
+    let response = await this._api.answer(connId, {answerData: {data: optional}});
     return response;
   }
 
   /**
    * Place call on hold.
    * @param {String} connId The connId of the call to place on hold. 
+   * @param {Object} optional Optional parameters
    */
-  async holdCall(connId) {
+  async holdCall(connId, optional) {
     this._log(`Sending hold for call [${connId}]...`);
-    let response = await this._api.hold(connId);
+    let response = await this._api.hold(connId, {holdData: {data: optional}});
     return response;
   }
 
   /**
    * Retrieve call from hold.
    * @param {String} connId The connId of the call to retrieve. 
+   * @param {Object} optional Optional parameters
    */
-  async retrieveCall(connId) {
+  async retrieveCall(connId, optional) {
     this._log(`Sending retrieve for call [${connId}]...`);
-    let response = await this._api.retrieve(connId);
+    let response = await this._api.retrieve(connId, {retrieveData: {data: optional}});
     return response;
   }
 
   /**
    * Release call.
    * @param {String} connId The connId of the call to release 
+   * @param {Object} optional Optional parameters
    */
-  async releaseCall(connId) {
+  async releaseCall(connId, optional) {
     this._log(`Sending release for call [${connId}]...`);
-    let response = await this._api.release(connId);
+    let response = await this._api.release(connId, {releaseData: {data: optional}});
     return response;
   }
 
   /**
    * Clear call.
    * @param {String} connId The connId of the call to clear 
+   * @param {Object} optional Optional parameters
    */
-  async clearCall(connId) {
+  async clearCall(connId, optional) {
     this._log(`Sending clear for call [${connId}]...`);
-    let response = await this._api.clear(connId, {});
+    let response = await this._api.clear(connId, {data: optional});
     return response;
   }
 
@@ -237,31 +243,33 @@ class VoiceApi {
    * Redirect call to the specified destination
    * @param {String} connId The connId of the call to redirect.
    * @param {String} destination The destination to redirect the call to.
+   * @param {Object} optional Optional parameters
    */
-  async redirectCall(connId, destination) {
+  async redirectCall(connId, destination, optional) {
     this._log(`Sending redirect for call [${connId}] with destination [${destination}]...`);
-    let response = await this._api.redirect(connId, {
-      data: {
+    let data = {
         destination: destination
-      }
-    });
-
-    return destination;
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.redirect(connId, {data: data});
+    return response;
   }
 
   /**
    * Initiate a conference to the specified destination.
    * @param {String} connId The connId of the call to start the conference from.
    * @param {String} destination The destination
+   * @param {Object} optional Optional parameters
    */
-  async initiateConference(connId, destination) {
+  async initiateConference(connId, destination, optional) {
     this._log(`Sending initiate-conference to destination [${destination}] for call [${connId}]...`);
-    let response = await this._api.initiateConference(connId, {
-      data: {
+    let data = {
         destination: destination
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.initiateConference(connId, {data: data});
     return response;
   }
 
@@ -269,15 +277,16 @@ class VoiceApi {
    * Complete a previously initiated conference identified by the provided ids.
    * @param {String} connId The id of the consule call (established)
    * @param {String} parentConnId The id of the parent call (held).
+   * @param {Object} optional Optional parameters
    */
-  async completeConference(connId, parentConnId) {
+  async completeConference(connId, parentConnId, optional) {
     this._log(`Sending complete-conference for call [${connId}] and parentConnId [${parentConnId}]...`);
-    let response = await this._api.completeConference(connId, {
-      data: {
+    let data = {
         parentConnId: parentConnId
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.completeConference(connId, {data: data});
     return response;
   }
 
@@ -285,15 +294,16 @@ class VoiceApi {
    * Delete a dn from a conference call
    * @param {String} connId The connId of the conference
    * @param {String} dnToDrop The dn number to drop from the conference.
+   * @param {Object} optional Optional parameters
    */
-  async deleteFromConference(connId, dnToDrop) {
+  async deleteFromConference(connId, dnToDrop, optional) {
     this._log(`Sending delete-from-conference for call [${connId}] with dnToDrop [${dnToDrop}]...`);
-    let response = await this._api.deleteFromConference(connId, {
-      data: {
+    let data = {
         dnToDrop: dnToDrop
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.deleteFromConference(connId, {data: data});
     return response;
   }
 
@@ -301,15 +311,16 @@ class VoiceApi {
    * Initiate a transfer to the specified destination.
    * @param {String} connId The connId of the call to be transfered.
    * @param {String} destination The destination of the transfer.
+   * @param {Object} optional Optional parameters
    */
-  async initiateTransfer(connId, destination) {
+  async initiateTransfer(connId, destination, optional) {
     this._log(`Sending initiate-transfer to destination [${destination}] for call [${connId}]...`);
-    let response = await this._api.initiateTransfer(connId, {
-      data: {
+    let data = {
         destination: destination
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.initiateTransfer(connId, {data: data});
     return response;
   }
   
@@ -317,15 +328,16 @@ class VoiceApi {
    * Complete a previously initiated transfer using the provided ids.
    * @param {String} connId The id of the consult call (established)
    * @param {String} parentConnId The id of the parent call (held)
+   * @param {Object} optional Optional parameters
    */
-  async completeTransfer(connId, parentConnId) {
+  async completeTransfer(connId, parentConnId, optional) {
     this._log(`Sending complete-transfer for call [${connId}] and parentConnId [${parentConnId}]...`);
-    let response = await this._api.completeTransfer(connId, {
-      data: {
+    let data = {
         parentConnId: parentConnId
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.completeTransfer(connId, {data: data});
     return response;
   }
 
@@ -334,15 +346,16 @@ class VoiceApi {
    * shortcut for doing hold and retrieve separately.
    * @param {String} connId The id of the established call.
    * @param {String} heldConnId The id of the held call.
+   * @param {Object} optional Optional parameters
    */
-  async alternateCalls(connId, heldConnId) {
+  async alternateCalls(connId, heldConnId, optional) {
     this._log(`Sending alternate for call [${connId}] and heldConnId [${heldConnId}]...`);
-    let response = await this._api.alternate(connId, {
-      data: {
+    let data = {
         heldConnId: heldConnId
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.alternate(connId, {data: data});
     return response;
   }
 
@@ -350,15 +363,16 @@ class VoiceApi {
    * Merge the two specified calls.
    * @param {String} connId The id of the first call to be merged.
    * @param {String} otherConnId The id of the second call to be merged.
+   * @param {Object} optional Optional parameters
    */
-  async mergeCalls(connId, otherConnId) {
+  async mergeCalls(connId, otherConnId, optional) {
     this._log(`Sending merge for call [${connId}] and otherConnId [${otherConnId}]...`);
-    let response = await this._api.merge(connId, {
-      data: {
+    let data = {
         otherConnId: otherConnId
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.merge(connId, {data: data});
     return response;
   }
 
@@ -367,15 +381,16 @@ class VoiceApi {
    * in one step.
    * @param {String} connId The id of the established call (will be released)
    * @param {String} heldConnId The id of the held call (will be retrieved)
+   * @param {Object} optional Optional parameters
    */
-  async reconnectCall(connId, heldConnId) {
+  async reconnectCall(connId, heldConnId, optional) {
     this._log(`Sending reconnect for call [${connId}] and heldConnId [${heldConnId}]...`);
-    let response = await this._api.reconnect(connId, {
-      data: {
+    let data = {
         heldConnId: heldConnId
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.reconnect(connId, {data: data});
     return response;
   }
 
@@ -384,15 +399,16 @@ class VoiceApi {
    * destination to the existing call, creating a conference if necessary.
    * @param {String} connId The id of the call to conference.
    * @param {String} destination The destination to be added to the call.
+   * @param {Object} optional Optional parameters
    */
-  async singleStepConference(connId, destination) {
+  async singleStepConference(connId, destination, optional) {
     this._log(`Sending single-step-conference to destination [${destination}] for call [${connId}]...`);
-    let response = await this._api.singleStepConference(connId, {
-      data: {
+    let data = {
         destination: destination
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.singleStepConference(connId, {data: data});
     return response;
   }
 
@@ -400,15 +416,16 @@ class VoiceApi {
    * Perform a single-step transfer to the specified destination.
    * @param {String} connId The id of the call to transfer.
    * @param {String} destination The destination to transfer the call to.
+   * @param {Object} optional Optional parameters
    */
-  async singleStepTransfer(connId, destination) {
+  async singleStepTransfer(connId, destination, optional) {
     this._log(`Sending single-step-transfer to destination [${destination}] for call [${connId}]...`);
-    let response = await this._api.singleStepTransfer(connId, {
-      data: {
+    let data = {
         destination: destination
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.singleStepTransfer(connId, {data: data});
     return response;
   }
 
@@ -463,15 +480,16 @@ class VoiceApi {
    * Send DTMF digits to the specififed call.
    * @param {String} connId The call to send DTMF digits to.
    * @param {String} digits The DTMF digits to send.
+   * @param {Object} optional Optional parameters
    */
-  async sendDTMF(connId, digits) {
+  async sendDTMF(connId, digits, optional) {
     this._log(`Sending send-dtmf for call [${connId}] with dtmfDigits [${digits}]...`);
-    let response = await this._api.sendDTMF(connId, {
-      data: {
+    let data = {
         dtmfDigits: digits
-      }
-    });
-
+    };
+    data = Object.assign(data, optional);
+    
+    let response = await this._api.sendDTMF(connId, {data: data});
     return response;
   }
 
