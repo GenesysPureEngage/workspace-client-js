@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.VoicereadyData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.MediaemailinteractionsidacceptData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
   }
 }(this, function(ApiClient, Kvpair) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The VoicereadyData model module.
-   * @module model/VoicereadyData
+   * The MediaemailinteractionsidacceptData model module.
+   * @module model/MediaemailinteractionsidacceptData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>VoicereadyData</code>.
-   * @alias module:model/VoicereadyData
+   * Constructs a new <code>MediaemailinteractionsidacceptData</code>.
+   * @alias module:model/MediaemailinteractionsidacceptData
    * @class
    */
   var exports = function() {
@@ -52,36 +52,36 @@
   };
 
   /**
-   * Constructs a <code>VoicereadyData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediaemailinteractionsidacceptData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/VoicereadyData} obj Optional instance to populate.
-   * @return {module:model/VoicereadyData} The populated <code>VoicereadyData</code> instance.
+   * @param {module:model/MediaemailinteractionsidacceptData} obj Optional instance to populate.
+   * @return {module:model/MediaemailinteractionsidacceptData} The populated <code>MediaemailinteractionsidacceptData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('reasons')) {
-        obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
+      if (data.hasOwnProperty('useReviewer')) {
+        obj['useReviewer'] = ApiClient.convertToType(data['useReviewer'], 'Boolean');
       }
-      if (data.hasOwnProperty('extensions')) {
-        obj['extensions'] = ApiClient.convertToType(data['extensions'], [Kvpair]);
+      if (data.hasOwnProperty('extension')) {
+        obj['extension'] = ApiClient.convertToType(data['extension'], [Kvpair]);
       }
     }
     return obj;
   }
 
   /**
-   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
-   * @member {Array.<module:model/Kvpair>} reasons
+   * Blalala
+   * @member {Boolean} useReviewer
    */
-  exports.prototype['reasons'] = undefined;
+  exports.prototype['useReviewer'] = undefined;
   /**
-   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
-   * @member {Array.<module:model/Kvpair>} extensions
+   * A key/value pairs list of additional data.
+   * @member {Array.<module:model/Kvpair>} extension
    */
-  exports.prototype['extensions'] = undefined;
+  exports.prototype['extension'] = undefined;
 
 
 

@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.InlineResponse2002DataStatistics = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.StatisticValueForPeekResponse);
+    root.WorkspaceApi.InlineResponse2003DataStatistics = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.StatisticValueForPeekResponse);
   }
 }(this, function(ApiClient, StatisticValueForPeekResponse) {
   'use strict';
@@ -34,15 +34,15 @@
 
 
   /**
-   * The InlineResponse2002DataStatistics model module.
-   * @module model/InlineResponse2002DataStatistics
+   * The InlineResponse2003DataStatistics model module.
+   * @module model/InlineResponse2003DataStatistics
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>InlineResponse2002DataStatistics</code>.
-   * The list of all the statitstics in given subscription as kvp.
-   * @alias module:model/InlineResponse2002DataStatistics
+   * Constructs a new <code>InlineResponse2003DataStatistics</code>.
+   * The list of all the statistics in given subscription as key/value pairs.
+   * @alias module:model/InlineResponse2003DataStatistics
    * @class
    */
   var exports = function() {
@@ -53,11 +53,11 @@
   };
 
   /**
-   * Constructs a <code>InlineResponse2002DataStatistics</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>InlineResponse2003DataStatistics</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/InlineResponse2002DataStatistics} obj Optional instance to populate.
-   * @return {module:model/InlineResponse2002DataStatistics} The populated <code>InlineResponse2002DataStatistics</code> instance.
+   * @param {module:model/InlineResponse2003DataStatistics} obj Optional instance to populate.
+   * @return {module:model/InlineResponse2003DataStatistics} The populated <code>InlineResponse2003DataStatistics</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

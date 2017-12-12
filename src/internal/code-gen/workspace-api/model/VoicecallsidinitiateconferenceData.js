@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicecallsidinitiateconferenceData</code>.
    * @alias module:model/VoicecallsidinitiateconferenceData
    * @class
-   * @param destination {String} The number to be dialed
+   * @param destination {String} The number to be dialed.
    */
   var exports = function(destination) {
     var _this = this;
@@ -90,27 +90,27 @@
   }
 
   /**
-   * The number to be dialed
+   * The number to be dialed.
    * @member {String} destination
    */
   exports.prototype['destination'] = undefined;
   /**
-   * Name of the remote location in the form of <SwitchName> or <T-ServerApplicationName>@<SwitchName>. When there is no need to specify a T-Server for location, this parameter must have the value NULL, not an empty string.
+   * Name of the remote location in the form of <SwitchName> or <T-ServerApplicationName>@<SwitchName>. This value is used by Workspace to set the location attribute for the corresponding T-Server requests. When there is no need to specify a T-Server for location, this parameter must have the value NULL, not an empty string.
    * @member {String} location
    */
   exports.prototype['location'] = undefined;
   /**
-   * A key/value pairs list of the user data that should be attached to the call.
+   * Key/value data to include with the call.
    * @member {Array.<module:model/Kvpair>} userData
    */
   exports.prototype['userData'] = undefined;
   /**
-   * A key/value pairs list of a data structure that provides additional information associated with this action.
+   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
   /**
-   * A key/value pairs list of additional data.
+   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;

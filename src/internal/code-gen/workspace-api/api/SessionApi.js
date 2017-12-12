@@ -49,8 +49,8 @@
 
 
     /**
-     * Activate channels for the user with the specified resources
-     * The activate-channels request is used to activate voice/media for the user by declaring the channels and resources that should be used. If the channels are is successfully activated, additional information about the state of active resources (dns, channels) will be received via events. 
+     * Activate channels for the user with the specified resources.
+     * Activates the specified channels using the provided resources. If the channels are successfully activated, Workspace sends additional information about the state of active resources (DNs, channels) via events. The resources you provide are associated with the agent for the duration of the session. You should send this request after making an &#x60;/initialize-workspace&#x60; request and getting the WorkspaceInitializationComplete message through CometD.
      * @param {module:model/ChannelsData} channelsData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -87,8 +87,8 @@
     }
 
     /**
-     * Activate channels for the user with the specified resources
-     * The activate-channels request is used to activate voice/media for the user by declaring the channels and resources that should be used. If the channels are is successfully activated, additional information about the state of active resources (dns, channels) will be received via events. 
+     * Activate channels for the user with the specified resources.
+     * Activates the specified channels using the provided resources. If the channels are successfully activated, Workspace sends additional information about the state of active resources (DNs, channels) via events. The resources you provide are associated with the agent for the duration of the session. You should send this request after making an &#x60;/initialize-workspace&#x60; request and getting the WorkspaceInitializationComplete message through CometD.
      * @param {module:model/ChannelsData} channelsData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -101,9 +101,9 @@
 
 
     /**
-     * Get the business attribute hierarchy
-     * Get the business attribute hierarchy
-     * @param {Number} id id of the business attribute
+     * Get the business attribute hierarchy.
+     * Returns the business attribute hierarchy for the specified business attribute.
+     * @param {Number} id The unique ID of the business attribute.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.getBusinessAttributeHierarchyWithHttpInfo = function(id) {
@@ -140,9 +140,9 @@
     }
 
     /**
-     * Get the business attribute hierarchy
-     * Get the business attribute hierarchy
-     * @param {Number} id id of the business attribute
+     * Get the business attribute hierarchy.
+     * Returns the business attribute hierarchy for the specified business attribute.
+     * @param {Number} id The unique ID of the business attribute.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.getBusinessAttributeHierarchy = function(id) {
@@ -154,10 +154,10 @@
 
 
     /**
-     * Read settings, action codes, business attributes and other configuration.
-     * This request returns all necessary configuration items to be used by the UI. This includes action codes, business attributes, transactions and settings at the moment. 
+     * Get settings, action codes, business attributes and other configuration.
+     * Returns all configuration items needed by the user interface. This includes action codes, business attributes, transactions and settings at the moment.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.types A comma delimited list of types used to specify what content should be returned. If not specified the default is  actionCodes, agentGroups, and settings. Valid values are actionCodes, agentGroups, settings, workspaceTransactions, and businessAttributes.
+     * @param {String} opts.types A comma delimited list of types used to specify what content should be returned. If not specified the default is &#39;actionCodes, agentGroups,settings&#39;. Valid values are &#x60;actionCodes&#x60;, &#x60;agentGroups&#x60;, &#x60;settings&#x60;, &#x60;workspaceTransactions&#x60;, and &#x60;businessAttributes&#x60;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ConfigResponse} and HTTP response
      */
     this.getConfigurationWithHttpInfo = function(opts) {
@@ -190,10 +190,10 @@
     }
 
     /**
-     * Read settings, action codes, business attributes and other configuration.
-     * This request returns all necessary configuration items to be used by the UI. This includes action codes, business attributes, transactions and settings at the moment. 
+     * Get settings, action codes, business attributes and other configuration.
+     * Returns all configuration items needed by the user interface. This includes action codes, business attributes, transactions and settings at the moment.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.types A comma delimited list of types used to specify what content should be returned. If not specified the default is  actionCodes, agentGroups, and settings. Valid values are actionCodes, agentGroups, settings, workspaceTransactions, and businessAttributes.
+     * @param {String} opts.types A comma delimited list of types used to specify what content should be returned. If not specified the default is &#39;actionCodes, agentGroups,settings&#39;. Valid values are &#x60;actionCodes&#x60;, &#x60;agentGroups&#x60;, &#x60;settings&#x60;, &#x60;workspaceTransactions&#x60;, and &#x60;businessAttributes&#x60;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ConfigResponse}
      */
     this.getConfiguration = function(opts) {
@@ -205,8 +205,8 @@
 
 
     /**
-     * Read information about the logged in user including any existing media logins and calls
-     * This request can be used to retrieve information about the current user. This can be done at startup to check for an existing session. The returned user information includes state recovery information about the active session. 
+     * Read information about the logged in user, including any existing media logins and calls.
+     * This request can be used to retrieve information about the current user. This can be done at startup to check for an existing session. The returned user information includes state recovery information about the active session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CurrentSession} and HTTP response
      */
     this.getCurrentSessionWithHttpInfo = function() {
@@ -237,8 +237,8 @@
     }
 
     /**
-     * Read information about the logged in user including any existing media logins and calls
-     * This request can be used to retrieve information about the current user. This can be done at startup to check for an existing session. The returned user information includes state recovery information about the active session. 
+     * Read information about the logged in user, including any existing media logins and calls.
+     * This request can be used to retrieve information about the current user. This can be done at startup to check for an existing session. The returned user information includes state recovery information about the active session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CurrentSession}
      */
     this.getCurrentSession = function() {
@@ -250,9 +250,9 @@
 
 
     /**
-     * get devices from place
-     * This request can be used to retrieve information about the devices of a place. The returned devices are the devices attached to the place where the user logs in. 
-     * @param {String} placeName The name of the place
+     * Get DNs for a place.
+     * Returns the DNs attached to the specified place.
+     * @param {String} placeName The name of the place.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Devices} and HTTP response
      */
     this.getDevicesForPlaceWithHttpInfo = function(placeName) {
@@ -289,9 +289,9 @@
     }
 
     /**
-     * get devices from place
-     * This request can be used to retrieve information about the devices of a place. The returned devices are the devices attached to the place where the user logs in. 
-     * @param {String} placeName The name of the place
+     * Get DNs for a place.
+     * Returns the DNs attached to the specified place.
+     * @param {String} placeName The name of the place.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Devices}
      */
     this.getDevicesForPlace = function(placeName) {
@@ -303,12 +303,57 @@
 
 
     /**
-     * Retrieves authorization token and registers it
-     * The initialize-workspace request retrieves the authorization token using the authorization code. The token is then registered and the user&#39;s environment is prepared. 
+     * Retrieve ecrypted data about the current user
+     * This request can be used to retrieve ecrypted data about the user to use with other services
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CurrentSession} and HTTP response
+     */
+    this.getUserInfoWithHttpInfo = function() {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = CurrentSession;
+
+      return this.apiClient.callApi(
+        '/userinfo', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Retrieve ecrypted data about the current user
+     * This request can be used to retrieve ecrypted data about the user to use with other services
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CurrentSession}
+     */
+    this.getUserInfo = function() {
+      return this.getUserInfoWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Retrieves and registers an authorization token.
+     * Retrieves the authorization token using the authorization code. Workspace then registers the token and prepares the user&#39;s environment.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.code the authorization code
-     * @param {String} opts.redirectUri the same redirect_uri used in the initial login step
-     * @param {String} opts.authorization For OAuth resource owner password credentials grant should contains Bearer authorization. Example: &#39;Authorization: Bearer access_token&#39;
+     * @param {String} opts.code The authorization code. You must include this parameter if you use the [Authorization Code Grant flow] (https://developer.genhtcc.com/api/reference/authentication/index.html).
+     * @param {String} opts.redirectUri The same redirect URI you used in the initial login step. You must include this parameter if you follow the [Authorization Code Grant flow](https://developer.genhtcc.com/api/reference/authentication/index.html).
+     * @param {String} opts.authorization If you use the [Resource Owner Password Credentials Grant](https://developer.genhtcc.com/api/reference/authentication/index.html), this parameter must contain Bearer authorization. For example: &#39;Authorization: Bearer access_token&#39;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.initializeWorkspaceWithHttpInfo = function(opts) {
@@ -343,12 +388,12 @@
     }
 
     /**
-     * Retrieves authorization token and registers it
-     * The initialize-workspace request retrieves the authorization token using the authorization code. The token is then registered and the user&#39;s environment is prepared. 
+     * Retrieves and registers an authorization token.
+     * Retrieves the authorization token using the authorization code. Workspace then registers the token and prepares the user&#39;s environment.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.code the authorization code
-     * @param {String} opts.redirectUri the same redirect_uri used in the initial login step
-     * @param {String} opts.authorization For OAuth resource owner password credentials grant should contains Bearer authorization. Example: &#39;Authorization: Bearer access_token&#39;
+     * @param {String} opts.code The authorization code. You must include this parameter if you use the [Authorization Code Grant flow] (https://developer.genhtcc.com/api/reference/authentication/index.html).
+     * @param {String} opts.redirectUri The same redirect URI you used in the initial login step. You must include this parameter if you follow the [Authorization Code Grant flow](https://developer.genhtcc.com/api/reference/authentication/index.html).
+     * @param {String} opts.authorization If you use the [Resource Owner Password Credentials Grant](https://developer.genhtcc.com/api/reference/authentication/index.html), this parameter must contain Bearer authorization. For example: &#39;Authorization: Bearer access_token&#39;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.initializeWorkspace = function(opts) {
@@ -360,9 +405,9 @@
 
 
     /**
-     * login the specified user (HTTP session only)
-     * The login request authenticates the user and retrieves the authorization code. 
-     * @param {String} redirectUri this the URI the AUTH service uses to redirect the user after authentication
+     * Login the specified user (HTTP session only).
+     * The login request authenticates the user and retrieves the authorization code.
+     * @param {String} redirectUri The URI the Authentication API uses to redirect the user after authentication.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.loginWithHttpInfo = function(redirectUri) {
@@ -399,9 +444,9 @@
     }
 
     /**
-     * login the specified user (HTTP session only)
-     * The login request authenticates the user and retrieves the authorization code. 
-     * @param {String} redirectUri this the URI the AUTH service uses to redirect the user after authentication
+     * Login the specified user (HTTP session only).
+     * The login request authenticates the user and retrieves the authorization code.
+     * @param {String} redirectUri The URI the Authentication API uses to redirect the user after authentication.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.login = function(redirectUri) {
@@ -413,8 +458,8 @@
 
 
     /**
-     * Logout of media and end the session
-     * This request is used to end the user session. It will log the agent out for voice/channels, end the HTTP session and clean up related resources. The suggested shutdown sequence is to disconnect socket.io and then make this request. After ending the session the login request is required before making any new calls to the API. 
+     * Logout of activated channels and end the session.
+     * Ends the current agent&#39;s session. This request logs out the agent on all activated channels, ends the HTTP session, and cleans up related resources. Genesys recommends that you first disconnect CometD and then make this request. After you end the session, you&#39;ll need to make a login request before making any new calls to the API.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.logoutWithHttpInfo = function() {
@@ -445,8 +490,8 @@
     }
 
     /**
-     * Logout of media and end the session
-     * This request is used to end the user session. It will log the agent out for voice/channels, end the HTTP session and clean up related resources. The suggested shutdown sequence is to disconnect socket.io and then make this request. After ending the session the login request is required before making any new calls to the API. 
+     * Logout of activated channels and end the session.
+     * Ends the current agent&#39;s session. This request logs out the agent on all activated channels, ends the HTTP session, and cleans up related resources. Genesys recommends that you first disconnect CometD and then make this request. After you end the session, you&#39;ll need to make a login request before making any new calls to the API.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.logout = function() {

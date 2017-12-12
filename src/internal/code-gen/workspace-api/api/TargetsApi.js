@@ -49,8 +49,8 @@
 
 
     /**
-     * Ack the missed calls in recent target
-     * Ack the missed calls in recent target
+     * Acknowledge missed calls.
+     * Acknowledge missed calls in the list of recent targets.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.ackRecentMissedCallsWithHttpInfo = function() {
@@ -81,8 +81,8 @@
     }
 
     /**
-     * Ack the missed calls in recent target
-     * Ack the missed calls in recent target
+     * Acknowledge missed calls.
+     * Acknowledge missed calls in the list of recent targets.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.ackRecentMissedCalls = function() {
@@ -94,8 +94,8 @@
 
 
     /**
-     * Add a recent target
-     * Add a recent target
+     * Add a target.
+     * Add a target that the agent recently used.
      * @param {module:model/RecentTargetData} recentTargetData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -132,8 +132,8 @@
     }
 
     /**
-     * Add a recent target
-     * Add a recent target
+     * Add a target.
+     * Add a target that the agent recently used.
      * @param {module:model/RecentTargetData} recentTargetData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -146,10 +146,10 @@
 
 
     /**
-     * delete a personal favorite
-     * delete a personal favorite by type and id
-     * @param {String} id The id of the target
-     * @param {module:model/String} type the type of the target
+     * Delete a target.
+     * Delete the target from the agent&#39;s personal favorites
+     * @param {String} id The ID of the target.
+     * @param {module:model/String} type The type of target.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.deletePersonalFavoriteWithHttpInfo = function(id, type) {
@@ -192,10 +192,10 @@
     }
 
     /**
-     * delete a personal favorite
-     * delete a personal favorite by type and id
-     * @param {String} id The id of the target
-     * @param {module:model/String} type the type of the target
+     * Delete a target.
+     * Delete the target from the agent&#39;s personal favorites
+     * @param {String} id The ID of the target.
+     * @param {module:model/String} type The type of target.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.deletePersonalFavorite = function(id, type) {
@@ -207,18 +207,18 @@
 
 
     /**
-     * Search for targets
-     * Search for targets
-     * @param {String} searchTerm The text to search for
+     * Search for targets.
+     * Search for targets by the specified search term.
+     * @param {String} searchTerm The text to search for in targets.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filterName The filter to specify on which fields the search is applied
-     * @param {String} opts.types Comma separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
-     * @param {String} opts.excludeGroup Comma separated list of types of groups to exclude agent groups from search. Valid values are any agent group names.
-     * @param {String} opts.excludeFromGroup Comma separated list of types of groups to exclude agents from search. Valid values are any agent group names.
-     * @param {String} opts.restrictToGroup Comma separated list of groups to limit the search of agents from. Valid values are any agent group names.
-     * @param {module:model/String} opts.sort Desired sort order (asc or desc). asc if not specified
-     * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {module:model/String} opts.matchType Type of behavior for the field matching (exact for exact match search).
+     * @param {String} opts.filterName Filter the search based on this field.
+     * @param {String} opts.types A comma-separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
+     * @param {String} opts.excludeGroup A comma-separated list of agent group names. Workspace excludes those groups from the search.
+     * @param {String} opts.excludeFromGroup A comma-separated list of agent group names. Workspace excludes agents from these groups in the search.
+     * @param {String} opts.restrictToGroup A comma-separated list of agent group names. Workspace only searches for targets who belong to the groups in this list.
+     * @param {module:model/String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit The number of results to return. The default value is 50.
+     * @param {module:model/String} opts.matchType Specify whether the search should only return exact matches.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TargetsResponse} and HTTP response
      */
     this.getWithHttpInfo = function(searchTerm, opts) {
@@ -264,18 +264,18 @@
     }
 
     /**
-     * Search for targets
-     * Search for targets
-     * @param {String} searchTerm The text to search for
+     * Search for targets.
+     * Search for targets by the specified search term.
+     * @param {String} searchTerm The text to search for in targets.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.filterName The filter to specify on which fields the search is applied
-     * @param {String} opts.types Comma separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
-     * @param {String} opts.excludeGroup Comma separated list of types of groups to exclude agent groups from search. Valid values are any agent group names.
-     * @param {String} opts.excludeFromGroup Comma separated list of types of groups to exclude agents from search. Valid values are any agent group names.
-     * @param {String} opts.restrictToGroup Comma separated list of groups to limit the search of agents from. Valid values are any agent group names.
-     * @param {module:model/String} opts.sort Desired sort order (asc or desc). asc if not specified
-     * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {module:model/String} opts.matchType Type of behavior for the field matching (exact for exact match search).
+     * @param {String} opts.filterName Filter the search based on this field.
+     * @param {String} opts.types A comma-separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
+     * @param {String} opts.excludeGroup A comma-separated list of agent group names. Workspace excludes those groups from the search.
+     * @param {String} opts.excludeFromGroup A comma-separated list of agent group names. Workspace excludes agents from these groups in the search.
+     * @param {String} opts.restrictToGroup A comma-separated list of agent group names. Workspace only searches for targets who belong to the groups in this list.
+     * @param {module:model/String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit The number of results to return. The default value is 50.
+     * @param {module:model/String} opts.matchType Specify whether the search should only return exact matches.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
      */
     this.get = function(searchTerm, opts) {
@@ -287,10 +287,10 @@
 
 
     /**
-     * Get personal favorites
-     * Get personal favorites
+     * Return personal favorites.
+     * Return the agent&#39;s personal favorites.
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Number of results. 50 if not specified.
+     * @param {Number} opts.limit Number of results to return. The default value is 50.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TargetsResponse} and HTTP response
      */
     this.getPersonalFavoritesWithHttpInfo = function(opts) {
@@ -323,10 +323,10 @@
     }
 
     /**
-     * Get personal favorites
-     * Get personal favorites
+     * Return personal favorites.
+     * Return the agent&#39;s personal favorites.
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Number of results. 50 if not specified.
+     * @param {Number} opts.limit Number of results to return. The default value is 50.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
      */
     this.getPersonalFavorites = function(opts) {
@@ -338,10 +338,10 @@
 
 
     /**
-     * Get recent targets
-     * Get recent targets
+     * Get recently used targets.
+     * Get recently used targets for the current agent.
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Number of results. 50 if not specified.
+     * @param {Number} opts.limit The number of results to return. The default value is 50.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TargetsResponse} and HTTP response
      */
     this.getRecentTargetsWithHttpInfo = function(opts) {
@@ -374,10 +374,10 @@
     }
 
     /**
-     * Get recent targets
-     * Get recent targets
+     * Get recently used targets.
+     * Get recently used targets for the current agent.
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Number of results. 50 if not specified.
+     * @param {Number} opts.limit The number of results to return. The default value is 50.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
      */
     this.getRecentTargets = function(opts) {
@@ -389,10 +389,10 @@
 
 
     /**
-     * Get a target
-     * Get a specific target by type and id
-     * @param {Number} id The id of the target
-     * @param {module:model/String} type the type of the target
+     * Get a target.
+     * Get a specific target by type and ID. Targets can be agents, agent groups, queues, route points, skills, and custom contacts.
+     * @param {Number} id The ID of the target.
+     * @param {module:model/String} type The type of target to retrieve.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TargetsResponse} and HTTP response
      */
     this.getTargetWithHttpInfo = function(id, type) {
@@ -435,10 +435,10 @@
     }
 
     /**
-     * Get a target
-     * Get a specific target by type and id
-     * @param {Number} id The id of the target
-     * @param {module:model/String} type the type of the target
+     * Get a target.
+     * Get a specific target by type and ID. Targets can be agents, agent groups, queues, route points, skills, and custom contacts.
+     * @param {Number} id The ID of the target.
+     * @param {module:model/String} type The type of target to retrieve.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
      */
     this.getTarget = function(id, type) {
@@ -450,8 +450,8 @@
 
 
     /**
-     * Save a personal favorite
-     * Save a personal favorite
+     * Save a personal favorite.
+     * Save a target to the agent&#39;s personal favorites in the specified category.
      * @param {module:model/PersonalFavoriteData} personalFavoriteData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -488,8 +488,8 @@
     }
 
     /**
-     * Save a personal favorite
-     * Save a personal favorite
+     * Save a personal favorite.
+     * Save a target to the agent&#39;s personal favorites in the specified category.
      * @param {module:model/PersonalFavoriteData} personalFavoriteData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */

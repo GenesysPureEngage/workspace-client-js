@@ -49,8 +49,8 @@
 
 
     /**
-     * Enables subscription to CometD notification API
-     * Receives one of CometD notification events The following events are available&lt;br&gt; &lt;h5&gt;Channel: /workspace/v3/initialization&lt;/h5&gt; Value:&lt;br&gt;   {&lt;br&gt;     data : {&lt;br&gt;       state:  &#39;initialization state&#39;&lt;br&gt; &lt;ul&gt;   &lt;li&gt;&lt;b&gt;\&quot;Complete\&quot;&lt;/b&gt; Initialization was completed successfully&lt;/li&gt;   &lt;li&gt;&lt;b&gt;\&quot;Failed\&quot;&lt;/b&gt;   Initialization failed&lt;/li&gt;         &lt;/ul&gt;&lt;br&gt;     }&lt;br&gt;   }&lt;br&gt; &lt;h5&gt;Channel: /workspace/v3/voice&lt;/h5&gt; Type: &lt;ul&gt;   &lt;li&gt;&lt;b&gt;\&quot;CallStateChanged\&quot;&lt;/b&gt;  Call status or state changed&lt;/li&gt;     Value:&lt;br&gt;       {&lt;br&gt;         call: {&lt;br&gt;           id: &#39;016202a673223196&#39;,&lt;br&gt;           phoneNumber: &#39;7504772884&#39;,&lt;br&gt;           connId: &#39;016202a673223196&#39;,&lt;br&gt;           callUuid: &#39;00PJ6OJ3OSCMR24QETB382LAES000CIG&#39;,&lt;br&gt;           extensions: [ [list of DN extensions] ],&lt;br&gt;           dnis: &#39;7504772885&#39;,&lt;br&gt;           callType: &#39;Internal&#39;,&lt;br&gt;           state: &#39;state&#39;,&lt;br&gt;   &lt;ul&gt;     &lt;li&gt;&lt;b&gt;\&quot;Ringing\&quot;&lt;/b&gt;  Ringing in progress     &lt;li&gt;&lt;b&gt;\&quot;Dialing\&quot;&lt;/b&gt;  Dialing in progress     &lt;li&gt;&lt;b&gt;\&quot;Established&lt;/b&gt;  Call established     &lt;li&gt;&lt;b&gt;\&quot;Released&lt;/b&gt;  Call released             &lt;/ul&gt; &lt;br&gt;           participants: [ [list of participants] ],&lt;br&gt;           capabilities:&lt;br&gt;             [ &#39;release&#39;,&lt;br&gt;               &#39;clear&#39;,&lt;br&gt;               &#39;attach-user-data&#39;,&lt;br&gt;               &#39;update-user-data&#39;,&lt;br&gt;               &#39;delete-user-data-pair&#39;,&lt;br&gt;               &#39;send-dtmf&#39;,&lt;br&gt;               &#39;start-recording&#39;&lt;br&gt;             ],&lt;br&gt;           duration: 0 &lt;br&gt;         },&lt;br&gt;         type: &#39;CallStateChanged&#39; &lt;br&gt;       }&lt;br&gt;   &lt;li&gt;&lt;b&gt;\&quot;DnStateChanged\&quot;&lt;/b&gt;  DN state changed&lt;/li&gt;     Value:&lt;br&gt;       {&lt;br&gt;         dn: { &lt;br&gt;           number: &#39;7504772884&#39;,&lt;br&gt;           switchName: &#39;ap-southeast-2&#39;,&lt;br&gt;           agentId: &#39;7504772884&#39;,&lt;br&gt;           capabilities: [ &#39;ready&#39;, &#39;not-ready&#39;, &#39;dnd-on&#39;, &#39;set-forward&#39; ],&lt;br&gt;           agentState: &#39;LoggedOut&#39;,&lt;br&gt;           agentWorkMode: &#39;Unknown&#39; &lt;br&gt;         },&lt;br&gt;         type: &#39;DnStateChanged&#39; &lt;br&gt;       } &lt;/ul&gt; 
+     * CometD endpoint.
+     * Enables you to subscribe to the CometD notification API.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsWithHttpInfo = function() {
@@ -81,8 +81,8 @@
     }
 
     /**
-     * Enables subscription to CometD notification API
-     * Receives one of CometD notification events The following events are available&lt;br&gt; &lt;h5&gt;Channel: /workspace/v3/initialization&lt;/h5&gt; Value:&lt;br&gt;   {&lt;br&gt;     data : {&lt;br&gt;       state:  &#39;initialization state&#39;&lt;br&gt; &lt;ul&gt;   &lt;li&gt;&lt;b&gt;\&quot;Complete\&quot;&lt;/b&gt; Initialization was completed successfully&lt;/li&gt;   &lt;li&gt;&lt;b&gt;\&quot;Failed\&quot;&lt;/b&gt;   Initialization failed&lt;/li&gt;         &lt;/ul&gt;&lt;br&gt;     }&lt;br&gt;   }&lt;br&gt; &lt;h5&gt;Channel: /workspace/v3/voice&lt;/h5&gt; Type: &lt;ul&gt;   &lt;li&gt;&lt;b&gt;\&quot;CallStateChanged\&quot;&lt;/b&gt;  Call status or state changed&lt;/li&gt;     Value:&lt;br&gt;       {&lt;br&gt;         call: {&lt;br&gt;           id: &#39;016202a673223196&#39;,&lt;br&gt;           phoneNumber: &#39;7504772884&#39;,&lt;br&gt;           connId: &#39;016202a673223196&#39;,&lt;br&gt;           callUuid: &#39;00PJ6OJ3OSCMR24QETB382LAES000CIG&#39;,&lt;br&gt;           extensions: [ [list of DN extensions] ],&lt;br&gt;           dnis: &#39;7504772885&#39;,&lt;br&gt;           callType: &#39;Internal&#39;,&lt;br&gt;           state: &#39;state&#39;,&lt;br&gt;   &lt;ul&gt;     &lt;li&gt;&lt;b&gt;\&quot;Ringing\&quot;&lt;/b&gt;  Ringing in progress     &lt;li&gt;&lt;b&gt;\&quot;Dialing\&quot;&lt;/b&gt;  Dialing in progress     &lt;li&gt;&lt;b&gt;\&quot;Established&lt;/b&gt;  Call established     &lt;li&gt;&lt;b&gt;\&quot;Released&lt;/b&gt;  Call released             &lt;/ul&gt; &lt;br&gt;           participants: [ [list of participants] ],&lt;br&gt;           capabilities:&lt;br&gt;             [ &#39;release&#39;,&lt;br&gt;               &#39;clear&#39;,&lt;br&gt;               &#39;attach-user-data&#39;,&lt;br&gt;               &#39;update-user-data&#39;,&lt;br&gt;               &#39;delete-user-data-pair&#39;,&lt;br&gt;               &#39;send-dtmf&#39;,&lt;br&gt;               &#39;start-recording&#39;&lt;br&gt;             ],&lt;br&gt;           duration: 0 &lt;br&gt;         },&lt;br&gt;         type: &#39;CallStateChanged&#39; &lt;br&gt;       }&lt;br&gt;   &lt;li&gt;&lt;b&gt;\&quot;DnStateChanged\&quot;&lt;/b&gt;  DN state changed&lt;/li&gt;     Value:&lt;br&gt;       {&lt;br&gt;         dn: { &lt;br&gt;           number: &#39;7504772884&#39;,&lt;br&gt;           switchName: &#39;ap-southeast-2&#39;,&lt;br&gt;           agentId: &#39;7504772884&#39;,&lt;br&gt;           capabilities: [ &#39;ready&#39;, &#39;not-ready&#39;, &#39;dnd-on&#39;, &#39;set-forward&#39; ],&lt;br&gt;           agentState: &#39;LoggedOut&#39;,&lt;br&gt;           agentWorkMode: &#39;Unknown&#39; &lt;br&gt;         },&lt;br&gt;         type: &#39;DnStateChanged&#39; &lt;br&gt;       } &lt;/ul&gt; 
+     * CometD endpoint.
+     * Enables you to subscribe to the CometD notification API.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notifications = function() {
@@ -94,8 +94,8 @@
 
 
     /**
-     * Subscribes to CometD notifications
-     * Subscribes to CometD notifications
+     * CometD connect.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_connect) for details.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsConnectWithHttpInfo = function() {
@@ -126,8 +126,8 @@
     }
 
     /**
-     * Subscribes to CometD notifications
-     * Subscribes to CometD notifications
+     * CometD connect.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_connect) for details.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notificationsConnect = function() {
@@ -139,8 +139,8 @@
 
 
     /**
-     * Close CometD notification subscriptions
-     * Close CometD notification subscriptions
+     * CometD disconnect.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect) for details.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsDisconnectWithHttpInfo = function() {
@@ -171,8 +171,8 @@
     }
 
     /**
-     * Close CometD notification subscriptions
-     * Close CometD notification subscriptions
+     * CometD disconnect.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_disconnect) for details.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notificationsDisconnect = function() {
@@ -184,8 +184,8 @@
 
 
     /**
-     * Subscribes to CometD notifications
-     * Subscribes to CometD notifications
+     * CometD handshake.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_handshake) for details.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsHandshakeWithHttpInfo = function() {
@@ -216,8 +216,8 @@
     }
 
     /**
-     * Subscribes to CometD notifications
-     * Subscribes to CometD notifications
+     * CometD handshake.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_handshake) for details.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notificationsHandshake = function() {
@@ -229,8 +229,8 @@
 
 
     /**
-     * Subscribes CometD channel notification
-     * Subscribes CometD channel notification.&lt;br&gt; &lt;h5&gt;The following channels are available right now:&lt;/h5&gt; &lt;ul&gt;   &lt;li&gt;&lt;b&gt;/workspace/v3/initialization&lt;/b&gt; Subscribe for initialization (login) event&lt;/li&gt; &lt;li&gt;&lt;b&gt;/workspace/v3/voice&lt;/b&gt; Subscribe for call state change notification event&lt;/li&gt; &lt;/ul&gt; 
+     * Subscribe to CometD channel notification.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe) for details. The following channels are available: * **_/workspace/v3/initialization** - Subscribe for initialization (login) event * **_/workspace/v3/voice** - Subscribe for call state change notification event 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsSubscribeWithHttpInfo = function() {
@@ -261,8 +261,8 @@
     }
 
     /**
-     * Subscribes CometD channel notification
-     * Subscribes CometD channel notification.&lt;br&gt; &lt;h5&gt;The following channels are available right now:&lt;/h5&gt; &lt;ul&gt;   &lt;li&gt;&lt;b&gt;/workspace/v3/initialization&lt;/b&gt; Subscribe for initialization (login) event&lt;/li&gt; &lt;li&gt;&lt;b&gt;/workspace/v3/voice&lt;/b&gt; Subscribe for call state change notification event&lt;/li&gt; &lt;/ul&gt; 
+     * Subscribe to CometD channel notification.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_subscribe) for details. The following channels are available: * **_/workspace/v3/initialization** - Subscribe for initialization (login) event * **_/workspace/v3/voice** - Subscribe for call state change notification event 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notificationsSubscribe = function() {
@@ -274,8 +274,8 @@
 
 
     /**
-     * Unsubscribes CometD channel notification
-     * Unsubscribes CometD channel notification
+     * Unsubscribes from CometD channel notification.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe) for details.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsUnsubscribeWithHttpInfo = function() {
@@ -306,8 +306,8 @@
     }
 
     /**
-     * Unsubscribes CometD channel notification
-     * Unsubscribes CometD channel notification
+     * Unsubscribes from CometD channel notification.
+     * See the [CometD documentation](https://docs.cometd.org/current/reference/#_bayeux_meta_unsubscribe) for details.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notificationsUnsubscribe = function() {

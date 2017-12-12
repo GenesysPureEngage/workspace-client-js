@@ -49,13 +49,14 @@
 
 
     /**
-     * Search for users by specific group ID
-     * @param {Number} groupId The id of the group to get users for
+     * Search for users.
+     * Search for users by the specified group ID.
+     * @param {Number} groupId The ID of the group where the user belongs.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.searchTerm The text to search for
-     * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
-     * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {Number} opts.offset Offset of page to start from. 0 if not specified.
+     * @param {String} opts.searchTerm The text to search for in the group of users.
+     * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit Number of results to return. The default value is 100.
+     * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.getGroupUsersWithHttpInfo = function(groupId, opts) {
@@ -97,13 +98,14 @@
     }
 
     /**
-     * Search for users by specific group ID
-     * @param {Number} groupId The id of the group to get users for
+     * Search for users.
+     * Search for users by the specified group ID.
+     * @param {Number} groupId The ID of the group where the user belongs.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.searchTerm The text to search for
-     * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
-     * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {Number} opts.offset Offset of page to start from. 0 if not specified.
+     * @param {String} opts.searchTerm The text to search for in the group of users.
+     * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit Number of results to return. The default value is 100.
+     * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.getGroupUsers = function(groupId, opts) {

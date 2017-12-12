@@ -16,32 +16,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediaemailinteractionsidacceptData'], factory);
+    define(['ApiClient', 'model/MediamediatypeinteractionsidacceptData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediaemailinteractionsidacceptData'));
+    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidacceptData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AcceptData1 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediaemailinteractionsidacceptData);
+    root.WorkspaceApi.RejectData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidacceptData);
   }
-}(this, function(ApiClient, MediaemailinteractionsidacceptData) {
+}(this, function(ApiClient, MediamediatypeinteractionsidacceptData) {
   'use strict';
 
 
 
 
   /**
-   * The AcceptData1 model module.
-   * @module model/AcceptData1
+   * The RejectData model module.
+   * @module model/RejectData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>AcceptData1</code>.
-   * @alias module:model/AcceptData1
+   * Constructs a new <code>RejectData</code>.
+   * @alias module:model/RejectData
    * @class
    */
   var exports = function() {
@@ -51,25 +51,25 @@
   };
 
   /**
-   * Constructs a <code>AcceptData1</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>RejectData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/AcceptData1} obj Optional instance to populate.
-   * @return {module:model/AcceptData1} The populated <code>AcceptData1</code> instance.
+   * @param {module:model/RejectData} obj Optional instance to populate.
+   * @return {module:model/RejectData} The populated <code>RejectData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediaemailinteractionsidacceptData.constructFromObject(data['data']);
+        obj['data'] = MediamediatypeinteractionsidacceptData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediaemailinteractionsidacceptData} data
+   * @member {module:model/MediamediatypeinteractionsidacceptData} data
    */
   exports.prototype['data'] = undefined;
 

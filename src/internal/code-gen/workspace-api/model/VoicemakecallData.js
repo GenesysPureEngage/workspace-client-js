@@ -95,7 +95,7 @@
    */
   exports.prototype['destination'] = undefined;
   /**
-   * Name of the remote location in the form of <SwitchName> or <T-ServerApplicationName>@<SwitchName>. When there is no need to specify a T-Server for location, this parameter must have the value NULL, not an empty string.
+   * Name of the remote location in the form of <SwitchName> or <T-ServerApplicationName>@<SwitchName>. This value is used by Workspace to set the location attribute for the corresponding T-Server requests. When there is no need to specify a T-Server for location, this parameter must have the value NULL, not an empty string.
    * @member {String} location
    */
   exports.prototype['location'] = undefined;
@@ -105,17 +105,17 @@
    */
   exports.prototype['userData'] = undefined;
   /**
-   * A key/value pairs list of a data structure that provides additional information associated with this action.
+   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
   /**
-   * A key/value pairs list of additional data.
+   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;
   /**
-   * value to be set as CPN_DIGITS.
+   * The caller ID information to display on the destination party's phone. The value should be set as CPNDigits. For more information about caller ID, see the [SIP Server Deployment Guide] (https://docs.genesys.com/Documentation/SIPS).
    * @member {String} outboundCallerId
    */
   exports.prototype['outboundCallerId'] = undefined;

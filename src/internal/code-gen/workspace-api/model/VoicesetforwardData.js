@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicesetforwardData</code>.
    * @alias module:model/VoicesetforwardData
    * @class
-   * @param forwardTo {String} 
+   * @param forwardTo {String} The number where Workspace should forward calls.
    */
   var exports = function(forwardTo) {
     var _this = this;
@@ -70,6 +70,7 @@
   }
 
   /**
+   * The number where Workspace should forward calls.
    * @member {String} forwardTo
    */
   exports.prototype['forwardTo'] = undefined;

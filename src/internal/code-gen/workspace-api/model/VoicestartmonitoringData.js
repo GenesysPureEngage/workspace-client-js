@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicestartmonitoringData</code>.
    * @alias module:model/VoicestartmonitoringData
    * @class
-   * @param phoneNumberToMonitor {String} The phone number that should be monitored
+   * @param phoneNumberToMonitor {String} The phone number that should be monitored.
    */
   var exports = function(phoneNumberToMonitor) {
     var _this = this;
@@ -86,27 +86,27 @@
   }
 
   /**
-   * The phone number that should be monitored
+   * The phone number that should be monitored.
    * @member {String} phoneNumberToMonitor
    */
   exports.prototype['phoneNumberToMonitor'] = undefined;
   /**
-   * The monitoring mode (Mute,Coach,Connect)
+   * The monitoring mode.
    * @member {module:model/VoicestartmonitoringData.MonitoringModeEnum} monitoringMode
    */
   exports.prototype['monitoringMode'] = undefined;
   /**
-   * The monitoring call type (OneCall/AllCalls).
+   * The monitoring call type.
    * @member {module:model/VoicestartmonitoringData.MonitoringNextCallTypeEnum} monitoringNextCallType
    */
   exports.prototype['monitoringNextCallType'] = undefined;
   /**
-   * The monitoring scope (Call/Agent).
+   * The monitoring scope.
    * @member {module:model/VoicestartmonitoringData.MonitoringScopeEnum} monitoringScope
    */
   exports.prototype['monitoringScope'] = undefined;
   /**
-   * The switch name where the phone number to be monitored is located (optional)
+   * Name of the remote location in the form of <SwitchName> or <T-ServerApplicationName>@<SwitchName>. This value is used by Workspace to set the location attribute for the corresponding T-Server requests. When there is no need to specify a T-Server for location, this parameter must have the value NULL, not an empty string.
    * @member {String} location
    */
   exports.prototype['location'] = undefined;

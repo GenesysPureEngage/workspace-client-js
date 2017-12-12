@@ -53,6 +53,7 @@
 
 
 
+
   };
 
   /**
@@ -81,6 +82,9 @@
       if (data.hasOwnProperty('agentWorkMode')) {
         obj['agentWorkMode'] = ApiClient.convertToType(data['agentWorkMode'], 'String');
       }
+      if (data.hasOwnProperty('dynamicPhoneNumber')) {
+        obj['dynamicPhoneNumber'] = ApiClient.convertToType(data['dynamicPhoneNumber'], 'String');
+      }
       if (data.hasOwnProperty('channels')) {
         obj['channels'] = ApiClient.convertToType(data['channels'], ['String']);
       }
@@ -89,32 +93,37 @@
   }
 
   /**
-   * agentId (switch login code) that should be used to log the agent in
+   * The unique ID of the agent.
    * @member {String} agentId
    */
   exports.prototype['agentId'] = undefined;
   /**
-   * The name of the place that should be used to log the agent in. Either placeName or dn must be provided.
+   * The name of the place to use for the agent. You must provide either the place name or DN.
    * @member {String} placeName
    */
   exports.prototype['placeName'] = undefined;
   /**
-   * The dn (number) that should be used to login the agent.
+   * The DN (number) to use for the agent. You must provide either the place name or DN.
    * @member {String} dn
    */
   exports.prototype['dn'] = undefined;
   /**
-   * The queue name that should be used to login the agent.
+   * The queue name.
    * @member {String} queueName
    */
   exports.prototype['queueName'] = undefined;
   /**
-   * the agent workmode.
+   * The workmode.
    * @member {module:model/ActivatechannelsData.AgentWorkModeEnum} agentWorkMode
    */
   exports.prototype['agentWorkMode'] = undefined;
   /**
-   * array of string that corresponding to the medias to login
+   * An optional dynamic phone number to use for the agent.
+   * @member {String} dynamicPhoneNumber
+   */
+  exports.prototype['dynamicPhoneNumber'] = undefined;
+  /**
+   * An array of strings that correspond to the channels you want to activate.
    * @member {Array.<String>} channels
    */
   exports.prototype['channels'] = undefined;

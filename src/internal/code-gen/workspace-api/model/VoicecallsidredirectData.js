@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicecallsidredirectData</code>.
    * @alias module:model/VoicecallsidredirectData
    * @class
-   * @param destination {String} The other main Directory Number (which your application did not register) involved in this request or event. For instance, the DN of the main party of the call.
+   * @param destination {String} The number where Workspace should redirect the call.
    */
   var exports = function(destination) {
     var _this = this;
@@ -78,17 +78,17 @@
   }
 
   /**
-   * The other main Directory Number (which your application did not register) involved in this request or event. For instance, the DN of the main party of the call.
+   * The number where Workspace should redirect the call.
    * @member {String} destination
    */
   exports.prototype['destination'] = undefined;
   /**
-   * A key/value pairs list of a data structure that provides additional information associated with this action.
+   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
   /**
-   * A key/value pairs list of additional data.
+   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;

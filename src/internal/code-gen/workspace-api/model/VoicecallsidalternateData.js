@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicecallsidalternateData</code>.
    * @alias module:model/VoicecallsidalternateData
    * @class
-   * @param heldConnId {String} ConnId of the held call that should be retrieved.
+   * @param heldConnId {String} The connection ID of the held call that should be retrieved.
    */
   var exports = function(heldConnId) {
     var _this = this;
@@ -78,17 +78,17 @@
   }
 
   /**
-   * ConnId of the held call that should be retrieved.
+   * The connection ID of the held call that should be retrieved.
    * @member {String} heldConnId
    */
   exports.prototype['heldConnId'] = undefined;
   /**
-   * A key/value pairs list of a data structure that provides additional information associated with this action.
+   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
   /**
-   * A key/value pairs list of additional data.
+   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;

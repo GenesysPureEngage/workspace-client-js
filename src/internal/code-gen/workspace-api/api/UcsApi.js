@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCompletedData', 'model/CallNoteData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/DeleteContactData', 'model/GetCategoryData', 'model/GetContactsData', 'model/GetStandardResponseData', 'model/IdentifyContactData', 'model/InteractionContentData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/PhoneCallData', 'model/UpdateContactData'], factory);
+    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCompletedData', 'model/CallNoteData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/DeleteContactData', 'model/GetContactsData', 'model/IdentifyContactData', 'model/InteractionContentData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/PhoneCallData', 'model/UpdateContactData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCompletedData'), require('../model/CallNoteData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/DeleteContactData'), require('../model/GetCategoryData'), require('../model/GetContactsData'), require('../model/GetStandardResponseData'), require('../model/IdentifyContactData'), require('../model/InteractionContentData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/PhoneCallData'), require('../model/UpdateContactData'));
+    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCompletedData'), require('../model/CallNoteData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/DeleteContactData'), require('../model/GetContactsData'), require('../model/IdentifyContactData'), require('../model/InteractionContentData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/PhoneCallData'), require('../model/UpdateContactData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.CallNoteData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.DeleteContactData, root.WorkspaceApi.GetCategoryData, root.WorkspaceApi.GetContactsData, root.WorkspaceApi.GetStandardResponseData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.InteractionContentData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.PhoneCallData, root.WorkspaceApi.UpdateContactData);
+    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.CallNoteData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.DeleteContactData, root.WorkspaceApi.GetContactsData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.InteractionContentData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.PhoneCallData, root.WorkspaceApi.UpdateContactData);
   }
-}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCompletedData, CallNoteData, ConfigResponse, ContactDetailsData, ContactHistoryData, DeleteContactData, GetCategoryData, GetContactsData, GetStandardResponseData, IdentifyContactData, InteractionContentData, LuceneSearchData, LuceneSearchInteractionData, PhoneCallData, UpdateContactData) {
+}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCompletedData, CallNoteData, ConfigResponse, ContactDetailsData, ContactHistoryData, DeleteContactData, GetContactsData, IdentifyContactData, InteractionContentData, LuceneSearchData, LuceneSearchInteractionData, PhoneCallData, UpdateContactData) {
   'use strict';
 
   /**
@@ -46,57 +46,6 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
-
-
-    /**
-     * Add a Standard Response to Favorites
-     * @param {String} id id of the Standard Response to add to Favorites
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.addStandardResponseFavoriteWithHttpInfo = function(id) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling addStandardResponseFavorite");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/responses/{id}/add-to-favorites', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Add a Standard Response to Favorites
-     * @param {String} id id of the Standard Response to add to Favorites
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.addStandardResponseFavorite = function(id) {
-      return this.addStandardResponseFavoriteWithHttpInfo(id)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
 
 
     /**
@@ -243,57 +192,6 @@
 
 
     /**
-     * Remove a Standard Response from Favorites
-     * @param {String} id id of the Standard Response to remove from Favorites
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.deleteStandardResponseFavoriteWithHttpInfo = function(id) {
-      var postBody = null;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling deleteStandardResponseFavorite");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/responses/{id}/remove-from-favorites', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Remove a Standard Response from Favorites
-     * @param {String} id id of the Standard Response to remove from Favorites
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.deleteStandardResponseFavorite = function(id) {
-      return this.deleteStandardResponseFavoriteWithHttpInfo(id)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
      * Find or create phone call in UCS
      * @param {module:model/PhoneCallData} phoneCallData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -385,66 +283,6 @@
      */
     this.getAgentHistory = function(opts) {
       return this.getAgentHistoryWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Get the details of a Category.
-     * Get details of a Category including category sub tree. Only &#39;id&#39;, &#39;standardResponseId&#39;, and &#39;name&#39; attributes are returned for each Standard Response.
-     * @param {String} id id of the Category
-     * @param {module:model/GetCategoryData} getCategoryData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.getCategoryWithHttpInfo = function(id, getCategoryData) {
-      var postBody = getCategoryData;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getCategory");
-      }
-
-      // verify the required parameter 'getCategoryData' is set
-      if (getCategoryData === undefined || getCategoryData === null) {
-        throw new Error("Missing the required parameter 'getCategoryData' when calling getCategory");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/responses/categories/{id}/get-details', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Get the details of a Category.
-     * Get details of a Category including category sub tree. Only &#39;id&#39;, &#39;standardResponseId&#39;, and &#39;name&#39; attributes are returned for each Standard Response.
-     * @param {String} id id of the Category
-     * @param {module:model/GetCategoryData} getCategoryData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.getCategory = function(id, getCategoryData) {
-      return this.getCategoryWithHttpInfo(id, getCategoryData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -603,7 +441,7 @@
 
     /**
      * Get the lucene indexes for ucs
-     * This request returns all the lucene indexes for contact 
+     * This request returns all the lucene indexes for contact.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ConfigResponse} and HTTP response
      */
     this.getIndexPropertiesWithHttpInfo = function() {
@@ -635,7 +473,7 @@
 
     /**
      * Get the lucene indexes for ucs
-     * This request returns all the lucene indexes for contact 
+     * This request returns all the lucene indexes for contact.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ConfigResponse}
      */
     this.getIndexProperties = function() {
@@ -690,152 +528,6 @@
      */
     this.getInteractionContent = function(interactionContentData) {
       return this.getInteractionContentWithHttpInfo(interactionContentData)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Get all Root categories.
-     * Get all Root Categories information.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.getRootCategoriesWithHttpInfo = function() {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/responses/categories/get-root', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Get all Root categories.
-     * Get all Root Categories information.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.getRootCategories = function() {
-      return this.getRootCategoriesWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Get the details of a Standard Response.
-     * @param {String} id id of the Standard Response
-     * @param {module:model/GetStandardResponseData} getStandardResponseData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.getStandardResponseWithHttpInfo = function(id, getStandardResponseData) {
-      var postBody = getStandardResponseData;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getStandardResponse");
-      }
-
-      // verify the required parameter 'getStandardResponseData' is set
-      if (getStandardResponseData === undefined || getStandardResponseData === null) {
-        throw new Error("Missing the required parameter 'getStandardResponseData' when calling getStandardResponse");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/responses/{id}/get-details', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Get the details of a Standard Response.
-     * @param {String} id id of the Standard Response
-     * @param {module:model/GetStandardResponseData} getStandardResponseData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.getStandardResponse = function(id, getStandardResponseData) {
-      return this.getStandardResponseWithHttpInfo(id, getStandardResponseData)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Get Standard Response Favorites
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.getStandardResponseFavoritesWithHttpInfo = function() {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/responses/get-favorites', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Get Standard Response Favorites
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.getStandardResponseFavorites = function() {
-      return this.getStandardResponseFavoritesWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });

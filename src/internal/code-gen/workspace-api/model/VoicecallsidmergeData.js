@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicecallsidmergeData</code>.
    * @alias module:model/VoicecallsidmergeData
    * @class
-   * @param otherConnId {String} Connection id of the other call to merge with
+   * @param otherConnId {String} The connection ID of the second call to be merged.
    */
   var exports = function(otherConnId) {
     var _this = this;
@@ -78,17 +78,17 @@
   }
 
   /**
-   * Connection id of the other call to merge with
+   * The connection ID of the second call to be merged.
    * @member {String} otherConnId
    */
   exports.prototype['otherConnId'] = undefined;
   /**
-   * A key/value pairs list of a data structure that provides additional information associated with this action.
+   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
   /**
-   * A key/value pairs list of additional data.
+   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;

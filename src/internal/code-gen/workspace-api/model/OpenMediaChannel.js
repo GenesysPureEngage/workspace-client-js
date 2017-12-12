@@ -79,7 +79,7 @@
         obj['reasons'] = ApiClient.convertToType(data['reasons'], [Kvpair]);
       }
       if (data.hasOwnProperty('interactions')) {
-        obj['interactions'] = ApiClient.convertToType(data['interactions'], ['String']);
+        obj['interactions'] = ApiClient.convertToType(data['interactions'], [Object]);
       }
       if (data.hasOwnProperty('capabilities')) {
         obj['capabilities'] = ApiClient.convertToType(data['capabilities'], ['String']);
@@ -101,12 +101,12 @@
    */
   exports.prototype['dnd'] = undefined;
   /**
-   * A key/value pairs list of a data structure that provides additional information associated with the state.
+   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
   /**
-   * @member {Array.<String>} interactions
+   * @member {Array.<Object>} interactions
    */
   exports.prototype['interactions'] = undefined;
   /**

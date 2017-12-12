@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/Data'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/Data'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UsersApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse);
+    root.WorkspaceApi.UsersApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.Data);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, Data) {
   'use strict';
 
   /**
@@ -49,13 +49,14 @@
 
 
     /**
-     * Search for users by specific group ID
-     * @param {Number} groupId The id of the group to get users for
+     * Search for users.
+     * Search for users by the specified group ID.
+     * @param {Number} groupId The ID of the group where the user belongs.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.searchTerm The text to search for
-     * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
-     * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {Number} opts.offset Offset of page to start from. 0 if not specified.
+     * @param {String} opts.searchTerm The text to search for in the group of users.
+     * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit Number of results to return. The default value is 100.
+     * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.getGroupUsersWithHttpInfo = function(groupId, opts) {
@@ -97,13 +98,14 @@
     }
 
     /**
-     * Search for users by specific group ID
-     * @param {Number} groupId The id of the group to get users for
+     * Search for users.
+     * Search for users by the specified group ID.
+     * @param {Number} groupId The ID of the group where the user belongs.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.searchTerm The text to search for
-     * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
-     * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {Number} opts.offset Offset of page to start from. 0 if not specified.
+     * @param {String} opts.searchTerm The text to search for in the group of users.
+     * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit Number of results to return. The default value is 100.
+     * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.getGroupUsers = function(groupId, opts) {
@@ -115,12 +117,12 @@
 
 
     /**
-     * Search for users
+     * Search for users.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.searchTerm The text to search for
-     * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
-     * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {Number} opts.offset Offset of page to start from. 0 if not specified.
+     * @param {String} opts.searchTerm The text to search.
+     * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit Number of results to return. The default value is 100.
+     * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.getUsersWithHttpInfo = function(opts) {
@@ -156,16 +158,72 @@
     }
 
     /**
-     * Search for users
+     * Search for users.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.searchTerm The text to search for
-     * @param {String} opts.sort Desired sort order (asc or desc). asc if not specified
-     * @param {Number} opts.limit Number of results. 100 if not specified.
-     * @param {Number} opts.offset Offset of page to start from. 0 if not specified.
+     * @param {String} opts.searchTerm The text to search.
+     * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit Number of results to return. The default value is 100.
+     * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.getUsers = function(opts) {
       return this.getUsersWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Logout user remotely for supervisors
+     * @param {module:model/String} operationName Name of state to change to
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Data} opts.data 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.supervisorRemoteOperationWithHttpInfo = function(operationName, opts) {
+      opts = opts || {};
+      var postBody = opts['data'];
+
+      // verify the required parameter 'operationName' is set
+      if (operationName === undefined || operationName === null) {
+        throw new Error("Missing the required parameter 'operationName' when calling supervisorRemoteOperation");
+      }
+
+
+      var pathParams = {
+        'operationName': operationName
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/supervisor/voice/{operationName}', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Logout user remotely for supervisors
+     * @param {module:model/String} operationName Name of state to change to
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Data} opts.data 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.supervisorRemoteOperation = function(operationName, opts) {
+      return this.supervisorRemoteOperationWithHttpInfo(operationName, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

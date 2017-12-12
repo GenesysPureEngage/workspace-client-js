@@ -49,9 +49,9 @@
 
 
     /**
-     * Alternate between calls
-     * Alternate between two calls when one call is held and the other is established. This is a quick way to put a call on hold and retrieve another held call in one step.
-     * @param {String} id id of the active call that should be placed on hold
+     * Alternate between calls.
+     * Alternate two calls so that you retrieve a call on hold and place the established call on hold instead. This is a shortcut for doing &#x60;/voice/calls/{id}/hold&#x60; and &#x60;/voice/calls/{id}/retrieve&#x60; separately.
+     * @param {String} id The connection ID of the established call that should be placed on hold.
      * @param {module:model/AlternateData} alternateData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -94,9 +94,9 @@
     }
 
     /**
-     * Alternate between calls
-     * Alternate between two calls when one call is held and the other is established. This is a quick way to put a call on hold and retrieve another held call in one step.
-     * @param {String} id id of the active call that should be placed on hold
+     * Alternate between calls.
+     * Alternate two calls so that you retrieve a call on hold and place the established call on hold instead. This is a shortcut for doing &#x60;/voice/calls/{id}/hold&#x60; and &#x60;/voice/calls/{id}/retrieve&#x60; separately.
+     * @param {String} id The connection ID of the established call that should be placed on hold.
      * @param {module:model/AlternateData} alternateData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -109,9 +109,9 @@
 
 
     /**
-     * Answer a call
-     * Answer the call specified in the id path parameter
-     * @param {String} id id of the call to answer
+     * Answer the specified call.
+     * Answer the specified call.
+     * @param {String} id The connection ID of the call.
      * @param {Object} opts Optional parameters
      * @param {module:model/AnswerData} opts.answerData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -151,9 +151,9 @@
     }
 
     /**
-     * Answer a call
-     * Answer the call specified in the id path parameter
-     * @param {String} id id of the call to answer
+     * Answer the specified call.
+     * Answer the specified call.
+     * @param {String} id The connection ID of the call.
      * @param {Object} opts Optional parameters
      * @param {module:model/AnswerData} opts.answerData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -167,10 +167,10 @@
 
 
     /**
-     * Attach user data to a call
-     * Attach the provided key/value pairs to the call.
-     * @param {String} id id of the call
-     * @param {module:model/UserData} userData An array of key/value pairs to attach.
+     * Attach user data to a call.
+     * Attach the provided data to the specified call. This adds the data to the call even if data already exists with the provided keys.
+     * @param {String} id The connection ID of the call.
+     * @param {module:model/UserData} userData The data to attach to the call. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.attachUserDataWithHttpInfo = function(id, userData) {
@@ -212,10 +212,10 @@
     }
 
     /**
-     * Attach user data to a call
-     * Attach the provided key/value pairs to the call.
-     * @param {String} id id of the call
-     * @param {module:model/UserData} userData An array of key/value pairs to attach.
+     * Attach user data to a call.
+     * Attach the provided data to the specified call. This adds the data to the call even if data already exists with the provided keys.
+     * @param {String} id The connection ID of the call.
+     * @param {module:model/UserData} userData The data to attach to the call. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.attachUserData = function(id, userData) {
@@ -227,8 +227,8 @@
 
 
     /**
-     * Cancel call forwardarding
-     * Cancel call forwardarding
+     * Cancel call forwarding.
+     * Cancel call forwarding for the current agent.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.cancelForwardWithHttpInfo = function() {
@@ -259,8 +259,8 @@
     }
 
     /**
-     * Cancel call forwardarding
-     * Cancel call forwardarding
+     * Cancel call forwarding.
+     * Cancel call forwarding for the current agent.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.cancelForward = function() {
@@ -273,8 +273,8 @@
 
     /**
      * Clear all the parties in the call.
-     * Deletes all parties from the specified call and releases it.
-     * @param {String} id id of the call to be cleared
+     * End the conference call for all parties. This can be performed by any agent participating in the conference.
+     * @param {String} id The connection ID of the call to clear.
      * @param {module:model/ClearData} clearData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -318,8 +318,8 @@
 
     /**
      * Clear all the parties in the call.
-     * Deletes all parties from the specified call and releases it.
-     * @param {String} id id of the call to be cleared
+     * End the conference call for all parties. This can be performed by any agent participating in the conference.
+     * @param {String} id The connection ID of the call to clear.
      * @param {module:model/ClearData} clearData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -332,10 +332,10 @@
 
 
     /**
-     * Complete a call
-     * Complete and clean up the telephony object specified by the parameter conn_id. The userData parameter is sent throught the DistributeUserEvent operation.
-     * @param {String} id id of the call
-     * @param {module:model/UserData1} userData An array of key/value pairs.
+     * Complete the specified call.
+     * Complete the specified call by adding information to its user data after it has been released. You should make this request on released calls if you set automatic complete to false in &#x60;/activate-channels&#x60;.
+     * @param {String} id The connection ID of the call.
+     * @param {module:model/UserData1} userData Key/value data to include with the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.completeCallWithHttpInfo = function(id, userData) {
@@ -377,10 +377,10 @@
     }
 
     /**
-     * Complete a call
-     * Complete and clean up the telephony object specified by the parameter conn_id. The userData parameter is sent throught the DistributeUserEvent operation.
-     * @param {String} id id of the call
-     * @param {module:model/UserData1} userData An array of key/value pairs.
+     * Complete the specified call.
+     * Complete the specified call by adding information to its user data after it has been released. You should make this request on released calls if you set automatic complete to false in &#x60;/activate-channels&#x60;.
+     * @param {String} id The connection ID of the call.
+     * @param {module:model/UserData1} userData Key/value data to include with the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.completeCall = function(id, userData) {
@@ -392,9 +392,9 @@
 
 
     /**
-     * Complete a conference
-     * Completes a previously initiated conference. Once completed, the two separate calls  are brought together so that all three parties are participating in the same call.
-     * @param {String} id Id of the active call
+     * Complete a conference.
+     * Complete a previously initiated two-step conference identified by the provided IDs. Once completed, the two separate calls are brought together so that all three parties are participating in the same call.
+     * @param {String} id The connection ID of the consult call (established).
      * @param {module:model/CompleteConferenceData} completeConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -437,9 +437,9 @@
     }
 
     /**
-     * Complete a conference
-     * Completes a previously initiated conference. Once completed, the two separate calls  are brought together so that all three parties are participating in the same call.
-     * @param {String} id Id of the active call
+     * Complete a conference.
+     * Complete a previously initiated two-step conference identified by the provided IDs. Once completed, the two separate calls are brought together so that all three parties are participating in the same call.
+     * @param {String} id The connection ID of the consult call (established).
      * @param {module:model/CompleteConferenceData} completeConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -452,9 +452,9 @@
 
 
     /**
-     * Complete a transfer
-     * Completes a previously initiated two-step transfer.
-     * @param {String} id Id of the active call
+     * Complete a transfer.
+     * Complete a previously initiated two-step transfer using the provided IDs.
+     * @param {String} id The connection ID of the consult call (established).
      * @param {module:model/CompleteTransferData} completeTransferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -497,9 +497,9 @@
     }
 
     /**
-     * Complete a transfer
-     * Completes a previously initiated two-step transfer.
-     * @param {String} id Id of the active call
+     * Complete a transfer.
+     * Complete a previously initiated two-step transfer using the provided IDs.
+     * @param {String} id The connection ID of the consult call (established).
      * @param {module:model/CompleteTransferData} completeTransferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -512,9 +512,9 @@
 
 
     /**
-     * Delete a party from a conference call
-     * Removes the specified participant from the conference call. This operation can only be performed  by the owner of the conference call
-     * @param {String} id The id of the conference call
+     * Delete a party from a conference call.
+     * Delete the specified DN from the conference call. This operation can only be performed by the owner of the conference call.
+     * @param {String} id The connection ID of the conference call.
      * @param {module:model/DeleteFromConferenceData} deleteFromConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -557,9 +557,9 @@
     }
 
     /**
-     * Delete a party from a conference call
-     * Removes the specified participant from the conference call. This operation can only be performed  by the owner of the conference call
-     * @param {String} id The id of the conference call
+     * Delete a party from a conference call.
+     * Delete the specified DN from the conference call. This operation can only be performed by the owner of the conference call.
+     * @param {String} id The connection ID of the conference call.
      * @param {module:model/DeleteFromConferenceData} deleteFromConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -572,10 +572,10 @@
 
 
     /**
-     * Remove key/value pair from user data
-     * Deletes the specified key from the call data.
-     * @param {String} id id of the call
-     * @param {module:model/KeyData} keyData The key of the key/value pairs to delete.
+     * Remove a key/value pair from user data.
+     * Delete data with the specified key from the call&#39;s user data.
+     * @param {String} id The connection ID of the call.
+     * @param {module:model/KeyData} keyData The key of the data to remove.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.deleteUserDataPairWithHttpInfo = function(id, keyData) {
@@ -617,10 +617,10 @@
     }
 
     /**
-     * Remove key/value pair from user data
-     * Deletes the specified key from the call data.
-     * @param {String} id id of the call
-     * @param {module:model/KeyData} keyData The key of the key/value pairs to delete.
+     * Remove a key/value pair from user data.
+     * Delete data with the specified key from the call&#39;s user data.
+     * @param {String} id The connection ID of the call.
+     * @param {module:model/KeyData} keyData The key of the data to remove.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.deleteUserDataPair = function(id, keyData) {
@@ -632,9 +632,9 @@
 
 
     /**
-     * Fordward calls
-     * Turn on call forwarding to the specified destination. 
-     * @param {module:model/ForwardData} forwardData Request parameters.
+     * Forward calls.
+     * Set call forwarding on the current agent&#39;s DN to the specified destination.
+     * @param {module:model/ForwardData} forwardData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.forwardWithHttpInfo = function(forwardData) {
@@ -670,9 +670,9 @@
     }
 
     /**
-     * Fordward calls
-     * Turn on call forwarding to the specified destination. 
-     * @param {module:model/ForwardData} forwardData Request parameters.
+     * Forward calls.
+     * Set call forwarding on the current agent&#39;s DN to the specified destination.
+     * @param {module:model/ForwardData} forwardData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.forward = function(forwardData) {
@@ -684,7 +684,7 @@
 
 
     /**
-     * Get all the calls
+     * Get all calls.
      * Returns an array containing any active calls for the user.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse200} and HTTP response
      */
@@ -716,7 +716,7 @@
     }
 
     /**
-     * Get all the calls
+     * Get all calls.
      * Returns an array containing any active calls for the user.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse200}
      */
@@ -729,9 +729,9 @@
 
 
     /**
-     * Place a call on hold
-     * Place the call specified by the id path parameter on hold.
-     * @param {String} id id of the call
+     * Place the specified call on hold.
+     * Place the specified call on hold.
+     * @param {String} id The connection ID of the call.
      * @param {Object} opts Optional parameters
      * @param {module:model/HoldData} opts.holdData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -771,9 +771,9 @@
     }
 
     /**
-     * Place a call on hold
-     * Place the call specified by the id path parameter on hold.
-     * @param {String} id id of the call
+     * Place the specified call on hold.
+     * Place the specified call on hold.
+     * @param {String} id The connection ID of the call.
      * @param {Object} opts Optional parameters
      * @param {module:model/HoldData} opts.holdData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -787,9 +787,9 @@
 
 
     /**
-     * Initiate a conference
-     * Initiates a two-step conference to the specified destination. This operation places the existing call on hold  and creates a new call in the dialing state. After initiating the conference you can use /complete-conference  to complete the conference and bring all parties into the same call.
-     * @param {String} id id of the call to initiate the conference from. This call will be placed on hold.
+     * Initiate a conference.
+     * Initiates a two-step conference to the specified destination. This places the existing call on hold and creates a new call in the dialing state (step 1). After initiating the conference you can use &#x60;/voice/calls/{id}/complete-conference&#x60; to complete the conference and bring all parties into the same call (step 2).
+     * @param {String} id The connection ID of the call to start the conference from. This call will be placed on hold.
      * @param {module:model/InitiateConferenceData} initiateConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -832,9 +832,9 @@
     }
 
     /**
-     * Initiate a conference
-     * Initiates a two-step conference to the specified destination. This operation places the existing call on hold  and creates a new call in the dialing state. After initiating the conference you can use /complete-conference  to complete the conference and bring all parties into the same call.
-     * @param {String} id id of the call to initiate the conference from. This call will be placed on hold.
+     * Initiate a conference.
+     * Initiates a two-step conference to the specified destination. This places the existing call on hold and creates a new call in the dialing state (step 1). After initiating the conference you can use &#x60;/voice/calls/{id}/complete-conference&#x60; to complete the conference and bring all parties into the same call (step 2).
+     * @param {String} id The connection ID of the call to start the conference from. This call will be placed on hold.
      * @param {module:model/InitiateConferenceData} initiateConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -847,9 +847,9 @@
 
 
     /**
-     * Initiate a transfer
-     * Initiates a two-step transfer to the specified destination. After initiating the transfer,  you can use complete-transfer to complete the transfer.
-     * @param {String} id Connection identifier of the call that is requested to be placed on hold.
+     * Initiate a transfer.
+     * Initiates a two-step transfer by placing the first call on hold and dialing the destination number (step 1). After initiating the transfer, you can use &#x60;/voice/calls/{id}/complete-transfer&#x60; to complete the transfer (step 2).
+     * @param {String} id The connection ID of the call to be transferred. This call will be placed on hold.
      * @param {module:model/InitiateTransferData} initiateTransferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -892,9 +892,9 @@
     }
 
     /**
-     * Initiate a transfer
-     * Initiates a two-step transfer to the specified destination. After initiating the transfer,  you can use complete-transfer to complete the transfer.
-     * @param {String} id Connection identifier of the call that is requested to be placed on hold.
+     * Initiate a transfer.
+     * Initiates a two-step transfer by placing the first call on hold and dialing the destination number (step 1). After initiating the transfer, you can use &#x60;/voice/calls/{id}/complete-transfer&#x60; to complete the transfer (step 2).
+     * @param {String} id The connection ID of the call to be transferred. This call will be placed on hold.
      * @param {module:model/InitiateTransferData} initiateTransferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -907,8 +907,8 @@
 
 
     /**
-     * Login the media voice
-     * Login on the voice channel. This can be used to login the voice channel if it is logged out. (ex. after using /voice/logout). Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
+     * Login on the voice channel.
+     * Login the current agent on the voice channel. When you make this request, Workspace uses the parameters you provided in &#x60;/activate-channels&#x60;. For most applications, you don&#39;t need to worry about logging in the agent on the voice channel because it&#39;s handled by the Workspace API when you &#x60;/activate-channels&#x60;. However, if you make a &#x60;/voice/logout&#x60; request, you can then use &#x60;/voice/login&#x60; to login the agent on the voice channel. **Note: This login/logout flow only applies to the voice channel, not to the agent&#39;s session.**
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.loginVoiceWithHttpInfo = function() {
@@ -939,8 +939,8 @@
     }
 
     /**
-     * Login the media voice
-     * Login on the voice channel. This can be used to login the voice channel if it is logged out. (ex. after using /voice/logout). Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
+     * Login on the voice channel.
+     * Login the current agent on the voice channel. When you make this request, Workspace uses the parameters you provided in &#x60;/activate-channels&#x60;. For most applications, you don&#39;t need to worry about logging in the agent on the voice channel because it&#39;s handled by the Workspace API when you &#x60;/activate-channels&#x60;. However, if you make a &#x60;/voice/logout&#x60; request, you can then use &#x60;/voice/login&#x60; to login the agent on the voice channel. **Note: This login/logout flow only applies to the voice channel, not to the agent&#39;s session.**
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.loginVoice = function() {
@@ -953,7 +953,7 @@
 
     /**
      * Logout the media voice
-     * Logout on the voice channel. Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
+     * Logout the current agent on the voice channel. This request is typically paired with &#x60;/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.logoutVoiceWithHttpInfo = function() {
@@ -985,7 +985,7 @@
 
     /**
      * Logout the media voice
-     * Logout on the voice channel. Together voice/logout and voice/login allow the agent to logout of the voice channel temporarily without having to logout the entire session. 
+     * Logout the current agent on the voice channel. This request is typically paired with &#x60;/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.logoutVoice = function() {
@@ -997,8 +997,8 @@
 
 
     /**
-     * Make a new call to the specified destination
-     * Make a new call to the specified destination
+     * Make a new call.
+     * Make a new call to the specified destination.
      * @param {module:model/MakeCallData} makeCallData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1035,8 +1035,8 @@
     }
 
     /**
-     * Make a new call to the specified destination
-     * Make a new call to the specified destination
+     * Make a new call.
+     * Make a new call to the specified destination.
      * @param {module:model/MakeCallData} makeCallData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1049,9 +1049,9 @@
 
 
     /**
-     * Merge two calls
-     * Merge two calls 
-     * @param {String} id Connection identifier of the first call to be merged
+     * Merge the two specified calls.
+     * Merge the two specified calls.
+     * @param {String} id The connection ID of the first call to be merged.
      * @param {module:model/MergeData} mergeData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1094,9 +1094,9 @@
     }
 
     /**
-     * Merge two calls
-     * Merge two calls 
-     * @param {String} id Connection identifier of the first call to be merged
+     * Merge the two specified calls.
+     * Merge the two specified calls.
+     * @param {String} id The connection ID of the first call to be merged.
      * @param {module:model/MergeData} mergeData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1109,9 +1109,9 @@
 
 
     /**
-     * Pauses call recording.
-     * Pauses call recording.
-     * @param {String} id id of the call
+     * Pause recording on the specified call.
+     * Pause recording on the specified call.
+     * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.pauseRecordingWithHttpInfo = function(id) {
@@ -1148,9 +1148,9 @@
     }
 
     /**
-     * Pauses call recording.
-     * Pauses call recording.
-     * @param {String} id id of the call
+     * Pause recording on the specified call.
+     * Pause recording on the specified call.
+     * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.pauseRecording = function(id) {
@@ -1162,9 +1162,9 @@
 
 
     /**
-     * Reconnect a call
-     * Release the active call and retrieve another call from hold. This is a quick way to to do  /release and /retrieve in one step.
-     * @param {String} id The id of the active call
+     * Reconnect a call.
+     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/voice/calls/{id}/release&#x60; and &#x60;/voice/calls/{id}/retrieve&#x60; in one step.
+     * @param {String} id The connection ID of the established call (will be released).
      * @param {module:model/ReconnectData} reconnectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1207,9 +1207,9 @@
     }
 
     /**
-     * Reconnect a call
-     * Release the active call and retrieve another call from hold. This is a quick way to to do  /release and /retrieve in one step.
-     * @param {String} id The id of the active call
+     * Reconnect a call.
+     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/voice/calls/{id}/release&#x60; and &#x60;/voice/calls/{id}/retrieve&#x60; in one step.
+     * @param {String} id The connection ID of the established call (will be released).
      * @param {module:model/ReconnectData} reconnectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1223,8 +1223,8 @@
 
     /**
      * Redirect the call.
-     * Requests that the call be redirected, without an answer, from the party specified by the parameter dn to the party specified by the parameter dest_dn.
-     * @param {String} id Connection ID of the current call handled by the DN.
+     * Redirect a call to the specified destination.
+     * @param {String} id The connection ID of the current call to redirect.
      * @param {module:model/RedirectData} redirectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1268,8 +1268,8 @@
 
     /**
      * Redirect the call.
-     * Requests that the call be redirected, without an answer, from the party specified by the parameter dn to the party specified by the parameter dest_dn.
-     * @param {String} id Connection ID of the current call handled by the DN.
+     * Redirect a call to the specified destination.
+     * @param {String} id The connection ID of the current call to redirect.
      * @param {module:model/RedirectData} redirectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1282,9 +1282,9 @@
 
 
     /**
-     * Release a call
-     * Release the call specified by the id path parameter.
-     * @param {String} id id of the call
+     * Release the specified call.
+     * Release the specified call.
+     * @param {String} id The connection ID of the call.
      * @param {Object} opts Optional parameters
      * @param {module:model/ReleaseData} opts.releaseData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1324,9 +1324,9 @@
     }
 
     /**
-     * Release a call
-     * Release the call specified by the id path parameter.
-     * @param {String} id id of the call
+     * Release the specified call.
+     * Release the specified call.
+     * @param {String} id The connection ID of the call.
      * @param {Object} opts Optional parameters
      * @param {module:model/ReleaseData} opts.releaseData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1340,9 +1340,9 @@
 
 
     /**
-     * Resumes call recording.
-     * Resumes call recording.
-     * @param {String} id id of the call
+     * Resume recording the specified call.
+     * Resume recording the specified call.
+     * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.resumeRecordingWithHttpInfo = function(id) {
@@ -1379,9 +1379,9 @@
     }
 
     /**
-     * Resumes call recording.
-     * Resumes call recording.
-     * @param {String} id id of the call
+     * Resume recording the specified call.
+     * Resume recording the specified call.
+     * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.resumeRecording = function(id) {
@@ -1393,9 +1393,9 @@
 
 
     /**
-     * Retrieve a held call
-     * Retrieve the held call specified by the id path parameter.
-     * @param {String} id id of the call
+     * Retrieve the specified call from hold.
+     * Retrieve the specified call from hold.
+     * @param {String} id The connection ID of the call.
      * @param {Object} opts Optional parameters
      * @param {module:model/RetrieveData} opts.retrieveData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1435,9 +1435,9 @@
     }
 
     /**
-     * Retrieve a held call
-     * Retrieve the held call specified by the id path parameter.
-     * @param {String} id id of the call
+     * Retrieve the specified call from hold.
+     * Retrieve the specified call from hold.
+     * @param {String} id The connection ID of the call.
      * @param {Object} opts Optional parameters
      * @param {module:model/RetrieveData} opts.retrieveData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1452,8 +1452,8 @@
 
     /**
      * Send digits as DTMF.
-     * Sends the provided DTMF digits. You can send DTMF digits individually with multiple requests  or together with multiple digits in one request.
-     * @param {String} id Id of the cal
+     * Send DTMF digits to the specified call. You can send DTMF digits individually with multiple requests or together with multiple digits in one request.
+     * @param {String} id The connection ID of the call.
      * @param {module:model/SendDTMFData} sendDTMFData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1497,8 +1497,8 @@
 
     /**
      * Send digits as DTMF.
-     * Sends the provided DTMF digits. You can send DTMF digits individually with multiple requests  or together with multiple digits in one request.
-     * @param {String} id Id of the cal
+     * Send DTMF digits to the specified call. You can send DTMF digits individually with multiple requests or together with multiple digits in one request.
+     * @param {String} id The connection ID of the call.
      * @param {module:model/SendDTMFData} sendDTMFData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1511,9 +1511,9 @@
 
 
     /**
-     * Send a userEvent event to TServer with provided attached data.
-     * Send a userEvent event to TServer with provided attached data.
-     * @param {module:model/SendUserEventData} userEventData Data defining the user event to be distributed
+     * Send a userEvent event to T-Server with the provided attached data.
+     * Send a userEvent event to T-Server with the provided attached data.
+     * @param {module:model/SendUserEventData} userEventData The data to be sent. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.sendUserEventWithHttpInfo = function(userEventData) {
@@ -1549,9 +1549,9 @@
     }
 
     /**
-     * Send a userEvent event to TServer with provided attached data.
-     * Send a userEvent event to TServer with provided attached data.
-     * @param {module:model/SendUserEventData} userEventData Data defining the user event to be distributed
+     * Send a userEvent event to T-Server with the provided attached data.
+     * Send a userEvent event to T-Server with the provided attached data.
+     * @param {module:model/SendUserEventData} userEventData The data to be sent. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.sendUserEvent = function(userEventData) {
@@ -1563,8 +1563,8 @@
 
 
     /**
-     * Change to the not ready state for voice
-     * Change to the not ready state for voice
+     * Set the agent state to NotReady.
+     * Set the current agent&#39;s state to NotReady on the voice channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/NotReadyData} opts.notReadyData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1598,8 +1598,8 @@
     }
 
     /**
-     * Change to the not ready state for voice
-     * Change to the not ready state for voice
+     * Set the agent state to NotReady.
+     * Set the current agent&#39;s state to NotReady on the voice channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/NotReadyData} opts.notReadyData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1613,8 +1613,8 @@
 
 
     /**
-     * Change to the ready state for voice
-     * Change to the ready state for voice
+     * Set the agent state to Ready.
+     * Set the current agent&#39;s state to Ready on the voice channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/ReadyData} opts.readyData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1648,8 +1648,8 @@
     }
 
     /**
-     * Change to the ready state for voice
-     * Change to the ready state for voice
+     * Set the agent state to Ready.
+     * Set the current agent&#39;s state to Ready on the voice channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/ReadyData} opts.readyData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1663,8 +1663,8 @@
 
 
     /**
-     * Turn off do not disturb for voice
-     * Turn off do not disturb for voice
+     * Turn off do-not-disturb.
+     * Turn off do-not-disturb for the current agent on the voice channel.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.setDNDOffWithHttpInfo = function() {
@@ -1695,8 +1695,8 @@
     }
 
     /**
-     * Turn off do not disturb for voice
-     * Turn off do not disturb for voice
+     * Turn off do-not-disturb.
+     * Turn off do-not-disturb for the current agent on the voice channel.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.setDNDOff = function() {
@@ -1708,8 +1708,8 @@
 
 
     /**
-     * Turn on do not disturb for voice
-     * Turn on do not disturb for voice
+     * Set the agent state to do-not-disturb.
+     * Set the current agent&#39;s state to do-not-disturb on the voice channel.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.setDNDOnWithHttpInfo = function() {
@@ -1740,8 +1740,8 @@
     }
 
     /**
-     * Turn on do not disturb for voice
-     * Turn on do not disturb for voice
+     * Set the agent state to do-not-disturb.
+     * Set the current agent&#39;s state to do-not-disturb on the voice channel.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.setDNDOn = function() {
@@ -1753,9 +1753,9 @@
 
 
     /**
-     * Create a conference in a single step
-     * Performs a single-step conference, adding the specified participant to the call.
-     * @param {String} id Connection identifier of the call that is requested to be conferenced.
+     * Create a conference in a single step.
+     * Perform a single-step conference to the specified destination. This adds the destination to the existing call, creating a conference if necessary.
+     * @param {String} id The connection ID of the call to conference.
      * @param {module:model/SingleStepConferenceData} singleStepConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1798,9 +1798,9 @@
     }
 
     /**
-     * Create a conference in a single step
-     * Performs a single-step conference, adding the specified participant to the call.
-     * @param {String} id Connection identifier of the call that is requested to be conferenced.
+     * Create a conference in a single step.
+     * Perform a single-step conference to the specified destination. This adds the destination to the existing call, creating a conference if necessary.
+     * @param {String} id The connection ID of the call to conference.
      * @param {module:model/SingleStepConferenceData} singleStepConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1813,9 +1813,9 @@
 
 
     /**
-     * Transfer a call in a single step
-     * Performs a single-step transfer to the specified destination.
-     * @param {String} id The id of the call to be transferred.
+     * Transfer a call in a single step.
+     * Perform a single-step transfer to the specified destination.
+     * @param {String} id The connection ID of the call to transfer.
      * @param {module:model/SingleStepTransferData} singleStepTransferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1858,9 +1858,9 @@
     }
 
     /**
-     * Transfer a call in a single step
-     * Performs a single-step transfer to the specified destination.
-     * @param {String} id The id of the call to be transferred.
+     * Transfer a call in a single step.
+     * Perform a single-step transfer to the specified destination.
+     * @param {String} id The connection ID of the call to transfer.
      * @param {module:model/SingleStepTransferData} singleStepTransferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1873,8 +1873,8 @@
 
 
     /**
-     * Start the monitoring of an agent.
-     * Start the monitoring of an agent, providing monitoring information (phone number to be monitored, monitoringMode (Mute/Coach/Connect), monitoringNextCallType (OneCall/AllCalls), monitoringScope (Agent/Call)).
+     * Start monitoring an agent.
+     * Start supervisor monitoring of an agent. Use the parameters to specify how the monitoring should behave. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/voice/calls/{id}/switch-to-listen-in&#x60; (Mute), &#x60;/voice/calls/{id}/switch-to-coaching&#x60; (Coach), and &#x60;/voice/calls/{id}/switch-to-barge-in&#x60; (Connect).
      * @param {module:model/StartMonitoringData} startMonitoringData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1911,8 +1911,8 @@
     }
 
     /**
-     * Start the monitoring of an agent.
-     * Start the monitoring of an agent, providing monitoring information (phone number to be monitored, monitoringMode (Mute/Coach/Connect), monitoringNextCallType (OneCall/AllCalls), monitoringScope (Agent/Call)).
+     * Start monitoring an agent.
+     * Start supervisor monitoring of an agent. Use the parameters to specify how the monitoring should behave. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/voice/calls/{id}/switch-to-listen-in&#x60; (Mute), &#x60;/voice/calls/{id}/switch-to-coaching&#x60; (Coach), and &#x60;/voice/calls/{id}/switch-to-barge-in&#x60; (Connect).
      * @param {module:model/StartMonitoringData} startMonitoringData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1925,9 +1925,9 @@
 
 
     /**
-     * Starts call recording.
-     * Starts call recording.
-     * @param {String} id id of the call
+     * Start recording the specified call.
+     * Start recording the specified call. Recording stops when the call is completed or you send &#x60;/voice/calls/{id}/stop-recording&#x60; on either the call or the DN.
+     * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.startRecordingWithHttpInfo = function(id) {
@@ -1964,9 +1964,9 @@
     }
 
     /**
-     * Starts call recording.
-     * Starts call recording.
-     * @param {String} id id of the call
+     * Start recording the specified call.
+     * Start recording the specified call. Recording stops when the call is completed or you send &#x60;/voice/calls/{id}/stop-recording&#x60; on either the call or the DN.
+     * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.startRecording = function(id) {
@@ -1978,8 +1978,8 @@
 
 
     /**
-     * Stop the monitoring of an agent.
-     * Stop the monitoring of an agent, providing monitoring information (phoneNumber to be monitored).
+     * Stop monitoring an agent.
+     * Stop monitoring an agent.
      * @param {module:model/StopMonitoringData} stopMonitoringData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -2016,8 +2016,8 @@
     }
 
     /**
-     * Stop the monitoring of an agent.
-     * Stop the monitoring of an agent, providing monitoring information (phoneNumber to be monitored).
+     * Stop monitoring an agent.
+     * Stop monitoring an agent.
      * @param {module:model/StopMonitoringData} stopMonitoringData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -2030,9 +2030,9 @@
 
 
     /**
-     * Stops call recording.
-     * Stops call recording.
-     * @param {String} id id of the call
+     * Stop recording the specified call.
+     * Stop recording the specified call.
+     * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.stopRecordingWithHttpInfo = function(id) {
@@ -2069,9 +2069,9 @@
     }
 
     /**
-     * Stops call recording.
-     * Stops call recording.
-     * @param {String} id id of the call
+     * Stop recording the specified call.
+     * Stop recording the specified call.
+     * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.stopRecording = function(id) {
@@ -2083,9 +2083,9 @@
 
 
     /**
-     * Switch to barge in monitoring mode.
-     * Switch the currently monitored voice interaction to barge in mode
-     * @param {String} id Connection identifier of the call in question.
+     * Switch to the barge in monitoring mode.
+     * Switch to the barge in monitoring mode. If the agent is currently on a call and T-Server is configured to allow barge in, the supervisor is immediately added to the call. Both the monitored agent and the customer are able to hear and speak with the supervisor. If the target agent is not on a call at the time of the request, the supervisor is brought into the call when the agent receives a new call.
+     * @param {String} id The connection ID of the call being monitored.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -2125,9 +2125,9 @@
     }
 
     /**
-     * Switch to barge in monitoring mode.
-     * Switch the currently monitored voice interaction to barge in mode
-     * @param {String} id Connection identifier of the call in question.
+     * Switch to the barge in monitoring mode.
+     * Switch to the barge in monitoring mode. If the agent is currently on a call and T-Server is configured to allow barge in, the supervisor is immediately added to the call. Both the monitored agent and the customer are able to hear and speak with the supervisor. If the target agent is not on a call at the time of the request, the supervisor is brought into the call when the agent receives a new call.
+     * @param {String} id The connection ID of the call being monitored.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -2141,9 +2141,9 @@
 
 
     /**
-     * Switch to coaching monitoring mode.
-     * Switch the currently monitored voice interaction to coaching mode
-     * @param {String} id Connection identifier of the call in question.
+     * Switch to the coaching monitoring mode.
+     * Switch to the coaching monitoring mode. When coaching is enabled and the agent receives a call, the supervisor is brought into the call. Only the agent can hear the supervisor.
+     * @param {String} id The connection ID of the call being monitored.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -2183,9 +2183,9 @@
     }
 
     /**
-     * Switch to coaching monitoring mode.
-     * Switch the currently monitored voice interaction to coaching mode
-     * @param {String} id Connection identifier of the call in question.
+     * Switch to the coaching monitoring mode.
+     * Switch to the coaching monitoring mode. When coaching is enabled and the agent receives a call, the supervisor is brought into the call. Only the agent can hear the supervisor.
+     * @param {String} id The connection ID of the call being monitored.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -2199,9 +2199,9 @@
 
 
     /**
-     * Switch to listen in monitoring mode.
-     * Switch the currently monitored voice interaction to listen in mode
-     * @param {String} id Connection identifier of the call in question.
+     * Switch to the listen in monitoring mode.
+     * Switch to the listen in monitoring mode. When listen in is enabled and the agent receives a call, the supervisor is able to listen to the agent and the customer, but they can&#39;t hear the supervisor.
+     * @param {String} id The connection ID of the call being monitored.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -2241,9 +2241,9 @@
     }
 
     /**
-     * Switch to listen in monitoring mode.
-     * Switch the currently monitored voice interaction to listen in mode
-     * @param {String} id Connection identifier of the call in question.
+     * Switch to the listen in monitoring mode.
+     * Switch to the listen in monitoring mode. When listen in is enabled and the agent receives a call, the supervisor is able to listen to the agent and the customer, but they can&#39;t hear the supervisor.
+     * @param {String} id The connection ID of the call being monitored.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -2257,10 +2257,10 @@
 
 
     /**
-     * Update user data to a call
-     * Update the call userdata with the provided key/value pairs.
-     * @param {String} id id of the call
-     * @param {module:model/UserData} userData An array of key/value pairs.
+     * Update user data for a call.
+     * Update call data with the provided key/value pairs. This will replace any existing key/value pairs with the same keys.
+     * @param {String} id The connection ID of the call.
+     * @param {module:model/UserData} userData The data to update. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.updateUserDataWithHttpInfo = function(id, userData) {
@@ -2302,10 +2302,10 @@
     }
 
     /**
-     * Update user data to a call
-     * Update the call userdata with the provided key/value pairs.
-     * @param {String} id id of the call
-     * @param {module:model/UserData} userData An array of key/value pairs.
+     * Update user data for a call.
+     * Update call data with the provided key/value pairs. This will replace any existing key/value pairs with the same keys.
+     * @param {String} id The connection ID of the call.
+     * @param {module:model/UserData} userData The data to update. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.updateUserData = function(id, userData) {

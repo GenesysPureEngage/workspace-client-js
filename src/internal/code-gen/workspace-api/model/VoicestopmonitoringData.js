@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicestopmonitoringData</code>.
    * @alias module:model/VoicestopmonitoringData
    * @class
-   * @param phoneNumber {String} The phone number currently monitored, for which the monitoring should be stopped
+   * @param phoneNumber {String} The phone number currently being monitored.
    */
   var exports = function(phoneNumber) {
     var _this = this;
@@ -70,7 +70,7 @@
   }
 
   /**
-   * The phone number currently monitored, for which the monitoring should be stopped
+   * The phone number currently being monitored.
    * @member {String} phoneNumber
    */
   exports.prototype['phoneNumber'] = undefined;
