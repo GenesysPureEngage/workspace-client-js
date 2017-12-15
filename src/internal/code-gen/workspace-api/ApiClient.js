@@ -49,9 +49,9 @@ const CookieJar = require('cookiejar').CookieJar;
     /**
      * The base URL against which to resolve every API call's (relative) path.
      * @type {String}
-     * @default http://localhost/workspace/v3
+     * @default http://your-server.com/workspace/v3
      */
-    this.basePath = 'http://localhost/workspace/v3'.replace(/\/+$/, '');
+    this.basePath = 'http://your-server.com/workspace/v3'.replace(/\/+$/, '');
 
     /**
      * The authentication methods to be included for all API calls.
