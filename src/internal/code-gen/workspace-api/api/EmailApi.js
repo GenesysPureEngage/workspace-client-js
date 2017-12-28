@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData1', 'model/ApiErrorResponse', 'model/ApiSuccessResponse'], factory);
+    define(['ApiClient', 'model/AcceptData1', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/CreateData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData1'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData1'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/CreateData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.EmailApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse);
+    root.WorkspaceApi.EmailApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.CreateData);
   }
-}(this, function(ApiClient, AcceptData1, ApiErrorResponse, ApiSuccessResponse) {
+}(this, function(ApiClient, AcceptData1, ApiErrorResponse, ApiSuccessResponse, CreateData) {
   'use strict';
 
   /**
@@ -49,7 +49,7 @@
 
 
     /**
-     * Accept an email interaction
+     * Accept the email interaction
      * Accept the interaction specified in the id path parameter
      * @param {String} id id of interaction to accept
      * @param {Object} opts Optional parameters
@@ -91,7 +91,7 @@
     }
 
     /**
-     * Accept an email interaction
+     * Accept the email interaction
      * Accept the interaction specified in the id path parameter
      * @param {String} id id of interaction to accept
      * @param {Object} opts Optional parameters
@@ -100,6 +100,56 @@
      */
     this.acceptEmail = function(id, opts) {
       return this.acceptEmailWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Create email interaction
+     * Create a new email interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateData} opts.createData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.createEmailWithHttpInfo = function(opts) {
+      opts = opts || {};
+      var postBody = opts['createData'];
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/email/interactions/create', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Create email interaction
+     * Create a new email interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/CreateData} opts.createData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.createEmail = function(opts) {
+      return this.createEmailWithHttpInfo(opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

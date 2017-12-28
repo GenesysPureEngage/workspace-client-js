@@ -50,76 +50,9 @@
 
     /**
      * Search for users.
-     * Search for users by the specified group ID.
-     * @param {Number} groupId The ID of the group where the user belongs.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.searchTerm The text to search for in the group of users.
-     * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
-     * @param {Number} opts.limit Number of results to return. The default value is 100.
-     * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.getGroupUsersWithHttpInfo = function(groupId, opts) {
-      opts = opts || {};
-      var postBody = null;
-
-      // verify the required parameter 'groupId' is set
-      if (groupId === undefined || groupId === null) {
-        throw new Error("Missing the required parameter 'groupId' when calling getGroupUsers");
-      }
-
-
-      var pathParams = {
-        'groupId': groupId
-      };
-      var queryParams = {
-        'searchTerm': opts['searchTerm'],
-        'sort': opts['sort'],
-        'limit': opts['limit'],
-        'offset': opts['offset'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/groups/{groupId}/users', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Search for users.
-     * Search for users by the specified group ID.
-     * @param {Number} groupId The ID of the group where the user belongs.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.searchTerm The text to search for in the group of users.
-     * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
-     * @param {Number} opts.limit Number of results to return. The default value is 100.
-     * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.getGroupUsers = function(groupId, opts) {
-      return this.getGroupUsersWithHttpInfo(groupId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Search for users.
      * @param {Object} opts Optional parameters
      * @param {String} opts.searchTerm The text to search.
+     * @param {Number} opts.groupId The ID of the group where the user belongs.
      * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
      * @param {Number} opts.limit Number of results to return. The default value is 100.
      * @param {Number} opts.offset The offset to start from in the results. The default value is 0.
@@ -134,6 +67,7 @@
       };
       var queryParams = {
         'searchTerm': opts['searchTerm'],
+        'groupId': opts['groupId'],
         'sort': opts['sort'],
         'limit': opts['limit'],
         'offset': opts['offset'],
@@ -161,6 +95,7 @@
      * Search for users.
      * @param {Object} opts Optional parameters
      * @param {String} opts.searchTerm The text to search.
+     * @param {Number} opts.groupId The ID of the group where the user belongs.
      * @param {String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
      * @param {Number} opts.limit Number of results to return. The default value is 100.
      * @param {Number} opts.offset The offset to start from in the results. The default value is 0.

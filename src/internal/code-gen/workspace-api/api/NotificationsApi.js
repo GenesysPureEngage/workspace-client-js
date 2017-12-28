@@ -50,7 +50,7 @@
 
     /**
      * CometD endpoint.
-     * Enables you to subscribe to the CometD notification API.
+     * Subscribe to the CometD notification API.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     this.notificationsWithHttpInfo = function() {
@@ -82,7 +82,7 @@
 
     /**
      * CometD endpoint.
-     * Enables you to subscribe to the CometD notification API.
+     * Subscribe to the CometD notification API.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     this.notifications = function() {

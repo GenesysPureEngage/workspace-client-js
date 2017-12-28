@@ -16,47 +16,49 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/StatisticValue'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./StatisticValue'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ReportingunsubscribeData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.Subscription = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.StatisticValue);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, StatisticValue) {
   'use strict';
 
 
 
 
   /**
-   * The ReportingunsubscribeData model module.
-   * @module model/ReportingunsubscribeData
+   * The Subscription model module.
+   * @module model/Subscription
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>ReportingunsubscribeData</code>.
-   * @alias module:model/ReportingunsubscribeData
+   * Constructs a new <code>Subscription</code>.
+   * @alias module:model/Subscription
    * @class
    * @param subscriptionId {String} 
+   * @param statistics {Array.<module:model/StatisticValue>} 
    */
-  var exports = function(subscriptionId) {
+  var exports = function(subscriptionId, statistics) {
     var _this = this;
 
     _this['subscriptionId'] = subscriptionId;
+    _this['statistics'] = statistics;
   };
 
   /**
-   * Constructs a <code>ReportingunsubscribeData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Subscription</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ReportingunsubscribeData} obj Optional instance to populate.
-   * @return {module:model/ReportingunsubscribeData} The populated <code>ReportingunsubscribeData</code> instance.
+   * @param {module:model/Subscription} obj Optional instance to populate.
+   * @return {module:model/Subscription} The populated <code>Subscription</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -64,6 +66,9 @@
 
       if (data.hasOwnProperty('subscriptionId')) {
         obj['subscriptionId'] = ApiClient.convertToType(data['subscriptionId'], 'String');
+      }
+      if (data.hasOwnProperty('statistics')) {
+        obj['statistics'] = ApiClient.convertToType(data['statistics'], [StatisticValue]);
       }
     }
     return obj;
@@ -73,6 +78,10 @@
    * @member {String} subscriptionId
    */
   exports.prototype['subscriptionId'] = undefined;
+  /**
+   * @member {Array.<module:model/StatisticValue>} statistics
+   */
+  exports.prototype['statistics'] = undefined;
 
 
 

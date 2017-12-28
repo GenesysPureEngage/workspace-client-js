@@ -50,7 +50,7 @@
 
     /**
      * Alternate between calls.
-     * Alternate two calls so that you retrieve a call on hold and place the established call on hold instead. This is a shortcut for doing &#x60;/voice/calls/{id}/hold&#x60; and &#x60;/voice/calls/{id}/retrieve&#x60; separately.
+     * Alternate two calls so that you retrieve a call on hold and place the established call on hold instead. This is a shortcut for doing &#x60;/workspace/v3/voice/calls/{id}/hold&#x60; and &#x60;/workspace/v3/voice/calls/{id}/retrieve&#x60; separately.
      * @param {String} id The connection ID of the established call that should be placed on hold.
      * @param {module:model/AlternateData} alternateData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -95,7 +95,7 @@
 
     /**
      * Alternate between calls.
-     * Alternate two calls so that you retrieve a call on hold and place the established call on hold instead. This is a shortcut for doing &#x60;/voice/calls/{id}/hold&#x60; and &#x60;/voice/calls/{id}/retrieve&#x60; separately.
+     * Alternate two calls so that you retrieve a call on hold and place the established call on hold instead. This is a shortcut for doing &#x60;/workspace/v3/voice/calls/{id}/hold&#x60; and &#x60;/workspace/v3/voice/calls/{id}/retrieve&#x60; separately.
      * @param {String} id The connection ID of the established call that should be placed on hold.
      * @param {module:model/AlternateData} alternateData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -333,7 +333,7 @@
 
     /**
      * Complete the specified call.
-     * Complete the specified call by adding information to its user data after it has been released. You should make this request on released calls if you set automatic complete to false in &#x60;/activate-channels&#x60;.
+     * Complete the specified call by adding information to its user data after it has been released. You should make this request on released calls if you set automatic complete to false in &#x60;/workspace/v3/activate-channels&#x60;.
      * @param {String} id The connection ID of the call.
      * @param {module:model/UserData1} userData Key/value data to include with the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -378,7 +378,7 @@
 
     /**
      * Complete the specified call.
-     * Complete the specified call by adding information to its user data after it has been released. You should make this request on released calls if you set automatic complete to false in &#x60;/activate-channels&#x60;.
+     * Complete the specified call by adding information to its user data after it has been released. You should make this request on released calls if you set automatic complete to false in &#x60;/workspace/v3/activate-channels&#x60;.
      * @param {String} id The connection ID of the call.
      * @param {module:model/UserData1} userData Key/value data to include with the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -788,7 +788,7 @@
 
     /**
      * Initiate a conference.
-     * Initiates a two-step conference to the specified destination. This places the existing call on hold and creates a new call in the dialing state (step 1). After initiating the conference you can use &#x60;/voice/calls/{id}/complete-conference&#x60; to complete the conference and bring all parties into the same call (step 2).
+     * Initiates a two-step conference to the specified destination. This places the existing call on hold and creates a new call in the dialing state (step 1). After initiating the conference you can use &#x60;/workspace/v3/voice/calls/{id}/complete-conference&#x60; to complete the conference and bring all parties into the same call (step 2).
      * @param {String} id The connection ID of the call to start the conference from. This call will be placed on hold.
      * @param {module:model/InitiateConferenceData} initiateConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -833,7 +833,7 @@
 
     /**
      * Initiate a conference.
-     * Initiates a two-step conference to the specified destination. This places the existing call on hold and creates a new call in the dialing state (step 1). After initiating the conference you can use &#x60;/voice/calls/{id}/complete-conference&#x60; to complete the conference and bring all parties into the same call (step 2).
+     * Initiates a two-step conference to the specified destination. This places the existing call on hold and creates a new call in the dialing state (step 1). After initiating the conference you can use &#x60;/workspace/v3/voice/calls/{id}/complete-conference&#x60; to complete the conference and bring all parties into the same call (step 2).
      * @param {String} id The connection ID of the call to start the conference from. This call will be placed on hold.
      * @param {module:model/InitiateConferenceData} initiateConferenceData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -848,7 +848,7 @@
 
     /**
      * Initiate a transfer.
-     * Initiates a two-step transfer by placing the first call on hold and dialing the destination number (step 1). After initiating the transfer, you can use &#x60;/voice/calls/{id}/complete-transfer&#x60; to complete the transfer (step 2).
+     * Initiates a two-step transfer by placing the first call on hold and dialing the destination number (step 1). After initiating the transfer, you can use &#x60;/workspace/v3/voice/calls/{id}/complete-transfer&#x60; to complete the transfer (step 2).
      * @param {String} id The connection ID of the call to be transferred. This call will be placed on hold.
      * @param {module:model/InitiateTransferData} initiateTransferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -893,7 +893,7 @@
 
     /**
      * Initiate a transfer.
-     * Initiates a two-step transfer by placing the first call on hold and dialing the destination number (step 1). After initiating the transfer, you can use &#x60;/voice/calls/{id}/complete-transfer&#x60; to complete the transfer (step 2).
+     * Initiates a two-step transfer by placing the first call on hold and dialing the destination number (step 1). After initiating the transfer, you can use &#x60;/workspace/v3/voice/calls/{id}/complete-transfer&#x60; to complete the transfer (step 2).
      * @param {String} id The connection ID of the call to be transferred. This call will be placed on hold.
      * @param {module:model/InitiateTransferData} initiateTransferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -908,7 +908,7 @@
 
     /**
      * Login on the voice channel.
-     * Login the current agent on the voice channel. When you make this request, Workspace uses the parameters you provided in &#x60;/activate-channels&#x60;. For most applications, you don&#39;t need to worry about logging in the agent on the voice channel because it&#39;s handled by the Workspace API when you &#x60;/activate-channels&#x60;. However, if you make a &#x60;/voice/logout&#x60; request, you can then use &#x60;/voice/login&#x60; to login the agent on the voice channel. **Note: This login/logout flow only applies to the voice channel, not to the agent&#39;s session.**
+     * Login the current agent on the voice channel. When you make this request, Workspace uses the parameters you provided in &#x60;/workspace/v3/activate-channels&#x60;. For most applications, you don&#39;t need to worry about logging in the agent on the voice channel because it&#39;s handled by the Workspace API when you &#x60;/workspace/v3/activate-channels&#x60;. However, if you make a &#x60;/workspace/v3/voice/logout&#x60; request, you can then use &#x60;/workspace/v3/voice/login&#x60; to login the agent on the voice channel. **Note: This login/logout flow only applies to the voice channel, not to the agent&#39;s session.**
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.loginVoiceWithHttpInfo = function() {
@@ -940,7 +940,7 @@
 
     /**
      * Login on the voice channel.
-     * Login the current agent on the voice channel. When you make this request, Workspace uses the parameters you provided in &#x60;/activate-channels&#x60;. For most applications, you don&#39;t need to worry about logging in the agent on the voice channel because it&#39;s handled by the Workspace API when you &#x60;/activate-channels&#x60;. However, if you make a &#x60;/voice/logout&#x60; request, you can then use &#x60;/voice/login&#x60; to login the agent on the voice channel. **Note: This login/logout flow only applies to the voice channel, not to the agent&#39;s session.**
+     * Login the current agent on the voice channel. When you make this request, Workspace uses the parameters you provided in &#x60;/workspace/v3/activate-channels&#x60;. For most applications, you don&#39;t need to worry about logging in the agent on the voice channel because it&#39;s handled by the Workspace API when you &#x60;/workspace/v3/activate-channels&#x60;. However, if you make a &#x60;/workspace/v3/voice/logout&#x60; request, you can then use &#x60;/workspace/v3/voice/login&#x60; to login the agent on the voice channel. **Note: This login/logout flow only applies to the voice channel, not to the agent&#39;s session.**
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.loginVoice = function() {
@@ -952,8 +952,8 @@
 
 
     /**
-     * Logout the media voice
-     * Logout the current agent on the voice channel. This request is typically paired with &#x60;/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
+     * Logout the media voice.
+     * Logout the current agent on the voice channel. This request is typically paired with &#x60;/workspace/v3/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.logoutVoiceWithHttpInfo = function() {
@@ -984,8 +984,8 @@
     }
 
     /**
-     * Logout the media voice
-     * Logout the current agent on the voice channel. This request is typically paired with &#x60;/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
+     * Logout the media voice.
+     * Logout the current agent on the voice channel. This request is typically paired with &#x60;/workspace/v3/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.logoutVoice = function() {
@@ -1163,7 +1163,7 @@
 
     /**
      * Reconnect a call.
-     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/voice/calls/{id}/release&#x60; and &#x60;/voice/calls/{id}/retrieve&#x60; in one step.
+     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/workspace/v3/voice/calls/{id}/release&#x60; and &#x60;/workspace/v3/voice/calls/{id}/retrieve&#x60; in one step.
      * @param {String} id The connection ID of the established call (will be released).
      * @param {module:model/ReconnectData} reconnectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1208,7 +1208,7 @@
 
     /**
      * Reconnect a call.
-     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/voice/calls/{id}/release&#x60; and &#x60;/voice/calls/{id}/retrieve&#x60; in one step.
+     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/workspace/v3/voice/calls/{id}/release&#x60; and &#x60;/workspace/v3/voice/calls/{id}/retrieve&#x60; in one step.
      * @param {String} id The connection ID of the established call (will be released).
      * @param {module:model/ReconnectData} reconnectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1874,7 +1874,7 @@
 
     /**
      * Start monitoring an agent.
-     * Start supervisor monitoring of an agent. Use the parameters to specify how the monitoring should behave. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/voice/calls/{id}/switch-to-listen-in&#x60; (Mute), &#x60;/voice/calls/{id}/switch-to-coaching&#x60; (Coach), and &#x60;/voice/calls/{id}/switch-to-barge-in&#x60; (Connect).
+     * Start supervisor monitoring of an agent. Use the parameters to specify how the monitoring should behave. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/workspace/v3/voice/calls/{id}/switch-to-listen-in&#x60; (Mute), &#x60;/workspace/v3/voice/calls/{id}/switch-to-coaching&#x60; (Coach), and &#x60;/workspace/v3/voice/calls/{id}/switch-to-barge-in&#x60; (Connect).
      * @param {module:model/StartMonitoringData} startMonitoringData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1912,7 +1912,7 @@
 
     /**
      * Start monitoring an agent.
-     * Start supervisor monitoring of an agent. Use the parameters to specify how the monitoring should behave. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/voice/calls/{id}/switch-to-listen-in&#x60; (Mute), &#x60;/voice/calls/{id}/switch-to-coaching&#x60; (Coach), and &#x60;/voice/calls/{id}/switch-to-barge-in&#x60; (Connect).
+     * Start supervisor monitoring of an agent. Use the parameters to specify how the monitoring should behave. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/workspace/v3/voice/calls/{id}/switch-to-listen-in&#x60; (Mute), &#x60;/workspace/v3/voice/calls/{id}/switch-to-coaching&#x60; (Coach), and &#x60;/workspace/v3/voice/calls/{id}/switch-to-barge-in&#x60; (Connect).
      * @param {module:model/StartMonitoringData} startMonitoringData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1926,7 +1926,7 @@
 
     /**
      * Start recording the specified call.
-     * Start recording the specified call. Recording stops when the call is completed or you send &#x60;/voice/calls/{id}/stop-recording&#x60; on either the call or the DN.
+     * Start recording the specified call. Recording stops when the call is completed or you send &#x60;/workspace/v3/voice/calls/{id}/stop-recording&#x60; on either the call or the DN.
      * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1965,7 +1965,7 @@
 
     /**
      * Start recording the specified call.
-     * Start recording the specified call. Recording stops when the call is completed or you send &#x60;/voice/calls/{id}/stop-recording&#x60; on either the call or the DN.
+     * Start recording the specified call. Recording stops when the call is completed or you send &#x60;/workspace/v3/voice/calls/{id}/stop-recording&#x60; on either the call or the DN.
      * @param {String} id The connection ID of the call.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */

@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.StatisticValueForRegister = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.Statistic = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The StatisticValueForRegister model module.
-   * @module model/StatisticValueForRegister
+   * The Statistic model module.
+   * @module model/Statistic
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>StatisticValueForRegister</code>.
-   * @alias module:model/StatisticValueForRegister
+   * Constructs a new <code>Statistic</code>.
+   * @alias module:model/Statistic
    * @class
    * @param objectId {String} ID of the object to get the statistic for
    * @param objectType {String} Type of the obejct to get the statistic for
@@ -56,11 +56,11 @@
   };
 
   /**
-   * Constructs a <code>StatisticValueForRegister</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Statistic</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/StatisticValueForRegister} obj Optional instance to populate.
-   * @return {module:model/StatisticValueForRegister} The populated <code>StatisticValueForRegister</code> instance.
+   * @param {module:model/Statistic} obj Optional instance to populate.
+   * @return {module:model/Statistic} The populated <code>Statistic</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/StatisticValueForRegister'], factory);
+    define(['ApiClient', 'model/Statistic'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./StatisticValueForRegister'));
+    module.exports = factory(require('../ApiClient'), require('./Statistic'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.StatisticsSubscribeDataData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.StatisticValueForRegister);
+    root.WorkspaceApi.StatisticsSubscribeDataData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Statistic);
   }
-}(this, function(ApiClient, StatisticValueForRegister) {
+}(this, function(ApiClient, Statistic) {
   'use strict';
 
 
@@ -43,13 +43,11 @@
    * Constructs a new <code>StatisticsSubscribeDataData</code>.
    * @alias module:model/StatisticsSubscribeDataData
    * @class
-   * @param connectionId {String} 
-   * @param statistics {Array.<module:model/StatisticValueForRegister>} 
+   * @param statistics {Array.<module:model/Statistic>} 
    */
-  var exports = function(connectionId, statistics) {
+  var exports = function(statistics) {
     var _this = this;
 
-    _this['connectionId'] = connectionId;
     _this['statistics'] = statistics;
   };
 
@@ -64,22 +62,15 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('connectionId')) {
-        obj['connectionId'] = ApiClient.convertToType(data['connectionId'], 'String');
-      }
       if (data.hasOwnProperty('statistics')) {
-        obj['statistics'] = ApiClient.convertToType(data['statistics'], [StatisticValueForRegister]);
+        obj['statistics'] = ApiClient.convertToType(data['statistics'], [Statistic]);
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} connectionId
-   */
-  exports.prototype['connectionId'] = undefined;
-  /**
-   * @member {Array.<module:model/StatisticValueForRegister>} statistics
+   * @member {Array.<module:model/Statistic>} statistics
    */
   exports.prototype['statistics'] = undefined;
 

@@ -50,7 +50,7 @@
 
     /**
      * Activate channels for the user with the specified resources.
-     * Activates the specified channels using the provided resources. If the channels are successfully activated, Workspace sends additional information about the state of active resources (DNs, channels) via events. The resources you provide are associated with the agent for the duration of the session. You should send this request after making an &#x60;/initialize-workspace&#x60; request and getting the WorkspaceInitializationComplete message through CometD.
+     * Activates the specified channels using the provided resources. If the channels are successfully activated, Workspace sends additional information about the state of active resources (DNs, channels) via events. The resources you provide are associated with the agent for the duration of the session. You should send this request after making an &#x60;/workspace/v3/initialize-workspace&#x60; request and getting the WorkspaceInitializationComplete message through CometD.
      * @param {module:model/ChannelsData} channelsData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -88,7 +88,7 @@
 
     /**
      * Activate channels for the user with the specified resources.
-     * Activates the specified channels using the provided resources. If the channels are successfully activated, Workspace sends additional information about the state of active resources (DNs, channels) via events. The resources you provide are associated with the agent for the duration of the session. You should send this request after making an &#x60;/initialize-workspace&#x60; request and getting the WorkspaceInitializationComplete message through CometD.
+     * Activates the specified channels using the provided resources. If the channels are successfully activated, Workspace sends additional information about the state of active resources (DNs, channels) via events. The resources you provide are associated with the agent for the duration of the session. You should send this request after making an &#x60;/workspace/v3/initialize-workspace&#x60; request and getting the WorkspaceInitializationComplete message through CometD.
      * @param {module:model/ChannelsData} channelsData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -351,9 +351,9 @@
      * Retrieves and registers an authorization token.
      * Retrieves the authorization token using the authorization code. Workspace then registers the token and prepares the user&#39;s environment.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.code The authorization code. You must include this parameter if you use the [Authorization Code Grant flow] (https://developer.genhtcc.com/api/reference/authentication/index.html).
-     * @param {String} opts.redirectUri The same redirect URI you used in the initial login step. You must include this parameter if you follow the [Authorization Code Grant flow](https://developer.genhtcc.com/api/reference/authentication/index.html).
-     * @param {String} opts.authorization If you use the [Resource Owner Password Credentials Grant](https://developer.genhtcc.com/api/reference/authentication/index.html), this parameter must contain Bearer authorization. For example: &#39;Authorization: Bearer access_token&#39;.
+     * @param {String} opts.code The authorization code. You must include this parameter if you use the [Authorization Code Grant flow] (/reference/authentication/).
+     * @param {String} opts.redirectUri The same redirect URI you used in the initial login step. You must include this parameter if you follow the [Authorization Code Grant flow](/reference/authentication/).
+     * @param {String} opts.authorization If you use the [Resource Owner Password Credentials Grant](/reference/authentication/), this parameter must contain Bearer authorization. For example: &#39;Authorization: Bearer access_token&#39;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.initializeWorkspaceWithHttpInfo = function(opts) {
@@ -391,9 +391,9 @@
      * Retrieves and registers an authorization token.
      * Retrieves the authorization token using the authorization code. Workspace then registers the token and prepares the user&#39;s environment.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.code The authorization code. You must include this parameter if you use the [Authorization Code Grant flow] (https://developer.genhtcc.com/api/reference/authentication/index.html).
-     * @param {String} opts.redirectUri The same redirect URI you used in the initial login step. You must include this parameter if you follow the [Authorization Code Grant flow](https://developer.genhtcc.com/api/reference/authentication/index.html).
-     * @param {String} opts.authorization If you use the [Resource Owner Password Credentials Grant](https://developer.genhtcc.com/api/reference/authentication/index.html), this parameter must contain Bearer authorization. For example: &#39;Authorization: Bearer access_token&#39;.
+     * @param {String} opts.code The authorization code. You must include this parameter if you use the [Authorization Code Grant flow] (/reference/authentication/).
+     * @param {String} opts.redirectUri The same redirect URI you used in the initial login step. You must include this parameter if you follow the [Authorization Code Grant flow](/reference/authentication/).
+     * @param {String} opts.authorization If you use the [Resource Owner Password Credentials Grant](/reference/authentication/), this parameter must contain Bearer authorization. For example: &#39;Authorization: Bearer access_token&#39;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.initializeWorkspace = function(opts) {

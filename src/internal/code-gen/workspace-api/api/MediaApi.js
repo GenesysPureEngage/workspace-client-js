@@ -1310,7 +1310,7 @@
 
     /**
      * Transfer the interaction to the agent
-     * Place the interaction in queue with modification of properties pairs.
+     * Transfer the interaction to an agent.
      * @param {String} mediatype media-type of interaction
      * @param {String} id id of the interaction
      * @param {module:model/TransferData} transferData 
@@ -1362,7 +1362,7 @@
 
     /**
      * Transfer the interaction to the agent
-     * Place the interaction in queue with modification of properties pairs.
+     * Transfer the interaction to an agent.
      * @param {String} mediatype media-type of interaction
      * @param {String} id id of the interaction
      * @param {module:model/TransferData} transferData 

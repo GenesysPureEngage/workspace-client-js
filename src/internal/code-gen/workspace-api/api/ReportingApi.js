@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/InlineResponse2001', 'model/InlineResponse2002', 'model/InlineResponse2003', 'model/StatisticsRegisterData', 'model/StatisticsSubscribeData', 'model/UnsubscribeData'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/InlineResponse2001', 'model/InlineResponse2002', 'model/StatisticsSubscribeData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/InlineResponse2001'), require('../model/InlineResponse2002'), require('../model/InlineResponse2003'), require('../model/StatisticsRegisterData'), require('../model/StatisticsSubscribeData'), require('../model/UnsubscribeData'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/InlineResponse2001'), require('../model/InlineResponse2002'), require('../model/StatisticsSubscribeData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ReportingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.InlineResponse2001, root.WorkspaceApi.InlineResponse2002, root.WorkspaceApi.InlineResponse2003, root.WorkspaceApi.StatisticsRegisterData, root.WorkspaceApi.StatisticsSubscribeData, root.WorkspaceApi.UnsubscribeData);
+    root.WorkspaceApi.ReportingApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.InlineResponse2001, root.WorkspaceApi.InlineResponse2002, root.WorkspaceApi.StatisticsSubscribeData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, InlineResponse2001, InlineResponse2002, InlineResponse2003, StatisticsRegisterData, StatisticsSubscribeData, UnsubscribeData) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, InlineResponse2001, InlineResponse2002, StatisticsSubscribeData) {
   'use strict';
 
   /**
@@ -49,10 +49,10 @@
 
 
     /**
-     * Get statistics.
+     * Get statistics for given subscriptionId.
      * Get the statistics for the specified subscription ID.
      * @param {String} subscriptionId The unique ID of the subscription.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2003} and HTTP response
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002} and HTTP response
      */
     this.peekWithHttpInfo = function(subscriptionId) {
       var postBody = null;
@@ -78,20 +78,20 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = InlineResponse2003;
+      var returnType = InlineResponse2002;
 
       return this.apiClient.callApi(
-        '/reporting/{subscriptionId}', 'GET',
+        '/reporting/subscriptions/{subscriptionId}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Get statistics.
+     * Get statistics for given subscriptionId.
      * Get the statistics for the specified subscription ID.
      * @param {String} subscriptionId The unique ID of the subscription.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2003}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002}
      */
     this.peek = function(subscriptionId) {
       return this.peekWithHttpInfo(subscriptionId)
@@ -102,23 +102,24 @@
 
 
     /**
-     * Subscribe to statistics
-     * Subscribe to a group of statistics. The values are returned when you request them using &#x60;/reporting/{subscriptionId}&#x60;.
-     * @param {module:model/StatisticsRegisterData} statisticsRegisterData The collection of statistics you want to include in your subscription.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002} and HTTP response
+     * Get statistics for given subscription ids.
+     * Get the statistics for the specified subscription ID.
+     * @param {String} ids IDs of subscriptions to peek statistics for.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001} and HTTP response
      */
-    this.registerWithHttpInfo = function(statisticsRegisterData) {
-      var postBody = statisticsRegisterData;
+    this.peekMultipleWithHttpInfo = function(ids) {
+      var postBody = null;
 
-      // verify the required parameter 'statisticsRegisterData' is set
-      if (statisticsRegisterData === undefined || statisticsRegisterData === null) {
-        throw new Error("Missing the required parameter 'statisticsRegisterData' when calling register");
+      // verify the required parameter 'ids' is set
+      if (ids === undefined || ids === null) {
+        throw new Error("Missing the required parameter 'ids' when calling peekMultiple");
       }
 
 
       var pathParams = {
       };
       var queryParams = {
+        'ids': ids,
       };
       var collectionQueryParams = {
       };
@@ -130,23 +131,23 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = InlineResponse2002;
+      var returnType = InlineResponse2001;
 
       return this.apiClient.callApi(
-        '/reporting/register', 'POST',
+        '/reporting/subscriptions', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Subscribe to statistics
-     * Subscribe to a group of statistics. The values are returned when you request them using &#x60;/reporting/{subscriptionId}&#x60;.
-     * @param {module:model/StatisticsRegisterData} statisticsRegisterData The collection of statistics you want to include in your subscription.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002}
+     * Get statistics for given subscription ids.
+     * Get the statistics for the specified subscription ID.
+     * @param {String} ids IDs of subscriptions to peek statistics for.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001}
      */
-    this.register = function(statisticsRegisterData) {
-      return this.registerWithHttpInfo(statisticsRegisterData)
+    this.peekMultiple = function(ids) {
+      return this.peekMultipleWithHttpInfo(ids)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -154,9 +155,10 @@
 
 
     /**
-     * Subscribe to Statistics
-     * @param {module:model/StatisticsSubscribeData} statisticsSubscribeData Requested Statistics
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001} and HTTP response
+     * Subscribe to statistics
+     * Subscribe to a group of statistics. The values are returned when you request them using &#x60;/reporting/subscriptions/{subscriptionId}&#x60;.
+     * @param {module:model/StatisticsSubscribeData} statisticsSubscribeData The collection of statistics you want to include in your subscription.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002} and HTTP response
      */
     this.subscribeWithHttpInfo = function(statisticsSubscribeData) {
       var postBody = statisticsSubscribeData;
@@ -181,19 +183,20 @@
       var authNames = [];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
-      var returnType = InlineResponse2001;
+      var returnType = InlineResponse2002;
 
       return this.apiClient.callApi(
-        '/reporting/subscribe', 'POST',
+        '/reporting/subscriptions', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Subscribe to Statistics
-     * @param {module:model/StatisticsSubscribeData} statisticsSubscribeData Requested Statistics
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001}
+     * Subscribe to statistics
+     * Subscribe to a group of statistics. The values are returned when you request them using &#x60;/reporting/subscriptions/{subscriptionId}&#x60;.
+     * @param {module:model/StatisticsSubscribeData} statisticsSubscribeData The collection of statistics you want to include in your subscription.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002}
      */
     this.subscribe = function(statisticsSubscribeData) {
       return this.subscribeWithHttpInfo(statisticsSubscribeData)
@@ -206,19 +209,20 @@
     /**
      * Unsubscribe from statistics.
      * Unsubscribe from the specified group of statistics.
-     * @param {module:model/UnsubscribeData} unsubscribeData Request parameters.
+     * @param {String} subscriptionId The unique ID of the subscription.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.unsubscribeWithHttpInfo = function(unsubscribeData) {
-      var postBody = unsubscribeData;
+    this.unsubscribeWithHttpInfo = function(subscriptionId) {
+      var postBody = null;
 
-      // verify the required parameter 'unsubscribeData' is set
-      if (unsubscribeData === undefined || unsubscribeData === null) {
-        throw new Error("Missing the required parameter 'unsubscribeData' when calling unsubscribe");
+      // verify the required parameter 'subscriptionId' is set
+      if (subscriptionId === undefined || subscriptionId === null) {
+        throw new Error("Missing the required parameter 'subscriptionId' when calling unsubscribe");
       }
 
 
       var pathParams = {
+        'subscriptionId': subscriptionId
       };
       var queryParams = {
       };
@@ -235,7 +239,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/reporting/unsubscribe', 'POST',
+        '/reporting/subscriptions/{subscriptionId}', 'DELETE',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -244,11 +248,11 @@
     /**
      * Unsubscribe from statistics.
      * Unsubscribe from the specified group of statistics.
-     * @param {module:model/UnsubscribeData} unsubscribeData Request parameters.
+     * @param {String} subscriptionId The unique ID of the subscription.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.unsubscribe = function(unsubscribeData) {
-      return this.unsubscribeWithHttpInfo(unsubscribeData)
+    this.unsubscribe = function(subscriptionId) {
+      return this.unsubscribeWithHttpInfo(subscriptionId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
