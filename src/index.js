@@ -3,7 +3,8 @@ const EventEmitter = require('events');
 
 const workspace = require('./internal/code-gen/workspace-api');
 const cometDLib = require('cometd');
-require('cometd-nodejs-client').adapt();
+require('./cometd-nodejs-client').adapt();
+const CookieJar = require('cookiejar').CookieJar;
 
 const VoiceApi = require('./internal/voice-api');
 const TargetsApi = require('./internal/targets-api');
@@ -21,7 +22,7 @@ class WorkspaceApi extends EventEmitter {
     this.apiKey = apiKey;
     this.baseUrl = baseUrl;
     this._workspaceUrl = `${this.baseUrl}/workspace/v3`;
-    this._debugEnabled = (debugEnabled === 'true')
+    this._debugEnabled = (String(debugEnabled) === 'true');
     this.initialized = false;
   }
 
@@ -39,16 +40,13 @@ class WorkspaceApi extends EventEmitter {
       const hostname = url.parse(this._workspaceUrl).hostname;
       const transport = this._cometd.findTransport('long-polling');
       transport.context = {
-        cookieStore: {
-          [hostname]: [this._sessionCookie]
-        }
+        cookieJar: this.cookieJar
       };
       
       this._cometd.configure({
         url: this._workspaceUrl + '/notifications',
         requestHeaders: {
           'x-api-key': this.apiKey,
-          'Cookie': this._sessionCookie
         }
       });
       
@@ -102,6 +100,7 @@ class WorkspaceApi extends EventEmitter {
     this._workspaceClient = new workspace.ApiClient();
     this._workspaceClient.basePath = this._workspaceUrl;
     this._workspaceClient.enableCookies = true;
+	this.cookieJar = this._workspaceClient.agent.jar;
     if (this.apiKey) {
       this._workspaceClient.defaultHeaders = { 'x-api-key': this.apiKey };
     }
@@ -124,7 +123,7 @@ class WorkspaceApi extends EventEmitter {
     let response = await this._sessionApi.initializeWorkspaceWithHttpInfo(options);
 
     this._sessionCookie = response.response.header['set-cookie'].find(v => v.startsWith('WORKSPACE_SESSIONID'));
-		this._workspaceClient.defaultHeaders['Cookie'] = this._sessionCookie;
+    this.cookieJar.setCookie(this._sessionCookie);
     this._log('WORKSPACE_SESSIONID is: ' + this._sessionCookie);
 
     let data = await this._initializeCometd();
