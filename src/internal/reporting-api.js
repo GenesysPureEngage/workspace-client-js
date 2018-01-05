@@ -26,7 +26,7 @@ class ReportingApi {
   }
 
   /**
-   * Subscribe to a group of statistics. The values are returned when you request them using peek(). 
+   * Subscribe to a group of statistics. The values are returned when you request them using `peek()`. 
    * @param {string} statistics The collection of statistic you want to include in your subscription.
    * @return The subscription ID and the values of the statistics for that subscription.
    */
