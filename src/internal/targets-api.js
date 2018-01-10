@@ -15,7 +15,7 @@ class TargetsApi {
   /**
    * Search for targets by the specified search term.
    * @param {string} searchTerm The text to search for in targets.
-   * @param {number} limit Specify the number of results to return. The default value is 50. (optional)
+   * @param {number} limit The number of results to return. The default value is 50. (optional)
    * @return A list of targets that match the search term.
    */
   async search(searchTerm, limit) {
@@ -28,7 +28,7 @@ class TargetsApi {
   }
   
   /**
-   * Add a target that a user recently used.
+   * Add a target that the agent recently used.
    * @param {TargetInformation} target The target to add.
    * @param {string} media The media channel on which the target was used.
    */
@@ -46,8 +46,8 @@ class TargetsApi {
   }
   
   /**
-   * Get a user's recently used targets.
-   * @param {number} limit Specify the number of results to return. The default value is 50. (optional)
+   * Get recently used targets for the current agent.
+   * @param {number} limit The number of results to return. The default value is 50. (optional)
    * @return {Promise}
    */
   async getRecentTargets(limit) {
@@ -57,10 +57,9 @@ class TargetsApi {
   }
   
   /**
-   * Get a specific target by ID and type.
-   * @param {number} id The ID for the target.
-   * @param {string} type The type of target to retrieve. The possible values are AGENT, AGENT_GROUP, ACD_QUEUE, 
-   * ROUTE_POINT, SKILL, and CUSTOM_CONTACT.
+   * Get a specific target by ID and type. Targets can be agents, agent groups, queues, route points, skills, and custom contacts.
+   * @param {number} id The ID of the target.
+   * @param {string} type The type of target to retrieve. The possible values are AGENT, AGENT_GROUP, ACD_QUEUE, ROUTE_POINT, SKILL, and CUSTOM_CONTACT.
    * @return The specified target.
    */
   async getTarget(id, type) {
@@ -69,10 +68,9 @@ class TargetsApi {
   }
   
   /**
-   * Delete the target from the user's personal favorites.
+   * Delete the target from the agent's personal favorites.
    * @param {number} id The ID for the target.
-   * @param {string} type The type of target to delete. The possible values are AGENT, AGENT_GROUP, ACD_QUEUE, 
-   * ROUTE_POINT, SKILL, and CUSTOM_CONTACT.
+   * @param {string} type The type of target to delete. The possible values are AGENT, AGENT_GROUP, ACD_QUEUE, ROUTE_POINT, SKILL, and CUSTOM_CONTACT.
    * @return {Promise}
    */
   async deletePersonalFavorite(id, type) {
@@ -80,8 +78,8 @@ class TargetsApi {
   }
   
   /**
-   * Return the user's personal favorites.
-   * @param {number} limit Specify the number of results to return. The default value is 50. (optional)
+   * Get the agent's personal favorites.
+   * @param {number} limit The number of results to return. The default value is 50. (optional)
    * @return {Promise}
    */
   async getPersonalFavorites(limit) {
@@ -91,9 +89,9 @@ class TargetsApi {
   }
   
   /**
-   * Save a target to the user's personal favorites in the specified category.
+   * Save a target to the agent's personal favorites in the specified category.
    * @param {TargetInformation} target The target to save.
-   * @param {string} category The user's personal favorites category.
+   * @param {string} category The agent's personal favorites category.
    * @return {Promise}
    */
   async savePersonalFavorite(target, category) {

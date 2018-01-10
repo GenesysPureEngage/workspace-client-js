@@ -14,7 +14,7 @@ class WorkspaceApi extends EventEmitter {
   /**
    * Constructor 
    * @param {String} apiKey The API key to be included in HTTP requests.
-   * @param {String} baseUrl The base URL of the PureEngage API.
+   * @param {String} baseUrl The base URL of the PureEngage Cloud API.
    * @param {String} debugEnabled Set to 'true' to enable debugging or 'false' to disable.
    */
   constructor(apiKey, baseUrl, debugEnabled) {
@@ -84,17 +84,11 @@ class WorkspaceApi extends EventEmitter {
   }
 
   /**
-   * Initializes the API using either an authorization code and redirect URI or an access token. Genesys
-   * recommends using the Authorization Code Grant flow, in which case you'll need to use the code and 
-   * redirect URI. If you use the Resource Owner Password Credentials Grant, you'll need to use the 
-   * access token.
-   * @param {String} code The authorization code you received during authentication if you followed the 
-   * Authorization Code Grant flow.
-   * @param {String} redirectUri The redirect URI you used during authentication if you followed the 
-   * Authorization Code Grant flow. Since this is not sent by the UI, it needs to match the redirectUri 
-   * that you sent when using the Authentication API to get the authCode.
-   * @param {String} token The access token you received during authentication if you followed the 
-   * Resource Owner Password Credentials Grant flow.
+   * Initializes the API using either an authorization code and redirect URI or an access token. The authorization code comes from using the 
+   * Authorization Code Grant flow to authenticate with the Authentication API.
+   * @param {String} code The authorization code you received during authentication.
+   * @param {String} redirectUri The redirect URI you used during authentication. Since this is not sent by the UI, it needs to match the redirectUri that you sent when using the Authentication API to get the authCode.
+   * @param {String} token The access token.
    */
   async initialize({ code, redirectUri, token}) {
     this._workspaceClient = new workspace.ApiClient();
@@ -135,7 +129,9 @@ class WorkspaceApi extends EventEmitter {
   }
 
   /**
-   * Logout the agent and cleanup resources.
+   * Ends the current agent's session. This request logs out the agent on all activated channels, ends the HTTP session, 
+   * and cleans up related resources. After you end the session, you'll need to make a login request before making any 
+   * new calls to the API.
    */
   async destroy() {
     if (this.initialized) {
@@ -152,8 +148,10 @@ class WorkspaceApi extends EventEmitter {
   }
 
   /**
-   * Initializes the voice channel for the specified agent and DN. 
-   * @param {String} agentId The ID of the agent to be used for login.
+   * Activates the voice channel using the provided resources. If the channel is successfully activated, 
+   * Workspace sends additional information about the state of active resources (DNs, channels) via events. The 
+   * resources you provide are associated with the agent for the duration of the session.
+   * @param {String} agentId The unique ID of the agent.
    * @param {String} dn The DN to be used for login.
    */
   async activateChannels(agentId, dn) {
