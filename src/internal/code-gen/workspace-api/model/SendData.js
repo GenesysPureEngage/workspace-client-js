@@ -16,61 +16,60 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcsfindorcreatephonecallData'], factory);
+    define(['ApiClient', 'model/MediaemailinteractionsidsendData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcsfindorcreatephonecallData'));
+    module.exports = factory(require('../ApiClient'), require('./MediaemailinteractionsidsendData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.PhoneCallData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsfindorcreatephonecallData);
+    root.WorkspaceApi.SendData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediaemailinteractionsidsendData);
   }
-}(this, function(ApiClient, UcsfindorcreatephonecallData) {
+}(this, function(ApiClient, MediaemailinteractionsidsendData) {
   'use strict';
 
 
 
 
   /**
-   * The PhoneCallData model module.
-   * @module model/PhoneCallData
+   * The SendData model module.
+   * @module model/SendData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>PhoneCallData</code>.
-   * @alias module:model/PhoneCallData
+   * Constructs a new <code>SendData</code>.
+   * @alias module:model/SendData
    * @class
-   * @param data {module:model/UcsfindorcreatephonecallData} 
    */
-  var exports = function(data) {
+  var exports = function() {
     var _this = this;
 
-    _this['data'] = data;
+
   };
 
   /**
-   * Constructs a <code>PhoneCallData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SendData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/PhoneCallData} obj Optional instance to populate.
-   * @return {module:model/PhoneCallData} The populated <code>PhoneCallData</code> instance.
+   * @param {module:model/SendData} obj Optional instance to populate.
+   * @return {module:model/SendData} The populated <code>SendData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcsfindorcreatephonecallData.constructFromObject(data['data']);
+        obj['data'] = MediaemailinteractionsidsendData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcsfindorcreatephonecallData} data
+   * @member {module:model/MediaemailinteractionsidsendData} data
    */
   exports.prototype['data'] = undefined;
 

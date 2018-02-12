@@ -16,34 +16,34 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcsgetinteractioncontentData'], factory);
+    define(['ApiClient', 'model/UcsresponsesidrenderfieldcodesData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcsgetinteractioncontentData'));
+    module.exports = factory(require('../ApiClient'), require('./UcsresponsesidrenderfieldcodesData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.InteractionContentData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsgetinteractioncontentData);
+    root.WorkspaceApi.RenderStandardResponseFieldCodesData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsresponsesidrenderfieldcodesData);
   }
-}(this, function(ApiClient, UcsgetinteractioncontentData) {
+}(this, function(ApiClient, UcsresponsesidrenderfieldcodesData) {
   'use strict';
 
 
 
 
   /**
-   * The InteractionContentData model module.
-   * @module model/InteractionContentData
+   * The RenderStandardResponseFieldCodesData model module.
+   * @module model/RenderStandardResponseFieldCodesData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>InteractionContentData</code>.
-   * @alias module:model/InteractionContentData
+   * Constructs a new <code>RenderStandardResponseFieldCodesData</code>.
+   * @alias module:model/RenderStandardResponseFieldCodesData
    * @class
-   * @param data {module:model/UcsgetinteractioncontentData} 
+   * @param data {module:model/UcsresponsesidrenderfieldcodesData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -52,25 +52,25 @@
   };
 
   /**
-   * Constructs a <code>InteractionContentData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>RenderStandardResponseFieldCodesData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/InteractionContentData} obj Optional instance to populate.
-   * @return {module:model/InteractionContentData} The populated <code>InteractionContentData</code> instance.
+   * @param {module:model/RenderStandardResponseFieldCodesData} obj Optional instance to populate.
+   * @return {module:model/RenderStandardResponseFieldCodesData} The populated <code>RenderStandardResponseFieldCodesData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcsgetinteractioncontentData.constructFromObject(data['data']);
+        obj['data'] = UcsresponsesidrenderfieldcodesData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcsgetinteractioncontentData} data
+   * @member {module:model/UcsresponsesidrenderfieldcodesData} data
    */
   exports.prototype['data'] = undefined;
 

@@ -77,7 +77,7 @@
   }
 
   /**
-   * The ID of the parent call (held). In most cases this is not required.
+   * The connection ID of the parent call (held). In most cases this is not required.
    * @member {String} parentConnId
    */
   exports.prototype['parentConnId'] = undefined;

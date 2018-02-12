@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediamediatypeinteractionsidacceptData'], factory);
+    define(['ApiClient', 'model/MediachatinteractionsidsendurlData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidacceptData'));
+    module.exports = factory(require('../ApiClient'), require('./MediachatinteractionsidsendurlData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AcceptData2 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidacceptData);
+    root.WorkspaceApi.AcceptData2 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidsendurlData);
   }
-}(this, function(ApiClient, MediamediatypeinteractionsidacceptData) {
+}(this, function(ApiClient, MediachatinteractionsidsendurlData) {
   'use strict';
 
 
@@ -62,14 +62,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediamediatypeinteractionsidacceptData.constructFromObject(data['data']);
+        obj['data'] = MediachatinteractionsidsendurlData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediamediatypeinteractionsidacceptData} data
+   * @member {module:model/MediachatinteractionsidsendurlData} data
    */
   exports.prototype['data'] = undefined;
 

@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcslucenesearchData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.UcsixnsearchData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,31 +34,31 @@
 
 
   /**
-   * The UcslucenesearchData model module.
-   * @module model/UcslucenesearchData
+   * The UcsixnsearchData model module.
+   * @module model/UcsixnsearchData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UcslucenesearchData</code>.
-   * @alias module:model/UcslucenesearchData
+   * Constructs a new <code>UcsixnsearchData</code>.
+   * @alias module:model/UcsixnsearchData
    * @class
-   * @param query {String} The query to do the lucene search for contacts
    */
-  var exports = function(query) {
+  var exports = function() {
     var _this = this;
 
 
-    _this['query'] = query;
+
+
 
   };
 
   /**
-   * Constructs a <code>UcslucenesearchData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UcsixnsearchData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UcslucenesearchData} obj Optional instance to populate.
-   * @return {module:model/UcslucenesearchData} The populated <code>UcslucenesearchData</code> instance.
+   * @param {module:model/UcsixnsearchData} obj Optional instance to populate.
+   * @return {module:model/UcsixnsearchData} The populated <code>UcsixnsearchData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -67,11 +67,14 @@
       if (data.hasOwnProperty('maxResults')) {
         obj['maxResults'] = ApiClient.convertToType(data['maxResults'], 'Number');
       }
+      if (data.hasOwnProperty('owner')) {
+        obj['owner'] = ApiClient.convertToType(data['owner'], ['String']);
+      }
       if (data.hasOwnProperty('query')) {
         obj['query'] = ApiClient.convertToType(data['query'], 'String');
       }
-      if (data.hasOwnProperty('customAttributes')) {
-        obj['customAttributes'] = ApiClient.convertToType(data['customAttributes'], ['String']);
+      if (data.hasOwnProperty('returnedAttributes')) {
+        obj['returnedAttributes'] = ApiClient.convertToType(data['returnedAttributes'], ['String']);
       }
     }
     return obj;
@@ -83,15 +86,20 @@
    */
   exports.prototype['maxResults'] = undefined;
   /**
+   * The list of agent username for which the search refers to. 
+   * @member {Array.<String>} owner
+   */
+  exports.prototype['owner'] = undefined;
+  /**
    * The query to do the lucene search for contacts
    * @member {String} query
    */
   exports.prototype['query'] = undefined;
   /**
-   * The list of custom contact attributes to be returned for each contact in response
-   * @member {Array.<String>} customAttributes
+   * The list of contact attributes to be returned for each contact in response
+   * @member {Array.<String>} returnedAttributes
    */
-  exports.prototype['customAttributes'] = undefined;
+  exports.prototype['returnedAttributes'] = undefined;
 
 
 

@@ -316,51 +316,6 @@
           return response_and_data.data;
         });
     }
-
-
-    /**
-     * Enables subscription to SocketIO notifications
-     * Enables subscription to SocketIO notifications
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
-     */
-    this.socketioWithHttpInfo = function() {
-      var postBody = null;
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = null;
-
-      return this.apiClient.callApi(
-        '/socket.io', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Enables subscription to SocketIO notifications
-     * Enables subscription to SocketIO notifications
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
-     */
-    this.socketio = function() {
-      return this.socketioWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
   };
 
   return exports;

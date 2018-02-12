@@ -16,61 +16,60 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcsresponsesidrenderfieldcodesData'], factory);
+    define(['ApiClient', 'model/MediaemailinteractionsidsaveData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcsresponsesidrenderfieldcodesData'));
+    module.exports = factory(require('../ApiClient'), require('./MediaemailinteractionsidsaveData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.RenderFieldCodesData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsresponsesidrenderfieldcodesData);
+    root.WorkspaceApi.SaveData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediaemailinteractionsidsaveData);
   }
-}(this, function(ApiClient, UcsresponsesidrenderfieldcodesData) {
+}(this, function(ApiClient, MediaemailinteractionsidsaveData) {
   'use strict';
 
 
 
 
   /**
-   * The RenderFieldCodesData model module.
-   * @module model/RenderFieldCodesData
+   * The SaveData model module.
+   * @module model/SaveData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>RenderFieldCodesData</code>.
-   * @alias module:model/RenderFieldCodesData
+   * Constructs a new <code>SaveData</code>.
+   * @alias module:model/SaveData
    * @class
-   * @param data {module:model/UcsresponsesidrenderfieldcodesData} 
    */
-  var exports = function(data) {
+  var exports = function() {
     var _this = this;
 
-    _this['data'] = data;
+
   };
 
   /**
-   * Constructs a <code>RenderFieldCodesData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SaveData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/RenderFieldCodesData} obj Optional instance to populate.
-   * @return {module:model/RenderFieldCodesData} The populated <code>RenderFieldCodesData</code> instance.
+   * @param {module:model/SaveData} obj Optional instance to populate.
+   * @return {module:model/SaveData} The populated <code>SaveData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcsresponsesidrenderfieldcodesData.constructFromObject(data['data']);
+        obj['data'] = MediaemailinteractionsidsaveData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcsresponsesidrenderfieldcodesData} data
+   * @member {module:model/MediaemailinteractionsidsaveData} data
    */
   exports.prototype['data'] = undefined;
 

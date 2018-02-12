@@ -54,6 +54,7 @@
 
 
 
+
   };
 
   /**
@@ -84,6 +85,9 @@
       }
       if (data.hasOwnProperty('dynamicPhoneNumber')) {
         obj['dynamicPhoneNumber'] = ApiClient.convertToType(data['dynamicPhoneNumber'], 'String');
+      }
+      if (data.hasOwnProperty('autoCompleteCall')) {
+        obj['autoCompleteCall'] = ApiClient.convertToType(data['autoCompleteCall'], 'Boolean');
       }
       if (data.hasOwnProperty('channels')) {
         obj['channels'] = ApiClient.convertToType(data['channels'], ['String']);
@@ -122,6 +126,11 @@
    * @member {String} dynamicPhoneNumber
    */
   exports.prototype['dynamicPhoneNumber'] = undefined;
+  /**
+   * Flag denoting whether or not calls should automatically be completed for the session. Defaults to true if not provided.
+   * @member {Boolean} autoCompleteCall
+   */
+  exports.prototype['autoCompleteCall'] = undefined;
   /**
    * An array of strings that correspond to the channels you want to activate.
    * @member {Array.<String>} channels

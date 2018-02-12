@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicecallsidsinglestepconferenceData</code>.
    * @alias module:model/VoicecallsidsinglestepconferenceData
    * @class
-   * @param destination {String} The number to be added to the call.
+   * @param destination {String} The number to add to the call.
    */
   var exports = function(destination) {
     var _this = this;
@@ -86,7 +86,7 @@
   }
 
   /**
-   * The number to be added to the call.
+   * The number to add to the call.
    * @member {String} destination
    */
   exports.prototype['destination'] = undefined;

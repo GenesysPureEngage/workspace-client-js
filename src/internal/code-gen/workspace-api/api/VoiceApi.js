@@ -1163,7 +1163,7 @@
 
     /**
      * Reconnect a call.
-     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/workspace/v3/voice/calls/{id}/release&#x60; and &#x60;/workspace/v3/voice/calls/{id}/retrieve&#x60; in one step.
+     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/workspace/v3/voice/calls/{id}/release&#x60; and &#x60;/workspace/v3/voice/calls/{id}/retrieve&#x60;.
      * @param {String} id The connection ID of the established call (will be released).
      * @param {module:model/ReconnectData} reconnectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1208,7 +1208,7 @@
 
     /**
      * Reconnect a call.
-     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/workspace/v3/voice/calls/{id}/release&#x60; and &#x60;/workspace/v3/voice/calls/{id}/retrieve&#x60; in one step.
+     * Reconnect the specified call. This releases the established call and retrieves the held call in one step. This is a quick way to to do &#x60;/workspace/v3/voice/calls/{id}/release&#x60; and &#x60;/workspace/v3/voice/calls/{id}/retrieve&#x60;.
      * @param {String} id The connection ID of the established call (will be released).
      * @param {module:model/ReconnectData} reconnectData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1512,8 +1512,8 @@
 
     /**
      * Send a userEvent event to T-Server with the provided attached data.
-     * Send a userEvent event to T-Server with the provided attached data.
-     * @param {module:model/SendUserEventData} userEventData The data to be sent. This is an array of objects with the properties key, type, and value.
+     * Send EventUserEvent to T-Server with the provided attached data. For details about EventUserEvent, refer to the  [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
+     * @param {module:model/SendUserEventData} userEventData The data to send. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.sendUserEventWithHttpInfo = function(userEventData) {
@@ -1550,8 +1550,8 @@
 
     /**
      * Send a userEvent event to T-Server with the provided attached data.
-     * Send a userEvent event to T-Server with the provided attached data.
-     * @param {module:model/SendUserEventData} userEventData The data to be sent. This is an array of objects with the properties key, type, and value.
+     * Send EventUserEvent to T-Server with the provided attached data. For details about EventUserEvent, refer to the  [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
+     * @param {module:model/SendUserEventData} userEventData The data to send. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.sendUserEvent = function(userEventData) {
@@ -2258,7 +2258,7 @@
 
     /**
      * Update user data for a call.
-     * Update call data with the provided key/value pairs. This will replace any existing key/value pairs with the same keys.
+     * Update call data with the provided key/value pairs. This replaces any existing key/value pairs with the same keys.
      * @param {String} id The connection ID of the call.
      * @param {module:model/UserData} userData The data to update. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -2303,7 +2303,7 @@
 
     /**
      * Update user data for a call.
-     * Update call data with the provided key/value pairs. This will replace any existing key/value pairs with the same keys.
+     * Update call data with the provided key/value pairs. This replaces any existing key/value pairs with the same keys.
      * @param {String} id The connection ID of the call.
      * @param {module:model/UserData} userData The data to update. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}

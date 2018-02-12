@@ -43,8 +43,8 @@
    * Constructs a new <code>TargetsrecentsaddData</code>.
    * @alias module:model/TargetsrecentsaddData
    * @class
-   * @param target {module:model/TargetInformation} The target to add.
-   * @param recentInformation {module:model/RecentData} This includes the media channel where the target was recently used and the timestamp for when the target was used.
+   * @param target {module:model/TargetInformation} 
+   * @param recentInformation {module:model/RecentData} 
    */
   var exports = function(target, recentInformation) {
     var _this = this;
@@ -75,12 +75,10 @@
   }
 
   /**
-   * The target to add.
    * @member {module:model/TargetInformation} target
    */
   exports.prototype['target'] = undefined;
   /**
-   * This includes the media channel where the target was recently used and the timestamp for when the target was used.
    * @member {module:model/RecentData} recentInformation
    */
   exports.prototype['recentInformation'] = undefined;

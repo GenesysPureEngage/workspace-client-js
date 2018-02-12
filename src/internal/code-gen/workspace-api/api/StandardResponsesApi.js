@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/GetCategoryData', 'model/GetStandardResponseData', 'model/RenderFieldCodesData'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/GetCategoryData', 'model/GetStandardResponseData', 'model/RenderStandardResponseFieldCodesData', 'model/ReportStandareResponseUsageData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/GetCategoryData'), require('../model/GetStandardResponseData'), require('../model/RenderFieldCodesData'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/GetCategoryData'), require('../model/GetStandardResponseData'), require('../model/RenderStandardResponseFieldCodesData'), require('../model/ReportStandareResponseUsageData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.StandardResponsesApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.GetCategoryData, root.WorkspaceApi.GetStandardResponseData, root.WorkspaceApi.RenderFieldCodesData);
+    root.WorkspaceApi.StandardResponsesApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.GetCategoryData, root.WorkspaceApi.GetStandardResponseData, root.WorkspaceApi.RenderStandardResponseFieldCodesData, root.WorkspaceApi.ReportStandareResponseUsageData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, GetCategoryData, GetStandardResponseData, RenderFieldCodesData) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, GetCategoryData, GetStandardResponseData, RenderStandardResponseFieldCodesData, ReportStandareResponseUsageData) {
   'use strict';
 
   /**
@@ -100,6 +100,49 @@
 
 
     /**
+     * Remove all Standard Response Favorites
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.deleteAllStandardResponseFavoritesWithHttpInfo = function() {
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/ucs/responses/remove-all-favorites', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Remove all Standard Response Favorites
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.deleteAllStandardResponseFavorites = function() {
+      return this.deleteAllStandardResponseFavoritesWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Remove a Standard Response from Favorites
      * @param {String} id id of the Standard Response to remove from Favorites
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -157,17 +200,17 @@
      * @param {module:model/GetCategoryData} getCategoryData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.getCategoryWithHttpInfo = function(id, getCategoryData) {
+    this.getCategoryDetailsWithHttpInfo = function(id, getCategoryData) {
       var postBody = getCategoryData;
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling getCategory");
+        throw new Error("Missing the required parameter 'id' when calling getCategoryDetails");
       }
 
       // verify the required parameter 'getCategoryData' is set
       if (getCategoryData === undefined || getCategoryData === null) {
-        throw new Error("Missing the required parameter 'getCategoryData' when calling getCategory");
+        throw new Error("Missing the required parameter 'getCategoryData' when calling getCategoryDetails");
       }
 
 
@@ -202,8 +245,8 @@
      * @param {module:model/GetCategoryData} getCategoryData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getCategory = function(id, getCategoryData) {
-      return this.getCategoryWithHttpInfo(id, getCategoryData)
+    this.getCategoryDetails = function(id, getCategoryData) {
+      return this.getCategoryDetailsWithHttpInfo(id, getCategoryData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -420,20 +463,20 @@
     /**
      * Replaces generic field codes of the Standard Response content with their actual values.
      * @param {String} id id of the Standard Response
-     * @param {module:model/RenderFieldCodesData} renderFieldCodesData 
+     * @param {module:model/RenderStandardResponseFieldCodesData} renderStandardResponseFieldCodesData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.renderFieldCodesWithHttpInfo = function(id, renderFieldCodesData) {
-      var postBody = renderFieldCodesData;
+    this.renderStandardResponseFieldCodesWithHttpInfo = function(id, renderStandardResponseFieldCodesData) {
+      var postBody = renderStandardResponseFieldCodesData;
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling renderFieldCodes");
+        throw new Error("Missing the required parameter 'id' when calling renderStandardResponseFieldCodes");
       }
 
-      // verify the required parameter 'renderFieldCodesData' is set
-      if (renderFieldCodesData === undefined || renderFieldCodesData === null) {
-        throw new Error("Missing the required parameter 'renderFieldCodesData' when calling renderFieldCodes");
+      // verify the required parameter 'renderStandardResponseFieldCodesData' is set
+      if (renderStandardResponseFieldCodesData === undefined || renderStandardResponseFieldCodesData === null) {
+        throw new Error("Missing the required parameter 'renderStandardResponseFieldCodesData' when calling renderStandardResponseFieldCodes");
       }
 
 
@@ -464,11 +507,69 @@
     /**
      * Replaces generic field codes of the Standard Response content with their actual values.
      * @param {String} id id of the Standard Response
-     * @param {module:model/RenderFieldCodesData} renderFieldCodesData 
+     * @param {module:model/RenderStandardResponseFieldCodesData} renderStandardResponseFieldCodesData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.renderFieldCodes = function(id, renderFieldCodesData) {
-      return this.renderFieldCodesWithHttpInfo(id, renderFieldCodesData)
+    this.renderStandardResponseFieldCodes = function(id, renderStandardResponseFieldCodesData) {
+      return this.renderStandardResponseFieldCodesWithHttpInfo(id, renderStandardResponseFieldCodesData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Specifies Usage of a Standard Response for an interaction.
+     * @param {String} id id of the Standard Response
+     * @param {module:model/ReportStandareResponseUsageData} reportStandareResponseUsageData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.reportStandareResponseUsageWithHttpInfo = function(id, reportStandareResponseUsageData) {
+      var postBody = reportStandareResponseUsageData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling reportStandareResponseUsage");
+      }
+
+      // verify the required parameter 'reportStandareResponseUsageData' is set
+      if (reportStandareResponseUsageData === undefined || reportStandareResponseUsageData === null) {
+        throw new Error("Missing the required parameter 'reportStandareResponseUsageData' when calling reportStandareResponseUsage");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/ucs/responses/{id}/report-usage', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Specifies Usage of a Standard Response for an interaction.
+     * @param {String} id id of the Standard Response
+     * @param {module:model/ReportStandareResponseUsageData} reportStandareResponseUsageData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.reportStandareResponseUsage = function(id, reportStandareResponseUsageData) {
+      return this.reportStandareResponseUsageWithHttpInfo(id, reportStandareResponseUsageData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

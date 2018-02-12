@@ -115,7 +115,7 @@
    */
   exports.prototype['extensions'] = undefined;
   /**
-   * value to be set as CPN_DIGITS.
+   * The caller ID information to display on the destination party's phone. The value should be set as CPNDigits.  For more information about caller ID, see the SIP Server Deployment Guide.
    * @member {String} outboundCallerId
    */
   exports.prototype['outboundCallerId'] = undefined;

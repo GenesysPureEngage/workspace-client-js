@@ -16,32 +16,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediachatinteractionsidsendmessageData'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediachatinteractionsidsendmessageData'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AcceptData1 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidsendmessageData);
+    root.WorkspaceApi.MediachatinteractionsidacceptData = factory(root.WorkspaceApi.ApiClient);
   }
-}(this, function(ApiClient, MediachatinteractionsidsendmessageData) {
+}(this, function(ApiClient) {
   'use strict';
 
 
 
 
   /**
-   * The AcceptData1 model module.
-   * @module model/AcceptData1
+   * The MediachatinteractionsidacceptData model module.
+   * @module model/MediachatinteractionsidacceptData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>AcceptData1</code>.
-   * @alias module:model/AcceptData1
+   * Constructs a new <code>MediachatinteractionsidacceptData</code>.
+   * @alias module:model/MediachatinteractionsidacceptData
    * @class
    */
   var exports = function() {
@@ -51,27 +51,28 @@
   };
 
   /**
-   * Constructs a <code>AcceptData1</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidacceptData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/AcceptData1} obj Optional instance to populate.
-   * @return {module:model/AcceptData1} The populated <code>AcceptData1</code> instance.
+   * @param {module:model/MediachatinteractionsidacceptData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidacceptData} The populated <code>MediachatinteractionsidacceptData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('data')) {
-        obj['data'] = MediachatinteractionsidsendmessageData.constructFromObject(data['data']);
+      if (data.hasOwnProperty('nickname')) {
+        obj['nickname'] = ApiClient.convertToType(data['nickname'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediachatinteractionsidsendmessageData} data
+   * Agent nickname as will be seen by customer
+   * @member {String} nickname
    */
-  exports.prototype['data'] = undefined;
+  exports.prototype['nickname'] = undefined;
 
 
 

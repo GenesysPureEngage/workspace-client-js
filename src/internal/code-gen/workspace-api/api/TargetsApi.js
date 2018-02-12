@@ -147,7 +147,7 @@
 
     /**
      * Delete a target.
-     * Delete the target from the agent&#39;s personal favorites
+     * Delete the target from the agent&#39;s personal favorites.
      * @param {String} id The ID of the target.
      * @param {module:model/String} type The type of target.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -193,7 +193,7 @@
 
     /**
      * Delete a target.
-     * Delete the target from the agent&#39;s personal favorites
+     * Delete the target from the agent&#39;s personal favorites.
      * @param {String} id The ID of the target.
      * @param {module:model/String} type The type of target.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -207,88 +207,8 @@
 
 
     /**
-     * Search for targets.
-     * Search for targets by the specified search term.
-     * @param {String} searchTerm The text to search for in targets.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.filterName Filter the search based on this field.
-     * @param {String} opts.types A comma-separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
-     * @param {String} opts.excludeGroup A comma-separated list of agent group names. Workspace excludes those groups from the search.
-     * @param {String} opts.excludeFromGroup A comma-separated list of agent group names. Workspace excludes agents from these groups in the search.
-     * @param {String} opts.restrictToGroup A comma-separated list of agent group names. Workspace only searches for targets who belong to the groups in this list.
-     * @param {module:model/String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
-     * @param {Number} opts.limit The number of results to return. The default value is 50.
-     * @param {module:model/String} opts.matchType Specify whether the search should only return exact matches.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TargetsResponse} and HTTP response
-     */
-    this.getWithHttpInfo = function(searchTerm, opts) {
-      opts = opts || {};
-      var postBody = null;
-
-      // verify the required parameter 'searchTerm' is set
-      if (searchTerm === undefined || searchTerm === null) {
-        throw new Error("Missing the required parameter 'searchTerm' when calling get");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-        'searchTerm': searchTerm,
-        'filterName': opts['filterName'],
-        'types': opts['types'],
-        'excludeGroup': opts['excludeGroup'],
-        'excludeFromGroup': opts['excludeFromGroup'],
-        'restrictToGroup': opts['restrictToGroup'],
-        'sort': opts['sort'],
-        'limit': opts['limit'],
-        'matchType': opts['matchType'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = TargetsResponse;
-
-      return this.apiClient.callApi(
-        '/targets', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Search for targets.
-     * Search for targets by the specified search term.
-     * @param {String} searchTerm The text to search for in targets.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.filterName Filter the search based on this field.
-     * @param {String} opts.types A comma-separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
-     * @param {String} opts.excludeGroup A comma-separated list of agent group names. Workspace excludes those groups from the search.
-     * @param {String} opts.excludeFromGroup A comma-separated list of agent group names. Workspace excludes agents from these groups in the search.
-     * @param {String} opts.restrictToGroup A comma-separated list of agent group names. Workspace only searches for targets who belong to the groups in this list.
-     * @param {module:model/String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
-     * @param {Number} opts.limit The number of results to return. The default value is 50.
-     * @param {module:model/String} opts.matchType Specify whether the search should only return exact matches.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
-     */
-    this.get = function(searchTerm, opts) {
-      return this.getWithHttpInfo(searchTerm, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Return personal favorites.
-     * Return the agent&#39;s personal favorites.
+     * Get personal favorites.
+     * Get the agent&#39;s personal favorites.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Number of results to return. The default value is 50.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TargetsResponse} and HTTP response
@@ -323,8 +243,8 @@
     }
 
     /**
-     * Return personal favorites.
-     * Return the agent&#39;s personal favorites.
+     * Get personal favorites.
+     * Get the agent&#39;s personal favorites.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Number of results to return. The default value is 50.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
@@ -443,6 +363,86 @@
      */
     this.getTarget = function(id, type) {
       return this.getTargetWithHttpInfo(id, type)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Search for targets.
+     * Search for targets by the specified search term.
+     * @param {String} searchTerm The text to search for in targets.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filterName Filter the search based on this field.
+     * @param {String} opts.types A comma-separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
+     * @param {String} opts.excludeGroup A comma-separated list of agent group names. Workspace excludes those groups from the search.
+     * @param {String} opts.excludeFromGroup A comma-separated list of agent group names. Workspace excludes agents from these groups in the search.
+     * @param {String} opts.restrictToGroup A comma-separated list of agent group names. Workspace only searches for targets who belong to the groups in this list.
+     * @param {module:model/String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit The number of results to return. The default value is 50.
+     * @param {module:model/String} opts.matchType Specify whether the search should only return exact matches.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TargetsResponse} and HTTP response
+     */
+    this.getTargetsWithHttpInfo = function(searchTerm, opts) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'searchTerm' is set
+      if (searchTerm === undefined || searchTerm === null) {
+        throw new Error("Missing the required parameter 'searchTerm' when calling getTargets");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'searchTerm': searchTerm,
+        'filterName': opts['filterName'],
+        'types': opts['types'],
+        'excludeGroup': opts['excludeGroup'],
+        'excludeFromGroup': opts['excludeFromGroup'],
+        'restrictToGroup': opts['restrictToGroup'],
+        'sort': opts['sort'],
+        'limit': opts['limit'],
+        'matchType': opts['matchType'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = TargetsResponse;
+
+      return this.apiClient.callApi(
+        '/targets', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Search for targets.
+     * Search for targets by the specified search term.
+     * @param {String} searchTerm The text to search for in targets.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.filterName Filter the search based on this field.
+     * @param {String} opts.types A comma-separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
+     * @param {String} opts.excludeGroup A comma-separated list of agent group names. Workspace excludes those groups from the search.
+     * @param {String} opts.excludeFromGroup A comma-separated list of agent group names. Workspace excludes agents from these groups in the search.
+     * @param {String} opts.restrictToGroup A comma-separated list of agent group names. Workspace only searches for targets who belong to the groups in this list.
+     * @param {module:model/String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
+     * @param {Number} opts.limit The number of results to return. The default value is 50.
+     * @param {module:model/String} opts.matchType Specify whether the search should only return exact matches.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TargetsResponse}
+     */
+    this.getTargets = function(searchTerm, opts) {
+      return this.getTargetsWithHttpInfo(searchTerm, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

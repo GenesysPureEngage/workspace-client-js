@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.RecentData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.UcscontactsidgetdetailsData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,53 +34,46 @@
 
 
   /**
-   * The RecentData model module.
-   * @module model/RecentData
+   * The UcscontactsidgetdetailsData model module.
+   * @module model/UcscontactsidgetdetailsData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>RecentData</code>.
-   * This includes the media channel where the target was recently used and the timestamp for when the target was used.
-   * @alias module:model/RecentData
+   * Constructs a new <code>UcscontactsidgetdetailsData</code>.
+   * @alias module:model/UcscontactsidgetdetailsData
    * @class
+   * @param returnedAttributes {Array.<String>} The list of contact attributes to be returned for each contact in response
    */
-  var exports = function() {
+  var exports = function(returnedAttributes) {
     var _this = this;
 
-
-
+    _this['returnedAttributes'] = returnedAttributes;
   };
 
   /**
-   * Constructs a <code>RecentData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UcscontactsidgetdetailsData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/RecentData} obj Optional instance to populate.
-   * @return {module:model/RecentData} The populated <code>RecentData</code> instance.
+   * @param {module:model/UcscontactsidgetdetailsData} obj Optional instance to populate.
+   * @return {module:model/UcscontactsidgetdetailsData} The populated <code>UcscontactsidgetdetailsData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('media')) {
-        obj['media'] = ApiClient.convertToType(data['media'], 'String');
-      }
-      if (data.hasOwnProperty('timeStamp')) {
-        obj['timeStamp'] = ApiClient.convertToType(data['timeStamp'], 'Number');
+      if (data.hasOwnProperty('returnedAttributes')) {
+        obj['returnedAttributes'] = ApiClient.convertToType(data['returnedAttributes'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} media
+   * The list of contact attributes to be returned for each contact in response
+   * @member {Array.<String>} returnedAttributes
    */
-  exports.prototype['media'] = undefined;
-  /**
-   * @member {Number} timeStamp
-   */
-  exports.prototype['timeStamp'] = undefined;
+  exports.prototype['returnedAttributes'] = undefined;
 
 
 

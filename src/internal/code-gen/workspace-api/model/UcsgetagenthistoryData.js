@@ -65,8 +65,8 @@
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('customAttributes')) {
-        obj['customAttributes'] = ApiClient.convertToType(data['customAttributes'], ['String']);
+      if (data.hasOwnProperty('returnedAttributes')) {
+        obj['returnedAttributes'] = ApiClient.convertToType(data['returnedAttributes'], ['String']);
       }
       if (data.hasOwnProperty('sort')) {
         obj['sort'] = ApiClient.convertToType(data['sort'], 'String');
@@ -86,9 +86,9 @@
 
   /**
    * The list of custom contact attributes to be returned for each interaction
-   * @member {Array.<String>} customAttributes
+   * @member {Array.<String>} returnedAttributes
    */
-  exports.prototype['customAttributes'] = undefined;
+  exports.prototype['returnedAttributes'] = undefined;
   /**
    * The sorting order (desc or asc)
    * @member {String} sort

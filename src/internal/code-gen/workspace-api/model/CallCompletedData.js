@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcssetcallcompletedData'], factory);
+    define(['ApiClient', 'model/UcsinteractionsidsetcompletedData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcssetcallcompletedData'));
+    module.exports = factory(require('../ApiClient'), require('./UcsinteractionsidsetcompletedData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CallCompletedData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcssetcallcompletedData);
+    root.WorkspaceApi.CallCompletedData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsinteractionsidsetcompletedData);
   }
-}(this, function(ApiClient, UcssetcallcompletedData) {
+}(this, function(ApiClient, UcsinteractionsidsetcompletedData) {
   'use strict';
 
 
@@ -43,7 +43,7 @@
    * Constructs a new <code>CallCompletedData</code>.
    * @alias module:model/CallCompletedData
    * @class
-   * @param data {module:model/UcssetcallcompletedData} 
+   * @param data {module:model/UcsinteractionsidsetcompletedData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -63,14 +63,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcssetcallcompletedData.constructFromObject(data['data']);
+        obj['data'] = UcsinteractionsidsetcompletedData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcssetcallcompletedData} data
+   * @member {module:model/UcsinteractionsidsetcompletedData} data
    */
   exports.prototype['data'] = undefined;
 

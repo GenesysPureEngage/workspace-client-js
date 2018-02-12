@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcssetcallcompletedData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.UcsinteractionsidsetcompletedData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
   }
 }(this, function(ApiClient, Kvpair) {
   'use strict';
@@ -34,41 +34,36 @@
 
 
   /**
-   * The UcssetcallcompletedData model module.
-   * @module model/UcssetcallcompletedData
+   * The UcsinteractionsidsetcompletedData model module.
+   * @module model/UcsinteractionsidsetcompletedData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UcssetcallcompletedData</code>.
-   * @alias module:model/UcssetcallcompletedData
+   * Constructs a new <code>UcsinteractionsidsetcompletedData</code>.
+   * @alias module:model/UcsinteractionsidsetcompletedData
    * @class
-   * @param interactionId {String} The id of the interaction
    * @param callDuration {Number} The duration of the call
    * @param userData {Array.<module:model/Kvpair>} A key/value pairs list of the user data of the call.
    */
-  var exports = function(interactionId, callDuration, userData) {
+  var exports = function(callDuration, userData) {
     var _this = this;
 
-    _this['interactionId'] = interactionId;
     _this['callDuration'] = callDuration;
     _this['userData'] = userData;
   };
 
   /**
-   * Constructs a <code>UcssetcallcompletedData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UcsinteractionsidsetcompletedData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UcssetcallcompletedData} obj Optional instance to populate.
-   * @return {module:model/UcssetcallcompletedData} The populated <code>UcssetcallcompletedData</code> instance.
+   * @param {module:model/UcsinteractionsidsetcompletedData} obj Optional instance to populate.
+   * @return {module:model/UcsinteractionsidsetcompletedData} The populated <code>UcsinteractionsidsetcompletedData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('interactionId')) {
-        obj['interactionId'] = ApiClient.convertToType(data['interactionId'], 'String');
-      }
       if (data.hasOwnProperty('callDuration')) {
         obj['callDuration'] = ApiClient.convertToType(data['callDuration'], 'Number');
       }
@@ -79,11 +74,6 @@
     return obj;
   }
 
-  /**
-   * The id of the interaction
-   * @member {String} interactionId
-   */
-  exports.prototype['interactionId'] = undefined;
   /**
    * The duration of the call
    * @member {Number} callDuration

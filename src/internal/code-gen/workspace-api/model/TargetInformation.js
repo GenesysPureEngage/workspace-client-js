@@ -41,6 +41,7 @@
 
   /**
    * Constructs a new <code>TargetInformation</code>.
+   * The target to add/save.
    * @alias module:model/TargetInformation
    * @class
    */

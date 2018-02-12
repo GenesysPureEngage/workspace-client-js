@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCompletedData', 'model/CallNoteData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/DeleteContactData', 'model/GetContactsData', 'model/IdentifyContactData', 'model/InteractionContentData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/PhoneCallData', 'model/UpdateContactData'], factory);
+    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCompletedData', 'model/CallNoteData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CreateContactData', 'model/IdentifyContactData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/UpdateContactData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCompletedData'), require('../model/CallNoteData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/DeleteContactData'), require('../model/GetContactsData'), require('../model/IdentifyContactData'), require('../model/InteractionContentData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/PhoneCallData'), require('../model/UpdateContactData'));
+    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCompletedData'), require('../model/CallNoteData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/CreateContactData'), require('../model/IdentifyContactData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/UpdateContactData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.CallNoteData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.DeleteContactData, root.WorkspaceApi.GetContactsData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.InteractionContentData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.PhoneCallData, root.WorkspaceApi.UpdateContactData);
+    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.CallNoteData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.CreateContactData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.UpdateContactData);
   }
-}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCompletedData, CallNoteData, ConfigResponse, ContactDetailsData, ContactHistoryData, DeleteContactData, GetContactsData, IdentifyContactData, InteractionContentData, LuceneSearchData, LuceneSearchInteractionData, PhoneCallData, UpdateContactData) {
+}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCompletedData, CallNoteData, ConfigResponse, ContactDetailsData, ContactHistoryData, CreateContactData, IdentifyContactData, LuceneSearchData, LuceneSearchInteractionData, UpdateContactData) {
   'use strict';
 
   /**
@@ -50,11 +50,17 @@
 
     /**
      * Assign the interaction to a contact
+     * @param {String} id id of the Interaction
      * @param {module:model/AssignInteractionToContactData} assignInteractionToContactData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.assignInteractionToContactWithHttpInfo = function(assignInteractionToContactData) {
+    this.assignInteractionToContactWithHttpInfo = function(id, assignInteractionToContactData) {
       var postBody = assignInteractionToContactData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling assignInteractionToContact");
+      }
 
       // verify the required parameter 'assignInteractionToContactData' is set
       if (assignInteractionToContactData === undefined || assignInteractionToContactData === null) {
@@ -63,6 +69,7 @@
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -79,7 +86,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/assign-interaction-to-contact', 'POST',
+        '/ucs/interactions/{id}/assign-contact', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -87,11 +94,12 @@
 
     /**
      * Assign the interaction to a contact
+     * @param {String} id id of the Interaction
      * @param {module:model/AssignInteractionToContactData} assignInteractionToContactData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.assignInteractionToContact = function(assignInteractionToContactData) {
-      return this.assignInteractionToContactWithHttpInfo(assignInteractionToContactData)
+    this.assignInteractionToContact = function(id, assignInteractionToContactData) {
+      return this.assignInteractionToContactWithHttpInfo(id, assignInteractionToContactData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -100,62 +108,70 @@
 
     /**
      * Create a new contact
+     * @param {module:model/CreateContactData} createContactData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.createContactWithHttpInfo = function() {
+    this.createContactWithHttpInfo = function(createContactData) {
+      var postBody = createContactData;
+
+      // verify the required parameter 'createContactData' is set
+      if (createContactData === undefined || createContactData === null) {
+        throw new Error("Missing the required parameter 'createContactData' when calling createContact");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/ucs/contacts/create', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Create a new contact
+     * @param {module:model/CreateContactData} createContactData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.createContact = function(createContactData) {
+      return this.createContactWithHttpInfo(createContactData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete an existing contact
+     * @param {String} id id of the Contact
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.deleteContactWithHttpInfo = function(id) {
       var postBody = null;
 
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/create-contact', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Create a new contact
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.createContact = function() {
-      return this.createContactWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Delete an existing contact
-     * @param {module:model/DeleteContactData} deleteContactData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.deleteContactWithHttpInfo = function(deleteContactData) {
-      var postBody = deleteContactData;
-
-      // verify the required parameter 'deleteContactData' is set
-      if (deleteContactData === undefined || deleteContactData === null) {
-        throw new Error("Missing the required parameter 'deleteContactData' when calling deleteContact");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling deleteContact");
       }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -172,7 +188,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/delete-contact', 'POST',
+        '/ucs/contacts/{id}/delete', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -180,11 +196,11 @@
 
     /**
      * Delete an existing contact
-     * @param {module:model/DeleteContactData} deleteContactData 
+     * @param {String} id id of the Contact
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.deleteContact = function(deleteContactData) {
-      return this.deleteContactWithHttpInfo(deleteContactData)
+    this.deleteContact = function(id) {
+      return this.deleteContactWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -193,19 +209,20 @@
 
     /**
      * Find or create phone call in UCS
-     * @param {module:model/PhoneCallData} phoneCallData 
+     * @param {String} id id of the Voice Interaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.findOrCreatePhoneCallWithHttpInfo = function(phoneCallData) {
-      var postBody = phoneCallData;
+    this.findOrCreatePhoneCallWithHttpInfo = function(id) {
+      var postBody = null;
 
-      // verify the required parameter 'phoneCallData' is set
-      if (phoneCallData === undefined || phoneCallData === null) {
-        throw new Error("Missing the required parameter 'phoneCallData' when calling findOrCreatePhoneCall");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling findOrCreatePhoneCall");
       }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -222,7 +239,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/find-or-create-phone-call', 'POST',
+        '/ucs/voice/{id}/find-or-create', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -230,11 +247,11 @@
 
     /**
      * Find or create phone call in UCS
-     * @param {module:model/PhoneCallData} phoneCallData 
+     * @param {String} id id of the Voice Interaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.findOrCreatePhoneCall = function(phoneCallData) {
-      return this.findOrCreatePhoneCallWithHttpInfo(phoneCallData)
+    this.findOrCreatePhoneCall = function(id) {
+      return this.findOrCreatePhoneCallWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -291,11 +308,17 @@
 
     /**
      * Get the details of a contact
+     * @param {String} id id of the Contact
      * @param {module:model/ContactDetailsData} contactDetailsData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.getContactDetailsWithHttpInfo = function(contactDetailsData) {
+    this.getContactDetailsWithHttpInfo = function(id, contactDetailsData) {
       var postBody = contactDetailsData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getContactDetails");
+      }
 
       // verify the required parameter 'contactDetailsData' is set
       if (contactDetailsData === undefined || contactDetailsData === null) {
@@ -304,6 +327,7 @@
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -320,7 +344,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/get-contact-details', 'POST',
+        '/ucs/contacts/{id}/get-details', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -328,11 +352,12 @@
 
     /**
      * Get the details of a contact
+     * @param {String} id id of the Contact
      * @param {module:model/ContactDetailsData} contactDetailsData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getContactDetails = function(contactDetailsData) {
-      return this.getContactDetailsWithHttpInfo(contactDetailsData)
+    this.getContactDetails = function(id, contactDetailsData) {
+      return this.getContactDetailsWithHttpInfo(id, contactDetailsData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -341,11 +366,17 @@
 
     /**
      * Get the history of interactions for a contact
+     * @param {String} id id of the Contact
      * @param {module:model/ContactHistoryData} contactHistoryData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.getContactHistoryWithHttpInfo = function(contactHistoryData) {
+    this.getContactHistoryWithHttpInfo = function(id, contactHistoryData) {
       var postBody = contactHistoryData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getContactHistory");
+      }
 
       // verify the required parameter 'contactHistoryData' is set
       if (contactHistoryData === undefined || contactHistoryData === null) {
@@ -354,6 +385,7 @@
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -370,7 +402,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/get-contact-history', 'POST',
+        '/ucs/contacts/{id}/get-history', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -378,11 +410,12 @@
 
     /**
      * Get the history of interactions for a contact
+     * @param {String} id id of the Contact
      * @param {module:model/ContactHistoryData} contactHistoryData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getContactHistory = function(contactHistoryData) {
-      return this.getContactHistoryWithHttpInfo(contactHistoryData)
+    this.getContactHistory = function(id, contactHistoryData) {
+      return this.getContactHistoryWithHttpInfo(id, contactHistoryData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -390,20 +423,21 @@
 
 
     /**
-     * Get contacts based on search criteria.
-     * @param {module:model/GetContactsData} getContactsData 
+     * Get the content of the interaction
+     * @param {String} id id of the Interaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.getContactsWithHttpInfo = function(getContactsData) {
-      var postBody = getContactsData;
+    this.getInteractionDetailsWithHttpInfo = function(id) {
+      var postBody = null;
 
-      // verify the required parameter 'getContactsData' is set
-      if (getContactsData === undefined || getContactsData === null) {
-        throw new Error("Missing the required parameter 'getContactsData' when calling getContacts");
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling getInteractionDetails");
       }
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -420,19 +454,19 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/get-contacts', 'POST',
+        '/ucs/interactions/{id}/get-details', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Get contacts based on search criteria.
-     * @param {module:model/GetContactsData} getContactsData 
+     * Get the content of the interaction
+     * @param {String} id id of the Interaction
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getContacts = function(getContactsData) {
-      return this.getContactsWithHttpInfo(getContactsData)
+    this.getInteractionDetails = function(id) {
+      return this.getInteractionDetailsWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -444,7 +478,7 @@
      * This request returns all the lucene indexes for contact.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ConfigResponse} and HTTP response
      */
-    this.getIndexPropertiesWithHttpInfo = function() {
+    this.getLuceneIndexesWithHttpInfo = function() {
       var postBody = null;
 
 
@@ -465,7 +499,7 @@
       var returnType = ConfigResponse;
 
       return this.apiClient.callApi(
-        '/ucs/get-index-properties', 'POST',
+        '/ucs/get-lucene-indexes', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -476,58 +510,8 @@
      * This request returns all the lucene indexes for contact.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ConfigResponse}
      */
-    this.getIndexProperties = function() {
-      return this.getIndexPropertiesWithHttpInfo()
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Get the content of the interaction
-     * @param {module:model/InteractionContentData} interactionContentData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.getInteractionContentWithHttpInfo = function(interactionContentData) {
-      var postBody = interactionContentData;
-
-      // verify the required parameter 'interactionContentData' is set
-      if (interactionContentData === undefined || interactionContentData === null) {
-        throw new Error("Missing the required parameter 'interactionContentData' when calling getInteractionContent");
-      }
-
-
-      var pathParams = {
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/get-interaction-content', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Get the content of the interaction
-     * @param {module:model/InteractionContentData} interactionContentData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.getInteractionContent = function(interactionContentData) {
-      return this.getInteractionContentWithHttpInfo(interactionContentData)
+    this.getLuceneIndexes = function() {
+      return this.getLuceneIndexesWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -536,11 +520,17 @@
 
     /**
      * Identify the contact for the interaction
+     * @param {String} id id of the Interaction
      * @param {module:model/IdentifyContactData} identifyContactData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.identifyContactWithHttpInfo = function(identifyContactData) {
+    this.identifyContactWithHttpInfo = function(id, identifyContactData) {
       var postBody = identifyContactData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling identifyContact");
+      }
 
       // verify the required parameter 'identifyContactData' is set
       if (identifyContactData === undefined || identifyContactData === null) {
@@ -549,6 +539,7 @@
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -565,7 +556,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/identify-contact', 'POST',
+        '/ucs/interactions/{id}/identify-contact', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -573,11 +564,12 @@
 
     /**
      * Identify the contact for the interaction
+     * @param {String} id id of the Interaction
      * @param {module:model/IdentifyContactData} identifyContactData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.identifyContact = function(identifyContactData) {
-      return this.identifyContactWithHttpInfo(identifyContactData)
+    this.identifyContact = function(id, identifyContactData) {
+      return this.identifyContactWithHttpInfo(id, identifyContactData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -585,16 +577,16 @@
 
 
     /**
-     * Search for contacts based on search query, using lucene search
+     * Search for contacts. If ‘sortCriteria’ or ‘startIndex’ is specified, the query is based on SQL, otherwise on Lucene
      * @param {module:model/LuceneSearchData} luceneSearchData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.luceneSearchWithHttpInfo = function(luceneSearchData) {
+    this.searchContactsWithHttpInfo = function(luceneSearchData) {
       var postBody = luceneSearchData;
 
       // verify the required parameter 'luceneSearchData' is set
       if (luceneSearchData === undefined || luceneSearchData === null) {
-        throw new Error("Missing the required parameter 'luceneSearchData' when calling luceneSearch");
+        throw new Error("Missing the required parameter 'luceneSearchData' when calling searchContacts");
       }
 
 
@@ -615,19 +607,19 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/lucene-search', 'POST',
+        '/ucs/contacts/search', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
     }
 
     /**
-     * Search for contacts based on search query, using lucene search
+     * Search for contacts. If ‘sortCriteria’ or ‘startIndex’ is specified, the query is based on SQL, otherwise on Lucene
      * @param {module:model/LuceneSearchData} luceneSearchData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.luceneSearch = function(luceneSearchData) {
-      return this.luceneSearchWithHttpInfo(luceneSearchData)
+    this.searchContacts = function(luceneSearchData) {
+      return this.searchContactsWithHttpInfo(luceneSearchData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -639,12 +631,12 @@
      * @param {module:model/LuceneSearchInteractionData} luceneSearchInteractionData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.luceneSearchInteractionWithHttpInfo = function(luceneSearchInteractionData) {
+    this.searchInteractionsWithHttpInfo = function(luceneSearchInteractionData) {
       var postBody = luceneSearchInteractionData;
 
       // verify the required parameter 'luceneSearchInteractionData' is set
       if (luceneSearchInteractionData === undefined || luceneSearchInteractionData === null) {
-        throw new Error("Missing the required parameter 'luceneSearchInteractionData' when calling luceneSearchInteraction");
+        throw new Error("Missing the required parameter 'luceneSearchInteractionData' when calling searchInteractions");
       }
 
 
@@ -665,7 +657,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/lucene-search-interaction', 'POST',
+        '/ucs/ixn/search', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -676,8 +668,8 @@
      * @param {module:model/LuceneSearchInteractionData} luceneSearchInteractionData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.luceneSearchInteraction = function(luceneSearchInteractionData) {
-      return this.luceneSearchInteractionWithHttpInfo(luceneSearchInteractionData)
+    this.searchInteractions = function(luceneSearchInteractionData) {
+      return this.searchInteractionsWithHttpInfo(luceneSearchInteractionData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -686,11 +678,17 @@
 
     /**
      * Set the call as being completed
+     * @param {String} id id of the Interaction
      * @param {module:model/CallCompletedData} callCompletedData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.setCallCompletedWithHttpInfo = function(callCompletedData) {
+    this.setCallCompletedWithHttpInfo = function(id, callCompletedData) {
       var postBody = callCompletedData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling setCallCompleted");
+      }
 
       // verify the required parameter 'callCompletedData' is set
       if (callCompletedData === undefined || callCompletedData === null) {
@@ -699,6 +697,7 @@
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -715,7 +714,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/set-call-completed', 'POST',
+        '/ucs/interactions/{id}/set-completed', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -723,11 +722,12 @@
 
     /**
      * Set the call as being completed
+     * @param {String} id id of the Interaction
      * @param {module:model/CallCompletedData} callCompletedData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.setCallCompleted = function(callCompletedData) {
-      return this.setCallCompletedWithHttpInfo(callCompletedData)
+    this.setCallCompleted = function(id, callCompletedData) {
+      return this.setCallCompletedWithHttpInfo(id, callCompletedData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -736,11 +736,17 @@
 
     /**
      * Set the note for the call
+     * @param {String} id id of the Interaction
      * @param {module:model/CallNoteData} callNoteData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.setCallNoteWithHttpInfo = function(callNoteData) {
+    this.setCallNoteWithHttpInfo = function(id, callNoteData) {
       var postBody = callNoteData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling setCallNote");
+      }
 
       // verify the required parameter 'callNoteData' is set
       if (callNoteData === undefined || callNoteData === null) {
@@ -749,6 +755,7 @@
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -765,7 +772,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/set-call-note', 'POST',
+        '/ucs/interactions/{id}/set-note', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -773,11 +780,12 @@
 
     /**
      * Set the note for the call
+     * @param {String} id id of the Interaction
      * @param {module:model/CallNoteData} callNoteData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.setCallNote = function(callNoteData) {
-      return this.setCallNoteWithHttpInfo(callNoteData)
+    this.setCallNote = function(id, callNoteData) {
+      return this.setCallNoteWithHttpInfo(id, callNoteData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -786,11 +794,17 @@
 
     /**
      * Update attributes of an existing contact
+     * @param {String} id id of the Contact
      * @param {module:model/UpdateContactData} updateContactData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.updateContactWithHttpInfo = function(updateContactData) {
+    this.updateContactWithHttpInfo = function(id, updateContactData) {
       var postBody = updateContactData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling updateContact");
+      }
 
       // verify the required parameter 'updateContactData' is set
       if (updateContactData === undefined || updateContactData === null) {
@@ -799,6 +813,7 @@
 
 
       var pathParams = {
+        'id': id
       };
       var queryParams = {
       };
@@ -815,7 +830,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/ucs/update-contact', 'POST',
+        '/ucs/contacts/{id}/update', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -823,11 +838,12 @@
 
     /**
      * Update attributes of an existing contact
+     * @param {String} id id of the Contact
      * @param {module:model/UpdateContactData} updateContactData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.updateContact = function(updateContactData) {
-      return this.updateContactWithHttpInfo(updateContactData)
+    this.updateContact = function(id, updateContactData) {
+      return this.updateContactWithHttpInfo(id, updateContactData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

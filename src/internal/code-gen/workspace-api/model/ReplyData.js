@@ -16,64 +16,62 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/MediaemailinteractionsidreplyData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./MediaemailinteractionsidreplyData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsdeletecontactData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.ReplyData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediaemailinteractionsidreplyData);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, MediaemailinteractionsidreplyData) {
   'use strict';
 
 
 
 
   /**
-   * The UcsdeletecontactData model module.
-   * @module model/UcsdeletecontactData
+   * The ReplyData model module.
+   * @module model/ReplyData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UcsdeletecontactData</code>.
-   * @alias module:model/UcsdeletecontactData
+   * Constructs a new <code>ReplyData</code>.
+   * @alias module:model/ReplyData
    * @class
-   * @param contactId {String} The id of the contact to be deleted
    */
-  var exports = function(contactId) {
+  var exports = function() {
     var _this = this;
 
-    _this['contactId'] = contactId;
+
   };
 
   /**
-   * Constructs a <code>UcsdeletecontactData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ReplyData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UcsdeletecontactData} obj Optional instance to populate.
-   * @return {module:model/UcsdeletecontactData} The populated <code>UcsdeletecontactData</code> instance.
+   * @param {module:model/ReplyData} obj Optional instance to populate.
+   * @return {module:model/ReplyData} The populated <code>ReplyData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('contactId')) {
-        obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
+      if (data.hasOwnProperty('data')) {
+        obj['data'] = MediaemailinteractionsidreplyData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * The id of the contact to be deleted
-   * @member {String} contactId
+   * @member {module:model/MediaemailinteractionsidreplyData} data
    */
-  exports.prototype['contactId'] = undefined;
+  exports.prototype['data'] = undefined;
 
 
 

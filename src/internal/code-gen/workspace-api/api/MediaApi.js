@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData', 'model/AcceptData2', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/RejectData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
+    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AcceptData2', 'model/AcceptData4', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/RejectData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData2'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/RejectData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/AcceptData2'), require('../model/AcceptData4'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/RejectData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData2, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.RejectData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
+    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.AcceptData2, root.WorkspaceApi.AcceptData4, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.RejectData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
   }
-}(this, function(ApiClient, AcceptData, AcceptData2, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, RejectData, TransferData, UserData, UserData2) {
+}(this, function(ApiClient, AcceptData, AcceptData1, AcceptData2, AcceptData4, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, RejectData, TransferData, UserData, UserData2) {
   'use strict';
 
   /**
@@ -54,7 +54,7 @@
      * @param {String} mediatype media-type of interaction to accept
      * @param {String} id id of interaction to accept
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData2} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData4} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.acceptWithHttpInfo = function(mediatype, id, opts) {
@@ -103,11 +103,69 @@
      * @param {String} mediatype media-type of interaction to accept
      * @param {String} id id of interaction to accept
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData2} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData4} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.accept = function(mediatype, id, opts) {
       return this.acceptWithHttpInfo(mediatype, id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Accept a chat interaction
+     * Accept the interaction specified in the id path parameter
+     * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData} opts.acceptData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.acceptChatWithHttpInfo = function(id, opts) {
+      opts = opts || {};
+      var postBody = opts['acceptData'];
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling acceptChat");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/accept', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Accept a chat interaction
+     * Accept the interaction specified in the id path parameter
+     * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData} opts.acceptData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.acceptChat = function(id, opts) {
+      return this.acceptChatWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -392,22 +450,22 @@
      * @param {module:model/UserData} userData An array of key/value pairs.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.attachUserDataWithHttpInfo = function(mediatype, id, userData) {
+    this.attachMediaUserDataWithHttpInfo = function(mediatype, id, userData) {
       var postBody = userData;
 
       // verify the required parameter 'mediatype' is set
       if (mediatype === undefined || mediatype === null) {
-        throw new Error("Missing the required parameter 'mediatype' when calling attachUserData");
+        throw new Error("Missing the required parameter 'mediatype' when calling attachMediaUserData");
       }
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling attachUserData");
+        throw new Error("Missing the required parameter 'id' when calling attachMediaUserData");
       }
 
       // verify the required parameter 'userData' is set
       if (userData === undefined || userData === null) {
-        throw new Error("Missing the required parameter 'userData' when calling attachUserData");
+        throw new Error("Missing the required parameter 'userData' when calling attachMediaUserData");
       }
 
 
@@ -444,8 +502,8 @@
      * @param {module:model/UserData} userData An array of key/value pairs.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.attachUserData = function(mediatype, id, userData) {
-      return this.attachUserDataWithHttpInfo(mediatype, id, userData)
+    this.attachMediaUserData = function(mediatype, id, userData) {
+      return this.attachMediaUserDataWithHttpInfo(mediatype, id, userData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -590,22 +648,22 @@
      * @param {module:model/UserData2} userData The keys of the key/value pairs to delete.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.deleteUserDataWithHttpInfo = function(mediatype, id, userData) {
+    this.deleteMediaUserDataWithHttpInfo = function(mediatype, id, userData) {
       var postBody = userData;
 
       // verify the required parameter 'mediatype' is set
       if (mediatype === undefined || mediatype === null) {
-        throw new Error("Missing the required parameter 'mediatype' when calling deleteUserData");
+        throw new Error("Missing the required parameter 'mediatype' when calling deleteMediaUserData");
       }
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling deleteUserData");
+        throw new Error("Missing the required parameter 'id' when calling deleteMediaUserData");
       }
 
       // verify the required parameter 'userData' is set
       if (userData === undefined || userData === null) {
-        throw new Error("Missing the required parameter 'userData' when calling deleteUserData");
+        throw new Error("Missing the required parameter 'userData' when calling deleteMediaUserData");
       }
 
 
@@ -642,8 +700,8 @@
      * @param {module:model/UserData2} userData The keys of the key/value pairs to delete.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.deleteUserData = function(mediatype, id, userData) {
-      return this.deleteUserDataWithHttpInfo(mediatype, id, userData)
+    this.deleteMediaUserData = function(mediatype, id, userData) {
+      return this.deleteMediaUserDataWithHttpInfo(mediatype, id, userData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -734,6 +792,59 @@
      */
     this.dndOn = function() {
       return this.dndOnWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Leave a chat interaction
+     * Leave the interaction specified in the id path parameter
+     * @param {String} id id of interaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.leaveChatWithHttpInfo = function(id) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling leaveChat");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/leave', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Leave a chat interaction
+     * Leave the interaction specified in the id path parameter
+     * @param {String} id id of interaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.leaveChat = function(id) {
+      return this.leaveChatWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1255,7 +1366,7 @@
      * Send a message to the specified chat
      * @param {String} id id of interaction to send a message to
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData1} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.sendMessageWithHttpInfo = function(id, opts) {
@@ -1297,11 +1408,175 @@
      * Send a message to the specified chat
      * @param {String} id id of interaction to send a message to
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData1} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.sendMessage = function(id, opts) {
       return this.sendMessageWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Send notification that typing started to the specified chat
+     * Send notification that typing started to the specified chat
+     * @param {String} id id of interaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.sendTypingStartedWithHttpInfo = function(id) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling sendTypingStarted");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/send-typing-started', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Send notification that typing started to the specified chat
+     * Send notification that typing started to the specified chat
+     * @param {String} id id of interaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.sendTypingStarted = function(id) {
+      return this.sendTypingStartedWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Send notification that typing stopped to the specified chat
+     * Send notification that typing stoppped to the specified chat
+     * @param {String} id id of interaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.sendTypingStoppedWithHttpInfo = function(id) {
+      var postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling sendTypingStopped");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/send-typing-stopped', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Send notification that typing stopped to the specified chat
+     * Send notification that typing stoppped to the specified chat
+     * @param {String} id id of interaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.sendTypingStopped = function(id) {
+      return this.sendTypingStoppedWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Send a url to the specified chat
+     * Send a url to the specified chat
+     * @param {String} id id of interaction to send a url to
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData2} opts.acceptData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.sendUrlDataWithHttpInfo = function(id, opts) {
+      opts = opts || {};
+      var postBody = opts['acceptData'];
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling sendUrlData");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/send-url', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Send a url to the specified chat
+     * Send a url to the specified chat
+     * @param {String} id id of interaction to send a url to
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData2} opts.acceptData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.sendUrlData = function(id, opts) {
+      return this.sendUrlDataWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1384,22 +1659,22 @@
      * @param {module:model/UserData} userData An array of key/value pairs.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.updateUserDataWithHttpInfo = function(mediatype, id, userData) {
+    this.updateMediaUserDataWithHttpInfo = function(mediatype, id, userData) {
       var postBody = userData;
 
       // verify the required parameter 'mediatype' is set
       if (mediatype === undefined || mediatype === null) {
-        throw new Error("Missing the required parameter 'mediatype' when calling updateUserData");
+        throw new Error("Missing the required parameter 'mediatype' when calling updateMediaUserData");
       }
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling updateUserData");
+        throw new Error("Missing the required parameter 'id' when calling updateMediaUserData");
       }
 
       // verify the required parameter 'userData' is set
       if (userData === undefined || userData === null) {
-        throw new Error("Missing the required parameter 'userData' when calling updateUserData");
+        throw new Error("Missing the required parameter 'userData' when calling updateMediaUserData");
       }
 
 
@@ -1436,8 +1711,8 @@
      * @param {module:model/UserData} userData An array of key/value pairs.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.updateUserData = function(mediatype, id, userData) {
-      return this.updateUserDataWithHttpInfo(mediatype, id, userData)
+    this.updateMediaUserData = function(mediatype, id, userData) {
+      return this.updateMediaUserDataWithHttpInfo(mediatype, id, userData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

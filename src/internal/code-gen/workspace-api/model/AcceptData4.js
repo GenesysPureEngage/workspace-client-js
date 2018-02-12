@@ -16,64 +16,62 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/MediamediatypeinteractionsidacceptData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidacceptData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsgetcontactdetailsData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.AcceptData4 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidacceptData);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, MediamediatypeinteractionsidacceptData) {
   'use strict';
 
 
 
 
   /**
-   * The UcsgetcontactdetailsData model module.
-   * @module model/UcsgetcontactdetailsData
+   * The AcceptData4 model module.
+   * @module model/AcceptData4
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UcsgetcontactdetailsData</code>.
-   * @alias module:model/UcsgetcontactdetailsData
+   * Constructs a new <code>AcceptData4</code>.
+   * @alias module:model/AcceptData4
    * @class
-   * @param contactId {String} The id of the contact
    */
-  var exports = function(contactId) {
+  var exports = function() {
     var _this = this;
 
-    _this['contactId'] = contactId;
+
   };
 
   /**
-   * Constructs a <code>UcsgetcontactdetailsData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>AcceptData4</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UcsgetcontactdetailsData} obj Optional instance to populate.
-   * @return {module:model/UcsgetcontactdetailsData} The populated <code>UcsgetcontactdetailsData</code> instance.
+   * @param {module:model/AcceptData4} obj Optional instance to populate.
+   * @return {module:model/AcceptData4} The populated <code>AcceptData4</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('contactId')) {
-        obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
+      if (data.hasOwnProperty('data')) {
+        obj['data'] = MediamediatypeinteractionsidacceptData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * The id of the contact
-   * @member {String} contactId
+   * @member {module:model/MediamediatypeinteractionsidacceptData} data
    */
-  exports.prototype['contactId'] = undefined;
+  exports.prototype['data'] = undefined;
 
 
 

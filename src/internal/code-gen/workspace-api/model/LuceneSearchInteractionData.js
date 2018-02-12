@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcslucenesearchinteractionData'], factory);
+    define(['ApiClient', 'model/UcsixnsearchData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcslucenesearchinteractionData'));
+    module.exports = factory(require('../ApiClient'), require('./UcsixnsearchData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.LuceneSearchInteractionData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcslucenesearchinteractionData);
+    root.WorkspaceApi.LuceneSearchInteractionData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsixnsearchData);
   }
-}(this, function(ApiClient, UcslucenesearchinteractionData) {
+}(this, function(ApiClient, UcsixnsearchData) {
   'use strict';
 
 
@@ -43,7 +43,7 @@
    * Constructs a new <code>LuceneSearchInteractionData</code>.
    * @alias module:model/LuceneSearchInteractionData
    * @class
-   * @param data {module:model/UcslucenesearchinteractionData} 
+   * @param data {module:model/UcsixnsearchData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -63,14 +63,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcslucenesearchinteractionData.constructFromObject(data['data']);
+        obj['data'] = UcsixnsearchData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcslucenesearchinteractionData} data
+   * @member {module:model/UcsixnsearchData} data
    */
   exports.prototype['data'] = undefined;
 

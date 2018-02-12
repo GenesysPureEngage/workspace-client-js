@@ -16,34 +16,34 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcsdeletecontactData'], factory);
+    define(['ApiClient', 'model/UcscontactscreateData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcsdeletecontactData'));
+    module.exports = factory(require('../ApiClient'), require('./UcscontactscreateData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.DeleteContactData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsdeletecontactData);
+    root.WorkspaceApi.CreateContactData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcscontactscreateData);
   }
-}(this, function(ApiClient, UcsdeletecontactData) {
+}(this, function(ApiClient, UcscontactscreateData) {
   'use strict';
 
 
 
 
   /**
-   * The DeleteContactData model module.
-   * @module model/DeleteContactData
+   * The CreateContactData model module.
+   * @module model/CreateContactData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>DeleteContactData</code>.
-   * @alias module:model/DeleteContactData
+   * Constructs a new <code>CreateContactData</code>.
+   * @alias module:model/CreateContactData
    * @class
-   * @param data {module:model/UcsdeletecontactData} 
+   * @param data {module:model/UcscontactscreateData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -52,25 +52,25 @@
   };
 
   /**
-   * Constructs a <code>DeleteContactData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CreateContactData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/DeleteContactData} obj Optional instance to populate.
-   * @return {module:model/DeleteContactData} The populated <code>DeleteContactData</code> instance.
+   * @param {module:model/CreateContactData} obj Optional instance to populate.
+   * @return {module:model/CreateContactData} The populated <code>CreateContactData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcsdeletecontactData.constructFromObject(data['data']);
+        obj['data'] = UcscontactscreateData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcsdeletecontactData} data
+   * @member {module:model/UcscontactscreateData} data
    */
   exports.prototype['data'] = undefined;
 

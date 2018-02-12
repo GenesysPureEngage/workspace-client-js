@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcsgetcontacthistoryData'], factory);
+    define(['ApiClient', 'model/UcscontactsidgethistoryData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcsgetcontacthistoryData'));
+    module.exports = factory(require('../ApiClient'), require('./UcscontactsidgethistoryData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ContactHistoryData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsgetcontacthistoryData);
+    root.WorkspaceApi.ContactHistoryData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcscontactsidgethistoryData);
   }
-}(this, function(ApiClient, UcsgetcontacthistoryData) {
+}(this, function(ApiClient, UcscontactsidgethistoryData) {
   'use strict';
 
 
@@ -43,7 +43,7 @@
    * Constructs a new <code>ContactHistoryData</code>.
    * @alias module:model/ContactHistoryData
    * @class
-   * @param data {module:model/UcsgetcontacthistoryData} 
+   * @param data {module:model/UcscontactsidgethistoryData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -63,14 +63,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcsgetcontacthistoryData.constructFromObject(data['data']);
+        obj['data'] = UcscontactsidgethistoryData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcsgetcontacthistoryData} data
+   * @member {module:model/UcscontactsidgethistoryData} data
    */
   exports.prototype['data'] = undefined;
 

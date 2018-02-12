@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcsassigninteractiontocontactData'], factory);
+    define(['ApiClient', 'model/UcsinteractionsidassigncontactData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcsassigninteractiontocontactData'));
+    module.exports = factory(require('../ApiClient'), require('./UcsinteractionsidassigncontactData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AssignInteractionToContactData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsassigninteractiontocontactData);
+    root.WorkspaceApi.AssignInteractionToContactData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsinteractionsidassigncontactData);
   }
-}(this, function(ApiClient, UcsassigninteractiontocontactData) {
+}(this, function(ApiClient, UcsinteractionsidassigncontactData) {
   'use strict';
 
 
@@ -43,7 +43,7 @@
    * Constructs a new <code>AssignInteractionToContactData</code>.
    * @alias module:model/AssignInteractionToContactData
    * @class
-   * @param data {module:model/UcsassigninteractiontocontactData} 
+   * @param data {module:model/UcsinteractionsidassigncontactData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -63,14 +63,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcsassigninteractiontocontactData.constructFromObject(data['data']);
+        obj['data'] = UcsinteractionsidassigncontactData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcsassigninteractiontocontactData} data
+   * @member {module:model/UcsinteractionsidassigncontactData} data
    */
   exports.prototype['data'] = undefined;
 

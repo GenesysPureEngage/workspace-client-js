@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AcceptData2', 'model/ActivatechannelsData', 'model/AddCommentData', 'model/AddContentData', 'model/AddInteractionToWorkbinData', 'model/AgentHistoryData', 'model/AlternateData', 'model/AnswerData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/Call', 'model/CallCompletedData', 'model/CallNoteData', 'model/CallParticipants', 'model/ChannelsData', 'model/ClearData', 'model/CompleteConferenceData', 'model/CompleteTransferData', 'model/ConfigResponse', 'model/ConfigResponseData', 'model/ConfigResponseDataActionCodes', 'model/ConfigResponseDataBusinessAttributes', 'model/ConfigResponseDataTransactions', 'model/ConfigResponseDataValues', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CreateData', 'model/CurrentSession', 'model/CurrentSessionData', 'model/CurrentSessionDataPendingloginasync', 'model/CurrentSessionDataUser', 'model/CurrentSessionDataUserActiveSession', 'model/CurrentSessionStatus', 'model/Data', 'model/DeleteContactData', 'model/DeleteFromConferenceData', 'model/Devices', 'model/DevicesData', 'model/Dn', 'model/ForwardData', 'model/GetCategoryData', 'model/GetContactsData', 'model/GetStandardResponseData', 'model/GetWorkbinContentData', 'model/GetWorkbinsContentData', 'model/HoldData', 'model/IdentifyContactData', 'model/InitiateConferenceData', 'model/InitiateTransferData', 'model/InlineResponse200', 'model/InlineResponse2001', 'model/InlineResponse2001Data', 'model/InlineResponse2002', 'model/InlineResponse2002Data', 'model/InlineResponse200Data', 'model/InlineResponse200Status', 'model/InteractionContentData', 'model/IxnReasonCode', 'model/KeyData', 'model/Kvpair', 'model/LogoutMediaData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/MakeCallData', 'model/Media', 'model/MediachatinteractionsidsendmessageData', 'model/MediaemailinteractionscreateData', 'model/MediaemailinteractionsidacceptData', 'model/MediamediatypeinteractionsidacceptData', 'model/MediamediatypeinteractionsidaddcommentData', 'model/MediamediatypeinteractionsidaddcontentData', 'model/MediamediatypeinteractionsiddeleteuserdataData', 'model/MediamediatypeinteractionsidplaceinqueueData', 'model/MediamediatypeinteractionsidtransferagentData', 'model/MediamediatypelogoutData', 'model/MediamediatypenotreadyData', 'model/MergeData', 'model/MonitoringScopeData', 'model/MonitoringScopeDataData', 'model/NotReadyData', 'model/NotReadyForMediaData', 'model/OpenMediaChannel', 'model/PersonalFavoriteData', 'model/PhoneCallData', 'model/PlaceInQueueData', 'model/PullInteractionFromWorkbinData', 'model/ReadyData', 'model/ReadyForMediaData', 'model/RecentData', 'model/RecentTargetData', 'model/ReconnectData', 'model/RedirectData', 'model/RejectData', 'model/ReleaseData', 'model/RenderFieldCodesData', 'model/RetrieveData', 'model/SendDTMFData', 'model/SendUserEventData', 'model/SendUserEventDataData', 'model/SingleStepConferenceData', 'model/SingleStepTransferData', 'model/StartMonitoringData', 'model/Statistic', 'model/StatisticValue', 'model/StatisticsSubscribeData', 'model/StatisticsSubscribeDataData', 'model/StopMonitoringData', 'model/SubscribeToWorkbinNotificationsData', 'model/Subscription', 'model/SupervisorvoiceoperationNameData', 'model/Target', 'model/TargetInformation', 'model/TargetsResponse', 'model/TargetsResponseData', 'model/TargetspersonalfavoritessaveData', 'model/TargetsrecentsaddData', 'model/TransferData', 'model/UcsassigninteractiontocontactData', 'model/UcsdeletecontactData', 'model/UcsfindorcreatephonecallData', 'model/UcsgetagenthistoryData', 'model/UcsgetcontactdetailsData', 'model/UcsgetcontacthistoryData', 'model/UcsgetcontactsData', 'model/UcsgetinteractioncontentData', 'model/UcsidentifycontactData', 'model/UcslucenesearchData', 'model/UcslucenesearchinteractionData', 'model/UcsresponsescategoriesidgetdetailsData', 'model/UcsresponsesidgetdetailsData', 'model/UcsresponsesidrenderfieldcodesData', 'model/UcssetcallcompletedData', 'model/UcssetcallnoteData', 'model/UcsupdatecontactData', 'model/UnsubscribeToWorkbinNotificationsData', 'model/UpdateContactData', 'model/UserData', 'model/UserData1', 'model/UserData2', 'model/VoicecallsidalternateData', 'model/VoicecallsidcompleteData', 'model/VoicecallsidcompletetransferData', 'model/VoicecallsiddeletefromconferenceData', 'model/VoicecallsiddeleteuserdatapairData', 'model/VoicecallsidinitiateconferenceData', 'model/VoicecallsidinitiatetransferData', 'model/VoicecallsidmergeData', 'model/VoicecallsidreconnectData', 'model/VoicecallsidredirectData', 'model/VoicecallsidsenddtmfData', 'model/VoicecallsidsinglestepconferenceData', 'model/VoicecallsidsinglesteptransferData', 'model/VoicemakecallData', 'model/VoicenotreadyData', 'model/VoicereadyData', 'model/VoicesetforwardData', 'model/VoicestartmonitoringData', 'model/VoicestopmonitoringData', 'model/WorkbinsgetcontentsData', 'model/WorkbinsworkbinIdaddinteractionData', 'model/WorkbinsworkbinIdgetcontentData', 'model/WorkbinsworkbinIdsubscribeData', 'api/DocumentationApi', 'api/EmailApi', 'api/MediaApi', 'api/NotificationsApi', 'api/ReportingApi', 'api/SessionApi', 'api/StandardResponsesApi', 'api/TargetsApi', 'api/UcsApi', 'api/UsersApi', 'api/VoiceApi', 'api/WorkbinsApi'], factory);
+    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AcceptData2', 'model/AcceptData3', 'model/AcceptData4', 'model/ActivatechannelsData', 'model/AddCommentData', 'model/AddContentData', 'model/AddInteractionToWorkbinData', 'model/AgentHistoryData', 'model/AlternateData', 'model/AnswerData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/Call', 'model/CallCompletedData', 'model/CallNoteData', 'model/CallParticipants', 'model/ChannelsData', 'model/ClearData', 'model/CompleteConferenceData', 'model/CompleteTransferData', 'model/ConfigResponse', 'model/ConfigResponseData', 'model/ConfigResponseDataActionCodes', 'model/ConfigResponseDataBusinessAttributes', 'model/ConfigResponseDataTransactions', 'model/ConfigResponseDataValues', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CreateContactData', 'model/CreateData', 'model/CurrentSession', 'model/CurrentSessionData', 'model/CurrentSessionDataPendingloginasync', 'model/CurrentSessionDataUser', 'model/CurrentSessionDataUserActiveSession', 'model/CurrentSessionStatus', 'model/Data', 'model/DeleteFromConferenceData', 'model/Devices', 'model/DevicesData', 'model/Dn', 'model/ForwardData', 'model/GetCategoryData', 'model/GetStandardResponseData', 'model/GetWorkbinContentData', 'model/GetWorkbinsContentData', 'model/HoldData', 'model/IdentifyContactData', 'model/InitiateConferenceData', 'model/InitiateTransferData', 'model/InlineResponse200', 'model/InlineResponse2001', 'model/InlineResponse2001Data', 'model/InlineResponse2002', 'model/InlineResponse2002Data', 'model/InlineResponse200Data', 'model/InlineResponse200Status', 'model/IxnReasonCode', 'model/KeyData', 'model/Kvpair', 'model/LogoutMediaData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/MakeCallData', 'model/Media', 'model/MediachatinteractionsidacceptData', 'model/MediachatinteractionsidsendmessageData', 'model/MediachatinteractionsidsendurlData', 'model/MediaemailinteractionscreateData', 'model/MediaemailinteractionsidacceptData', 'model/MediaemailinteractionsidreplyData', 'model/MediaemailinteractionsidsaveData', 'model/MediaemailinteractionsidsendData', 'model/MediamediatypeinteractionsidacceptData', 'model/MediamediatypeinteractionsidaddcommentData', 'model/MediamediatypeinteractionsidaddcontentData', 'model/MediamediatypeinteractionsiddeleteuserdataData', 'model/MediamediatypeinteractionsidplaceinqueueData', 'model/MediamediatypeinteractionsidtransferagentData', 'model/MediamediatypelogoutData', 'model/MediamediatypenotreadyData', 'model/MergeData', 'model/MonitoringScopeData', 'model/MonitoringScopeDataData', 'model/NotReadyData', 'model/NotReadyForMediaData', 'model/OpenMediaChannel', 'model/PersonalFavoriteData', 'model/PlaceInQueueData', 'model/PullInteractionFromWorkbinData', 'model/ReadyData', 'model/ReadyForMediaData', 'model/RecentData', 'model/RecentTargetData', 'model/ReconnectData', 'model/RedirectData', 'model/RejectData', 'model/ReleaseData', 'model/RenderStandardResponseFieldCodesData', 'model/ReplyData', 'model/ReportStandareResponseUsageData', 'model/RetrieveData', 'model/SaveData', 'model/SendDTMFData', 'model/SendData', 'model/SendUserEventData', 'model/SendUserEventDataData', 'model/SingleStepConferenceData', 'model/SingleStepTransferData', 'model/StartMonitoringData', 'model/Statistic', 'model/StatisticValue', 'model/StatisticsSubscribeData', 'model/StatisticsSubscribeDataData', 'model/StopMonitoringData', 'model/SubscribeToWorkbinNotificationsData', 'model/Subscription', 'model/SupervisorvoiceoperationNameData', 'model/Target', 'model/TargetInformation', 'model/TargetsResponse', 'model/TargetsResponseData', 'model/TargetspersonalfavoritessaveData', 'model/TargetsrecentsaddData', 'model/TransferData', 'model/UcscontactscreateData', 'model/UcscontactsidgetdetailsData', 'model/UcscontactsidgethistoryData', 'model/UcscontactsidupdateData', 'model/UcscontactssearchData', 'model/UcsgetagenthistoryData', 'model/UcsinteractionsidassigncontactData', 'model/UcsinteractionsididentifycontactData', 'model/UcsinteractionsidsetcompletedData', 'model/UcsinteractionsidsetnoteData', 'model/UcsixnsearchData', 'model/UcsresponsescategoriesidgetdetailsData', 'model/UcsresponsesidgetdetailsData', 'model/UcsresponsesidrenderfieldcodesData', 'model/UcsresponsesidreportusageData', 'model/UnsubscribeToWorkbinNotificationsData', 'model/UpdateContactData', 'model/UserData', 'model/UserData1', 'model/UserData2', 'model/VoicecallsidalternateData', 'model/VoicecallsidcompleteData', 'model/VoicecallsidcompletetransferData', 'model/VoicecallsiddeletefromconferenceData', 'model/VoicecallsiddeleteuserdatapairData', 'model/VoicecallsidinitiateconferenceData', 'model/VoicecallsidinitiatetransferData', 'model/VoicecallsidmergeData', 'model/VoicecallsidreconnectData', 'model/VoicecallsidredirectData', 'model/VoicecallsidsenddtmfData', 'model/VoicecallsidsinglestepconferenceData', 'model/VoicecallsidsinglesteptransferData', 'model/VoicemakecallData', 'model/VoicenotreadyData', 'model/VoicereadyData', 'model/VoicesetforwardData', 'model/VoicestartmonitoringData', 'model/VoicestopmonitoringData', 'model/WorkbinsgetcontentsData', 'model/WorkbinsworkbinIdaddinteractionData', 'model/WorkbinsworkbinIdgetcontentData', 'model/WorkbinsworkbinIdsubscribeData', 'api/DocumentationApi', 'api/EmailApi', 'api/MediaApi', 'api/NotificationsApi', 'api/ReportingApi', 'api/SessionApi', 'api/StandardResponsesApi', 'api/TargetsApi', 'api/UcsApi', 'api/UsersApi', 'api/VoiceApi', 'api/WorkbinsApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/AcceptData'), require('./model/AcceptData1'), require('./model/AcceptData2'), require('./model/ActivatechannelsData'), require('./model/AddCommentData'), require('./model/AddContentData'), require('./model/AddInteractionToWorkbinData'), require('./model/AgentHistoryData'), require('./model/AlternateData'), require('./model/AnswerData'), require('./model/ApiErrorResponse'), require('./model/ApiSuccessResponse'), require('./model/AssignInteractionToContactData'), require('./model/Call'), require('./model/CallCompletedData'), require('./model/CallNoteData'), require('./model/CallParticipants'), require('./model/ChannelsData'), require('./model/ClearData'), require('./model/CompleteConferenceData'), require('./model/CompleteTransferData'), require('./model/ConfigResponse'), require('./model/ConfigResponseData'), require('./model/ConfigResponseDataActionCodes'), require('./model/ConfigResponseDataBusinessAttributes'), require('./model/ConfigResponseDataTransactions'), require('./model/ConfigResponseDataValues'), require('./model/ContactDetailsData'), require('./model/ContactHistoryData'), require('./model/CreateData'), require('./model/CurrentSession'), require('./model/CurrentSessionData'), require('./model/CurrentSessionDataPendingloginasync'), require('./model/CurrentSessionDataUser'), require('./model/CurrentSessionDataUserActiveSession'), require('./model/CurrentSessionStatus'), require('./model/Data'), require('./model/DeleteContactData'), require('./model/DeleteFromConferenceData'), require('./model/Devices'), require('./model/DevicesData'), require('./model/Dn'), require('./model/ForwardData'), require('./model/GetCategoryData'), require('./model/GetContactsData'), require('./model/GetStandardResponseData'), require('./model/GetWorkbinContentData'), require('./model/GetWorkbinsContentData'), require('./model/HoldData'), require('./model/IdentifyContactData'), require('./model/InitiateConferenceData'), require('./model/InitiateTransferData'), require('./model/InlineResponse200'), require('./model/InlineResponse2001'), require('./model/InlineResponse2001Data'), require('./model/InlineResponse2002'), require('./model/InlineResponse2002Data'), require('./model/InlineResponse200Data'), require('./model/InlineResponse200Status'), require('./model/InteractionContentData'), require('./model/IxnReasonCode'), require('./model/KeyData'), require('./model/Kvpair'), require('./model/LogoutMediaData'), require('./model/LuceneSearchData'), require('./model/LuceneSearchInteractionData'), require('./model/MakeCallData'), require('./model/Media'), require('./model/MediachatinteractionsidsendmessageData'), require('./model/MediaemailinteractionscreateData'), require('./model/MediaemailinteractionsidacceptData'), require('./model/MediamediatypeinteractionsidacceptData'), require('./model/MediamediatypeinteractionsidaddcommentData'), require('./model/MediamediatypeinteractionsidaddcontentData'), require('./model/MediamediatypeinteractionsiddeleteuserdataData'), require('./model/MediamediatypeinteractionsidplaceinqueueData'), require('./model/MediamediatypeinteractionsidtransferagentData'), require('./model/MediamediatypelogoutData'), require('./model/MediamediatypenotreadyData'), require('./model/MergeData'), require('./model/MonitoringScopeData'), require('./model/MonitoringScopeDataData'), require('./model/NotReadyData'), require('./model/NotReadyForMediaData'), require('./model/OpenMediaChannel'), require('./model/PersonalFavoriteData'), require('./model/PhoneCallData'), require('./model/PlaceInQueueData'), require('./model/PullInteractionFromWorkbinData'), require('./model/ReadyData'), require('./model/ReadyForMediaData'), require('./model/RecentData'), require('./model/RecentTargetData'), require('./model/ReconnectData'), require('./model/RedirectData'), require('./model/RejectData'), require('./model/ReleaseData'), require('./model/RenderFieldCodesData'), require('./model/RetrieveData'), require('./model/SendDTMFData'), require('./model/SendUserEventData'), require('./model/SendUserEventDataData'), require('./model/SingleStepConferenceData'), require('./model/SingleStepTransferData'), require('./model/StartMonitoringData'), require('./model/Statistic'), require('./model/StatisticValue'), require('./model/StatisticsSubscribeData'), require('./model/StatisticsSubscribeDataData'), require('./model/StopMonitoringData'), require('./model/SubscribeToWorkbinNotificationsData'), require('./model/Subscription'), require('./model/SupervisorvoiceoperationNameData'), require('./model/Target'), require('./model/TargetInformation'), require('./model/TargetsResponse'), require('./model/TargetsResponseData'), require('./model/TargetspersonalfavoritessaveData'), require('./model/TargetsrecentsaddData'), require('./model/TransferData'), require('./model/UcsassigninteractiontocontactData'), require('./model/UcsdeletecontactData'), require('./model/UcsfindorcreatephonecallData'), require('./model/UcsgetagenthistoryData'), require('./model/UcsgetcontactdetailsData'), require('./model/UcsgetcontacthistoryData'), require('./model/UcsgetcontactsData'), require('./model/UcsgetinteractioncontentData'), require('./model/UcsidentifycontactData'), require('./model/UcslucenesearchData'), require('./model/UcslucenesearchinteractionData'), require('./model/UcsresponsescategoriesidgetdetailsData'), require('./model/UcsresponsesidgetdetailsData'), require('./model/UcsresponsesidrenderfieldcodesData'), require('./model/UcssetcallcompletedData'), require('./model/UcssetcallnoteData'), require('./model/UcsupdatecontactData'), require('./model/UnsubscribeToWorkbinNotificationsData'), require('./model/UpdateContactData'), require('./model/UserData'), require('./model/UserData1'), require('./model/UserData2'), require('./model/VoicecallsidalternateData'), require('./model/VoicecallsidcompleteData'), require('./model/VoicecallsidcompletetransferData'), require('./model/VoicecallsiddeletefromconferenceData'), require('./model/VoicecallsiddeleteuserdatapairData'), require('./model/VoicecallsidinitiateconferenceData'), require('./model/VoicecallsidinitiatetransferData'), require('./model/VoicecallsidmergeData'), require('./model/VoicecallsidreconnectData'), require('./model/VoicecallsidredirectData'), require('./model/VoicecallsidsenddtmfData'), require('./model/VoicecallsidsinglestepconferenceData'), require('./model/VoicecallsidsinglesteptransferData'), require('./model/VoicemakecallData'), require('./model/VoicenotreadyData'), require('./model/VoicereadyData'), require('./model/VoicesetforwardData'), require('./model/VoicestartmonitoringData'), require('./model/VoicestopmonitoringData'), require('./model/WorkbinsgetcontentsData'), require('./model/WorkbinsworkbinIdaddinteractionData'), require('./model/WorkbinsworkbinIdgetcontentData'), require('./model/WorkbinsworkbinIdsubscribeData'), require('./api/DocumentationApi'), require('./api/EmailApi'), require('./api/MediaApi'), require('./api/NotificationsApi'), require('./api/ReportingApi'), require('./api/SessionApi'), require('./api/StandardResponsesApi'), require('./api/TargetsApi'), require('./api/UcsApi'), require('./api/UsersApi'), require('./api/VoiceApi'), require('./api/WorkbinsApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/AcceptData'), require('./model/AcceptData1'), require('./model/AcceptData2'), require('./model/AcceptData3'), require('./model/AcceptData4'), require('./model/ActivatechannelsData'), require('./model/AddCommentData'), require('./model/AddContentData'), require('./model/AddInteractionToWorkbinData'), require('./model/AgentHistoryData'), require('./model/AlternateData'), require('./model/AnswerData'), require('./model/ApiErrorResponse'), require('./model/ApiSuccessResponse'), require('./model/AssignInteractionToContactData'), require('./model/Call'), require('./model/CallCompletedData'), require('./model/CallNoteData'), require('./model/CallParticipants'), require('./model/ChannelsData'), require('./model/ClearData'), require('./model/CompleteConferenceData'), require('./model/CompleteTransferData'), require('./model/ConfigResponse'), require('./model/ConfigResponseData'), require('./model/ConfigResponseDataActionCodes'), require('./model/ConfigResponseDataBusinessAttributes'), require('./model/ConfigResponseDataTransactions'), require('./model/ConfigResponseDataValues'), require('./model/ContactDetailsData'), require('./model/ContactHistoryData'), require('./model/CreateContactData'), require('./model/CreateData'), require('./model/CurrentSession'), require('./model/CurrentSessionData'), require('./model/CurrentSessionDataPendingloginasync'), require('./model/CurrentSessionDataUser'), require('./model/CurrentSessionDataUserActiveSession'), require('./model/CurrentSessionStatus'), require('./model/Data'), require('./model/DeleteFromConferenceData'), require('./model/Devices'), require('./model/DevicesData'), require('./model/Dn'), require('./model/ForwardData'), require('./model/GetCategoryData'), require('./model/GetStandardResponseData'), require('./model/GetWorkbinContentData'), require('./model/GetWorkbinsContentData'), require('./model/HoldData'), require('./model/IdentifyContactData'), require('./model/InitiateConferenceData'), require('./model/InitiateTransferData'), require('./model/InlineResponse200'), require('./model/InlineResponse2001'), require('./model/InlineResponse2001Data'), require('./model/InlineResponse2002'), require('./model/InlineResponse2002Data'), require('./model/InlineResponse200Data'), require('./model/InlineResponse200Status'), require('./model/IxnReasonCode'), require('./model/KeyData'), require('./model/Kvpair'), require('./model/LogoutMediaData'), require('./model/LuceneSearchData'), require('./model/LuceneSearchInteractionData'), require('./model/MakeCallData'), require('./model/Media'), require('./model/MediachatinteractionsidacceptData'), require('./model/MediachatinteractionsidsendmessageData'), require('./model/MediachatinteractionsidsendurlData'), require('./model/MediaemailinteractionscreateData'), require('./model/MediaemailinteractionsidacceptData'), require('./model/MediaemailinteractionsidreplyData'), require('./model/MediaemailinteractionsidsaveData'), require('./model/MediaemailinteractionsidsendData'), require('./model/MediamediatypeinteractionsidacceptData'), require('./model/MediamediatypeinteractionsidaddcommentData'), require('./model/MediamediatypeinteractionsidaddcontentData'), require('./model/MediamediatypeinteractionsiddeleteuserdataData'), require('./model/MediamediatypeinteractionsidplaceinqueueData'), require('./model/MediamediatypeinteractionsidtransferagentData'), require('./model/MediamediatypelogoutData'), require('./model/MediamediatypenotreadyData'), require('./model/MergeData'), require('./model/MonitoringScopeData'), require('./model/MonitoringScopeDataData'), require('./model/NotReadyData'), require('./model/NotReadyForMediaData'), require('./model/OpenMediaChannel'), require('./model/PersonalFavoriteData'), require('./model/PlaceInQueueData'), require('./model/PullInteractionFromWorkbinData'), require('./model/ReadyData'), require('./model/ReadyForMediaData'), require('./model/RecentData'), require('./model/RecentTargetData'), require('./model/ReconnectData'), require('./model/RedirectData'), require('./model/RejectData'), require('./model/ReleaseData'), require('./model/RenderStandardResponseFieldCodesData'), require('./model/ReplyData'), require('./model/ReportStandareResponseUsageData'), require('./model/RetrieveData'), require('./model/SaveData'), require('./model/SendDTMFData'), require('./model/SendData'), require('./model/SendUserEventData'), require('./model/SendUserEventDataData'), require('./model/SingleStepConferenceData'), require('./model/SingleStepTransferData'), require('./model/StartMonitoringData'), require('./model/Statistic'), require('./model/StatisticValue'), require('./model/StatisticsSubscribeData'), require('./model/StatisticsSubscribeDataData'), require('./model/StopMonitoringData'), require('./model/SubscribeToWorkbinNotificationsData'), require('./model/Subscription'), require('./model/SupervisorvoiceoperationNameData'), require('./model/Target'), require('./model/TargetInformation'), require('./model/TargetsResponse'), require('./model/TargetsResponseData'), require('./model/TargetspersonalfavoritessaveData'), require('./model/TargetsrecentsaddData'), require('./model/TransferData'), require('./model/UcscontactscreateData'), require('./model/UcscontactsidgetdetailsData'), require('./model/UcscontactsidgethistoryData'), require('./model/UcscontactsidupdateData'), require('./model/UcscontactssearchData'), require('./model/UcsgetagenthistoryData'), require('./model/UcsinteractionsidassigncontactData'), require('./model/UcsinteractionsididentifycontactData'), require('./model/UcsinteractionsidsetcompletedData'), require('./model/UcsinteractionsidsetnoteData'), require('./model/UcsixnsearchData'), require('./model/UcsresponsescategoriesidgetdetailsData'), require('./model/UcsresponsesidgetdetailsData'), require('./model/UcsresponsesidrenderfieldcodesData'), require('./model/UcsresponsesidreportusageData'), require('./model/UnsubscribeToWorkbinNotificationsData'), require('./model/UpdateContactData'), require('./model/UserData'), require('./model/UserData1'), require('./model/UserData2'), require('./model/VoicecallsidalternateData'), require('./model/VoicecallsidcompleteData'), require('./model/VoicecallsidcompletetransferData'), require('./model/VoicecallsiddeletefromconferenceData'), require('./model/VoicecallsiddeleteuserdatapairData'), require('./model/VoicecallsidinitiateconferenceData'), require('./model/VoicecallsidinitiatetransferData'), require('./model/VoicecallsidmergeData'), require('./model/VoicecallsidreconnectData'), require('./model/VoicecallsidredirectData'), require('./model/VoicecallsidsenddtmfData'), require('./model/VoicecallsidsinglestepconferenceData'), require('./model/VoicecallsidsinglesteptransferData'), require('./model/VoicemakecallData'), require('./model/VoicenotreadyData'), require('./model/VoicereadyData'), require('./model/VoicesetforwardData'), require('./model/VoicestartmonitoringData'), require('./model/VoicestopmonitoringData'), require('./model/WorkbinsgetcontentsData'), require('./model/WorkbinsworkbinIdaddinteractionData'), require('./model/WorkbinsworkbinIdgetcontentData'), require('./model/WorkbinsworkbinIdsubscribeData'), require('./api/DocumentationApi'), require('./api/EmailApi'), require('./api/MediaApi'), require('./api/NotificationsApi'), require('./api/ReportingApi'), require('./api/SessionApi'), require('./api/StandardResponsesApi'), require('./api/TargetsApi'), require('./api/UcsApi'), require('./api/UsersApi'), require('./api/VoiceApi'), require('./api/WorkbinsApi'));
   }
-}(function(ApiClient, AcceptData, AcceptData1, AcceptData2, ActivatechannelsData, AddCommentData, AddContentData, AddInteractionToWorkbinData, AgentHistoryData, AlternateData, AnswerData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, Call, CallCompletedData, CallNoteData, CallParticipants, ChannelsData, ClearData, CompleteConferenceData, CompleteTransferData, ConfigResponse, ConfigResponseData, ConfigResponseDataActionCodes, ConfigResponseDataBusinessAttributes, ConfigResponseDataTransactions, ConfigResponseDataValues, ContactDetailsData, ContactHistoryData, CreateData, CurrentSession, CurrentSessionData, CurrentSessionDataPendingloginasync, CurrentSessionDataUser, CurrentSessionDataUserActiveSession, CurrentSessionStatus, Data, DeleteContactData, DeleteFromConferenceData, Devices, DevicesData, Dn, ForwardData, GetCategoryData, GetContactsData, GetStandardResponseData, GetWorkbinContentData, GetWorkbinsContentData, HoldData, IdentifyContactData, InitiateConferenceData, InitiateTransferData, InlineResponse200, InlineResponse2001, InlineResponse2001Data, InlineResponse2002, InlineResponse2002Data, InlineResponse200Data, InlineResponse200Status, InteractionContentData, IxnReasonCode, KeyData, Kvpair, LogoutMediaData, LuceneSearchData, LuceneSearchInteractionData, MakeCallData, Media, MediachatinteractionsidsendmessageData, MediaemailinteractionscreateData, MediaemailinteractionsidacceptData, MediamediatypeinteractionsidacceptData, MediamediatypeinteractionsidaddcommentData, MediamediatypeinteractionsidaddcontentData, MediamediatypeinteractionsiddeleteuserdataData, MediamediatypeinteractionsidplaceinqueueData, MediamediatypeinteractionsidtransferagentData, MediamediatypelogoutData, MediamediatypenotreadyData, MergeData, MonitoringScopeData, MonitoringScopeDataData, NotReadyData, NotReadyForMediaData, OpenMediaChannel, PersonalFavoriteData, PhoneCallData, PlaceInQueueData, PullInteractionFromWorkbinData, ReadyData, ReadyForMediaData, RecentData, RecentTargetData, ReconnectData, RedirectData, RejectData, ReleaseData, RenderFieldCodesData, RetrieveData, SendDTMFData, SendUserEventData, SendUserEventDataData, SingleStepConferenceData, SingleStepTransferData, StartMonitoringData, Statistic, StatisticValue, StatisticsSubscribeData, StatisticsSubscribeDataData, StopMonitoringData, SubscribeToWorkbinNotificationsData, Subscription, SupervisorvoiceoperationNameData, Target, TargetInformation, TargetsResponse, TargetsResponseData, TargetspersonalfavoritessaveData, TargetsrecentsaddData, TransferData, UcsassigninteractiontocontactData, UcsdeletecontactData, UcsfindorcreatephonecallData, UcsgetagenthistoryData, UcsgetcontactdetailsData, UcsgetcontacthistoryData, UcsgetcontactsData, UcsgetinteractioncontentData, UcsidentifycontactData, UcslucenesearchData, UcslucenesearchinteractionData, UcsresponsescategoriesidgetdetailsData, UcsresponsesidgetdetailsData, UcsresponsesidrenderfieldcodesData, UcssetcallcompletedData, UcssetcallnoteData, UcsupdatecontactData, UnsubscribeToWorkbinNotificationsData, UpdateContactData, UserData, UserData1, UserData2, VoicecallsidalternateData, VoicecallsidcompleteData, VoicecallsidcompletetransferData, VoicecallsiddeletefromconferenceData, VoicecallsiddeleteuserdatapairData, VoicecallsidinitiateconferenceData, VoicecallsidinitiatetransferData, VoicecallsidmergeData, VoicecallsidreconnectData, VoicecallsidredirectData, VoicecallsidsenddtmfData, VoicecallsidsinglestepconferenceData, VoicecallsidsinglesteptransferData, VoicemakecallData, VoicenotreadyData, VoicereadyData, VoicesetforwardData, VoicestartmonitoringData, VoicestopmonitoringData, WorkbinsgetcontentsData, WorkbinsworkbinIdaddinteractionData, WorkbinsworkbinIdgetcontentData, WorkbinsworkbinIdsubscribeData, DocumentationApi, EmailApi, MediaApi, NotificationsApi, ReportingApi, SessionApi, StandardResponsesApi, TargetsApi, UcsApi, UsersApi, VoiceApi, WorkbinsApi) {
+}(function(ApiClient, AcceptData, AcceptData1, AcceptData2, AcceptData3, AcceptData4, ActivatechannelsData, AddCommentData, AddContentData, AddInteractionToWorkbinData, AgentHistoryData, AlternateData, AnswerData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, Call, CallCompletedData, CallNoteData, CallParticipants, ChannelsData, ClearData, CompleteConferenceData, CompleteTransferData, ConfigResponse, ConfigResponseData, ConfigResponseDataActionCodes, ConfigResponseDataBusinessAttributes, ConfigResponseDataTransactions, ConfigResponseDataValues, ContactDetailsData, ContactHistoryData, CreateContactData, CreateData, CurrentSession, CurrentSessionData, CurrentSessionDataPendingloginasync, CurrentSessionDataUser, CurrentSessionDataUserActiveSession, CurrentSessionStatus, Data, DeleteFromConferenceData, Devices, DevicesData, Dn, ForwardData, GetCategoryData, GetStandardResponseData, GetWorkbinContentData, GetWorkbinsContentData, HoldData, IdentifyContactData, InitiateConferenceData, InitiateTransferData, InlineResponse200, InlineResponse2001, InlineResponse2001Data, InlineResponse2002, InlineResponse2002Data, InlineResponse200Data, InlineResponse200Status, IxnReasonCode, KeyData, Kvpair, LogoutMediaData, LuceneSearchData, LuceneSearchInteractionData, MakeCallData, Media, MediachatinteractionsidacceptData, MediachatinteractionsidsendmessageData, MediachatinteractionsidsendurlData, MediaemailinteractionscreateData, MediaemailinteractionsidacceptData, MediaemailinteractionsidreplyData, MediaemailinteractionsidsaveData, MediaemailinteractionsidsendData, MediamediatypeinteractionsidacceptData, MediamediatypeinteractionsidaddcommentData, MediamediatypeinteractionsidaddcontentData, MediamediatypeinteractionsiddeleteuserdataData, MediamediatypeinteractionsidplaceinqueueData, MediamediatypeinteractionsidtransferagentData, MediamediatypelogoutData, MediamediatypenotreadyData, MergeData, MonitoringScopeData, MonitoringScopeDataData, NotReadyData, NotReadyForMediaData, OpenMediaChannel, PersonalFavoriteData, PlaceInQueueData, PullInteractionFromWorkbinData, ReadyData, ReadyForMediaData, RecentData, RecentTargetData, ReconnectData, RedirectData, RejectData, ReleaseData, RenderStandardResponseFieldCodesData, ReplyData, ReportStandareResponseUsageData, RetrieveData, SaveData, SendDTMFData, SendData, SendUserEventData, SendUserEventDataData, SingleStepConferenceData, SingleStepTransferData, StartMonitoringData, Statistic, StatisticValue, StatisticsSubscribeData, StatisticsSubscribeDataData, StopMonitoringData, SubscribeToWorkbinNotificationsData, Subscription, SupervisorvoiceoperationNameData, Target, TargetInformation, TargetsResponse, TargetsResponseData, TargetspersonalfavoritessaveData, TargetsrecentsaddData, TransferData, UcscontactscreateData, UcscontactsidgetdetailsData, UcscontactsidgethistoryData, UcscontactsidupdateData, UcscontactssearchData, UcsgetagenthistoryData, UcsinteractionsidassigncontactData, UcsinteractionsididentifycontactData, UcsinteractionsidsetcompletedData, UcsinteractionsidsetnoteData, UcsixnsearchData, UcsresponsescategoriesidgetdetailsData, UcsresponsesidgetdetailsData, UcsresponsesidrenderfieldcodesData, UcsresponsesidreportusageData, UnsubscribeToWorkbinNotificationsData, UpdateContactData, UserData, UserData1, UserData2, VoicecallsidalternateData, VoicecallsidcompleteData, VoicecallsidcompletetransferData, VoicecallsiddeletefromconferenceData, VoicecallsiddeleteuserdatapairData, VoicecallsidinitiateconferenceData, VoicecallsidinitiatetransferData, VoicecallsidmergeData, VoicecallsidreconnectData, VoicecallsidredirectData, VoicecallsidsenddtmfData, VoicecallsidsinglestepconferenceData, VoicecallsidsinglesteptransferData, VoicemakecallData, VoicenotreadyData, VoicereadyData, VoicesetforwardData, VoicestartmonitoringData, VoicestopmonitoringData, WorkbinsgetcontentsData, WorkbinsworkbinIdaddinteractionData, WorkbinsworkbinIdgetcontentData, WorkbinsworkbinIdsubscribeData, DocumentationApi, EmailApi, MediaApi, NotificationsApi, ReportingApi, SessionApi, StandardResponsesApi, TargetsApi, UcsApi, UsersApi, VoiceApi, WorkbinsApi) {
   'use strict';
 
   /**
@@ -76,6 +76,16 @@
      * @property {module:model/AcceptData2}
      */
     AcceptData2: AcceptData2,
+    /**
+     * The AcceptData3 model constructor.
+     * @property {module:model/AcceptData3}
+     */
+    AcceptData3: AcceptData3,
+    /**
+     * The AcceptData4 model constructor.
+     * @property {module:model/AcceptData4}
+     */
+    AcceptData4: AcceptData4,
     /**
      * The ActivatechannelsData model constructor.
      * @property {module:model/ActivatechannelsData}
@@ -207,6 +217,11 @@
      */
     ContactHistoryData: ContactHistoryData,
     /**
+     * The CreateContactData model constructor.
+     * @property {module:model/CreateContactData}
+     */
+    CreateContactData: CreateContactData,
+    /**
      * The CreateData model constructor.
      * @property {module:model/CreateData}
      */
@@ -247,11 +262,6 @@
      */
     Data: Data,
     /**
-     * The DeleteContactData model constructor.
-     * @property {module:model/DeleteContactData}
-     */
-    DeleteContactData: DeleteContactData,
-    /**
      * The DeleteFromConferenceData model constructor.
      * @property {module:model/DeleteFromConferenceData}
      */
@@ -281,11 +291,6 @@
      * @property {module:model/GetCategoryData}
      */
     GetCategoryData: GetCategoryData,
-    /**
-     * The GetContactsData model constructor.
-     * @property {module:model/GetContactsData}
-     */
-    GetContactsData: GetContactsData,
     /**
      * The GetStandardResponseData model constructor.
      * @property {module:model/GetStandardResponseData}
@@ -357,11 +362,6 @@
      */
     InlineResponse200Status: InlineResponse200Status,
     /**
-     * The InteractionContentData model constructor.
-     * @property {module:model/InteractionContentData}
-     */
-    InteractionContentData: InteractionContentData,
-    /**
      * The IxnReasonCode model constructor.
      * @property {module:model/IxnReasonCode}
      */
@@ -402,10 +402,20 @@
      */
     Media: Media,
     /**
+     * The MediachatinteractionsidacceptData model constructor.
+     * @property {module:model/MediachatinteractionsidacceptData}
+     */
+    MediachatinteractionsidacceptData: MediachatinteractionsidacceptData,
+    /**
      * The MediachatinteractionsidsendmessageData model constructor.
      * @property {module:model/MediachatinteractionsidsendmessageData}
      */
     MediachatinteractionsidsendmessageData: MediachatinteractionsidsendmessageData,
+    /**
+     * The MediachatinteractionsidsendurlData model constructor.
+     * @property {module:model/MediachatinteractionsidsendurlData}
+     */
+    MediachatinteractionsidsendurlData: MediachatinteractionsidsendurlData,
     /**
      * The MediaemailinteractionscreateData model constructor.
      * @property {module:model/MediaemailinteractionscreateData}
@@ -416,6 +426,21 @@
      * @property {module:model/MediaemailinteractionsidacceptData}
      */
     MediaemailinteractionsidacceptData: MediaemailinteractionsidacceptData,
+    /**
+     * The MediaemailinteractionsidreplyData model constructor.
+     * @property {module:model/MediaemailinteractionsidreplyData}
+     */
+    MediaemailinteractionsidreplyData: MediaemailinteractionsidreplyData,
+    /**
+     * The MediaemailinteractionsidsaveData model constructor.
+     * @property {module:model/MediaemailinteractionsidsaveData}
+     */
+    MediaemailinteractionsidsaveData: MediaemailinteractionsidsaveData,
+    /**
+     * The MediaemailinteractionsidsendData model constructor.
+     * @property {module:model/MediaemailinteractionsidsendData}
+     */
+    MediaemailinteractionsidsendData: MediaemailinteractionsidsendData,
     /**
      * The MediamediatypeinteractionsidacceptData model constructor.
      * @property {module:model/MediamediatypeinteractionsidacceptData}
@@ -492,11 +517,6 @@
      */
     PersonalFavoriteData: PersonalFavoriteData,
     /**
-     * The PhoneCallData model constructor.
-     * @property {module:model/PhoneCallData}
-     */
-    PhoneCallData: PhoneCallData,
-    /**
      * The PlaceInQueueData model constructor.
      * @property {module:model/PlaceInQueueData}
      */
@@ -547,20 +567,40 @@
      */
     ReleaseData: ReleaseData,
     /**
-     * The RenderFieldCodesData model constructor.
-     * @property {module:model/RenderFieldCodesData}
+     * The RenderStandardResponseFieldCodesData model constructor.
+     * @property {module:model/RenderStandardResponseFieldCodesData}
      */
-    RenderFieldCodesData: RenderFieldCodesData,
+    RenderStandardResponseFieldCodesData: RenderStandardResponseFieldCodesData,
+    /**
+     * The ReplyData model constructor.
+     * @property {module:model/ReplyData}
+     */
+    ReplyData: ReplyData,
+    /**
+     * The ReportStandareResponseUsageData model constructor.
+     * @property {module:model/ReportStandareResponseUsageData}
+     */
+    ReportStandareResponseUsageData: ReportStandareResponseUsageData,
     /**
      * The RetrieveData model constructor.
      * @property {module:model/RetrieveData}
      */
     RetrieveData: RetrieveData,
     /**
+     * The SaveData model constructor.
+     * @property {module:model/SaveData}
+     */
+    SaveData: SaveData,
+    /**
      * The SendDTMFData model constructor.
      * @property {module:model/SendDTMFData}
      */
     SendDTMFData: SendDTMFData,
+    /**
+     * The SendData model constructor.
+     * @property {module:model/SendData}
+     */
+    SendData: SendData,
     /**
      * The SendUserEventData model constructor.
      * @property {module:model/SendUserEventData}
@@ -662,60 +702,60 @@
      */
     TransferData: TransferData,
     /**
-     * The UcsassigninteractiontocontactData model constructor.
-     * @property {module:model/UcsassigninteractiontocontactData}
+     * The UcscontactscreateData model constructor.
+     * @property {module:model/UcscontactscreateData}
      */
-    UcsassigninteractiontocontactData: UcsassigninteractiontocontactData,
+    UcscontactscreateData: UcscontactscreateData,
     /**
-     * The UcsdeletecontactData model constructor.
-     * @property {module:model/UcsdeletecontactData}
+     * The UcscontactsidgetdetailsData model constructor.
+     * @property {module:model/UcscontactsidgetdetailsData}
      */
-    UcsdeletecontactData: UcsdeletecontactData,
+    UcscontactsidgetdetailsData: UcscontactsidgetdetailsData,
     /**
-     * The UcsfindorcreatephonecallData model constructor.
-     * @property {module:model/UcsfindorcreatephonecallData}
+     * The UcscontactsidgethistoryData model constructor.
+     * @property {module:model/UcscontactsidgethistoryData}
      */
-    UcsfindorcreatephonecallData: UcsfindorcreatephonecallData,
+    UcscontactsidgethistoryData: UcscontactsidgethistoryData,
+    /**
+     * The UcscontactsidupdateData model constructor.
+     * @property {module:model/UcscontactsidupdateData}
+     */
+    UcscontactsidupdateData: UcscontactsidupdateData,
+    /**
+     * The UcscontactssearchData model constructor.
+     * @property {module:model/UcscontactssearchData}
+     */
+    UcscontactssearchData: UcscontactssearchData,
     /**
      * The UcsgetagenthistoryData model constructor.
      * @property {module:model/UcsgetagenthistoryData}
      */
     UcsgetagenthistoryData: UcsgetagenthistoryData,
     /**
-     * The UcsgetcontactdetailsData model constructor.
-     * @property {module:model/UcsgetcontactdetailsData}
+     * The UcsinteractionsidassigncontactData model constructor.
+     * @property {module:model/UcsinteractionsidassigncontactData}
      */
-    UcsgetcontactdetailsData: UcsgetcontactdetailsData,
+    UcsinteractionsidassigncontactData: UcsinteractionsidassigncontactData,
     /**
-     * The UcsgetcontacthistoryData model constructor.
-     * @property {module:model/UcsgetcontacthistoryData}
+     * The UcsinteractionsididentifycontactData model constructor.
+     * @property {module:model/UcsinteractionsididentifycontactData}
      */
-    UcsgetcontacthistoryData: UcsgetcontacthistoryData,
+    UcsinteractionsididentifycontactData: UcsinteractionsididentifycontactData,
     /**
-     * The UcsgetcontactsData model constructor.
-     * @property {module:model/UcsgetcontactsData}
+     * The UcsinteractionsidsetcompletedData model constructor.
+     * @property {module:model/UcsinteractionsidsetcompletedData}
      */
-    UcsgetcontactsData: UcsgetcontactsData,
+    UcsinteractionsidsetcompletedData: UcsinteractionsidsetcompletedData,
     /**
-     * The UcsgetinteractioncontentData model constructor.
-     * @property {module:model/UcsgetinteractioncontentData}
+     * The UcsinteractionsidsetnoteData model constructor.
+     * @property {module:model/UcsinteractionsidsetnoteData}
      */
-    UcsgetinteractioncontentData: UcsgetinteractioncontentData,
+    UcsinteractionsidsetnoteData: UcsinteractionsidsetnoteData,
     /**
-     * The UcsidentifycontactData model constructor.
-     * @property {module:model/UcsidentifycontactData}
+     * The UcsixnsearchData model constructor.
+     * @property {module:model/UcsixnsearchData}
      */
-    UcsidentifycontactData: UcsidentifycontactData,
-    /**
-     * The UcslucenesearchData model constructor.
-     * @property {module:model/UcslucenesearchData}
-     */
-    UcslucenesearchData: UcslucenesearchData,
-    /**
-     * The UcslucenesearchinteractionData model constructor.
-     * @property {module:model/UcslucenesearchinteractionData}
-     */
-    UcslucenesearchinteractionData: UcslucenesearchinteractionData,
+    UcsixnsearchData: UcsixnsearchData,
     /**
      * The UcsresponsescategoriesidgetdetailsData model constructor.
      * @property {module:model/UcsresponsescategoriesidgetdetailsData}
@@ -732,20 +772,10 @@
      */
     UcsresponsesidrenderfieldcodesData: UcsresponsesidrenderfieldcodesData,
     /**
-     * The UcssetcallcompletedData model constructor.
-     * @property {module:model/UcssetcallcompletedData}
+     * The UcsresponsesidreportusageData model constructor.
+     * @property {module:model/UcsresponsesidreportusageData}
      */
-    UcssetcallcompletedData: UcssetcallcompletedData,
-    /**
-     * The UcssetcallnoteData model constructor.
-     * @property {module:model/UcssetcallnoteData}
-     */
-    UcssetcallnoteData: UcssetcallnoteData,
-    /**
-     * The UcsupdatecontactData model constructor.
-     * @property {module:model/UcsupdatecontactData}
-     */
-    UcsupdatecontactData: UcsupdatecontactData,
+    UcsresponsesidreportusageData: UcsresponsesidreportusageData,
     /**
      * The UnsubscribeToWorkbinNotificationsData model constructor.
      * @property {module:model/UnsubscribeToWorkbinNotificationsData}

@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcssetcallnoteData'], factory);
+    define(['ApiClient', 'model/UcsinteractionsidsetnoteData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcssetcallnoteData'));
+    module.exports = factory(require('../ApiClient'), require('./UcsinteractionsidsetnoteData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CallNoteData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcssetcallnoteData);
+    root.WorkspaceApi.CallNoteData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsinteractionsidsetnoteData);
   }
-}(this, function(ApiClient, UcssetcallnoteData) {
+}(this, function(ApiClient, UcsinteractionsidsetnoteData) {
   'use strict';
 
 
@@ -43,7 +43,7 @@
    * Constructs a new <code>CallNoteData</code>.
    * @alias module:model/CallNoteData
    * @class
-   * @param data {module:model/UcssetcallnoteData} 
+   * @param data {module:model/UcsinteractionsidsetnoteData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -63,14 +63,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcssetcallnoteData.constructFromObject(data['data']);
+        obj['data'] = UcsinteractionsidsetnoteData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcssetcallnoteData} data
+   * @member {module:model/UcsinteractionsidsetnoteData} data
    */
   exports.prototype['data'] = undefined;
 

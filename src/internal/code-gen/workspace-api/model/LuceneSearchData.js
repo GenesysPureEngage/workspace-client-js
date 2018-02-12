@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcslucenesearchData'], factory);
+    define(['ApiClient', 'model/UcscontactssearchData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcslucenesearchData'));
+    module.exports = factory(require('../ApiClient'), require('./UcscontactssearchData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.LuceneSearchData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcslucenesearchData);
+    root.WorkspaceApi.LuceneSearchData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcscontactssearchData);
   }
-}(this, function(ApiClient, UcslucenesearchData) {
+}(this, function(ApiClient, UcscontactssearchData) {
   'use strict';
 
 
@@ -43,7 +43,7 @@
    * Constructs a new <code>LuceneSearchData</code>.
    * @alias module:model/LuceneSearchData
    * @class
-   * @param data {module:model/UcslucenesearchData} 
+   * @param data {module:model/UcscontactssearchData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -63,14 +63,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcslucenesearchData.constructFromObject(data['data']);
+        obj['data'] = UcscontactssearchData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcslucenesearchData} data
+   * @member {module:model/UcscontactssearchData} data
    */
   exports.prototype['data'] = undefined;
 

@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsgetinteractioncontentData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.UcsinteractionsidassigncontactData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,46 +34,46 @@
 
 
   /**
-   * The UcsgetinteractioncontentData model module.
-   * @module model/UcsgetinteractioncontentData
+   * The UcsinteractionsidassigncontactData model module.
+   * @module model/UcsinteractionsidassigncontactData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UcsgetinteractioncontentData</code>.
-   * @alias module:model/UcsgetinteractioncontentData
+   * Constructs a new <code>UcsinteractionsidassigncontactData</code>.
+   * @alias module:model/UcsinteractionsidassigncontactData
    * @class
-   * @param interactionId {String} The id of the interaction
+   * @param contactId {String} The id of the contact
    */
-  var exports = function(interactionId) {
+  var exports = function(contactId) {
     var _this = this;
 
-    _this['interactionId'] = interactionId;
+    _this['contactId'] = contactId;
   };
 
   /**
-   * Constructs a <code>UcsgetinteractioncontentData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UcsinteractionsidassigncontactData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UcsgetinteractioncontentData} obj Optional instance to populate.
-   * @return {module:model/UcsgetinteractioncontentData} The populated <code>UcsgetinteractioncontentData</code> instance.
+   * @param {module:model/UcsinteractionsidassigncontactData} obj Optional instance to populate.
+   * @return {module:model/UcsinteractionsidassigncontactData} The populated <code>UcsinteractionsidassigncontactData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('interactionId')) {
-        obj['interactionId'] = ApiClient.convertToType(data['interactionId'], 'String');
+      if (data.hasOwnProperty('contactId')) {
+        obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The id of the interaction
-   * @member {String} interactionId
+   * The id of the contact
+   * @member {String} contactId
    */
-  exports.prototype['interactionId'] = undefined;
+  exports.prototype['contactId'] = undefined;
 
 
 

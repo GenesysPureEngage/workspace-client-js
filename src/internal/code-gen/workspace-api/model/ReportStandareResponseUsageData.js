@@ -16,34 +16,34 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcscontactsidgetdetailsData'], factory);
+    define(['ApiClient', 'model/UcsresponsesidreportusageData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcscontactsidgetdetailsData'));
+    module.exports = factory(require('../ApiClient'), require('./UcsresponsesidreportusageData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ContactDetailsData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcscontactsidgetdetailsData);
+    root.WorkspaceApi.ReportStandareResponseUsageData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsresponsesidreportusageData);
   }
-}(this, function(ApiClient, UcscontactsidgetdetailsData) {
+}(this, function(ApiClient, UcsresponsesidreportusageData) {
   'use strict';
 
 
 
 
   /**
-   * The ContactDetailsData model module.
-   * @module model/ContactDetailsData
+   * The ReportStandareResponseUsageData model module.
+   * @module model/ReportStandareResponseUsageData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>ContactDetailsData</code>.
-   * @alias module:model/ContactDetailsData
+   * Constructs a new <code>ReportStandareResponseUsageData</code>.
+   * @alias module:model/ReportStandareResponseUsageData
    * @class
-   * @param data {module:model/UcscontactsidgetdetailsData} 
+   * @param data {module:model/UcsresponsesidreportusageData} 
    */
   var exports = function(data) {
     var _this = this;
@@ -52,25 +52,25 @@
   };
 
   /**
-   * Constructs a <code>ContactDetailsData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>ReportStandareResponseUsageData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ContactDetailsData} obj Optional instance to populate.
-   * @return {module:model/ContactDetailsData} The populated <code>ContactDetailsData</code> instance.
+   * @param {module:model/ReportStandareResponseUsageData} obj Optional instance to populate.
+   * @return {module:model/ReportStandareResponseUsageData} The populated <code>ReportStandareResponseUsageData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcscontactsidgetdetailsData.constructFromObject(data['data']);
+        obj['data'] = UcsresponsesidreportusageData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcscontactsidgetdetailsData} data
+   * @member {module:model/UcsresponsesidreportusageData} data
    */
   exports.prototype['data'] = undefined;
 

@@ -16,61 +16,60 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/UcsgetcontactsData'], factory);
+    define(['ApiClient', 'model/MediaemailinteractionsidacceptData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./UcsgetcontactsData'));
+    module.exports = factory(require('../ApiClient'), require('./MediaemailinteractionsidacceptData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.GetContactsData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.UcsgetcontactsData);
+    root.WorkspaceApi.AcceptData3 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediaemailinteractionsidacceptData);
   }
-}(this, function(ApiClient, UcsgetcontactsData) {
+}(this, function(ApiClient, MediaemailinteractionsidacceptData) {
   'use strict';
 
 
 
 
   /**
-   * The GetContactsData model module.
-   * @module model/GetContactsData
+   * The AcceptData3 model module.
+   * @module model/AcceptData3
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>GetContactsData</code>.
-   * @alias module:model/GetContactsData
+   * Constructs a new <code>AcceptData3</code>.
+   * @alias module:model/AcceptData3
    * @class
-   * @param data {module:model/UcsgetcontactsData} 
    */
-  var exports = function(data) {
+  var exports = function() {
     var _this = this;
 
-    _this['data'] = data;
+
   };
 
   /**
-   * Constructs a <code>GetContactsData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>AcceptData3</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/GetContactsData} obj Optional instance to populate.
-   * @return {module:model/GetContactsData} The populated <code>GetContactsData</code> instance.
+   * @param {module:model/AcceptData3} obj Optional instance to populate.
+   * @return {module:model/AcceptData3} The populated <code>AcceptData3</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = UcsgetcontactsData.constructFromObject(data['data']);
+        obj['data'] = MediaemailinteractionsidacceptData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/UcsgetcontactsData} data
+   * @member {module:model/MediaemailinteractionsidacceptData} data
    */
   exports.prototype['data'] = undefined;
 

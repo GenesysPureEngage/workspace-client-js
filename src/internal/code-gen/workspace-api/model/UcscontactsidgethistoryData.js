@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsgetcontacthistoryData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.UcscontactsidgethistoryData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,42 +34,38 @@
 
 
   /**
-   * The UcsgetcontacthistoryData model module.
-   * @module model/UcsgetcontacthistoryData
+   * The UcscontactsidgethistoryData model module.
+   * @module model/UcscontactsidgethistoryData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UcsgetcontacthistoryData</code>.
-   * @alias module:model/UcsgetcontacthistoryData
+   * Constructs a new <code>UcscontactsidgethistoryData</code>.
+   * @alias module:model/UcscontactsidgethistoryData
    * @class
-   * @param contactId {String} The id of the contact
+   * @param returnedAttributes {Array.<String>} The list of custom contact attributes to be returned for each interaction of the contact
    */
-  var exports = function(contactId) {
+  var exports = function(returnedAttributes) {
     var _this = this;
 
-    _this['contactId'] = contactId;
-
+    _this['returnedAttributes'] = returnedAttributes;
 
 
   };
 
   /**
-   * Constructs a <code>UcsgetcontacthistoryData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UcscontactsidgethistoryData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UcsgetcontacthistoryData} obj Optional instance to populate.
-   * @return {module:model/UcsgetcontacthistoryData} The populated <code>UcsgetcontacthistoryData</code> instance.
+   * @param {module:model/UcscontactsidgethistoryData} obj Optional instance to populate.
+   * @return {module:model/UcscontactsidgethistoryData} The populated <code>UcscontactsidgethistoryData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('contactId')) {
-        obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
-      }
-      if (data.hasOwnProperty('customAttributes')) {
-        obj['customAttributes'] = ApiClient.convertToType(data['customAttributes'], ['String']);
+      if (data.hasOwnProperty('returnedAttributes')) {
+        obj['returnedAttributes'] = ApiClient.convertToType(data['returnedAttributes'], ['String']);
       }
       if (data.hasOwnProperty('fromDate')) {
         obj['fromDate'] = ApiClient.convertToType(data['fromDate'], 'String');
@@ -82,15 +78,10 @@
   }
 
   /**
-   * The id of the contact
-   * @member {String} contactId
-   */
-  exports.prototype['contactId'] = undefined;
-  /**
    * The list of custom contact attributes to be returned for each interaction of the contact
-   * @member {Array.<String>} customAttributes
+   * @member {Array.<String>} returnedAttributes
    */
-  exports.prototype['customAttributes'] = undefined;
+  exports.prototype['returnedAttributes'] = undefined;
   /**
    * The date from which the interactions should be retrieved (UCS format)
    * @member {String} fromDate

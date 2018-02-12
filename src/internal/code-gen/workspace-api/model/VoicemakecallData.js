@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicemakecallData</code>.
    * @alias module:model/VoicemakecallData
    * @class
-   * @param destination {String} Directory number of the party the call will be transferred to.
+   * @param destination {String} The number to call.
    */
   var exports = function(destination) {
     var _this = this;
@@ -90,7 +90,7 @@
   }
 
   /**
-   * Directory number of the party the call will be transferred to.
+   * The number to call.
    * @member {String} destination
    */
   exports.prototype['destination'] = undefined;

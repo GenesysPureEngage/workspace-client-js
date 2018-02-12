@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsupdatecontactData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.UcscontactsidupdateData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,35 +34,34 @@
 
 
   /**
-   * The UcsupdatecontactData model module.
-   * @module model/UcsupdatecontactData
+   * The UcscontactsidupdateData model module.
+   * @module model/UcscontactsidupdateData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UcsupdatecontactData</code>.
-   * @alias module:model/UcsupdatecontactData
+   * Constructs a new <code>UcscontactsidupdateData</code>.
+   * @alias module:model/UcscontactsidupdateData
    * @class
-   * @param contactId {String} The id of the contact
    * @param addedProperties {Array.<Object>} The list of contact attributes to be added to the contact
    * @param changedProperties {Array.<Object>} The list of contact attributes to be updated for the contact
-   * @param deletedProperties {Array.<Object>} The list of contact attributes to be deleted for the contact
+   * @param deletedProperties {Array.<String>} The list of contact attributes to be deleted for the contact
    */
-  var exports = function(contactId, addedProperties, changedProperties, deletedProperties) {
+  var exports = function(addedProperties, changedProperties, deletedProperties) {
     var _this = this;
 
-    _this['contactId'] = contactId;
+
     _this['addedProperties'] = addedProperties;
     _this['changedProperties'] = changedProperties;
     _this['deletedProperties'] = deletedProperties;
   };
 
   /**
-   * Constructs a <code>UcsupdatecontactData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UcscontactsidupdateData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UcsupdatecontactData} obj Optional instance to populate.
-   * @return {module:model/UcsupdatecontactData} The populated <code>UcsupdatecontactData</code> instance.
+   * @param {module:model/UcscontactsidupdateData} obj Optional instance to populate.
+   * @return {module:model/UcscontactsidupdateData} The populated <code>UcscontactsidupdateData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -78,7 +77,7 @@
         obj['changedProperties'] = ApiClient.convertToType(data['changedProperties'], [Object]);
       }
       if (data.hasOwnProperty('deletedProperties')) {
-        obj['deletedProperties'] = ApiClient.convertToType(data['deletedProperties'], [Object]);
+        obj['deletedProperties'] = ApiClient.convertToType(data['deletedProperties'], ['String']);
       }
     }
     return obj;
@@ -101,7 +100,7 @@
   exports.prototype['changedProperties'] = undefined;
   /**
    * The list of contact attributes to be deleted for the contact
-   * @member {Array.<Object>} deletedProperties
+   * @member {Array.<String>} deletedProperties
    */
   exports.prototype['deletedProperties'] = undefined;
 

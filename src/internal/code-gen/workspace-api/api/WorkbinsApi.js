@@ -107,6 +107,57 @@
 
 
     /**
+     * Get details of an Interaction which is in a workbin
+     * @param {String} interactionId Id of the interaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.getInteractionDetailsFromWorkbinWithHttpInfo = function(interactionId) {
+      var postBody = null;
+
+      // verify the required parameter 'interactionId' is set
+      if (interactionId === undefined || interactionId === null) {
+        throw new Error("Missing the required parameter 'interactionId' when calling getInteractionDetailsFromWorkbin");
+      }
+
+
+      var pathParams = {
+        'interactionId': interactionId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/workbins/interactions/{interactionId}/get-details', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Get details of an Interaction which is in a workbin
+     * @param {String} interactionId Id of the interaction
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.getInteractionDetailsFromWorkbin = function(interactionId) {
+      return this.getInteractionDetailsFromWorkbinWithHttpInfo(interactionId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Get the content of a Workbin.
      * @param {String} workbinId Id of the Workbin
      * @param {module:model/GetWorkbinContentData} getWorkbinContentData 

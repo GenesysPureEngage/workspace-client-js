@@ -102,9 +102,9 @@
 
 
     /**
-     * Get statistics for given subscription ids.
-     * Get the statistics for the specified subscription ID.
-     * @param {String} ids IDs of subscriptions to peek statistics for.
+     * Get statistics.
+     * Get the statistics for the specified subscription IDs.
+     * @param {String} ids The IDs of the subscriptions.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2001} and HTTP response
      */
     this.peekMultipleWithHttpInfo = function(ids) {
@@ -141,9 +141,9 @@
     }
 
     /**
-     * Get statistics for given subscription ids.
-     * Get the statistics for the specified subscription ID.
-     * @param {String} ids IDs of subscriptions to peek statistics for.
+     * Get statistics.
+     * Get the statistics for the specified subscription IDs.
+     * @param {String} ids The IDs of the subscriptions.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2001}
      */
     this.peekMultiple = function(ids) {

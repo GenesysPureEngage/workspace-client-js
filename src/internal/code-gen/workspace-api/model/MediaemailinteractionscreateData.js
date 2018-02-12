@@ -51,6 +51,7 @@
 
 
 
+
   };
 
   /**
@@ -73,6 +74,9 @@
       if (data.hasOwnProperty('contactId')) {
         obj['contactId'] = ApiClient.convertToType(data['contactId'], 'String');
       }
+      if (data.hasOwnProperty('to')) {
+        obj['to'] = ApiClient.convertToType(data['to'], 'String');
+      }
       if (data.hasOwnProperty('userData')) {
         obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
       }
@@ -86,7 +90,7 @@
    */
   exports.prototype['queue'] = undefined;
   /**
-   * Blalala
+   * specify the ThreadId of UCS interaction
    * @member {String} threadId
    */
   exports.prototype['threadId'] = undefined;
@@ -95,6 +99,11 @@
    * @member {String} contactId
    */
   exports.prototype['contactId'] = undefined;
+  /**
+   * the address mail of to
+   * @member {String} to
+   */
+  exports.prototype['to'] = undefined;
   /**
    * A key/value pairs list of user data.
    * @member {Array.<module:model/Kvpair>} userData

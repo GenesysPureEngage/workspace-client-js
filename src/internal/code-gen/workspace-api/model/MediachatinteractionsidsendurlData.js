@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaemailinteractionsidacceptData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.MediachatinteractionsidsendurlData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
   }
 }(this, function(ApiClient, Kvpair) {
   'use strict';
@@ -34,36 +34,37 @@
 
 
   /**
-   * The MediaemailinteractionsidacceptData model module.
-   * @module model/MediaemailinteractionsidacceptData
+   * The MediachatinteractionsidsendurlData model module.
+   * @module model/MediachatinteractionsidsendurlData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediaemailinteractionsidacceptData</code>.
-   * @alias module:model/MediaemailinteractionsidacceptData
+   * Constructs a new <code>MediachatinteractionsidsendurlData</code>.
+   * @alias module:model/MediachatinteractionsidsendurlData
    * @class
+   * @param url {String} The url to send to the chat
    */
-  var exports = function() {
+  var exports = function(url) {
     var _this = this;
 
-
+    _this['url'] = url;
 
   };
 
   /**
-   * Constructs a <code>MediaemailinteractionsidacceptData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidsendurlData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediaemailinteractionsidacceptData} obj Optional instance to populate.
-   * @return {module:model/MediaemailinteractionsidacceptData} The populated <code>MediaemailinteractionsidacceptData</code> instance.
+   * @param {module:model/MediachatinteractionsidsendurlData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidsendurlData} The populated <code>MediachatinteractionsidsendurlData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('useReviewer')) {
-        obj['useReviewer'] = ApiClient.convertToType(data['useReviewer'], 'Boolean');
+      if (data.hasOwnProperty('url')) {
+        obj['url'] = ApiClient.convertToType(data['url'], 'String');
       }
       if (data.hasOwnProperty('extension')) {
         obj['extension'] = ApiClient.convertToType(data['extension'], [Kvpair]);
@@ -73,10 +74,10 @@
   }
 
   /**
-   * Indicate the agent is reviewer.
-   * @member {Boolean} useReviewer
+   * The url to send to the chat
+   * @member {String} url
    */
-  exports.prototype['useReviewer'] = undefined;
+  exports.prototype['url'] = undefined;
   /**
    * A key/value pairs list of additional data.
    * @member {Array.<module:model/Kvpair>} extension

@@ -43,7 +43,7 @@
    * Constructs a new <code>TargetspersonalfavoritessaveData</code>.
    * @alias module:model/TargetspersonalfavoritessaveData
    * @class
-   * @param target {module:model/TargetInformation} The target to save.
+   * @param target {module:model/TargetInformation} 
    * @param category {String} The agent's personal favorites category.
    */
   var exports = function(target, category) {
@@ -75,7 +75,6 @@
   }
 
   /**
-   * The target to save.
    * @member {module:model/TargetInformation} target
    */
   exports.prototype['target'] = undefined;
