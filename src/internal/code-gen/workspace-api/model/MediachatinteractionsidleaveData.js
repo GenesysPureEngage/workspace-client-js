@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediachatinteractionsidsendmessageData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediachatinteractionsidleaveData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,45 +34,44 @@
 
 
   /**
-   * The MediachatinteractionsidsendmessageData model module.
-   * @module model/MediachatinteractionsidsendmessageData
+   * The MediachatinteractionsidleaveData model module.
+   * @module model/MediachatinteractionsidleaveData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediachatinteractionsidsendmessageData</code>.
-   * @alias module:model/MediachatinteractionsidsendmessageData
+   * Constructs a new <code>MediachatinteractionsidleaveData</code>.
+   * @alias module:model/MediachatinteractionsidleaveData
    * @class
-   * @param message {String} the message to send to the chat
    */
-  var exports = function(message) {
+  var exports = function() {
     var _this = this;
 
-    _this['message'] = message;
+
 
 
 
   };
 
   /**
-   * Constructs a <code>MediachatinteractionsidsendmessageData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidleaveData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediachatinteractionsidsendmessageData} obj Optional instance to populate.
-   * @return {module:model/MediachatinteractionsidsendmessageData} The populated <code>MediachatinteractionsidsendmessageData</code> instance.
+   * @param {module:model/MediachatinteractionsidleaveData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidleaveData} The populated <code>MediachatinteractionsidleaveData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('afterAction')) {
+        obj['afterAction'] = ApiClient.convertToType(data['afterAction'], 'String');
+      }
       if (data.hasOwnProperty('message')) {
         obj['message'] = ApiClient.convertToType(data['message'], 'String');
       }
       if (data.hasOwnProperty('messageType')) {
         obj['messageType'] = ApiClient.convertToType(data['messageType'], 'String');
-      }
-      if (data.hasOwnProperty('visibility')) {
-        obj['visibility'] = ApiClient.convertToType(data['visibility'], 'String');
       }
       if (data.hasOwnProperty('treatAs')) {
         obj['treatAs'] = ApiClient.convertToType(data['treatAs'], 'String');
@@ -81,6 +80,11 @@
     return obj;
   }
 
+  /**
+   * the action to take after leave
+   * @member {module:model/MediachatinteractionsidleaveData.AfterActionEnum} afterAction
+   */
+  exports.prototype['afterAction'] = undefined;
   /**
    * the message to send to the chat
    * @member {String} message
@@ -92,38 +96,33 @@
    */
   exports.prototype['messageType'] = undefined;
   /**
-   * visibility of operation
-   * @member {module:model/MediachatinteractionsidsendmessageData.VisibilityEnum} visibility
-   */
-  exports.prototype['visibility'] = undefined;
-  /**
    * how message should be treated
-   * @member {module:model/MediachatinteractionsidsendmessageData.TreatAsEnum} treatAs
+   * @member {module:model/MediachatinteractionsidleaveData.TreatAsEnum} treatAs
    */
   exports.prototype['treatAs'] = undefined;
 
 
   /**
-   * Allowed values for the <code>visibility</code> property.
+   * Allowed values for the <code>afterAction</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.VisibilityEnum = {
+  exports.AfterActionEnum = {
     /**
-     * value: "All"
+     * value: "CloseIfNoAgents"
      * @const
      */
-    "All": "All",
+    "CloseIfNoAgents": "CloseIfNoAgents",
     /**
-     * value: "Agent"
+     * value: "ForceClose"
      * @const
      */
-    "Agent": "Agent",
+    "ForceClose": "ForceClose",
     /**
-     * value: "Supervisor"
+     * value: "KeepAlive"
      * @const
      */
-    "Supervisor": "Supervisor"  };
+    "KeepAlive": "KeepAlive"  };
 
   /**
    * Allowed values for the <code>treatAs</code> property.

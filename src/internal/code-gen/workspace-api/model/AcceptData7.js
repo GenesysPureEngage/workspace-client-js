@@ -16,32 +16,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediachatinteractionsidsendtypingstartedData'], factory);
+    define(['ApiClient', 'model/MediamediatypeinteractionsidacceptData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediachatinteractionsidsendtypingstartedData'));
+    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidacceptData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AcceptData4 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidsendtypingstartedData);
+    root.WorkspaceApi.AcceptData7 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidacceptData);
   }
-}(this, function(ApiClient, MediachatinteractionsidsendtypingstartedData) {
+}(this, function(ApiClient, MediamediatypeinteractionsidacceptData) {
   'use strict';
 
 
 
 
   /**
-   * The AcceptData4 model module.
-   * @module model/AcceptData4
+   * The AcceptData7 model module.
+   * @module model/AcceptData7
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>AcceptData4</code>.
-   * @alias module:model/AcceptData4
+   * Constructs a new <code>AcceptData7</code>.
+   * @alias module:model/AcceptData7
    * @class
    */
   var exports = function() {
@@ -51,25 +51,25 @@
   };
 
   /**
-   * Constructs a <code>AcceptData4</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>AcceptData7</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/AcceptData4} obj Optional instance to populate.
-   * @return {module:model/AcceptData4} The populated <code>AcceptData4</code> instance.
+   * @param {module:model/AcceptData7} obj Optional instance to populate.
+   * @return {module:model/AcceptData7} The populated <code>AcceptData7</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediachatinteractionsidsendtypingstartedData.constructFromObject(data['data']);
+        obj['data'] = MediamediatypeinteractionsidacceptData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediachatinteractionsidsendtypingstartedData} data
+   * @member {module:model/MediamediatypeinteractionsidacceptData} data
    */
   exports.prototype['data'] = undefined;
 

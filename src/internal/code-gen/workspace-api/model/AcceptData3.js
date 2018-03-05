@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediaemailinteractionsidacceptData'], factory);
+    define(['ApiClient', 'model/MediachatinteractionsidsendtypingstartedData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediaemailinteractionsidacceptData'));
+    module.exports = factory(require('../ApiClient'), require('./MediachatinteractionsidsendtypingstartedData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AcceptData3 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediaemailinteractionsidacceptData);
+    root.WorkspaceApi.AcceptData3 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidsendtypingstartedData);
   }
-}(this, function(ApiClient, MediaemailinteractionsidacceptData) {
+}(this, function(ApiClient, MediachatinteractionsidsendtypingstartedData) {
   'use strict';
 
 
@@ -62,14 +62,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediaemailinteractionsidacceptData.constructFromObject(data['data']);
+        obj['data'] = MediachatinteractionsidsendtypingstartedData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediaemailinteractionsidacceptData} data
+   * @member {module:model/MediachatinteractionsidsendtypingstartedData} data
    */
   exports.prototype['data'] = undefined;
 

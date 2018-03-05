@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData3', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/CreateData', 'model/ReplyData', 'model/SaveData', 'model/SendData'], factory);
+    define(['ApiClient', 'model/AcceptData6', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/CreateData', 'model/ReplyData', 'model/SaveData', 'model/SendData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData3'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/CreateData'), require('../model/ReplyData'), require('../model/SaveData'), require('../model/SendData'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData6'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/CreateData'), require('../model/ReplyData'), require('../model/SaveData'), require('../model/SendData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.EmailApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData3, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.CreateData, root.WorkspaceApi.ReplyData, root.WorkspaceApi.SaveData, root.WorkspaceApi.SendData);
+    root.WorkspaceApi.EmailApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData6, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.CreateData, root.WorkspaceApi.ReplyData, root.WorkspaceApi.SaveData, root.WorkspaceApi.SendData);
   }
-}(this, function(ApiClient, AcceptData3, ApiErrorResponse, ApiSuccessResponse, CreateData, ReplyData, SaveData, SendData) {
+}(this, function(ApiClient, AcceptData6, ApiErrorResponse, ApiSuccessResponse, CreateData, ReplyData, SaveData, SendData) {
   'use strict';
 
   /**
@@ -53,7 +53,7 @@
      * Accept the interaction specified in the id path parameter
      * @param {String} id id of interaction to accept
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData3} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData6} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.acceptEmailWithHttpInfo = function(id, opts) {
@@ -95,7 +95,7 @@
      * Accept the interaction specified in the id path parameter
      * @param {String} id id of interaction to accept
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData3} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData6} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.acceptEmail = function(id, opts) {

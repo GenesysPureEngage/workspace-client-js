@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.Kvpair = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediachatinteractionsidinvitebyqueueData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,52 +34,46 @@
 
 
   /**
-   * The Kvpair model module.
-   * @module model/Kvpair
+   * The MediachatinteractionsidinvitebyqueueData model module.
+   * @module model/MediachatinteractionsidinvitebyqueueData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Kvpair</code>.
-   * @alias module:model/Kvpair
+   * Constructs a new <code>MediachatinteractionsidinvitebyqueueData</code>.
+   * @alias module:model/MediachatinteractionsidinvitebyqueueData
    * @class
+   * @param queue {String} queue of submission.
    */
-  var exports = function() {
+  var exports = function(queue) {
     var _this = this;
 
-
-
+    _this['queue'] = queue;
   };
 
   /**
-   * Constructs a <code>Kvpair</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidinvitebyqueueData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Kvpair} obj Optional instance to populate.
-   * @return {module:model/Kvpair} The populated <code>Kvpair</code> instance.
+   * @param {module:model/MediachatinteractionsidinvitebyqueueData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidinvitebyqueueData} The populated <code>MediachatinteractionsidinvitebyqueueData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
-      }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      if (data.hasOwnProperty('queue')) {
+        obj['queue'] = ApiClient.convertToType(data['queue'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} key
+   * queue of submission.
+   * @member {String} queue
    */
-  exports.prototype['key'] = undefined;
-  /**
-   * @member {String} type
-   */
-  exports.prototype['type'] = undefined;
+  exports.prototype['queue'] = undefined;
 
 
 

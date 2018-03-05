@@ -577,7 +577,7 @@
 
 
     /**
-     * Search for contacts. If ‘sortCriteria’ or ‘startIndex’ is specified, the query is based on SQL, otherwise on Lucene
+     * Search for contacts. If &#39;sortCriteria&#39; or &#39;startIndex&#39; is specified, the query is based on SQL, otherwise on Lucene
      * @param {module:model/LuceneSearchData} luceneSearchData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -614,7 +614,7 @@
     }
 
     /**
-     * Search for contacts. If ‘sortCriteria’ or ‘startIndex’ is specified, the query is based on SQL, otherwise on Lucene
+     * Search for contacts. If &#39;sortCriteria&#39; or &#39;startIndex&#39; is specified, the query is based on SQL, otherwise on Lucene
      * @param {module:model/LuceneSearchData} luceneSearchData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */

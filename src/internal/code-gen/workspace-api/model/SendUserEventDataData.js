@@ -50,6 +50,7 @@
 
     _this['userData'] = userData;
 
+
   };
 
   /**
@@ -69,6 +70,9 @@
       if (data.hasOwnProperty('callUuid')) {
         obj['callUuid'] = ApiClient.convertToType(data['callUuid'], 'String');
       }
+      if (data.hasOwnProperty('connId')) {
+        obj['connId'] = ApiClient.convertToType(data['connId'], 'String');
+      }
     }
     return obj;
   }
@@ -81,6 +85,10 @@
    * @member {String} callUuid
    */
   exports.prototype['callUuid'] = undefined;
+  /**
+   * @member {String} connId
+   */
+  exports.prototype['connId'] = undefined;
 
 
 

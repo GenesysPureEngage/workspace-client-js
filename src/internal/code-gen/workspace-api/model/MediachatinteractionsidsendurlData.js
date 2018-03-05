@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Kvpair'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Kvpair'));
+    module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediachatinteractionsidsendurlData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.MediachatinteractionsidsendurlData = factory(root.WorkspaceApi.ApiClient);
   }
-}(this, function(ApiClient, Kvpair) {
+}(this, function(ApiClient) {
   'use strict';
 
 
@@ -66,8 +66,8 @@
       if (data.hasOwnProperty('url')) {
         obj['url'] = ApiClient.convertToType(data['url'], 'String');
       }
-      if (data.hasOwnProperty('extension')) {
-        obj['extension'] = ApiClient.convertToType(data['extension'], [Kvpair]);
+      if (data.hasOwnProperty('visibility')) {
+        obj['visibility'] = ApiClient.convertToType(data['visibility'], 'String');
       }
     }
     return obj;
@@ -79,11 +79,33 @@
    */
   exports.prototype['url'] = undefined;
   /**
-   * A key/value pairs list of additional data.
-   * @member {Array.<module:model/Kvpair>} extension
+   * visibility of operation
+   * @member {module:model/MediachatinteractionsidsendurlData.VisibilityEnum} visibility
    */
-  exports.prototype['extension'] = undefined;
+  exports.prototype['visibility'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>visibility</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.VisibilityEnum = {
+    /**
+     * value: "All"
+     * @const
+     */
+    "All": "All",
+    /**
+     * value: "Agent"
+     * @const
+     */
+    "Agent": "Agent",
+    /**
+     * value: "Supervisor"
+     * @const
+     */
+    "Supervisor": "Supervisor"  };
 
 
   return exports;

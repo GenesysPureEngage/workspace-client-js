@@ -49,6 +49,7 @@
 
 
 
+
   };
 
   /**
@@ -68,6 +69,9 @@
       if (data.hasOwnProperty('returnChildrenSRInfo')) {
         obj['returnChildrenSRInfo'] = ApiClient.convertToType(data['returnChildrenSRInfo'], 'Boolean');
       }
+      if (data.hasOwnProperty('approved')) {
+        obj['approved'] = ApiClient.convertToType(data['approved'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -82,6 +86,11 @@
    * @member {Boolean} returnChildrenSRInfo
    */
   exports.prototype['returnChildrenSRInfo'] = undefined;
+  /**
+   * true to get only approved categories
+   * @member {Boolean} approved
+   */
+  exports.prototype['approved'] = undefined;
 
 
 

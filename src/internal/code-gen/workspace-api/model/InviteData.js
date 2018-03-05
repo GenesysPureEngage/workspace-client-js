@@ -16,60 +16,61 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediachatinteractionsidsendtypingstartedData'], factory);
+    define(['ApiClient', 'model/MediachatinteractionsidinviteData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediachatinteractionsidsendtypingstartedData'));
+    module.exports = factory(require('../ApiClient'), require('./MediachatinteractionsidinviteData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AcceptData4 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidsendtypingstartedData);
+    root.WorkspaceApi.InviteData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidinviteData);
   }
-}(this, function(ApiClient, MediachatinteractionsidsendtypingstartedData) {
+}(this, function(ApiClient, MediachatinteractionsidinviteData) {
   'use strict';
 
 
 
 
   /**
-   * The AcceptData4 model module.
-   * @module model/AcceptData4
+   * The InviteData model module.
+   * @module model/InviteData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>AcceptData4</code>.
-   * @alias module:model/AcceptData4
+   * Constructs a new <code>InviteData</code>.
+   * @alias module:model/InviteData
    * @class
+   * @param data {module:model/MediachatinteractionsidinviteData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
-
+    _this['data'] = data;
   };
 
   /**
-   * Constructs a <code>AcceptData4</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>InviteData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/AcceptData4} obj Optional instance to populate.
-   * @return {module:model/AcceptData4} The populated <code>AcceptData4</code> instance.
+   * @param {module:model/InviteData} obj Optional instance to populate.
+   * @return {module:model/InviteData} The populated <code>InviteData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediachatinteractionsidsendtypingstartedData.constructFromObject(data['data']);
+        obj['data'] = MediachatinteractionsidinviteData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediachatinteractionsidsendtypingstartedData} data
+   * @member {module:model/MediachatinteractionsidinviteData} data
    */
   exports.prototype['data'] = undefined;
 

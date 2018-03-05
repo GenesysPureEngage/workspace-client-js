@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AcceptData2', 'model/AcceptData4', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/RejectData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
+    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AcceptData2', 'model/AcceptData3', 'model/AcceptData4', 'model/AcceptData5', 'model/AcceptData7', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ConsultData', 'model/ConsultData1', 'model/InviteData', 'model/InviteData1', 'model/LeaveData', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/RejectData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/AcceptData2'), require('../model/AcceptData4'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/RejectData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/AcceptData2'), require('../model/AcceptData3'), require('../model/AcceptData4'), require('../model/AcceptData5'), require('../model/AcceptData7'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ConsultData'), require('../model/ConsultData1'), require('../model/InviteData'), require('../model/InviteData1'), require('../model/LeaveData'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/RejectData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.AcceptData2, root.WorkspaceApi.AcceptData4, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.RejectData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
+    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.AcceptData2, root.WorkspaceApi.AcceptData3, root.WorkspaceApi.AcceptData4, root.WorkspaceApi.AcceptData5, root.WorkspaceApi.AcceptData7, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ConsultData, root.WorkspaceApi.ConsultData1, root.WorkspaceApi.InviteData, root.WorkspaceApi.InviteData1, root.WorkspaceApi.LeaveData, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.RejectData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
   }
-}(this, function(ApiClient, AcceptData, AcceptData1, AcceptData2, AcceptData4, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, RejectData, TransferData, UserData, UserData2) {
+}(this, function(ApiClient, AcceptData, AcceptData1, AcceptData2, AcceptData3, AcceptData4, AcceptData5, AcceptData7, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, ConsultData, ConsultData1, InviteData, InviteData1, LeaveData, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, RejectData, TransferData, UserData, UserData2) {
   'use strict';
 
   /**
@@ -54,7 +54,7 @@
      * @param {String} mediatype media-type of interaction to accept
      * @param {String} id id of interaction to accept
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData4} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData7} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.acceptWithHttpInfo = function(mediatype, id, opts) {
@@ -103,7 +103,7 @@
      * @param {String} mediatype media-type of interaction to accept
      * @param {String} id id of interaction to accept
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData4} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData7} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.accept = function(mediatype, id, opts) {
@@ -641,6 +641,126 @@
 
 
     /**
+     * Consult other agent during the chat
+     * consult other agent during the chat
+     * @param {String} id id of the interaction
+     * @param {module:model/ConsultData} consultData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.consultWithHttpInfo = function(id, consultData) {
+      var postBody = consultData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling consult");
+      }
+
+      // verify the required parameter 'consultData' is set
+      if (consultData === undefined || consultData === null) {
+        throw new Error("Missing the required parameter 'consultData' when calling consult");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/consult', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Consult other agent during the chat
+     * consult other agent during the chat
+     * @param {String} id id of the interaction
+     * @param {module:model/ConsultData} consultData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.consult = function(id, consultData) {
+      return this.consultWithHttpInfo(id, consultData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Consult a target defines in attached data
+     * Consult a target defines in attached data
+     * @param {String} id id of the interaction
+     * @param {module:model/ConsultData1} consultData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.consultByQueueWithHttpInfo = function(id, consultData) {
+      var postBody = consultData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling consultByQueue");
+      }
+
+      // verify the required parameter 'consultData' is set
+      if (consultData === undefined || consultData === null) {
+        throw new Error("Missing the required parameter 'consultData' when calling consultByQueue");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/consult-by-queue', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Consult a target defines in attached data
+     * Consult a target defines in attached data
+     * @param {String} id id of the interaction
+     * @param {module:model/ConsultData1} consultData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.consultByQueue = function(id, consultData) {
+      return this.consultByQueueWithHttpInfo(id, consultData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Remove key/value pair from user data
      * Deletes the specified key from the interaction data.
      * @param {String} mediatype media-type of interaction
@@ -799,13 +919,136 @@
 
 
     /**
+     * Invite other agent to join the chat
+     * Invite other agent to join the chat
+     * @param {String} id id of the interaction
+     * @param {module:model/InviteData} inviteData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.inviteWithHttpInfo = function(id, inviteData) {
+      var postBody = inviteData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling invite");
+      }
+
+      // verify the required parameter 'inviteData' is set
+      if (inviteData === undefined || inviteData === null) {
+        throw new Error("Missing the required parameter 'inviteData' when calling invite");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/invite', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Invite other agent to join the chat
+     * Invite other agent to join the chat
+     * @param {String} id id of the interaction
+     * @param {module:model/InviteData} inviteData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.invite = function(id, inviteData) {
+      return this.inviteWithHttpInfo(id, inviteData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * inviite a target defines in attached data
+     * invite a target defines in attached data
+     * @param {String} id id of the interaction
+     * @param {module:model/InviteData1} inviteData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.inviteByQueueWithHttpInfo = function(id, inviteData) {
+      var postBody = inviteData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling inviteByQueue");
+      }
+
+      // verify the required parameter 'inviteData' is set
+      if (inviteData === undefined || inviteData === null) {
+        throw new Error("Missing the required parameter 'inviteData' when calling inviteByQueue");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/invite-by-queue', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * inviite a target defines in attached data
+     * invite a target defines in attached data
+     * @param {String} id id of the interaction
+     * @param {module:model/InviteData1} inviteData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.inviteByQueue = function(id, inviteData) {
+      return this.inviteByQueueWithHttpInfo(id, inviteData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Leave a chat interaction
      * Leave the interaction specified in the id path parameter
      * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/LeaveData} opts.leaveData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.leaveChatWithHttpInfo = function(id) {
-      var postBody = null;
+    this.leaveChatWithHttpInfo = function(id, opts) {
+      opts = opts || {};
+      var postBody = opts['leaveData'];
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -841,10 +1084,12 @@
      * Leave a chat interaction
      * Leave the interaction specified in the id path parameter
      * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/LeaveData} opts.leaveData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.leaveChat = function(id) {
-      return this.leaveChatWithHttpInfo(id)
+    this.leaveChat = function(id, opts) {
+      return this.leaveChatWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1362,6 +1607,64 @@
 
 
     /**
+     * Send custom notification to the specified chat
+     * Send custom notification to the specified chat
+     * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData5} opts.acceptData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.sendCustomNotificationWithHttpInfo = function(id, opts) {
+      opts = opts || {};
+      var postBody = opts['acceptData'];
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling sendCustomNotification");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/chat/interactions/{id}/send-custom-notification', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Send custom notification to the specified chat
+     * Send custom notification to the specified chat
+     * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData5} opts.acceptData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.sendCustomNotification = function(id, opts) {
+      return this.sendCustomNotificationWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Send a message to the specified chat
      * Send a message to the specified chat
      * @param {String} id id of interaction to send a message to
@@ -1423,10 +1726,13 @@
      * Send notification that typing started to the specified chat
      * Send notification that typing started to the specified chat
      * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData3} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.sendTypingStartedWithHttpInfo = function(id) {
-      var postBody = null;
+    this.sendTypingStartedWithHttpInfo = function(id, opts) {
+      opts = opts || {};
+      var postBody = opts['acceptData'];
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -1462,10 +1768,12 @@
      * Send notification that typing started to the specified chat
      * Send notification that typing started to the specified chat
      * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData3} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.sendTypingStarted = function(id) {
-      return this.sendTypingStartedWithHttpInfo(id)
+    this.sendTypingStarted = function(id, opts) {
+      return this.sendTypingStartedWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1476,10 +1784,13 @@
      * Send notification that typing stopped to the specified chat
      * Send notification that typing stoppped to the specified chat
      * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData4} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.sendTypingStoppedWithHttpInfo = function(id) {
-      var postBody = null;
+    this.sendTypingStoppedWithHttpInfo = function(id, opts) {
+      opts = opts || {};
+      var postBody = opts['acceptData'];
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -1515,10 +1826,12 @@
      * Send notification that typing stopped to the specified chat
      * Send notification that typing stoppped to the specified chat
      * @param {String} id id of interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/AcceptData4} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.sendTypingStopped = function(id) {
-      return this.sendTypingStoppedWithHttpInfo(id)
+    this.sendTypingStopped = function(id, opts) {
+      return this.sendTypingStoppedWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

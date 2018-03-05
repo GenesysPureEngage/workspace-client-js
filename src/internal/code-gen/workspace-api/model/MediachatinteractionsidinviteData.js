@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.Kvpair = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediachatinteractionsidinviteData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,52 +34,46 @@
 
 
   /**
-   * The Kvpair model module.
-   * @module model/Kvpair
+   * The MediachatinteractionsidinviteData model module.
+   * @module model/MediachatinteractionsidinviteData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>Kvpair</code>.
-   * @alias module:model/Kvpair
+   * Constructs a new <code>MediachatinteractionsidinviteData</code>.
+   * @alias module:model/MediachatinteractionsidinviteData
    * @class
+   * @param agentId {String} EmployeeId of the target agent.
    */
-  var exports = function() {
+  var exports = function(agentId) {
     var _this = this;
 
-
-
+    _this['agentId'] = agentId;
   };
 
   /**
-   * Constructs a <code>Kvpair</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidinviteData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Kvpair} obj Optional instance to populate.
-   * @return {module:model/Kvpair} The populated <code>Kvpair</code> instance.
+   * @param {module:model/MediachatinteractionsidinviteData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidinviteData} The populated <code>MediachatinteractionsidinviteData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('key')) {
-        obj['key'] = ApiClient.convertToType(data['key'], 'String');
-      }
-      if (data.hasOwnProperty('type')) {
-        obj['type'] = ApiClient.convertToType(data['type'], 'String');
+      if (data.hasOwnProperty('agentId')) {
+        obj['agentId'] = ApiClient.convertToType(data['agentId'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * @member {String} key
+   * EmployeeId of the target agent.
+   * @member {String} agentId
    */
-  exports.prototype['key'] = undefined;
-  /**
-   * @member {String} type
-   */
-  exports.prototype['type'] = undefined;
+  exports.prototype['agentId'] = undefined;
 
 
 

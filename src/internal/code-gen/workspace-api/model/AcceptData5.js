@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AcceptData4 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidsendtypingstartedData);
+    root.WorkspaceApi.AcceptData5 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidsendtypingstartedData);
   }
 }(this, function(ApiClient, MediachatinteractionsidsendtypingstartedData) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The AcceptData4 model module.
-   * @module model/AcceptData4
+   * The AcceptData5 model module.
+   * @module model/AcceptData5
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>AcceptData4</code>.
-   * @alias module:model/AcceptData4
+   * Constructs a new <code>AcceptData5</code>.
+   * @alias module:model/AcceptData5
    * @class
    */
   var exports = function() {
@@ -51,11 +51,11 @@
   };
 
   /**
-   * Constructs a <code>AcceptData4</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>AcceptData5</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/AcceptData4} obj Optional instance to populate.
-   * @return {module:model/AcceptData4} The populated <code>AcceptData4</code> instance.
+   * @param {module:model/AcceptData5} obj Optional instance to populate.
+   * @return {module:model/AcceptData5} The populated <code>AcceptData5</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
