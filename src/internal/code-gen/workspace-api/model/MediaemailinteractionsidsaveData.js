@@ -74,8 +74,8 @@
       if (data.hasOwnProperty('body')) {
         obj['body'] = ApiClient.convertToType(data['body'], 'String');
       }
-      if (data.hasOwnProperty('bodyAsPlaintText')) {
-        obj['bodyAsPlaintText'] = ApiClient.convertToType(data['bodyAsPlaintText'], 'String');
+      if (data.hasOwnProperty('bodyAsPlainText')) {
+        obj['bodyAsPlainText'] = ApiClient.convertToType(data['bodyAsPlainText'], 'String');
       }
       if (data.hasOwnProperty('mime')) {
         obj['mime'] = ApiClient.convertToType(data['mime'], 'String');
@@ -109,9 +109,9 @@
   exports.prototype['body'] = undefined;
   /**
    * Plain text body of email.
-   * @member {String} bodyAsPlaintText
+   * @member {String} bodyAsPlainText
    */
-  exports.prototype['bodyAsPlaintText'] = undefined;
+  exports.prototype['bodyAsPlainText'] = undefined;
   /**
    * Multipurpose internet mail extensions of email.
    * @member {String} mime

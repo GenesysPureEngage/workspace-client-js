@@ -48,7 +48,6 @@
     var _this = this;
 
 
-
   };
 
   /**
@@ -65,46 +64,16 @@
       if (data.hasOwnProperty('nickname')) {
         obj['nickname'] = ApiClient.convertToType(data['nickname'], 'String');
       }
-      if (data.hasOwnProperty('visibility')) {
-        obj['visibility'] = ApiClient.convertToType(data['visibility'], 'String');
-      }
     }
     return obj;
   }
 
   /**
-   * Agent nickname as will be seen by customer
+   * The agent's nickname, as displayed to the chat participants.
    * @member {String} nickname
    */
   exports.prototype['nickname'] = undefined;
-  /**
-   * visibility of operation
-   * @member {module:model/MediachatinteractionsidacceptData.VisibilityEnum} visibility
-   */
-  exports.prototype['visibility'] = undefined;
 
-
-  /**
-   * Allowed values for the <code>visibility</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.VisibilityEnum = {
-    /**
-     * value: "All"
-     * @const
-     */
-    "All": "All",
-    /**
-     * value: "Agent"
-     * @const
-     */
-    "Agent": "Agent",
-    /**
-     * value: "Supervisor"
-     * @const
-     */
-    "Supervisor": "Supervisor"  };
 
 
   return exports;

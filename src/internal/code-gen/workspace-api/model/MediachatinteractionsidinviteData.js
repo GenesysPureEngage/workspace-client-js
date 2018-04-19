@@ -43,7 +43,7 @@
    * Constructs a new <code>MediachatinteractionsidinviteData</code>.
    * @alias module:model/MediachatinteractionsidinviteData
    * @class
-   * @param agentId {String} EmployeeId of the target agent.
+   * @param agentId {String} The unique ID of the agent.
    */
   var exports = function(agentId) {
     var _this = this;
@@ -70,7 +70,7 @@
   }
 
   /**
-   * EmployeeId of the target agent.
+   * The unique ID of the agent.
    * @member {String} agentId
    */
   exports.prototype['agentId'] = undefined;

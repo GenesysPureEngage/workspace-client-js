@@ -43,7 +43,7 @@
    * Constructs a new <code>MediachatinteractionsidsendmessageData</code>.
    * @alias module:model/MediachatinteractionsidsendmessageData
    * @class
-   * @param message {String} the message to send to the chat
+   * @param message {String} The message to send to the chat participants.
    */
   var exports = function(message) {
     var _this = this;
@@ -82,22 +82,22 @@
   }
 
   /**
-   * the message to send to the chat
+   * The message to send to the chat participants.
    * @member {String} message
    */
   exports.prototype['message'] = undefined;
   /**
-   * arbitrary type of message
+   * The type of message.
    * @member {String} messageType
    */
   exports.prototype['messageType'] = undefined;
   /**
-   * visibility of operation
+   * Defines which participants in the chat can see the message.
    * @member {module:model/MediachatinteractionsidsendmessageData.VisibilityEnum} visibility
    */
   exports.prototype['visibility'] = undefined;
   /**
-   * how message should be treated
+   * Specifies how the message should be treated.
    * @member {module:model/MediachatinteractionsidsendmessageData.TreatAsEnum} treatAs
    */
   exports.prototype['treatAs'] = undefined;

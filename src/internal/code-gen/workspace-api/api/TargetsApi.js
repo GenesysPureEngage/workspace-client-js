@@ -377,6 +377,7 @@
      * @param {String} opts.filterName Filter the search based on this field.
      * @param {String} opts.types A comma-separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
      * @param {String} opts.excludeGroup A comma-separated list of agent group names. Workspace excludes those groups from the search.
+     * @param {String} opts.restrictGroup A comma-separated list of agent group names. Workspace returns only these groups from the search.
      * @param {String} opts.excludeFromGroup A comma-separated list of agent group names. Workspace excludes agents from these groups in the search.
      * @param {String} opts.restrictToGroup A comma-separated list of agent group names. Workspace only searches for targets who belong to the groups in this list.
      * @param {module:model/String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.
@@ -401,6 +402,7 @@
         'filterName': opts['filterName'],
         'types': opts['types'],
         'excludeGroup': opts['excludeGroup'],
+        'restrictGroup': opts['restrictGroup'],
         'excludeFromGroup': opts['excludeFromGroup'],
         'restrictToGroup': opts['restrictToGroup'],
         'sort': opts['sort'],
@@ -434,6 +436,7 @@
      * @param {String} opts.filterName Filter the search based on this field.
      * @param {String} opts.types A comma-separated list of types to include in the search. Valid values are acd-queue, agent-group, agent, route-point, skill and custom-contact.
      * @param {String} opts.excludeGroup A comma-separated list of agent group names. Workspace excludes those groups from the search.
+     * @param {String} opts.restrictGroup A comma-separated list of agent group names. Workspace returns only these groups from the search.
      * @param {String} opts.excludeFromGroup A comma-separated list of agent group names. Workspace excludes agents from these groups in the search.
      * @param {String} opts.restrictToGroup A comma-separated list of agent group names. Workspace only searches for targets who belong to the groups in this list.
      * @param {module:model/String} opts.sort The sort order, either &#x60;asc&#x60; (ascending) or &#x60;desc&#x60; (descending). The default is &#x60;asc&#x60;.

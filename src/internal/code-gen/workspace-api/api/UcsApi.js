@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCompletedData', 'model/CallNoteData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CreateContactData', 'model/IdentifyContactData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/UpdateContactData'], factory);
+    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCompletedData', 'model/CallNoteData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CreateContactData', 'model/IdentifyContactData', 'model/InteractionDetailsData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/UpdateContactData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCompletedData'), require('../model/CallNoteData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/CreateContactData'), require('../model/IdentifyContactData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/UpdateContactData'));
+    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCompletedData'), require('../model/CallNoteData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/CreateContactData'), require('../model/IdentifyContactData'), require('../model/InteractionDetailsData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/UpdateContactData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.CallNoteData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.CreateContactData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.UpdateContactData);
+    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.CallNoteData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.CreateContactData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.InteractionDetailsData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.UpdateContactData);
   }
-}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCompletedData, CallNoteData, ConfigResponse, ContactDetailsData, ContactHistoryData, CreateContactData, IdentifyContactData, LuceneSearchData, LuceneSearchInteractionData, UpdateContactData) {
+}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCompletedData, CallNoteData, ConfigResponse, ContactDetailsData, ContactHistoryData, CreateContactData, IdentifyContactData, InteractionDetailsData, LuceneSearchData, LuceneSearchInteractionData, UpdateContactData) {
   'use strict';
 
   /**
@@ -425,10 +425,13 @@
     /**
      * Get the content of the interaction
      * @param {String} id id of the Interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/InteractionDetailsData} opts.interactionDetailsData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.getInteractionDetailsWithHttpInfo = function(id) {
-      var postBody = null;
+    this.getInteractionDetailsWithHttpInfo = function(id, opts) {
+      opts = opts || {};
+      var postBody = opts['interactionDetailsData'];
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -463,10 +466,12 @@
     /**
      * Get the content of the interaction
      * @param {String} id id of the Interaction
+     * @param {Object} opts Optional parameters
+     * @param {module:model/InteractionDetailsData} opts.interactionDetailsData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.getInteractionDetails = function(id) {
-      return this.getInteractionDetailsWithHttpInfo(id)
+    this.getInteractionDetails = function(id, opts) {
+      return this.getInteractionDetailsWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

@@ -43,7 +43,7 @@
    * Constructs a new <code>MediamediatypeinteractionsidtransferagentData</code>.
    * @alias module:model/MediamediatypeinteractionsidtransferagentData
    * @class
-   * @param agentId {String} EmployeeId of the target agent.
+   * @param agentId {String} The unique ID of the agent.
    */
   var exports = function(agentId) {
     var _this = this;
@@ -74,12 +74,12 @@
   }
 
   /**
-   * EmployeeId of the target agent.
+   * The unique ID of the agent.
    * @member {String} agentId
    */
   exports.prototype['agentId'] = undefined;
   /**
-   * A key/value pairs list of additional data.
+   * A collection of key/value pairs.
    * @member {Array.<module:model/Kvpair>} extension
    */
   exports.prototype['extension'] = undefined;

@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediachatinteractionsidsendtypingstartedData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediachatinteractionsidsendtypingstoppedData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The MediachatinteractionsidsendtypingstartedData model module.
-   * @module model/MediachatinteractionsidsendtypingstartedData
+   * The MediachatinteractionsidsendtypingstoppedData model module.
+   * @module model/MediachatinteractionsidsendtypingstoppedData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediachatinteractionsidsendtypingstartedData</code>.
-   * @alias module:model/MediachatinteractionsidsendtypingstartedData
+   * Constructs a new <code>MediachatinteractionsidsendtypingstoppedData</code>.
+   * @alias module:model/MediachatinteractionsidsendtypingstoppedData
    * @class
    */
   var exports = function() {
@@ -52,11 +52,11 @@
   };
 
   /**
-   * Constructs a <code>MediachatinteractionsidsendtypingstartedData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidsendtypingstoppedData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediachatinteractionsidsendtypingstartedData} obj Optional instance to populate.
-   * @return {module:model/MediachatinteractionsidsendtypingstartedData} The populated <code>MediachatinteractionsidsendtypingstartedData</code> instance.
+   * @param {module:model/MediachatinteractionsidsendtypingstoppedData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidsendtypingstoppedData} The populated <code>MediachatinteractionsidsendtypingstoppedData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -73,13 +73,13 @@
   }
 
   /**
-   * The message to send to the chat participants. For example, \"Agent typing\".
+   * The message to send to the chat participants. For example, \"Agent stopped typing\".
    * @member {String} message
    */
   exports.prototype['message'] = undefined;
   /**
    * Defines which participants in the chat can see the message.
-   * @member {module:model/MediachatinteractionsidsendtypingstartedData.VisibilityEnum} visibility
+   * @member {module:model/MediachatinteractionsidsendtypingstoppedData.VisibilityEnum} visibility
    */
   exports.prototype['visibility'] = undefined;
 

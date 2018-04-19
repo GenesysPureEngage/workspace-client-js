@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediachatinteractionsidinvitebyqueueData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediachatinteractionsidconsultbyqueueData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,16 +34,16 @@
 
 
   /**
-   * The MediachatinteractionsidinvitebyqueueData model module.
-   * @module model/MediachatinteractionsidinvitebyqueueData
+   * The MediachatinteractionsidconsultbyqueueData model module.
+   * @module model/MediachatinteractionsidconsultbyqueueData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediachatinteractionsidinvitebyqueueData</code>.
-   * @alias module:model/MediachatinteractionsidinvitebyqueueData
+   * Constructs a new <code>MediachatinteractionsidconsultbyqueueData</code>.
+   * @alias module:model/MediachatinteractionsidconsultbyqueueData
    * @class
-   * @param queue {String} The name of the queue where the Workspace API should send the chat invite.
+   * @param queue {String} The name of the queue where the Workspace API should send the consult invite.
    */
   var exports = function(queue) {
     var _this = this;
@@ -52,11 +52,11 @@
   };
 
   /**
-   * Constructs a <code>MediachatinteractionsidinvitebyqueueData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidconsultbyqueueData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediachatinteractionsidinvitebyqueueData} obj Optional instance to populate.
-   * @return {module:model/MediachatinteractionsidinvitebyqueueData} The populated <code>MediachatinteractionsidinvitebyqueueData</code> instance.
+   * @param {module:model/MediachatinteractionsidconsultbyqueueData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidconsultbyqueueData} The populated <code>MediachatinteractionsidconsultbyqueueData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -70,7 +70,7 @@
   }
 
   /**
-   * The name of the queue where the Workspace API should send the chat invite.
+   * The name of the queue where the Workspace API should send the consult invite.
    * @member {String} queue
    */
   exports.prototype['queue'] = undefined;

@@ -16,32 +16,32 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/Kvpair'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./Kvpair'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediachatinteractionsidsendtypingstartedData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediachatinteractionsidsendsystemcommandData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, Kvpair) {
   'use strict';
 
 
 
 
   /**
-   * The MediachatinteractionsidsendtypingstartedData model module.
-   * @module model/MediachatinteractionsidsendtypingstartedData
+   * The MediachatinteractionsidsendsystemcommandData model module.
+   * @module model/MediachatinteractionsidsendsystemcommandData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediachatinteractionsidsendtypingstartedData</code>.
-   * @alias module:model/MediachatinteractionsidsendtypingstartedData
+   * Constructs a new <code>MediachatinteractionsidsendsystemcommandData</code>.
+   * @alias module:model/MediachatinteractionsidsendsystemcommandData
    * @class
    */
   var exports = function() {
@@ -49,14 +49,15 @@
 
 
 
+
   };
 
   /**
-   * Constructs a <code>MediachatinteractionsidsendtypingstartedData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidsendsystemcommandData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediachatinteractionsidsendtypingstartedData} obj Optional instance to populate.
-   * @return {module:model/MediachatinteractionsidsendtypingstartedData} The populated <code>MediachatinteractionsidsendtypingstartedData</code> instance.
+   * @param {module:model/MediachatinteractionsidsendsystemcommandData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidsendsystemcommandData} The populated <code>MediachatinteractionsidsendsystemcommandData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -68,20 +69,28 @@
       if (data.hasOwnProperty('visibility')) {
         obj['visibility'] = ApiClient.convertToType(data['visibility'], 'String');
       }
+      if (data.hasOwnProperty('userData')) {
+        obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
+      }
     }
     return obj;
   }
 
   /**
-   * The message to send to the chat participants. For example, \"Agent typing\".
+   * The message to send to the chat participants.
    * @member {String} message
    */
   exports.prototype['message'] = undefined;
   /**
    * Defines which participants in the chat can see the message.
-   * @member {module:model/MediachatinteractionsidsendtypingstartedData.VisibilityEnum} visibility
+   * @member {module:model/MediachatinteractionsidsendsystemcommandData.VisibilityEnum} visibility
    */
   exports.prototype['visibility'] = undefined;
+  /**
+   * The data of system command. This is an array of objects with the properties key, type, and value.
+   * @member {Array.<module:model/Kvpair>} userData
+   */
+  exports.prototype['userData'] = undefined;
 
 
   /**

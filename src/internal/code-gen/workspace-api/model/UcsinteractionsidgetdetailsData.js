@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediachatinteractionsidinvitebyqueueData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.UcsinteractionsidgetdetailsData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,46 +34,45 @@
 
 
   /**
-   * The MediachatinteractionsidinvitebyqueueData model module.
-   * @module model/MediachatinteractionsidinvitebyqueueData
+   * The UcsinteractionsidgetdetailsData model module.
+   * @module model/UcsinteractionsidgetdetailsData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediachatinteractionsidinvitebyqueueData</code>.
-   * @alias module:model/MediachatinteractionsidinvitebyqueueData
+   * Constructs a new <code>UcsinteractionsidgetdetailsData</code>.
+   * @alias module:model/UcsinteractionsidgetdetailsData
    * @class
-   * @param queue {String} The name of the queue where the Workspace API should send the chat invite.
    */
-  var exports = function(queue) {
+  var exports = function() {
     var _this = this;
 
-    _this['queue'] = queue;
+
   };
 
   /**
-   * Constructs a <code>MediachatinteractionsidinvitebyqueueData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>UcsinteractionsidgetdetailsData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediachatinteractionsidinvitebyqueueData} obj Optional instance to populate.
-   * @return {module:model/MediachatinteractionsidinvitebyqueueData} The populated <code>MediachatinteractionsidinvitebyqueueData</code> instance.
+   * @param {module:model/UcsinteractionsidgetdetailsData} obj Optional instance to populate.
+   * @return {module:model/UcsinteractionsidgetdetailsData} The populated <code>UcsinteractionsidgetdetailsData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('queue')) {
-        obj['queue'] = ApiClient.convertToType(data['queue'], 'String');
+      if (data.hasOwnProperty('returnedAttributes')) {
+        obj['returnedAttributes'] = ApiClient.convertToType(data['returnedAttributes'], ['String']);
       }
     }
     return obj;
   }
 
   /**
-   * The name of the queue where the Workspace API should send the chat invite.
-   * @member {String} queue
+   * The list of interaction attributes to be returned
+   * @member {Array.<String>} returnedAttributes
    */
-  exports.prototype['queue'] = undefined;
+  exports.prototype['returnedAttributes'] = undefined;
 
 
 

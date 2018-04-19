@@ -952,7 +952,7 @@
 
 
     /**
-     * Logout the media voice.
+     * Log out of the voice channel.
      * Logout the current agent on the voice channel. This request is typically paired with &#x60;/workspace/v3/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -984,7 +984,7 @@
     }
 
     /**
-     * Logout the media voice.
+     * Log out of the voice channel.
      * Logout the current agent on the voice channel. This request is typically paired with &#x60;/workspace/v3/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1663,8 +1663,8 @@
 
 
     /**
-     * Turn off do-not-disturb.
-     * Turn off do-not-disturb for the current agent on the voice channel.
+     * Turn off Do Not Disturb.
+     * Turn off Do Not Disturb for the current agent on the voice channel.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.setDNDOffWithHttpInfo = function() {
@@ -1695,8 +1695,8 @@
     }
 
     /**
-     * Turn off do-not-disturb.
-     * Turn off do-not-disturb for the current agent on the voice channel.
+     * Turn off Do Not Disturb.
+     * Turn off Do Not Disturb for the current agent on the voice channel.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.setDNDOff = function() {
@@ -1708,8 +1708,8 @@
 
 
     /**
-     * Set the agent state to do-not-disturb.
-     * Set the current agent&#39;s state to do-not-disturb on the voice channel.
+     * Set the agent state to Do Not Disturb.
+     * Set the current agent&#39;s state to Do Not Disturb on the voice channel.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.setDNDOnWithHttpInfo = function() {
@@ -1740,8 +1740,8 @@
     }
 
     /**
-     * Set the agent state to do-not-disturb.
-     * Set the current agent&#39;s state to do-not-disturb on the voice channel.
+     * Set the agent state to Do Not Disturb.
+     * Set the current agent&#39;s state to Do Not Disturb on the voice channel.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.setDNDOn = function() {

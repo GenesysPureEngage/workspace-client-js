@@ -43,7 +43,7 @@
    * Constructs a new <code>MediachatinteractionsidsendurlData</code>.
    * @alias module:model/MediachatinteractionsidsendurlData
    * @class
-   * @param url {String} The url to send to the chat
+   * @param url {String} The URL to send to the chat participants.
    */
   var exports = function(url) {
     var _this = this;
@@ -74,12 +74,12 @@
   }
 
   /**
-   * The url to send to the chat
+   * The URL to send to the chat participants.
    * @member {String} url
    */
   exports.prototype['url'] = undefined;
   /**
-   * visibility of operation
+   * Defines which participants in the chat can see the URL.
    * @member {module:model/MediachatinteractionsidsendurlData.VisibilityEnum} visibility
    */
   exports.prototype['visibility'] = undefined;

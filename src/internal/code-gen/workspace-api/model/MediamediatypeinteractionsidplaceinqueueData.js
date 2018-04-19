@@ -43,7 +43,7 @@
    * Constructs a new <code>MediamediatypeinteractionsidplaceinqueueData</code>.
    * @alias module:model/MediamediatypeinteractionsidplaceinqueueData
    * @class
-   * @param queue {String} Queue name to submit the interaction.
+   * @param queue {String} The name of the queue where the Workspace API should place the interaction.
    */
   var exports = function(queue) {
     var _this = this;
@@ -90,31 +90,32 @@
   }
 
   /**
-   * Queue name to submit the interaction.
+   * The name of the queue where the Workspace API should place the interaction.
    * @member {String} queue
    */
   exports.prototype['queue'] = undefined;
   /**
+   * A collection of key/value pairs.
    * @member {module:model/IxnReasonCode} reason
    */
   exports.prototype['reason'] = undefined;
   /**
-   * A key/value pairs list of additional data.
+   * A collection of key/value pairs.
    * @member {Array.<module:model/Kvpair>} extension
    */
   exports.prototype['extension'] = undefined;
   /**
-   * A key/value pairs list of properties to add.
+   * A collection of key/value pairs of properties to add to the interaction.
    * @member {Array.<module:model/Kvpair>} addedProperties
    */
   exports.prototype['addedProperties'] = undefined;
   /**
-   * A key/value pairs list of properties to change.
+   * A collection of key/value pairs of properties to change on the interaction.
    * @member {Array.<module:model/Kvpair>} changedProperties
    */
   exports.prototype['changedProperties'] = undefined;
   /**
-   * A key/value pairs list of properties to delete.
+   * A collection of key/value pairs of properties to delete from the interaction.
    * @member {Array.<module:model/Kvpair>} deletedProperties
    */
   exports.prototype['deletedProperties'] = undefined;

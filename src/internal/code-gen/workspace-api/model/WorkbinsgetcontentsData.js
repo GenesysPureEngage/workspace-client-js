@@ -79,7 +79,7 @@
    */
   exports.prototype['workbinIds'] = undefined;
   /**
-   * Id of the owner of the workbin
+   * Id of the owner of the workbins
    * @member {String} ownerId
    */
   exports.prototype['ownerId'] = undefined;

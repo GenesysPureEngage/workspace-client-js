@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediachatinteractionsidsendtypingstartedData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediachatinteractionsidupdatenicknameData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,36 +34,37 @@
 
 
   /**
-   * The MediachatinteractionsidsendtypingstartedData model module.
-   * @module model/MediachatinteractionsidsendtypingstartedData
+   * The MediachatinteractionsidupdatenicknameData model module.
+   * @module model/MediachatinteractionsidupdatenicknameData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediachatinteractionsidsendtypingstartedData</code>.
-   * @alias module:model/MediachatinteractionsidsendtypingstartedData
+   * Constructs a new <code>MediachatinteractionsidupdatenicknameData</code>.
+   * @alias module:model/MediachatinteractionsidupdatenicknameData
    * @class
+   * @param nickname {String} The new nickname.
    */
-  var exports = function() {
+  var exports = function(nickname) {
     var _this = this;
 
-
+    _this['nickname'] = nickname;
 
   };
 
   /**
-   * Constructs a <code>MediachatinteractionsidsendtypingstartedData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediachatinteractionsidupdatenicknameData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediachatinteractionsidsendtypingstartedData} obj Optional instance to populate.
-   * @return {module:model/MediachatinteractionsidsendtypingstartedData} The populated <code>MediachatinteractionsidsendtypingstartedData</code> instance.
+   * @param {module:model/MediachatinteractionsidupdatenicknameData} obj Optional instance to populate.
+   * @return {module:model/MediachatinteractionsidupdatenicknameData} The populated <code>MediachatinteractionsidupdatenicknameData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
+      if (data.hasOwnProperty('nickname')) {
+        obj['nickname'] = ApiClient.convertToType(data['nickname'], 'String');
       }
       if (data.hasOwnProperty('visibility')) {
         obj['visibility'] = ApiClient.convertToType(data['visibility'], 'String');
@@ -73,13 +74,13 @@
   }
 
   /**
-   * The message to send to the chat participants. For example, \"Agent typing\".
-   * @member {String} message
+   * The new nickname.
+   * @member {String} nickname
    */
-  exports.prototype['message'] = undefined;
+  exports.prototype['nickname'] = undefined;
   /**
    * Defines which participants in the chat can see the message.
-   * @member {module:model/MediachatinteractionsidsendtypingstartedData.VisibilityEnum} visibility
+   * @member {module:model/MediachatinteractionsidupdatenicknameData.VisibilityEnum} visibility
    */
   exports.prototype['visibility'] = undefined;
 

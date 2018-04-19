@@ -81,22 +81,22 @@
   }
 
   /**
-   * the action to take after leave
+   * The action to take after the agent leaves.
    * @member {module:model/MediachatinteractionsidleaveData.AfterActionEnum} afterAction
    */
   exports.prototype['afterAction'] = undefined;
   /**
-   * the message to send to the chat
+   * The message to send to the chat participants.
    * @member {String} message
    */
   exports.prototype['message'] = undefined;
   /**
-   * arbitrary type of message
+   * The type of message.
    * @member {String} messageType
    */
   exports.prototype['messageType'] = undefined;
   /**
-   * how message should be treated
+   * Specifies how the message should be treated.
    * @member {module:model/MediachatinteractionsidleaveData.TreatAsEnum} treatAs
    */
   exports.prototype['treatAs'] = undefined;

@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AddInteractionToWorkbinData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/GetWorkbinContentData', 'model/GetWorkbinsContentData', 'model/PullInteractionFromWorkbinData', 'model/SubscribeToWorkbinNotificationsData', 'model/UnsubscribeToWorkbinNotificationsData'], factory);
+    define(['ApiClient', 'model/AddInteractionToWorkbinData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/GetWorkbinContentData', 'model/GetWorkbinsContentData', 'model/PullInteractionFromWorkbinData', 'model/SubscribeToWorkbinNotificationsData', 'model/SubscribeToWorkbinsNotificationsData', 'model/UnsubscribeToWorkbinNotificationsData', 'model/UnsubscribeToWorkbinsNotificationsData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AddInteractionToWorkbinData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/GetWorkbinContentData'), require('../model/GetWorkbinsContentData'), require('../model/PullInteractionFromWorkbinData'), require('../model/SubscribeToWorkbinNotificationsData'), require('../model/UnsubscribeToWorkbinNotificationsData'));
+    module.exports = factory(require('../ApiClient'), require('../model/AddInteractionToWorkbinData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/GetWorkbinContentData'), require('../model/GetWorkbinsContentData'), require('../model/PullInteractionFromWorkbinData'), require('../model/SubscribeToWorkbinNotificationsData'), require('../model/SubscribeToWorkbinsNotificationsData'), require('../model/UnsubscribeToWorkbinNotificationsData'), require('../model/UnsubscribeToWorkbinsNotificationsData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.WorkbinsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AddInteractionToWorkbinData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.GetWorkbinContentData, root.WorkspaceApi.GetWorkbinsContentData, root.WorkspaceApi.PullInteractionFromWorkbinData, root.WorkspaceApi.SubscribeToWorkbinNotificationsData, root.WorkspaceApi.UnsubscribeToWorkbinNotificationsData);
+    root.WorkspaceApi.WorkbinsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AddInteractionToWorkbinData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.GetWorkbinContentData, root.WorkspaceApi.GetWorkbinsContentData, root.WorkspaceApi.PullInteractionFromWorkbinData, root.WorkspaceApi.SubscribeToWorkbinNotificationsData, root.WorkspaceApi.SubscribeToWorkbinsNotificationsData, root.WorkspaceApi.UnsubscribeToWorkbinNotificationsData, root.WorkspaceApi.UnsubscribeToWorkbinsNotificationsData);
   }
-}(this, function(ApiClient, AddInteractionToWorkbinData, ApiErrorResponse, ApiSuccessResponse, GetWorkbinContentData, GetWorkbinsContentData, PullInteractionFromWorkbinData, SubscribeToWorkbinNotificationsData, UnsubscribeToWorkbinNotificationsData) {
+}(this, function(ApiClient, AddInteractionToWorkbinData, ApiErrorResponse, ApiSuccessResponse, GetWorkbinContentData, GetWorkbinsContentData, PullInteractionFromWorkbinData, SubscribeToWorkbinNotificationsData, SubscribeToWorkbinsNotificationsData, UnsubscribeToWorkbinNotificationsData, UnsubscribeToWorkbinsNotificationsData) {
   'use strict';
 
   /**
@@ -425,6 +425,56 @@
 
 
     /**
+     * Subscribe to be notified of changes of the content of multiple Workbins.
+     * @param {module:model/SubscribeToWorkbinsNotificationsData} subscribeToWorkbinsNotificationsData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.subscribeToWorkbinsNotificationsWithHttpInfo = function(subscribeToWorkbinsNotificationsData) {
+      var postBody = subscribeToWorkbinsNotificationsData;
+
+      // verify the required parameter 'subscribeToWorkbinsNotificationsData' is set
+      if (subscribeToWorkbinsNotificationsData === undefined || subscribeToWorkbinsNotificationsData === null) {
+        throw new Error("Missing the required parameter 'subscribeToWorkbinsNotificationsData' when calling subscribeToWorkbinsNotifications");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/workbins/subscribe', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Subscribe to be notified of changes of the content of multiple Workbins.
+     * @param {module:model/SubscribeToWorkbinsNotificationsData} subscribeToWorkbinsNotificationsData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.subscribeToWorkbinsNotifications = function(subscribeToWorkbinsNotificationsData) {
+      return this.subscribeToWorkbinsNotificationsWithHttpInfo(subscribeToWorkbinsNotificationsData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Unsubscribe to the notifications of changes of the content of a Workbin.
      * @param {String} workbinId Id of the Workbin
      * @param {module:model/UnsubscribeToWorkbinNotificationsData} unsubscribeToWorkbinNotificationsData 
@@ -476,6 +526,56 @@
      */
     this.unsubscribeToWorkbinNotifications = function(workbinId, unsubscribeToWorkbinNotificationsData) {
       return this.unsubscribeToWorkbinNotificationsWithHttpInfo(workbinId, unsubscribeToWorkbinNotificationsData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Unsubscribe to the notifications of changes of the content of multiple Workbins.
+     * @param {module:model/UnsubscribeToWorkbinsNotificationsData} unsubscribeToWorkbinsNotificationsData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.unsubscribeToWorkbinsNotificationsWithHttpInfo = function(unsubscribeToWorkbinsNotificationsData) {
+      var postBody = unsubscribeToWorkbinsNotificationsData;
+
+      // verify the required parameter 'unsubscribeToWorkbinsNotificationsData' is set
+      if (unsubscribeToWorkbinsNotificationsData === undefined || unsubscribeToWorkbinsNotificationsData === null) {
+        throw new Error("Missing the required parameter 'unsubscribeToWorkbinsNotificationsData' when calling unsubscribeToWorkbinsNotifications");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/workbins/unsubscribe', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Unsubscribe to the notifications of changes of the content of multiple Workbins.
+     * @param {module:model/UnsubscribeToWorkbinsNotificationsData} unsubscribeToWorkbinsNotificationsData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.unsubscribeToWorkbinsNotifications = function(unsubscribeToWorkbinsNotificationsData) {
+      return this.unsubscribeToWorkbinsNotificationsWithHttpInfo(unsubscribeToWorkbinsNotificationsData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

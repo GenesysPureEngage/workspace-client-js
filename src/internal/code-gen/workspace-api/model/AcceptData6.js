@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediaemailinteractionsidacceptData'], factory);
+    define(['ApiClient', 'model/MediamediatypeinteractionsidacceptData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediaemailinteractionsidacceptData'));
+    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidacceptData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AcceptData6 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediaemailinteractionsidacceptData);
+    root.WorkspaceApi.AcceptData6 = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidacceptData);
   }
-}(this, function(ApiClient, MediaemailinteractionsidacceptData) {
+}(this, function(ApiClient, MediamediatypeinteractionsidacceptData) {
   'use strict';
 
 
@@ -62,14 +62,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediaemailinteractionsidacceptData.constructFromObject(data['data']);
+        obj['data'] = MediamediatypeinteractionsidacceptData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediaemailinteractionsidacceptData} data
+   * @member {module:model/MediamediatypeinteractionsidacceptData} data
    */
   exports.prototype['data'] = undefined;
 

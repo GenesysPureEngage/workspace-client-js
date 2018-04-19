@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData', 'model/AcceptData1', 'model/AcceptData2', 'model/AcceptData3', 'model/AcceptData4', 'model/AcceptData5', 'model/AcceptData7', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/ConsultData', 'model/ConsultData1', 'model/InviteData', 'model/InviteData1', 'model/LeaveData', 'model/LogoutMediaData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/RejectData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
+    define(['ApiClient', 'model/AcceptData6', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/MediaStartMonitoringData', 'model/MediaStopMonitoringData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/RejectData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData'), require('../model/AcceptData1'), require('../model/AcceptData2'), require('../model/AcceptData3'), require('../model/AcceptData4'), require('../model/AcceptData5'), require('../model/AcceptData7'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/ConsultData'), require('../model/ConsultData1'), require('../model/InviteData'), require('../model/InviteData1'), require('../model/LeaveData'), require('../model/LogoutMediaData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/RejectData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData6'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/MediaStartMonitoringData'), require('../model/MediaStopMonitoringData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/RejectData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData, root.WorkspaceApi.AcceptData1, root.WorkspaceApi.AcceptData2, root.WorkspaceApi.AcceptData3, root.WorkspaceApi.AcceptData4, root.WorkspaceApi.AcceptData5, root.WorkspaceApi.AcceptData7, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.ConsultData, root.WorkspaceApi.ConsultData1, root.WorkspaceApi.InviteData, root.WorkspaceApi.InviteData1, root.WorkspaceApi.LeaveData, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.RejectData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
+    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData6, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.MediaStartMonitoringData, root.WorkspaceApi.MediaStopMonitoringData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.RejectData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
   }
-}(this, function(ApiClient, AcceptData, AcceptData1, AcceptData2, AcceptData3, AcceptData4, AcceptData5, AcceptData7, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, ConsultData, ConsultData1, InviteData, InviteData1, LeaveData, LogoutMediaData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, RejectData, TransferData, UserData, UserData2) {
+}(this, function(ApiClient, AcceptData6, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, MediaStartMonitoringData, MediaStopMonitoringData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, RejectData, TransferData, UserData, UserData2) {
   'use strict';
 
   /**
@@ -49,12 +49,12 @@
 
 
     /**
-     * Accept an open-media interaction
-     * Accept the interaction specified in the id path parameter
-     * @param {String} mediatype media-type of interaction to accept
-     * @param {String} id id of interaction to accept
+     * Accept an incoming interaction.
+     * Accept the specified interaction.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction to accept.
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData7} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData6} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.acceptWithHttpInfo = function(mediatype, id, opts) {
@@ -98,74 +98,16 @@
     }
 
     /**
-     * Accept an open-media interaction
-     * Accept the interaction specified in the id path parameter
-     * @param {String} mediatype media-type of interaction to accept
-     * @param {String} id id of interaction to accept
+     * Accept an incoming interaction.
+     * Accept the specified interaction.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction to accept.
      * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData7} opts.acceptData Request parameters.
+     * @param {module:model/AcceptData6} opts.acceptData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.accept = function(mediatype, id, opts) {
       return this.acceptWithHttpInfo(mediatype, id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Accept a chat interaction
-     * Accept the interaction specified in the id path parameter
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.acceptChatWithHttpInfo = function(id, opts) {
-      opts = opts || {};
-      var postBody = opts['acceptData'];
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling acceptChat");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/accept', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Accept a chat interaction
-     * Accept the interaction specified in the id path parameter
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.acceptChat = function(id, opts) {
-      return this.acceptChatWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -240,10 +182,10 @@
 
 
     /**
-     * Set the comment for the interaction
-     * Set the comment for the interaction
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
+     * Add a comment.
+     * Add a comment to the specified interaction.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
      * @param {module:model/AddCommentData} addCommentData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -292,10 +234,10 @@
     }
 
     /**
-     * Set the comment for the interaction
-     * Set the comment for the interaction
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
+     * Add a comment.
+     * Add a comment to the specified interaction.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
      * @param {module:model/AddCommentData} addCommentData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -443,11 +385,11 @@
 
 
     /**
-     * Attach user data to the interaction
-     * Attach the interaction userdata with the provided key/value pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData} userData An array of key/value pairs.
+     * Attach user data to the interaction.
+     * Attach the provided data to the specified interaction.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
+     * @param {module:model/UserData} userData The data to attach to the interaction. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.attachMediaUserDataWithHttpInfo = function(mediatype, id, userData) {
@@ -495,11 +437,11 @@
     }
 
     /**
-     * Attach user data to the interaction
-     * Attach the interaction userdata with the provided key/value pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData} userData An array of key/value pairs.
+     * Attach user data to the interaction.
+     * Attach the provided data to the specified interaction.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
+     * @param {module:model/UserData} userData The data to attach to the interaction. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.attachMediaUserData = function(mediatype, id, userData) {
@@ -580,10 +522,10 @@
 
 
     /**
-     * Complete open-media interaction
-     * Complete the interaction specified in the id path parameter
-     * @param {String} mediatype media-type of interaction to complete
-     * @param {String} id id of interaction to complete
+     * Complete the interaction.
+     * Marks the specified interaction as complete.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction to complete.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.completeWithHttpInfo = function(mediatype, id) {
@@ -626,10 +568,10 @@
     }
 
     /**
-     * Complete open-media interaction
-     * Complete the interaction specified in the id path parameter
-     * @param {String} mediatype media-type of interaction to complete
-     * @param {String} id id of interaction to complete
+     * Complete the interaction.
+     * Marks the specified interaction as complete.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction to complete.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.complete = function(mediatype, id) {
@@ -641,131 +583,11 @@
 
 
     /**
-     * Consult other agent during the chat
-     * consult other agent during the chat
-     * @param {String} id id of the interaction
-     * @param {module:model/ConsultData} consultData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.consultWithHttpInfo = function(id, consultData) {
-      var postBody = consultData;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling consult");
-      }
-
-      // verify the required parameter 'consultData' is set
-      if (consultData === undefined || consultData === null) {
-        throw new Error("Missing the required parameter 'consultData' when calling consult");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/consult', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Consult other agent during the chat
-     * consult other agent during the chat
-     * @param {String} id id of the interaction
-     * @param {module:model/ConsultData} consultData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.consult = function(id, consultData) {
-      return this.consultWithHttpInfo(id, consultData)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Consult a target defines in attached data
-     * Consult a target defines in attached data
-     * @param {String} id id of the interaction
-     * @param {module:model/ConsultData1} consultData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.consultByQueueWithHttpInfo = function(id, consultData) {
-      var postBody = consultData;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling consultByQueue");
-      }
-
-      // verify the required parameter 'consultData' is set
-      if (consultData === undefined || consultData === null) {
-        throw new Error("Missing the required parameter 'consultData' when calling consultByQueue");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/consult-by-queue', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Consult a target defines in attached data
-     * Consult a target defines in attached data
-     * @param {String} id id of the interaction
-     * @param {module:model/ConsultData1} consultData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.consultByQueue = function(id, consultData) {
-      return this.consultByQueueWithHttpInfo(id, consultData)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Remove key/value pair from user data
-     * Deletes the specified key from the interaction data.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData2} userData The keys of the key/value pairs to delete.
+     * Remove key/value pairs from user data.
+     * Delete data with the specified keys from the interaction&#39;s user data.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
+     * @param {module:model/UserData2} userData The keys of the data to remove.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.deleteMediaUserDataWithHttpInfo = function(mediatype, id, userData) {
@@ -813,11 +635,11 @@
     }
 
     /**
-     * Remove key/value pair from user data
-     * Deletes the specified key from the interaction data.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData2} userData The keys of the key/value pairs to delete.
+     * Remove key/value pairs from user data.
+     * Delete data with the specified keys from the interaction&#39;s user data.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
+     * @param {module:model/UserData2} userData The keys of the data to remove.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.deleteMediaUserData = function(mediatype, id, userData) {
@@ -829,8 +651,8 @@
 
 
     /**
-     * Turn off do not disturb for open media channel
-     * Turn off do not disturb for open media channel
+     * Turn off Do Not Disturb.
+     * Turn off Do Not Disturb for the current agent on all media channels.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.dndOffWithHttpInfo = function() {
@@ -861,8 +683,8 @@
     }
 
     /**
-     * Turn off do not disturb for open media channel
-     * Turn off do not disturb for open media channel
+     * Turn off Do Not Disturb.
+     * Turn off Do Not Disturb for the current agent on all media channels.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.dndOff = function() {
@@ -874,8 +696,8 @@
 
 
     /**
-     * Turn on do not disturb for open media channels
-     * Turn on do not disturb for open media channels
+     * Set the agent state to Do Not Disturb.
+     * Set the current agent&#39;s state to Do Not Disturb on all media channels.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.dndOnWithHttpInfo = function() {
@@ -906,8 +728,8 @@
     }
 
     /**
-     * Turn on do not disturb for open media channels
-     * Turn on do not disturb for open media channels
+     * Set the agent state to Do Not Disturb.
+     * Set the current agent&#39;s state to Do Not Disturb on all media channels.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.dndOn = function() {
@@ -919,185 +741,8 @@
 
 
     /**
-     * Invite other agent to join the chat
-     * Invite other agent to join the chat
-     * @param {String} id id of the interaction
-     * @param {module:model/InviteData} inviteData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.inviteWithHttpInfo = function(id, inviteData) {
-      var postBody = inviteData;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling invite");
-      }
-
-      // verify the required parameter 'inviteData' is set
-      if (inviteData === undefined || inviteData === null) {
-        throw new Error("Missing the required parameter 'inviteData' when calling invite");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/invite', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Invite other agent to join the chat
-     * Invite other agent to join the chat
-     * @param {String} id id of the interaction
-     * @param {module:model/InviteData} inviteData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.invite = function(id, inviteData) {
-      return this.inviteWithHttpInfo(id, inviteData)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * inviite a target defines in attached data
-     * invite a target defines in attached data
-     * @param {String} id id of the interaction
-     * @param {module:model/InviteData1} inviteData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.inviteByQueueWithHttpInfo = function(id, inviteData) {
-      var postBody = inviteData;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling inviteByQueue");
-      }
-
-      // verify the required parameter 'inviteData' is set
-      if (inviteData === undefined || inviteData === null) {
-        throw new Error("Missing the required parameter 'inviteData' when calling inviteByQueue");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/invite-by-queue', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * inviite a target defines in attached data
-     * invite a target defines in attached data
-     * @param {String} id id of the interaction
-     * @param {module:model/InviteData1} inviteData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.inviteByQueue = function(id, inviteData) {
-      return this.inviteByQueueWithHttpInfo(id, inviteData)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Leave a chat interaction
-     * Leave the interaction specified in the id path parameter
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/LeaveData} opts.leaveData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.leaveChatWithHttpInfo = function(id, opts) {
-      opts = opts || {};
-      var postBody = opts['leaveData'];
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling leaveChat");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/leave', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Leave a chat interaction
-     * Leave the interaction specified in the id path parameter
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/LeaveData} opts.leaveData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.leaveChat = function(id, opts) {
-      return this.leaveChatWithHttpInfo(id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Logout all open media channels
+     * Log out of all media channels.
+     * Log out the current agent on all media channels. You can make a &#x60;/media/{mediatype}/ready&#x60; or &#x60;/media/{mediatype}/not-ready&#x60; request to log in to the media channel again. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.logoutAgentStateWithHttpInfo = function() {
@@ -1128,7 +773,8 @@
     }
 
     /**
-     * Logout all open media channels
+     * Log out of all media channels.
+     * Log out the current agent on all media channels. You can make a &#x60;/media/{mediatype}/ready&#x60; or &#x60;/media/{mediatype}/not-ready&#x60; request to log in to the media channel again. 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.logoutAgentState = function() {
@@ -1140,7 +786,307 @@
 
 
     /**
-     * Change to the not ready state for all open media channels
+     * Start monitoring an agent.
+     * Start supervisor monitoring of an agent on the specified media channel. When an agent being monitored accepts a chat, the  supervisor also receives the chat and all related notifications. If the agent is currently in a chat, the supervisor is added to the agent&#39;s next chat. The supervisor can&#39;t send messages in this mode and only another supervisor can see that the monitoring supervisor joined the chat. If the monitored agent leaves the chat but another agent  is still present, the supervisor continues monitoring the chat until it&#39;s completed or placed in a queue. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/media/{mediatype}/interactions/{id}/switch-to-barge&#x60;,  &#x60;/media/{mediatype}/interactions/{id}/switch-to-coach&#x60;, and &#x60;/media/{mediatype}/interactions/{id}/switch-to-monitor&#x60;.
+     * @param {String} mediatype The media channel.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/MediaStartMonitoringData} opts.mediaStartMonitoringData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.mediaStartMonitoringWithHttpInfo = function(mediatype, opts) {
+      opts = opts || {};
+      var postBody = opts['mediaStartMonitoringData'];
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling mediaStartMonitoring");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/start-monitoring', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Start monitoring an agent.
+     * Start supervisor monitoring of an agent on the specified media channel. When an agent being monitored accepts a chat, the  supervisor also receives the chat and all related notifications. If the agent is currently in a chat, the supervisor is added to the agent&#39;s next chat. The supervisor can&#39;t send messages in this mode and only another supervisor can see that the monitoring supervisor joined the chat. If the monitored agent leaves the chat but another agent  is still present, the supervisor continues monitoring the chat until it&#39;s completed or placed in a queue. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/media/{mediatype}/interactions/{id}/switch-to-barge&#x60;,  &#x60;/media/{mediatype}/interactions/{id}/switch-to-coach&#x60;, and &#x60;/media/{mediatype}/interactions/{id}/switch-to-monitor&#x60;.
+     * @param {String} mediatype The media channel.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/MediaStartMonitoringData} opts.mediaStartMonitoringData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.mediaStartMonitoring = function(mediatype, opts) {
+      return this.mediaStartMonitoringWithHttpInfo(mediatype, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Stop monitoring an agent.
+     * Stop supervisor monitoring of an agent on the specified media channel.
+     * @param {String} mediatype The media channel.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/MediaStopMonitoringData} opts.mediaStopMonitoringData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.mediaStopMonitoringWithHttpInfo = function(mediatype, opts) {
+      opts = opts || {};
+      var postBody = opts['mediaStopMonitoringData'];
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling mediaStopMonitoring");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/stop-monitoring', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Stop monitoring an agent.
+     * Stop supervisor monitoring of an agent on the specified media channel.
+     * @param {String} mediatype The media channel.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/MediaStopMonitoringData} opts.mediaStopMonitoringData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.mediaStopMonitoring = function(mediatype, opts) {
+      return this.mediaStopMonitoringWithHttpInfo(mediatype, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Switch to the barge in monitoring mode.
+     * Switch to the barge in monitoring mode for the specified chat. Both the agent and the  customer can see the supervisor&#39;s messages.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the chat interaction.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.mediaSwicthToBargeWithHttpInfo = function(mediatype, id) {
+      var postBody = null;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling mediaSwicthToBarge");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling mediaSwicthToBarge");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/switch-to-barge', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Switch to the barge in monitoring mode.
+     * Switch to the barge in monitoring mode for the specified chat. Both the agent and the  customer can see the supervisor&#39;s messages.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the chat interaction.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.mediaSwicthToBarge = function(mediatype, id) {
+      return this.mediaSwicthToBargeWithHttpInfo(mediatype, id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Switch to the coach monitoring mode.
+     * Switch to the coach monitoring mode for the specified chat. Only the agent can see the  supervisor&#39;s messages.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the chat interaction.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.mediaSwicthToCoachWithHttpInfo = function(mediatype, id) {
+      var postBody = null;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling mediaSwicthToCoach");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling mediaSwicthToCoach");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/switch-to-coach', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Switch to the coach monitoring mode.
+     * Switch to the coach monitoring mode for the specified chat. Only the agent can see the  supervisor&#39;s messages.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the chat interaction.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.mediaSwicthToCoach = function(mediatype, id) {
+      return this.mediaSwicthToCoachWithHttpInfo(mediatype, id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Switch to the monitor mode.
+     * Switch to the monitor mode for the specified chat. The supervisor can&#39;t send messages in this  mode and only another supervisor can see that the monitoring supervisor joined the chat.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the chat interaction.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.mediaSwicthToMonitorWithHttpInfo = function(mediatype, id) {
+      var postBody = null;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling mediaSwicthToMonitor");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling mediaSwicthToMonitor");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/switch-to-monitor', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Switch to the monitor mode.
+     * Switch to the monitor mode for the specified chat. The supervisor can&#39;t send messages in this  mode and only another supervisor can see that the monitoring supervisor joined the chat.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the chat interaction.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.mediaSwicthToMonitor = function(mediatype, id) {
+      return this.mediaSwicthToMonitorWithHttpInfo(mediatype, id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Set the agent state to Not Ready.
+     * Set the current agent&#39;s state to Not Ready on all media channels.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.notReadyAgentStateWithHttpInfo = function() {
@@ -1171,7 +1117,8 @@
     }
 
     /**
-     * Change to the not ready state for all open media channels
+     * Set the agent state to Not Ready.
+     * Set the current agent&#39;s state to Not Ready on all media channels.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.notReadyAgentState = function() {
@@ -1183,9 +1130,9 @@
 
 
     /**
-     * Change to the not ready state for open media channel
-     * Change to the not ready state for open media channel
-     * @param {String} mediatype 
+     * Set the agent state to Not Ready.
+     * Set the current agent&#39;s state to Not Ready on the specified media channel.
+     * @param {String} mediatype The media channel.
      * @param {module:model/NotReadyForMediaData} notReadyForMediaData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1228,9 +1175,9 @@
     }
 
     /**
-     * Change to the not ready state for open media channel
-     * Change to the not ready state for open media channel
-     * @param {String} mediatype 
+     * Set the agent state to Not Ready.
+     * Set the current agent&#39;s state to Not Ready on the specified media channel.
+     * @param {String} mediatype The media channel.
      * @param {module:model/NotReadyForMediaData} notReadyForMediaData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1243,10 +1190,10 @@
 
 
     /**
-     * Place the interaction in queue
-     * Place the interaction in queue with modification of properties pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
+     * Place the interaction in a queue.
+     * Place the interaction in the specified queue.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
      * @param {module:model/PlaceInQueueData} placeInQueueData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1295,10 +1242,10 @@
     }
 
     /**
-     * Place the interaction in queue
-     * Place the interaction in queue with modification of properties pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
+     * Place the interaction in a queue.
+     * Place the interaction in the specified queue.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
      * @param {module:model/PlaceInQueueData} placeInQueueData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1311,7 +1258,8 @@
 
 
     /**
-     * Change to the ready state for all open media channels
+     * Set the agent state to Ready.
+     * Set the current agent&#39;s state to Ready on all media channels.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.readyAgentStateWithHttpInfo = function() {
@@ -1342,7 +1290,8 @@
     }
 
     /**
-     * Change to the ready state for all open media channels
+     * Set the agent state to Ready.
+     * Set the current agent&#39;s state to Ready on all media channels.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.readyAgentState = function() {
@@ -1354,9 +1303,9 @@
 
 
     /**
-     * Change to the ready state for open media channel
-     * Change to the ready state for open media channel
-     * @param {String} mediatype 
+     * Set the agent state to Ready.
+     * Set the current agent&#39;s state to Ready on the specified media channel.
+     * @param {String} mediatype The media channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/ReadyForMediaData} opts.readyForMediaData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1396,9 +1345,9 @@
     }
 
     /**
-     * Change to the ready state for open media channel
-     * Change to the ready state for open media channel
-     * @param {String} mediatype 
+     * Set the agent state to Ready.
+     * Set the current agent&#39;s state to Ready on the specified media channel.
+     * @param {String} mediatype The media channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/ReadyForMediaData} opts.readyForMediaData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1412,10 +1361,10 @@
 
 
     /**
-     * Reject an open-media interaction
-     * Reject the interaction specified in the id path parameter
-     * @param {String} mediatype media-type of interaction to reject
-     * @param {String} id id of interaction to reject
+     * Reject an incoming interaction.
+     * Reject the specified interaction.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction to reject.
      * @param {Object} opts Optional parameters
      * @param {module:model/RejectData} opts.rejectData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1461,10 +1410,10 @@
     }
 
     /**
-     * Reject an open-media interaction
-     * Reject the interaction specified in the id path parameter
-     * @param {String} mediatype media-type of interaction to reject
-     * @param {String} id id of interaction to reject
+     * Reject an incoming interaction.
+     * Reject the specified interaction.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction to reject.
      * @param {Object} opts Optional parameters
      * @param {module:model/RejectData} opts.rejectData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1547,9 +1496,9 @@
 
 
     /**
-     * Logout the open media channel
-     * Logout the open media channel
-     * @param {String} mediatype 
+     * Log out of the media channel.
+     * Log out the current agent on the specified media channels. You can   make a &#x60;/media/{mediatype}/ready&#x60; or &#x60;/media/{mediatype}/not-ready&#x60; request to log in to the media channel again. 
+     * @param {String} mediatype The media channel.
      * @param {module:model/LogoutMediaData} logoutMediaData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1592,9 +1541,9 @@
     }
 
     /**
-     * Logout the open media channel
-     * Logout the open media channel
-     * @param {String} mediatype 
+     * Log out of the media channel.
+     * Log out the current agent on the specified media channels. You can   make a &#x60;/media/{mediatype}/ready&#x60; or &#x60;/media/{mediatype}/not-ready&#x60; request to log in to the media channel again. 
+     * @param {String} mediatype The media channel.
      * @param {module:model/LogoutMediaData} logoutMediaData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1607,300 +1556,10 @@
 
 
     /**
-     * Send custom notification to the specified chat
-     * Send custom notification to the specified chat
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData5} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.sendCustomNotificationWithHttpInfo = function(id, opts) {
-      opts = opts || {};
-      var postBody = opts['acceptData'];
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling sendCustomNotification");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/send-custom-notification', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Send custom notification to the specified chat
-     * Send custom notification to the specified chat
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData5} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.sendCustomNotification = function(id, opts) {
-      return this.sendCustomNotificationWithHttpInfo(id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Send a message to the specified chat
-     * Send a message to the specified chat
-     * @param {String} id id of interaction to send a message to
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData1} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.sendMessageWithHttpInfo = function(id, opts) {
-      opts = opts || {};
-      var postBody = opts['acceptData'];
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling sendMessage");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/send-message', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Send a message to the specified chat
-     * Send a message to the specified chat
-     * @param {String} id id of interaction to send a message to
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData1} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.sendMessage = function(id, opts) {
-      return this.sendMessageWithHttpInfo(id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Send notification that typing started to the specified chat
-     * Send notification that typing started to the specified chat
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData3} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.sendTypingStartedWithHttpInfo = function(id, opts) {
-      opts = opts || {};
-      var postBody = opts['acceptData'];
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling sendTypingStarted");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/send-typing-started', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Send notification that typing started to the specified chat
-     * Send notification that typing started to the specified chat
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData3} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.sendTypingStarted = function(id, opts) {
-      return this.sendTypingStartedWithHttpInfo(id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Send notification that typing stopped to the specified chat
-     * Send notification that typing stoppped to the specified chat
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData4} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.sendTypingStoppedWithHttpInfo = function(id, opts) {
-      opts = opts || {};
-      var postBody = opts['acceptData'];
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling sendTypingStopped");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/send-typing-stopped', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Send notification that typing stopped to the specified chat
-     * Send notification that typing stoppped to the specified chat
-     * @param {String} id id of interaction
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData4} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.sendTypingStopped = function(id, opts) {
-      return this.sendTypingStoppedWithHttpInfo(id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Send a url to the specified chat
-     * Send a url to the specified chat
-     * @param {String} id id of interaction to send a url to
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData2} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.sendUrlDataWithHttpInfo = function(id, opts) {
-      opts = opts || {};
-      var postBody = opts['acceptData'];
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling sendUrlData");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/chat/interactions/{id}/send-url', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Send a url to the specified chat
-     * Send a url to the specified chat
-     * @param {String} id id of interaction to send a url to
-     * @param {Object} opts Optional parameters
-     * @param {module:model/AcceptData2} opts.acceptData Request parameters.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.sendUrlData = function(id, opts) {
-      return this.sendUrlDataWithHttpInfo(id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Transfer the interaction to the agent
-     * Transfer the interaction to an agent.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
+     * Transfer the interaction.
+     * Transfer the interaction to the specified agent.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
      * @param {module:model/TransferData} transferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -1949,10 +1608,10 @@
     }
 
     /**
-     * Transfer the interaction to the agent
-     * Transfer the interaction to an agent.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
+     * Transfer the interaction.
+     * Transfer the interaction to the specified agent.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
      * @param {module:model/TransferData} transferData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -1965,11 +1624,11 @@
 
 
     /**
-     * Update user data to the interaction
-     * Update the interaction userdata with the provided key/value pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData} userData An array of key/value pairs.
+     * Update user data for an interaction.
+     * Update the interaction with the provided key/value pairs. This replaces any existing key/value pairs with the same keys.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
+     * @param {module:model/UserData} userData The data to update. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.updateMediaUserDataWithHttpInfo = function(mediatype, id, userData) {
@@ -2017,11 +1676,11 @@
     }
 
     /**
-     * Update user data to the interaction
-     * Update the interaction userdata with the provided key/value pairs.
-     * @param {String} mediatype media-type of interaction
-     * @param {String} id id of the interaction
-     * @param {module:model/UserData} userData An array of key/value pairs.
+     * Update user data for an interaction.
+     * Update the interaction with the provided key/value pairs. This replaces any existing key/value pairs with the same keys.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
+     * @param {module:model/UserData} userData The data to update. This is an array of objects with the properties key, type, and value.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.updateMediaUserData = function(mediatype, id, userData) {

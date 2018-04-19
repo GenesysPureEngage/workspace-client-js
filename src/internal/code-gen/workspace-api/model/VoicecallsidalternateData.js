@@ -83,12 +83,12 @@
    */
   exports.prototype['heldConnId'] = undefined;
   /**
-   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
+   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Reasons).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
   /**
-   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
+   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Extensions).
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;

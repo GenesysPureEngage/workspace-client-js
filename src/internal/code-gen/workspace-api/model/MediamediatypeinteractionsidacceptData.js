@@ -69,7 +69,7 @@
   }
 
   /**
-   * A key/value pairs list of additional data.
+   * A collection of key/value pairs.
    * @member {Array.<module:model/Kvpair>} extension
    */
   exports.prototype['extension'] = undefined;

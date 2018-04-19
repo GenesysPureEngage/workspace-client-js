@@ -43,7 +43,7 @@
    * Constructs a new <code>MediamediatypeinteractionsidaddcommentData</code>.
    * @alias module:model/MediamediatypeinteractionsidaddcommentData
    * @class
-   * @param comment {String} The comment to be set
+   * @param comment {String} The comment to add to the interaction.
    */
   var exports = function(comment) {
     var _this = this;
@@ -70,7 +70,7 @@
   }
 
   /**
-   * The comment to be set
+   * The comment to add to the interaction.
    * @member {String} comment
    */
   exports.prototype['comment'] = undefined;

@@ -16,61 +16,60 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediachatinteractionsidconsultData'], factory);
+    define(['ApiClient', 'model/MediachatinteractionsidsendcustomnotificationData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediachatinteractionsidconsultData'));
+    module.exports = factory(require('../ApiClient'), require('./MediachatinteractionsidsendcustomnotificationData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ConsultData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidconsultData);
+    root.WorkspaceApi.CustomNotificationData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediachatinteractionsidsendcustomnotificationData);
   }
-}(this, function(ApiClient, MediachatinteractionsidconsultData) {
+}(this, function(ApiClient, MediachatinteractionsidsendcustomnotificationData) {
   'use strict';
 
 
 
 
   /**
-   * The ConsultData model module.
-   * @module model/ConsultData
+   * The CustomNotificationData model module.
+   * @module model/CustomNotificationData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>ConsultData</code>.
-   * @alias module:model/ConsultData
+   * Constructs a new <code>CustomNotificationData</code>.
+   * @alias module:model/CustomNotificationData
    * @class
-   * @param data {module:model/MediachatinteractionsidconsultData} 
    */
-  var exports = function(data) {
+  var exports = function() {
     var _this = this;
 
-    _this['data'] = data;
+
   };
 
   /**
-   * Constructs a <code>ConsultData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>CustomNotificationData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ConsultData} obj Optional instance to populate.
-   * @return {module:model/ConsultData} The populated <code>ConsultData</code> instance.
+   * @param {module:model/CustomNotificationData} obj Optional instance to populate.
+   * @return {module:model/CustomNotificationData} The populated <code>CustomNotificationData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediachatinteractionsidconsultData.constructFromObject(data['data']);
+        obj['data'] = MediachatinteractionsidsendcustomnotificationData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediachatinteractionsidconsultData} data
+   * @member {module:model/MediachatinteractionsidsendcustomnotificationData} data
    */
   exports.prototype['data'] = undefined;
 
