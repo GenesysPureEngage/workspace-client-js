@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData5', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/CreateData', 'model/ReplyData', 'model/SaveData', 'model/SendData'], factory);
+    define(['ApiClient', 'model/AcceptData5', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/CreateData', 'model/ForwardData1', 'model/ReplyData', 'model/SaveData', 'model/SendData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData5'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/CreateData'), require('../model/ReplyData'), require('../model/SaveData'), require('../model/SendData'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData5'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/CreateData'), require('../model/ForwardData1'), require('../model/ReplyData'), require('../model/SaveData'), require('../model/SendData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.EmailApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData5, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.CreateData, root.WorkspaceApi.ReplyData, root.WorkspaceApi.SaveData, root.WorkspaceApi.SendData);
+    root.WorkspaceApi.EmailApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData5, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.CreateData, root.WorkspaceApi.ForwardData1, root.WorkspaceApi.ReplyData, root.WorkspaceApi.SaveData, root.WorkspaceApi.SendData);
   }
-}(this, function(ApiClient, AcceptData5, ApiErrorResponse, ApiSuccessResponse, CreateData, ReplyData, SaveData, SendData) {
+}(this, function(ApiClient, AcceptData5, ApiErrorResponse, ApiSuccessResponse, CreateData, ForwardData1, ReplyData, SaveData, SendData) {
   'use strict';
 
   /**
@@ -210,6 +210,64 @@
 
 
     /**
+     * forward email
+     * forward inbound email interaction specified in the id path parameter
+     * @param {String} id id of interaction to forward
+     * @param {Object} opts Optional parameters
+     * @param {module:model/ForwardData1} opts.forwardData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.forwardEmailWithHttpInfo = function(id, opts) {
+      opts = opts || {};
+      var postBody = opts['forwardData'];
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling forwardEmail");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/email/interactions/{id}/forward', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * forward email
+     * forward inbound email interaction specified in the id path parameter
+     * @param {String} id id of interaction to forward
+     * @param {Object} opts Optional parameters
+     * @param {module:model/ForwardData1} opts.forwardData Request parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.forwardEmail = function(id, opts) {
+      return this.forwardEmailWithHttpInfo(id, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * reply email
      * Reply to inbound email interaction specified in the id path parameter
      * @param {String} id id of interaction to reply
@@ -217,13 +275,13 @@
      * @param {module:model/ReplyData} opts.replyData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.replyWithHttpInfo = function(id, opts) {
+    this.replyEmailWithHttpInfo = function(id, opts) {
       opts = opts || {};
       var postBody = opts['replyData'];
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling reply");
+        throw new Error("Missing the required parameter 'id' when calling replyEmail");
       }
 
 
@@ -259,8 +317,8 @@
      * @param {module:model/ReplyData} opts.replyData Request parameters.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.reply = function(id, opts) {
-      return this.replyWithHttpInfo(id, opts)
+    this.replyEmail = function(id, opts) {
+      return this.replyEmailWithHttpInfo(id, opts)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

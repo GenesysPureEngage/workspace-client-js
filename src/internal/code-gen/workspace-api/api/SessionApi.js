@@ -500,6 +500,57 @@
           return response_and_data.data;
         });
     }
+
+
+    /**
+     * Log out of activated channels and end the session.
+     * Ends the current agent&#39;s session. This request logs out the agent on all activated channels, ends the HTTP session, and cleans up related resources. Genesys recommends that you first disconnect CometD and then make this request. After you end the session, you&#39;ll need to make a login request before making any new calls to the API.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.redirectUri The URI the Authentication API uses to redirect the user after logout.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    this.logoutRedirectWithHttpInfo = function(opts) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'redirect_uri': opts['redirectUri'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json', 'text/html'];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/logout', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Log out of activated channels and end the session.
+     * Ends the current agent&#39;s session. This request logs out the agent on all activated channels, ends the HTTP session, and cleans up related resources. Genesys recommends that you first disconnect CometD and then make this request. After you end the session, you&#39;ll need to make a login request before making any new calls to the API.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.redirectUri The URI the Authentication API uses to redirect the user after logout.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    this.logoutRedirect = function(opts) {
+      return this.logoutRedirectWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
   };
 
   return exports;

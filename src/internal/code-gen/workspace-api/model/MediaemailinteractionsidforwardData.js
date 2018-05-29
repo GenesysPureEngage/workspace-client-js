@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaemailinteractionsidreplyData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.MediaemailinteractionsidforwardData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Kvpair);
   }
 }(this, function(ApiClient, Kvpair) {
   'use strict';
@@ -34,16 +34,16 @@
 
 
   /**
-   * The MediaemailinteractionsidreplyData model module.
-   * @module model/MediaemailinteractionsidreplyData
+   * The MediaemailinteractionsidforwardData model module.
+   * @module model/MediaemailinteractionsidforwardData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediaemailinteractionsidreplyData</code>.
-   * @alias module:model/MediaemailinteractionsidreplyData
+   * Constructs a new <code>MediaemailinteractionsidforwardData</code>.
+   * @alias module:model/MediaemailinteractionsidforwardData
    * @class
-   * @param queue {String} the name of the queue to submit the reply email
+   * @param queue {String} the name of the queue to submit the forward email
    * @param from {String} the address mail of from.
    */
   var exports = function(queue, from) {
@@ -62,11 +62,11 @@
   };
 
   /**
-   * Constructs a <code>MediaemailinteractionsidreplyData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediaemailinteractionsidforwardData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediaemailinteractionsidreplyData} obj Optional instance to populate.
-   * @return {module:model/MediaemailinteractionsidreplyData} The populated <code>MediaemailinteractionsidreplyData</code> instance.
+   * @param {module:model/MediaemailinteractionsidforwardData} obj Optional instance to populate.
+   * @return {module:model/MediaemailinteractionsidforwardData} The populated <code>MediaemailinteractionsidforwardData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -107,7 +107,7 @@
   }
 
   /**
-   * the name of the queue to submit the reply email
+   * the name of the queue to submit the forward email
    * @member {String} queue
    */
   exports.prototype['queue'] = undefined;
@@ -117,7 +117,7 @@
    */
   exports.prototype['from'] = undefined;
   /**
-   * The addresses mail of to. If the field is not defined. The to is reply address speficied in inboud or from address if reply is not defined.
+   * The addresses mail of to.
    * @member {Array.<String>} to
    */
   exports.prototype['to'] = undefined;

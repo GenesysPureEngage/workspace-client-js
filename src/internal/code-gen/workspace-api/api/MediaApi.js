@@ -908,17 +908,17 @@
      * @param {String} id The ID of the chat interaction.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.mediaSwicthToBargeWithHttpInfo = function(mediatype, id) {
+    this.mediaSwicthToBargeInWithHttpInfo = function(mediatype, id) {
       var postBody = null;
 
       // verify the required parameter 'mediatype' is set
       if (mediatype === undefined || mediatype === null) {
-        throw new Error("Missing the required parameter 'mediatype' when calling mediaSwicthToBarge");
+        throw new Error("Missing the required parameter 'mediatype' when calling mediaSwicthToBargeIn");
       }
 
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling mediaSwicthToBarge");
+        throw new Error("Missing the required parameter 'id' when calling mediaSwicthToBargeIn");
       }
 
 
@@ -941,7 +941,7 @@
       var returnType = ApiSuccessResponse;
 
       return this.apiClient.callApi(
-        '/media/{mediatype}/interactions/{id}/switch-to-barge', 'POST',
+        '/media/{mediatype}/interactions/{id}/switch-to-barge-in', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -954,8 +954,8 @@
      * @param {String} id The ID of the chat interaction.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.mediaSwicthToBarge = function(mediatype, id) {
-      return this.mediaSwicthToBargeWithHttpInfo(mediatype, id)
+    this.mediaSwicthToBargeIn = function(mediatype, id) {
+      return this.mediaSwicthToBargeInWithHttpInfo(mediatype, id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

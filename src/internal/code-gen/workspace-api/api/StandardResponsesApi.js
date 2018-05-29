@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/GetCategoryData', 'model/GetRootCategoriesData', 'model/GetStandardResponseData', 'model/RenderStandardResponseFieldCodesData', 'model/ReportStandareResponseUsageData'], factory);
+    define(['ApiClient', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/GetCategoryData', 'model/GetRootCategoriesData', 'model/GetStandardResponseData', 'model/LuceneSearchStandardResponseData', 'model/RenderStandardResponseFieldCodesData', 'model/ReportStandareResponseUsageData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/GetCategoryData'), require('../model/GetRootCategoriesData'), require('../model/GetStandardResponseData'), require('../model/RenderStandardResponseFieldCodesData'), require('../model/ReportStandareResponseUsageData'));
+    module.exports = factory(require('../ApiClient'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/GetCategoryData'), require('../model/GetRootCategoriesData'), require('../model/GetStandardResponseData'), require('../model/LuceneSearchStandardResponseData'), require('../model/RenderStandardResponseFieldCodesData'), require('../model/ReportStandareResponseUsageData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.StandardResponsesApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.GetCategoryData, root.WorkspaceApi.GetRootCategoriesData, root.WorkspaceApi.GetStandardResponseData, root.WorkspaceApi.RenderStandardResponseFieldCodesData, root.WorkspaceApi.ReportStandareResponseUsageData);
+    root.WorkspaceApi.StandardResponsesApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.GetCategoryData, root.WorkspaceApi.GetRootCategoriesData, root.WorkspaceApi.GetStandardResponseData, root.WorkspaceApi.LuceneSearchStandardResponseData, root.WorkspaceApi.RenderStandardResponseFieldCodesData, root.WorkspaceApi.ReportStandareResponseUsageData);
   }
-}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, GetCategoryData, GetRootCategoriesData, GetStandardResponseData, RenderStandardResponseFieldCodesData, ReportStandareResponseUsageData) {
+}(this, function(ApiClient, ApiErrorResponse, ApiSuccessResponse, GetCategoryData, GetRootCategoriesData, GetStandardResponseData, LuceneSearchStandardResponseData, RenderStandardResponseFieldCodesData, ReportStandareResponseUsageData) {
   'use strict';
 
   /**
@@ -575,6 +575,56 @@
      */
     this.reportStandareResponseUsage = function(id, reportStandareResponseUsageData) {
       return this.reportStandareResponseUsageWithHttpInfo(id, reportStandareResponseUsageData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Search for standard responses based on search query, using lucene search
+     * @param {module:model/LuceneSearchStandardResponseData} luceneSearchStandardResponseData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.searchStandardResponsesWithHttpInfo = function(luceneSearchStandardResponseData) {
+      var postBody = luceneSearchStandardResponseData;
+
+      // verify the required parameter 'luceneSearchStandardResponseData' is set
+      if (luceneSearchStandardResponseData === undefined || luceneSearchStandardResponseData === null) {
+        throw new Error("Missing the required parameter 'luceneSearchStandardResponseData' when calling searchStandardResponses");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/ucs/responses/search', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Search for standard responses based on search query, using lucene search
+     * @param {module:model/LuceneSearchStandardResponseData} luceneSearchStandardResponseData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.searchStandardResponses = function(luceneSearchStandardResponseData) {
+      return this.searchStandardResponsesWithHttpInfo(luceneSearchStandardResponseData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
