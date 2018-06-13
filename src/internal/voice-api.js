@@ -17,20 +17,26 @@ class VoiceApi {
 
   _onCometdMessage(msg) {
     this._log('Cometd message received on /workspace/v3/voice:\n' + JSON.stringify(msg, null ,2));
-    if (msg.data.messageType === 'CallStateChanged') {
-      this._onCallStateChanged(msg);
-    } else if (msg.data.messageType == 'DnStateChanged') {
-      this._onDnStateChanged(msg);
-    } else if (msg.data.messageType == 'EventError') {
-      // just log
-    } else {
-      this._log('Unhandled message type:' + msg.messageType);
+    switch (msg.data.messageType){
+      case 'CallStateChanged':
+        this._onCallStateChanged(msg);
+        break;
+      case 'DnStateChanged':
+        this._onDnStateChanged(msg);
+        break;
+      case 'EventUserEvent':
+        this._onEventUserEvent(msg);
+        break;
+      case 'EventError':
+        // just log
+        break;
+      default:
+        this._log('Unhandled message type:' + msg.messageType);
     }
   }
 
   _onCallStateChanged(cometdMsg) {
     let call = cometdMsg.data.call;
-
     let connIdChanged = false;
     if (call.previousConnId && this.calls.has(call.previousConnId)) {
       this.calls.delete(call.previousConnId);
@@ -68,6 +74,11 @@ class VoiceApi {
     let dn = msg.data.dn;
     this.dn = dn;
     this._eventEmitter.emit('DnStateChanged', {dn});
+  }
+
+  _onEventUserEvent(msg){
+    //simply forward event
+    this._eventEmitter.emit('EventUserEvent', msg);
   }
 
   /**

@@ -1,14 +1,12 @@
-const url = require('url');
-const EventEmitter = require('events');
-
+const { adapt: adaptCometDClientForNode } = require('./cometd-nodejs-client');
+const { CometD } = require('cometd');
 const workspace = require('./internal/code-gen/workspace-api');
-const cometDLib = require('cometd');
-require('./cometd-nodejs-client').adapt();
-const CookieJar = require('cookiejar').CookieJar;
-
+const EventEmitter = require('events');
 const VoiceApi = require('./internal/voice-api');
 const TargetsApi = require('./internal/targets-api');
 const ReportingApi = require('./internal/reporting-api');
+
+adaptCometDClientForNode();
 
 class WorkspaceApi extends EventEmitter {
   /**
@@ -32,56 +30,63 @@ class WorkspaceApi extends EventEmitter {
     }
   }
 
-  async _initializeCometd() {
-    return new Promise((resolve, reject) => {
-      this._log('Initializing cometd...');
-      this._cometd = new cometDLib.CometD();
-      const hostname = url.parse(this._workspaceUrl).hostname;
-      const transport = this._cometd.findTransport('long-polling');
-      transport.context = {
-        cookieJar: this.cookieJar
-      };
-      
-      this._cometd.configure({
-        url: this._workspaceUrl + '/notifications',
-        requestHeaders: {
-          'x-api-key': this.apiKey,
-        }
-      });
-      
-      this._log('Starting cometd handshake...');
-      this._cometd.handshake(reply => {
-        if(reply.successful) {
-          this._log('Handshake successful');
-          this._cometd.subscribe('/workspace/v3/initialization', msg => {
-            if(msg.data.state === 'Complete') {
-              resolve(msg.data.data);
-              //CM: TODO: store config
-            } else if (msg.data.state === 'Failed') {
-              reject('Workspace initialization failed.');
-            }
-          }, result => {
-            if(result.successful) {
-              this._log('/workspace/v3/initialization subscription successful.');
-            } else {
-              reject('/workspace/v3/initialization subscription failed.');
-            }
-          });
 
-          this._cometd.subscribe('/workspace/v3/voice', msg => {
-            this.voice._onCometdMessage(msg);
-          }, result => {
-            if(result.successful) {
-              this._log('/workspace/v3/voice subscription successful.');
-            } else {
-              this._log('/workspace/v3/voice subscription failed.');
-            }
-          });
-        }
-        else {
-            reject('Workspace initialization failed.');
-        }
+  async _initializeCometd() {
+    this._log('Initializing cometd...');
+    this._cometd = new CometD();
+    const transport = this._cometd.findTransport('long-polling');
+    transport.context = { cookieJar: this.cookieJar };
+    this._cometd.configure({
+      url: `${this._workspaceUrl}/notifications`,
+      requestHeaders: {
+        'x-api-key': this.apiKey,
+      }
+    });
+    this._log('Starting cometd handshake...');
+    await this._initCometDHandshake();
+    this._log('Handshake successful');
+    const result = await this._initializeWorkspaceSubscription();
+    this._cometd.subscribe(
+      '/workspace/v3/voice',
+      msg => { this.voice._onCometdMessage(msg) },
+      result => {
+        const status = result.successful
+          ? 'sucessful'
+          : 'failed';
+        this._log(`/workspace/v3/voice subscription ${status}.`);
+      }
+    );
+    return result;
+  }
+
+  async _initCometDHandshake(){
+      return await new Promise((resolve, reject) =>{
+        this._cometd.handshake(reply =>{
+          reply.successful
+            ? resolve(reply)
+            : reject(reply)
+        })
       });
+  }
+
+  async _initializeWorkspaceSubscription(){
+    return await new Promise((resolve, reject) =>{
+      const _handleMessage = ({ data }) => {
+        if(data.state === 'Complete') {
+          resolve(data.data);
+          //CM: TODO: store config
+        }
+        reject('Workspace initialization failed.');
+      };
+
+      this._cometd.subscribe(
+        '/workspace/v3/initialization',
+        _handleMessage,
+        subscription => {
+          if(subscription.successful) return this._log('/workspace/v3/initialization subscription successful.');
+          reject('/workspace/v3/initialization subscription failed.');
+        }
+      );
     });
   }
 
@@ -96,14 +101,14 @@ class WorkspaceApi extends EventEmitter {
     this._workspaceClient = new workspace.ApiClient();
     this._workspaceClient.basePath = this._workspaceUrl;
     this._workspaceClient.enableCookies = true;
-	  this.cookieJar = this._workspaceClient.agent.jar;
+	this.cookieJar = this._workspaceClient.agent.jar;
     if (this.apiKey) {
       this._workspaceClient.defaultHeaders = { 'x-api-key': this.apiKey };
     }
     this._sessionApi = new workspace.SessionApi(this._workspaceClient);
     this.voice = new VoiceApi(this, this._workspaceClient, this._debugEnabled);
     this.targets = new TargetsApi(this._workspaceClient, this._debugEnabled);
-	  this.reporting = new ReportingApi(this._workspaceClient, this._debugEnabled);
+	this.reporting = new ReportingApi(this._workspaceClient, this._debugEnabled);
 
     let options = {};
 
@@ -115,7 +120,7 @@ class WorkspaceApi extends EventEmitter {
     }
 
     this._log('Initializing workspace...');
-    let response =  await this._sessionApi.initializeWorkspaceWithHttpInfo(options);
+    let response = await this._sessionApi.initializeWorkspaceWithHttpInfo(options);
 
     this._sessionCookie = response.response.header['set-cookie'].find(v => v.startsWith('WORKSPACE_SESSIONID'));
     this.cookieJar.setCookie(this._sessionCookie);
