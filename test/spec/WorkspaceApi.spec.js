@@ -254,7 +254,7 @@ describe('WorkspaceApi', () => {
                 return api
                     .initialize({token: 'TOKEN'})
                     .catch(e =>{
-                        expect(e).to.eql('Workspace initialization failed.');
+                        expect(e).to.eql({ successful : false});
                     });
             });
 

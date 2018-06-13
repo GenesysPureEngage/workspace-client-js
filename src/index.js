@@ -1,5 +1,5 @@
 const { adapt: adaptCometDClientForNode } = require('./cometd-nodejs-client');
-const { CometD } = require('cometd');
+const CometDLib = require('cometd');
 const workspace = require('./internal/code-gen/workspace-api');
 const EventEmitter = require('events');
 const VoiceApi = require('./internal/voice-api');
@@ -33,7 +33,7 @@ class WorkspaceApi extends EventEmitter {
 
   async _initializeCometd() {
     this._log('Initializing cometd...');
-    this._cometd = new CometD();
+    this._cometd = new CometDLib.CometD();
     const transport = this._cometd.findTransport('long-polling');
     transport.context = { cookieJar: this.cookieJar };
     this._cometd.configure({
