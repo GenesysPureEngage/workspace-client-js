@@ -94,15 +94,14 @@ class WorkspaceApi extends EventEmitter {
     this._workspaceClient = new workspace.ApiClient();
     this._workspaceClient.basePath = this._workspaceUrl;
     this._workspaceClient.enableCookies = true;
-	this.cookieJar = this._workspaceClient.agent.jar;
+	  this.cookieJar = this._workspaceClient.agent.jar;
     if (this.apiKey) {
       this._workspaceClient.defaultHeaders = { 'x-api-key': this.apiKey };
     }
     this._sessionApi = new workspace.SessionApi(this._workspaceClient);
-
     this.voice = new VoiceApi(this, this._workspaceClient, this._debugEnabled);
     this.targets = new TargetsApi(this._workspaceClient, this._debugEnabled);
-	this.reporting = new ReportingApi(this._workspaceClient, this._debugEnabled);
+	  this.reporting = new ReportingApi(this._workspaceClient, this._debugEnabled);
 
     let options = {};
 
@@ -177,9 +176,10 @@ class WorkspaceApi extends EventEmitter {
   }
 
   setDebugEnabled(debugEnabled) {
-    this._debugEnabled = debugEnabled;
-    this.voice._debugEnabled = debugEnabled;
-    this.targets._debugEnabled = debugEnabled;
+    this._debugEnabled = !!debugEnabled;
+    this.voice.setDebugEnabled(!!debugEnabled);
+    this.targets.setDebugEnabled(!!debugEnabled);
+    return this;
   }
 }
 

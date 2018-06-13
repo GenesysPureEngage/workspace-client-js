@@ -110,6 +110,11 @@ class TargetsApi {
   async ackRecentMissedCalls() {
       return this._api.ackRecentMissedCalls();
   }
+
+  setDebugEnabled(isEnabled){
+    this._debugEnabled = !!isEnabled;
+    return this;
+  }
 }
 
 module.exports = TargetsApi;
