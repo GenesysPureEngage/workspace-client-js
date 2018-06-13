@@ -36,7 +36,6 @@ class WorkspaceApi extends EventEmitter {
     return new Promise((resolve, reject) => {
       this._log('Initializing cometd...');
       this._cometd = new cometDLib.CometD();
-      
       const hostname = url.parse(this._workspaceUrl).hostname;
       const transport = this._cometd.findTransport('long-polling');
       transport.context = {
@@ -58,7 +57,7 @@ class WorkspaceApi extends EventEmitter {
             if(msg.data.state === 'Complete') {
               resolve(msg.data.data);
               //CM: TODO: store config
-            } else if (msg.data.state == 'Failed') {
+            } else if (msg.data.state === 'Failed') {
               reject('Workspace initialization failed.');
             }
           }, result => {
@@ -78,6 +77,9 @@ class WorkspaceApi extends EventEmitter {
               this._log('/workspace/v3/voice subscription failed.');
             }
           });
+        }
+        else {
+            reject('Workspace initialization failed.');
         }
       });
     });
@@ -113,7 +115,7 @@ class WorkspaceApi extends EventEmitter {
     }
 
     this._log('Initializing workspace...');
-    let response = await this._sessionApi.initializeWorkspaceWithHttpInfo(options);
+    let response =  await this._sessionApi.initializeWorkspaceWithHttpInfo(options);
 
     this._sessionCookie = response.response.header['set-cookie'].find(v => v.startsWith('WORKSPACE_SESSIONID'));
     this.cookieJar.setCookie(this._sessionCookie);
@@ -126,6 +128,8 @@ class WorkspaceApi extends EventEmitter {
     this.initialized = true;
     this._log('Initialization complete.');
   }
+
+  get agent(){ return this._workspaceClient; }
 
   /**
    * Ends the current agent's session. This request logs out the agent on all activated channels, ends the HTTP session, 
