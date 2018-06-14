@@ -14,7 +14,9 @@ describe('VoiceApi', ()=>{
         setAgentStateReady: successAsyncRequest,
         setAgentStateNotReady: successAsyncRequest,
         setDNDOn: successAsyncRequest,
-        setDNDOff: successAsyncRequest
+        setDNDOff: successAsyncRequest,
+        loginVoice: successAsyncRequest,
+        logoutVoice: successAsyncRequest
     };
 
     before(()=>{
@@ -125,6 +127,38 @@ describe('VoiceApi', ()=>{
             expect(
                 await api.dndOff()
             ).to.be('OFF_RESULT');
+            return true;
+        });
+    });
+
+    describe('login()', ()=>{
+        it('sends login request', async ()=>{
+            await api.login();
+            expect(FakeVoiceApi.prototype.loginVoice.called).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.loginVoice = sinon.fake.returns('LV_RESULT');
+            expect(
+                await api.login()
+            ).to.be('LV_RESULT');
+            return true;
+        });
+    });
+
+    describe('logout()', ()=>{
+        it('sends logout request', async ()=>{
+            await api.logout();
+            expect(FakeVoiceApi.prototype.logoutVoice.called).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.logoutVoice = sinon.fake.returns('RESULT');
+            expect(
+                await api.logout()
+            ).to.be('RESULT');
             return true;
         });
     });
