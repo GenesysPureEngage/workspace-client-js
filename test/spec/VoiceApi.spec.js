@@ -16,7 +16,16 @@ describe('VoiceApi', ()=>{
         setDNDOn: successAsyncRequest,
         setDNDOff: successAsyncRequest,
         loginVoice: successAsyncRequest,
-        logoutVoice: successAsyncRequest
+        logoutVoice: successAsyncRequest,
+        forward: successAsyncRequest
+    };
+
+    const expectApiCalled = (methodName) =>{
+        return expect(FakeVoiceApi.prototype[methodName].called).to.be.ok();
+    };
+
+    const expectApiCalledWith = (methodName, calledWith) =>{
+        return expect(FakeVoiceApi.prototype[methodName].calledWith(calledWith)).to.be.ok();
     };
 
     before(()=>{
@@ -162,4 +171,26 @@ describe('VoiceApi', ()=>{
             return true;
         });
     });
+
+    describe('setForward(forwardTo)', ()=>{
+        it('sends forward request', async ()=>{
+            await api.setForward('FORWARD_TO');
+            expectApiCalledWith('forward', {
+                data: {
+                    forwardTo: 'FORWARD_TO'
+                }
+            });
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.forward = sinon.fake.returns('ANY');
+            expect(
+                await api.setForward('FORWARD_TO')
+            ).to.be('ANY');
+            return true;
+        });
+    });
+
+
 });
