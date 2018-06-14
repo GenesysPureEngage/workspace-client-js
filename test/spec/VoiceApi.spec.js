@@ -26,6 +26,8 @@ describe('VoiceApi', ()=>{
     };
 
     const expectApiCalledWith = (methodName, calledWith) =>{
+        if(Array.isArray(calledWith))
+            return expect(FakeVoiceApi.prototype[methodName].calledWith(...calledWith)).to.be.ok();
         return expect(FakeVoiceApi.prototype[methodName].calledWith(calledWith)).to.be.ok();
     };
 
@@ -276,4 +278,166 @@ describe('VoiceApi', ()=>{
         });
     });
 
+    describe('holdCall(connectionId, optional)', ()=>{
+        before(() =>{
+            FakeVoiceApi.prototype.hold = successAsyncRequest;
+        });
+
+        it('sends hold-call request', async ()=>{
+            const expectedData = {
+                holdData: { data: {} }
+            };
+            await api.holdCall('CONNECTION_ID', {});
+            expect(FakeVoiceApi.prototype.hold.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('pass optional parameters', async ()=>{
+            const optional = { foo: 'bar'};
+            const expectedData = {
+                holdData: { data: optional }
+            };
+            await api.holdCall('CONNECTION_ID', optional);
+            expect(FakeVoiceApi.prototype.hold.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.hold = sinon.fake.returns('FAKE');
+            expect(
+                await api.holdCall('CONNECTION_ID', {})
+            ).to.be('FAKE');
+            return true;
+        });
+    });
+
+    describe('retrieveCall(connectionId, optional)', ()=>{
+        before(() =>{
+            FakeVoiceApi.prototype.retrieve = successAsyncRequest;
+        });
+
+        it('sends retrieve-call request', async ()=>{
+            const expectedData = {
+                retrieveData: { data: {} }
+            };
+            await api.retrieveCall('CONNECTION_ID', {});
+            expect(FakeVoiceApi.prototype.retrieve.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('pass optional parameters', async ()=>{
+            const optional = { foo: 'bar'};
+            const expectedData = {
+                retrieveData: { data: optional }
+            };
+            await api.retrieveCall('CONNECTION_ID', optional);
+            expect(FakeVoiceApi.prototype.retrieve.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.retrieve = sinon.fake.returns('FAKE');
+            expect(
+                await api.retrieveCall('CONNECTION_ID', {})
+            ).to.be('FAKE');
+            return true;
+        });
+    });
+
+    describe('releaseCall(connectionId, optional)', ()=>{
+        before(() =>{
+            FakeVoiceApi.prototype.release = successAsyncRequest;
+        });
+
+        it('sends release-call request', async ()=>{
+            const expectedData = {
+                releaseData: { data: {} }
+            };
+            await api.releaseCall('CONNECTION_ID', {});
+            expect(FakeVoiceApi.prototype.release.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('pass optional parameters', async ()=>{
+            const optional = { foo: 'bar'};
+            const expectedData = {
+                releaseData: { data: optional }
+            };
+            await api.releaseCall('CONNECTION_ID', optional);
+            expect(FakeVoiceApi.prototype.release.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.release = sinon.fake.returns('FAKE');
+            expect(
+                await api.releaseCall('CONNECTION_ID', {})
+            ).to.be('FAKE');
+            return true;
+        });
+    });
+
+    describe('clearCall(connectionId, optional)', ()=>{
+        before(() =>{
+            FakeVoiceApi.prototype.clear = successAsyncRequest;
+        });
+
+        it('sends clear-call request', async ()=>{
+            const expectedData = {
+                data: {}
+            };
+            await api.clearCall('CONNECTION_ID', {});
+            expect(FakeVoiceApi.prototype.clear.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('pass optional parameters', async ()=>{
+            const optional = { foo: 'bar'};
+            const expectedData = { data: optional };
+            await api.clearCall('CONNECTION_ID', optional);
+            expect(FakeVoiceApi.prototype.clear.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.clear = sinon.fake.returns('FAKE');
+            expect(
+                await api.clearCall('CONNECTION_ID', {})
+            ).to.be('FAKE');
+            return true;
+        });
+    });
+
+    describe('redirectCall(connectionId, destination, optional)', ()=>{
+        before(() =>{
+            FakeVoiceApi.prototype.redirect = successAsyncRequest;
+        });
+
+        it('sends redirect-call request', async ()=>{
+            const expectedData = {
+                data: {
+                    destination: 'DESTINATION'
+                }
+            };
+            await api.redirectCall('CONN','DESTINATION', {});
+            expectApiCalledWith('redirect', ['CONN', expectedData]);
+            return true;
+        });
+        it('pass optional parameters', async ()=>{
+            const optional = { foo: 'bar'};
+            const expectedData = {
+                data: Object.assign({ destination: 'DEST' }, optional)};
+            await api.redirectCall('CONN','DEST', optional);
+            expectApiCalledWith('redirect', ['CONN', expectedData]);
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.redirect = sinon.fake.returns('REDIR');
+            expect(
+                await api.redirectCall('CONNECTION_ID','dest', {})
+            ).to.be('REDIR');
+            return true;
+        });
+    });
 });
