@@ -85,7 +85,6 @@ describe('WorkspaceApi', () => {
 
         before(() => {
             originalInitializeCometD = api._initializeCometd;
-
             const fakeResponse = {
                 response: {
                     header: {
@@ -285,4 +284,57 @@ describe('WorkspaceApi', () => {
             });
         });
     });
+
+    describe('destroy', ()=>{
+        let SessionApi, logout;
+
+        before(() => {
+            const fakeResponse = {
+                response: {
+                    header: {
+                        'set-cookie': ['WORKSPACE_SESSIONID=sessionID;']
+                    }
+                }
+            };
+            SessionApi = codeGen.SessionApi;
+            logout = sinon.fake();
+            codeGen.SessionApi = function (){
+                this.initializeWorkspaceWithHttpInfo = sinon.fake.returns(fakeResponse);
+                this.logout = logout
+            };
+
+        });
+
+        after(() => {
+            codeGen.SessionApi = SessionApi;
+        });
+
+        beforeEach(async () => {
+            api._initializeCometd = sinon.fake.returns({});
+            api['_cometd'] = { disconnect: sinon.fake() };
+            await api.initialize({token: 'TOKEN'});
+            return true;
+        });
+
+        describe('when initialized', ()=>{
+            it('close cometD connection', async ()=>{
+                await api.destroy();
+                expect(api['_cometd'].disconnect.called).to.be(true);
+                return true;
+            });
+
+            it('logout from sessionApi', async ()=>{
+                await api.destroy();
+                expect(logout.called).to.be(true);
+                return true;
+            });
+
+            it('changes `initialized` to false', async ()=>{
+                expect(api.initialized).to.be.ok();
+                await api.destroy();
+                expect(api.initialized).to.be(false);
+                return true;
+            });
+        });
+    })
 });
