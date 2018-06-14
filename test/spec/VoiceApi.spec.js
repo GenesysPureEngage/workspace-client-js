@@ -12,7 +12,9 @@ describe('VoiceApi', ()=>{
     function FakeVoiceApi (){}
     FakeVoiceApi.prototype = {
         setAgentStateReady: successAsyncRequest,
-        setAgentStateNotReady: successAsyncRequest
+        setAgentStateNotReady: successAsyncRequest,
+        setDNDOn: successAsyncRequest,
+        setDNDOff: successAsyncRequest
     };
 
     before(()=>{
@@ -91,6 +93,38 @@ describe('VoiceApi', ()=>{
             FakeVoiceApi.prototype.setAgentStateNotReady = sinon.fake.returns('RESULT');
             const result = await api.notReady('WORK_MODE', 'REASON_CODE');
             expect(result).to.be('RESULT');
+            return true;
+        });
+    });
+
+    describe('dndOn()', ()=>{
+        it('enables DND', async ()=>{
+            await api.dndOn();
+            expect(FakeVoiceApi.prototype.setDNDOn.called).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.setDNDOn = sinon.fake.returns('RESULT');
+            expect(
+                await api.dndOn()
+            ).to.be('RESULT');
+            return true;
+        });
+    });
+
+    describe('dndOff()', ()=>{
+        it('disables DND', async ()=>{
+            await api.dndOff();
+            expect(FakeVoiceApi.prototype.setDNDOff.called).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.setDNDOff = sinon.fake.returns('OFF_RESULT');
+            expect(
+                await api.dndOff()
+            ).to.be('OFF_RESULT');
             return true;
         });
     });
