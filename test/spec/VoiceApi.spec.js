@@ -17,7 +17,8 @@ describe('VoiceApi', ()=>{
         setDNDOff: successAsyncRequest,
         loginVoice: successAsyncRequest,
         logoutVoice: successAsyncRequest,
-        forward: successAsyncRequest
+        forward: successAsyncRequest,
+        cancelForward: successAsyncRequest
     };
 
     const expectApiCalled = (methodName) =>{
@@ -192,5 +193,19 @@ describe('VoiceApi', ()=>{
         });
     });
 
+    describe('cancelForward()', ()=>{
+        it('sends cancel-forward request', async ()=>{
+            await api.cancelForward();
+            expectApiCalled('cancelForward');
+            return true;
+        });
 
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.cancelForward = sinon.fake.returns('ANY');
+            expect(
+                await api.cancelForward()
+            ).to.be('ANY');
+            return true;
+        });
+    });
 });
