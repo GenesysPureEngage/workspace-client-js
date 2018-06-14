@@ -206,14 +206,6 @@ describe('WorkspaceApi', () => {
                 return true;
             });
 
-            it('ensures long-pooling transport', async ()=>{
-                await api.initialize({token: 'TOKEN'});
-                expect(
-                    fakeCometD.prototype.findTransport.calledWith('long-polling')
-                ).to.be.ok();
-                return true;
-            });
-
             it('set cookie context to the transport', async ()=>{
                 const transport = {};
                 fakeCometD.prototype.findTransport = sinon.fake.returns(transport);

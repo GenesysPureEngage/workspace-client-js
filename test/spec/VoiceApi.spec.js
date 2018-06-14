@@ -243,4 +243,37 @@ describe('VoiceApi', ()=>{
         });
     });
 
+    describe('answerCall(connectionId, optional)', ()=>{
+        before(() =>{
+            FakeVoiceApi.prototype.answer = successAsyncRequest;
+        });
+
+        it('sends answer-call request', async ()=>{
+            const expectedData = {
+                answerData: { data: {} }
+            };
+            await api.answerCall('CONNECTION_ID', {});
+            expect(FakeVoiceApi.prototype.answer.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('pass optional parameters', async ()=>{
+            const optional = { foo: 'bar'};
+            const expectedData = {
+                answerData: { data: optional }
+            };
+            await api.answerCall('CONNECTION_ID', optional);
+            expect(FakeVoiceApi.prototype.answer.calledWith('CONNECTION_ID', expectedData)).to.be.ok();
+            return true;
+        });
+
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.answer = sinon.fake.returns('FAKE');
+            expect(
+                await api.answerCall('CONNECTION_ID', {})
+            ).to.be('FAKE');
+            return true;
+        });
+    });
+
 });
