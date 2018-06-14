@@ -208,4 +208,39 @@ describe('VoiceApi', ()=>{
             return true;
         });
     });
+
+    describe('makeCall(destination, optional)', ()=>{
+        before(() =>{
+            FakeVoiceApi.prototype.makeCall = successAsyncRequest;
+        });
+
+        it('sends make-call request', async ()=>{
+            const expectedData = {
+                data: {
+                    destination: 'destination'
+                }
+            };
+            await api.makeCall('destination', {});
+            expectApiCalledWith('makeCall', expectedData);
+            return true;
+        });
+
+        it('pass optional parameters', async ()=>{
+            const optional = { foo: 'bar'};
+            const expectedData = {
+                data: Object.assign({destination: 'destination'}, optional)
+            };
+            await api.makeCall('destination', optional);
+            expectApiCalledWith('makeCall', expectedData);
+            return true;
+        });
+        it('returns api-call result', async ()=>{
+            FakeVoiceApi.prototype.makeCall = sinon.fake.returns('ANY');
+            expect(
+                await api.makeCall('dest', {})
+            ).to.be('ANY');
+            return true;
+        });
+    });
+
 });
