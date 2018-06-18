@@ -1,11 +1,11 @@
 const workspace = require('./code-gen/workspace-api');
 
 class VoiceApi {
+
   constructor(eventEmitter, workspaceClient, debugEnabled) {
     this._eventEmitter = eventEmitter;
     this._api = new workspace.VoiceApi(workspaceClient);
     this.calls = new Map();
-
     this._debugEnabled = debugEnabled;
   }
 
@@ -571,6 +571,11 @@ class VoiceApi {
     this._log(`Sending stop-recording for call [${connId}]...`);
     let response = await this._api.stopRecording(connId);
     return response;
+  }
+
+  setDebugEnabled(isEnabled){
+    this._debugEnabled = !!isEnabled;
+    return this;
   }
 }
 

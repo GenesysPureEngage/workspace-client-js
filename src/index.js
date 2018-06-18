@@ -1,5 +1,5 @@
 const { adapt: adaptCometDClientForNode } = require('./cometd-nodejs-client');
-const { CometD } = require('cometd');
+const CometDLib = require('cometd');
 const workspace = require('./internal/code-gen/workspace-api');
 const EventEmitter = require('events');
 const VoiceApi = require('./internal/voice-api');
@@ -33,7 +33,7 @@ class WorkspaceApi extends EventEmitter {
 
   async _initializeCometd() {
     this._log('Initializing cometd...');
-    this._cometd = new CometD();
+    this._cometd = new CometDLib.CometD();
     const transport = this._cometd.findTransport('long-polling');
     transport.context = { cookieJar: this.cookieJar };
     this._cometd.configure({
@@ -106,7 +106,6 @@ class WorkspaceApi extends EventEmitter {
       this._workspaceClient.defaultHeaders = { 'x-api-key': this.apiKey };
     }
     this._sessionApi = new workspace.SessionApi(this._workspaceClient);
-
     this.voice = new VoiceApi(this, this._workspaceClient, this._debugEnabled);
     this.targets = new TargetsApi(this._workspaceClient, this._debugEnabled);
 	this.reporting = new ReportingApi(this._workspaceClient, this._debugEnabled);
@@ -134,6 +133,8 @@ class WorkspaceApi extends EventEmitter {
     this.initialized = true;
     this._log('Initialization complete.');
   }
+
+  get agent(){ return this._workspaceClient; }
 
   /**
    * Ends the current agent's session. This request logs out the agent on all activated channels, ends the HTTP session, 
@@ -184,9 +185,10 @@ class WorkspaceApi extends EventEmitter {
   }
 
   setDebugEnabled(debugEnabled) {
-    this._debugEnabled = debugEnabled;
-    this.voice._debugEnabled = debugEnabled;
-    this.targets._debugEnabled = debugEnabled;
+    this._debugEnabled = !!debugEnabled;
+    this.voice.setDebugEnabled(!!debugEnabled);
+    this.targets.setDebugEnabled(!!debugEnabled);
+    return this;
   }
 }
 

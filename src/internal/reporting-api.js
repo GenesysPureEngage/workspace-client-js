@@ -49,6 +49,11 @@ class ReportingApi {
       const resp = await this._api.peekWithHttpInfo(subscriptionId);
       return resp.response.body;
   }
+
+  setDebugEnabled(isEnabled){
+    this._debugEnabled = !!isEnabled;
+    return this;
+  }
 }
 
 module.exports = ReportingApi;
