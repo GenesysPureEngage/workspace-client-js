@@ -51,7 +51,7 @@ class WorkspaceApi extends EventEmitter {
       msg => { this.voice._onCometdMessage(msg) },
       result => {
         const status = result.successful
-          ? 'sucessful'
+          ? 'successful'
           : 'failed';
         this._log(`/workspace/v3/voice subscription ${status}.`);
       }
@@ -72,11 +72,17 @@ class WorkspaceApi extends EventEmitter {
   async _initializeWorkspaceSubscription(){
     return await new Promise((resolve, reject) =>{
       const _handleMessage = ({ data }) => {
-        if(data.state === 'Complete') {
+        switch(data.state) {
+            case 'Complete':
           resolve(data.data);
           //CM: TODO: store config
-        }
+                break;
+            case 'Failed':
         reject('Workspace initialization failed.');
+                break;
+            default:
+                // Skip 'NotStarted' or 'Executing' states
+        }
       };
 
       this._cometd.subscribe(
@@ -193,3 +199,4 @@ class WorkspaceApi extends EventEmitter {
 }
 
 module.exports = WorkspaceApi;
+
