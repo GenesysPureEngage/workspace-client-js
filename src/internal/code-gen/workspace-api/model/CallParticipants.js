@@ -73,10 +73,12 @@
   }
 
   /**
+   * The participant's phone number.
    * @member {String} number
    */
   exports.prototype['number'] = undefined;
   /**
+   * The participant's role.
    * @member {String} role
    */
   exports.prototype['role'] = undefined;

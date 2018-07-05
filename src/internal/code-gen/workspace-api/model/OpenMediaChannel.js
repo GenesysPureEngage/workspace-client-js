@@ -101,7 +101,7 @@
    */
   exports.prototype['dnd'] = undefined;
   /**
-   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Reasons).
+   * Information on causes for, and results of, actions taken by the user of the current DN. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Reasons).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;

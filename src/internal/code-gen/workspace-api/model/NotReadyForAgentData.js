@@ -16,64 +16,62 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/MedianotreadyData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./MedianotreadyData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsinteractionsidsetnoteData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.NotReadyForAgentData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MedianotreadyData);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, MedianotreadyData) {
   'use strict';
 
 
 
 
   /**
-   * The UcsinteractionsidsetnoteData model module.
-   * @module model/UcsinteractionsidsetnoteData
+   * The NotReadyForAgentData model module.
+   * @module model/NotReadyForAgentData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>UcsinteractionsidsetnoteData</code>.
-   * @alias module:model/UcsinteractionsidsetnoteData
+   * Constructs a new <code>NotReadyForAgentData</code>.
+   * @alias module:model/NotReadyForAgentData
    * @class
-   * @param note {String} The note to be set
    */
-  var exports = function(note) {
+  var exports = function() {
     var _this = this;
 
-    _this['note'] = note;
+
   };
 
   /**
-   * Constructs a <code>UcsinteractionsidsetnoteData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>NotReadyForAgentData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/UcsinteractionsidsetnoteData} obj Optional instance to populate.
-   * @return {module:model/UcsinteractionsidsetnoteData} The populated <code>UcsinteractionsidsetnoteData</code> instance.
+   * @param {module:model/NotReadyForAgentData} obj Optional instance to populate.
+   * @return {module:model/NotReadyForAgentData} The populated <code>NotReadyForAgentData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('note')) {
-        obj['note'] = ApiClient.convertToType(data['note'], 'String');
+      if (data.hasOwnProperty('data')) {
+        obj['data'] = MedianotreadyData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * The note to be set
-   * @member {String} note
+   * @member {module:model/MedianotreadyData} data
    */
-  exports.prototype['note'] = undefined;
+  exports.prototype['data'] = undefined;
 
 
 

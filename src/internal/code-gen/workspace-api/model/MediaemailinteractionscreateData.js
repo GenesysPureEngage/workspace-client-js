@@ -52,6 +52,10 @@
 
 
 
+
+
+
+
   };
 
   /**
@@ -76,6 +80,18 @@
       }
       if (data.hasOwnProperty('to')) {
         obj['to'] = ApiClient.convertToType(data['to'], 'String');
+      }
+      if (data.hasOwnProperty('body')) {
+        obj['body'] = ApiClient.convertToType(data['body'], 'String');
+      }
+      if (data.hasOwnProperty('bodyAsPlainText')) {
+        obj['bodyAsPlainText'] = ApiClient.convertToType(data['bodyAsPlainText'], 'String');
+      }
+      if (data.hasOwnProperty('mime')) {
+        obj['mime'] = ApiClient.convertToType(data['mime'], 'String');
+      }
+      if (data.hasOwnProperty('subject')) {
+        obj['subject'] = ApiClient.convertToType(data['subject'], 'String');
       }
       if (data.hasOwnProperty('userData')) {
         obj['userData'] = ApiClient.convertToType(data['userData'], [Kvpair]);
@@ -104,6 +120,26 @@
    * @member {String} to
    */
   exports.prototype['to'] = undefined;
+  /**
+   * The message to send. Html body
+   * @member {String} body
+   */
+  exports.prototype['body'] = undefined;
+  /**
+   * The message to send. Plain text body
+   * @member {String} bodyAsPlainText
+   */
+  exports.prototype['bodyAsPlainText'] = undefined;
+  /**
+   * Multipurpose internet mail extensions of email
+   * @member {String} mime
+   */
+  exports.prototype['mime'] = undefined;
+  /**
+   * The subject value
+   * @member {String} subject
+   */
+  exports.prototype['subject'] = undefined;
   /**
    * A key/value pairs list of user data.
    * @member {Array.<module:model/Kvpair>} userData

@@ -73,12 +73,12 @@
   }
 
   /**
-   * On error will provide a code that can be used to get more detail about the error.
+   * Indicates whether the operation was successful. `0` is a successful synchronous operation;  `1` is a successful asynchronous operation; and `2` is a partially successful synchronous  operation. If the value is `2` the response includes **data** and **error** objects. All  other status codes indicate an error and include a **message** object. See  (Getting started)[/reference/] for more information about responses and errors.
    * @member {Number} code
    */
   exports.prototype['code'] = undefined;
   /**
-   * On error will provide a message with more detail about the error. Keep in mind that the error message will be fairly general and internal details are not exposed.
+   * Provides general information when a request returns an error response. For example, if your  request returns a response with error code `500` the message might be `Resource not found.`  See (Getting started)[/reference/] for more information about responses and errors.
    * @member {String} message
    */
   exports.prototype['message'] = undefined;

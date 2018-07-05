@@ -73,12 +73,12 @@
   }
 
   /**
-   * A collection of key/value pairs. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Reasons).
+   * Information on causes for, and results of, actions taken by the user of the current DN. For details about reasons, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Reasons).
    * @member {Array.<module:model/Kvpair>} reasons
    */
   exports.prototype['reasons'] = undefined;
   /**
-   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Extensions).
+   * Media device/hardware reason codes and similar information. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Extensions).
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;

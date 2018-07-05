@@ -43,7 +43,7 @@
    * Constructs a new <code>VoicecallsiddeleteuserdatapairData</code>.
    * @alias module:model/VoicecallsiddeleteuserdatapairData
    * @class
-   * @param key {String} 
+   * @param key {String} The key of the data to remove.
    */
   var exports = function(key) {
     var _this = this;
@@ -70,6 +70,7 @@
   }
 
   /**
+   * The key of the data to remove.
    * @member {String} key
    */
   exports.prototype['key'] = undefined;

@@ -43,9 +43,9 @@
    * Constructs a new <code>Statistic</code>.
    * @alias module:model/Statistic
    * @class
-   * @param objectId {String} ID of the object to get the statistic for
-   * @param objectType {String} Type of the obejct to get the statistic for
-   * @param name {String} Name of the statistic
+   * @param objectId {String} The ID of the object to get statistics for.
+   * @param objectType {String} The type of object to get statistics for.
+   * @param name {String} The name of the statistic.
    */
   var exports = function(objectId, objectType, name) {
     var _this = this;
@@ -80,17 +80,17 @@
   }
 
   /**
-   * ID of the object to get the statistic for
+   * The ID of the object to get statistics for.
    * @member {String} objectId
    */
   exports.prototype['objectId'] = undefined;
   /**
-   * Type of the obejct to get the statistic for
+   * The type of object to get statistics for.
    * @member {String} objectType
    */
   exports.prototype['objectType'] = undefined;
   /**
-   * Name of the statistic
+   * The name of the statistic.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;

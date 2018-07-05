@@ -100,7 +100,7 @@
 
     /**
      * Get the business attribute hierarchy.
-     * Returns the business attribute hierarchy for the specified business attribute.
+     * Get the business attribute hierarchy for the specified business attribute.
      * @param {Number} id The unique ID of the business attribute.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -137,7 +137,7 @@
 
     /**
      * Get the business attribute hierarchy.
-     * Returns the business attribute hierarchy for the specified business attribute.
+     * Get the business attribute hierarchy for the specified business attribute.
      * @param {Number} id The unique ID of the business attribute.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -151,7 +151,7 @@
 
     /**
      * Get settings, action codes, business attributes and other configuration.
-     * Returns all configuration items needed by the user interface. This includes action codes, business attributes, transactions and settings at the moment.
+     * Get all configuration items needed by the user interface. This includes action codes, business attributes, transactions, and settings.
      * @param {Object} opts Optional parameters
      * @param {String} opts.types A comma delimited list of types used to specify what content should be returned. If not specified the default is &#39;actionCodes, agentGroups,settings&#39;. Valid values are &#x60;actionCodes&#x60;, &#x60;agentGroups&#x60;, &#x60;settings&#x60;, &#x60;workspaceTransactions&#x60;, and &#x60;businessAttributes&#x60;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ConfigResponse} and HTTP response
@@ -185,7 +185,7 @@
 
     /**
      * Get settings, action codes, business attributes and other configuration.
-     * Returns all configuration items needed by the user interface. This includes action codes, business attributes, transactions and settings at the moment.
+     * Get all configuration items needed by the user interface. This includes action codes, business attributes, transactions, and settings.
      * @param {Object} opts Optional parameters
      * @param {String} opts.types A comma delimited list of types used to specify what content should be returned. If not specified the default is &#39;actionCodes, agentGroups,settings&#39;. Valid values are &#x60;actionCodes&#x60;, &#x60;agentGroups&#x60;, &#x60;settings&#x60;, &#x60;workspaceTransactions&#x60;, and &#x60;businessAttributes&#x60;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ConfigResponse}
@@ -199,8 +199,8 @@
 
 
     /**
-     * Read information about the logged in user, including any existing media logins and calls.
-     * This request can be used to retrieve information about the current user. This can be done at startup to check for an existing session. The returned user information includes state recovery information about the active session.
+     * Get information about the current user.
+     * Get information about the current user, including any existing media logins, calls, and interactions. The returned user information includes  state recovery information about the active session. You can make this  request at startup to check for an existing session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CurrentSession} and HTTP response
      */
     this.getCurrentSessionWithHttpInfo = function() {
@@ -229,8 +229,8 @@
     }
 
     /**
-     * Read information about the logged in user, including any existing media logins and calls.
-     * This request can be used to retrieve information about the current user. This can be done at startup to check for an existing session. The returned user information includes state recovery information about the active session.
+     * Get information about the current user.
+     * Get information about the current user, including any existing media logins, calls, and interactions. The returned user information includes  state recovery information about the active session. You can make this  request at startup to check for an existing session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CurrentSession}
      */
     this.getCurrentSession = function() {
@@ -243,7 +243,7 @@
 
     /**
      * Get DNs for a place.
-     * Returns the DNs attached to the specified place.
+     * Get all DNs attached to the specified place.
      * @param {String} placeName The name of the place.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Devices} and HTTP response
      */
@@ -280,7 +280,7 @@
 
     /**
      * Get DNs for a place.
-     * Returns the DNs attached to the specified place.
+     * Get all DNs attached to the specified place.
      * @param {String} placeName The name of the place.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Devices}
      */
@@ -293,8 +293,8 @@
 
 
     /**
-     * Retrieve ecrypted data about the current user
-     * This request can be used to retrieve ecrypted data about the user to use with other services
+     * Retrieve encrypted data about the current user
+     * This request can be used to retrieve encrypted data about the user to use with other services
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CurrentSession} and HTTP response
      */
     this.getUserInfoWithHttpInfo = function() {
@@ -323,8 +323,8 @@
     }
 
     /**
-     * Retrieve ecrypted data about the current user
-     * This request can be used to retrieve ecrypted data about the user to use with other services
+     * Retrieve encrypted data about the current user
+     * This request can be used to retrieve encrypted data about the user to use with other services
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CurrentSession}
      */
     this.getUserInfo = function() {
@@ -392,7 +392,7 @@
 
     /**
      * Login the specified user (HTTP session only).
-     * The login request authenticates the user and retrieves the authorization code.
+     * Starts the OAuth 2 flow for the Authorization Code grant type and returns a redirect to the  Authentication service. For more information, see the [Authentication API](/reference/authentication/).
      * @param {String} redirectUri The URI the Authentication API uses to redirect the user after authentication.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
@@ -429,7 +429,7 @@
 
     /**
      * Login the specified user (HTTP session only).
-     * The login request authenticates the user and retrieves the authorization code.
+     * Starts the OAuth 2 flow for the Authorization Code grant type and returns a redirect to the  Authentication service. For more information, see the [Authentication API](/reference/authentication/).
      * @param {String} redirectUri The URI the Authentication API uses to redirect the user after authentication.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
@@ -442,7 +442,7 @@
 
 
     /**
-     * Logout of activated channels and end the session.
+     * Log out of activated channels and end the session.
      * Ends the current agent&#39;s session. This request logs out the agent on all activated channels, ends the HTTP session, and cleans up related resources. Genesys recommends that you first disconnect CometD and then make this request. After you end the session, you&#39;ll need to make a login request before making any new calls to the API.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -472,7 +472,7 @@
     }
 
     /**
-     * Logout of activated channels and end the session.
+     * Log out of activated channels and end the session.
      * Ends the current agent&#39;s session. This request logs out the agent on all activated channels, ends the HTTP session, and cleans up related resources. Genesys recommends that you first disconnect CometD and then make this request. After you end the session, you&#39;ll need to make a login request before making any new calls to the API.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */

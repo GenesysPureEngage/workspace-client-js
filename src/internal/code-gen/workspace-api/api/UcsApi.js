@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCompletedData', 'model/CallNoteData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CreateContactData', 'model/IdentifyContactData', 'model/InteractionDetailsData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/UpdateContactData'], factory);
+    define(['ApiClient', 'model/AgentHistoryData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/AssignInteractionToContactData', 'model/CallCommentData', 'model/CallCompletedData', 'model/ConfigResponse', 'model/ContactDetailsData', 'model/ContactHistoryData', 'model/CreateContactData', 'model/IdentifyContactData', 'model/InteractionDetailsData', 'model/LuceneSearchData', 'model/LuceneSearchInteractionData', 'model/UpdateContactData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCompletedData'), require('../model/CallNoteData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/CreateContactData'), require('../model/IdentifyContactData'), require('../model/InteractionDetailsData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/UpdateContactData'));
+    module.exports = factory(require('../ApiClient'), require('../model/AgentHistoryData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/AssignInteractionToContactData'), require('../model/CallCommentData'), require('../model/CallCompletedData'), require('../model/ConfigResponse'), require('../model/ContactDetailsData'), require('../model/ContactHistoryData'), require('../model/CreateContactData'), require('../model/IdentifyContactData'), require('../model/InteractionDetailsData'), require('../model/LuceneSearchData'), require('../model/LuceneSearchInteractionData'), require('../model/UpdateContactData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.CallNoteData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.CreateContactData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.InteractionDetailsData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.UpdateContactData);
+    root.WorkspaceApi.UcsApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AgentHistoryData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.AssignInteractionToContactData, root.WorkspaceApi.CallCommentData, root.WorkspaceApi.CallCompletedData, root.WorkspaceApi.ConfigResponse, root.WorkspaceApi.ContactDetailsData, root.WorkspaceApi.ContactHistoryData, root.WorkspaceApi.CreateContactData, root.WorkspaceApi.IdentifyContactData, root.WorkspaceApi.InteractionDetailsData, root.WorkspaceApi.LuceneSearchData, root.WorkspaceApi.LuceneSearchInteractionData, root.WorkspaceApi.UpdateContactData);
   }
-}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCompletedData, CallNoteData, ConfigResponse, ContactDetailsData, ContactHistoryData, CreateContactData, IdentifyContactData, InteractionDetailsData, LuceneSearchData, LuceneSearchInteractionData, UpdateContactData) {
+}(this, function(ApiClient, AgentHistoryData, ApiErrorResponse, ApiSuccessResponse, AssignInteractionToContactData, CallCommentData, CallCompletedData, ConfigResponse, ContactDetailsData, ContactHistoryData, CreateContactData, IdentifyContactData, InteractionDetailsData, LuceneSearchData, LuceneSearchInteractionData, UpdateContactData) {
   'use strict';
 
   /**
@@ -562,7 +562,7 @@
 
 
     /**
-     * Search for contacts. If &#39;sortCriteria&#39; or &#39;startIndex&#39; is specified, the query is based on SQL, otherwise on Lucene
+     * Search for contacts. If ‘sortCriteria’ or ‘startIndex’ is specified, the query is based on SQL, otherwise on Lucene
      * @param {module:model/LuceneSearchData} luceneSearchData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -597,7 +597,7 @@
     }
 
     /**
-     * Search for contacts. If &#39;sortCriteria&#39; or &#39;startIndex&#39; is specified, the query is based on SQL, otherwise on Lucene
+     * Search for contacts. If ‘sortCriteria’ or ‘startIndex’ is specified, the query is based on SQL, otherwise on Lucene
      * @param {module:model/LuceneSearchData} luceneSearchData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
@@ -658,6 +658,62 @@
 
 
     /**
+     * Set the comment for the call
+     * @param {String} id id of the Interaction
+     * @param {module:model/CallCommentData} callCommentData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.setCallCommentWithHttpInfo = function(id, callCommentData) {
+      var postBody = callCommentData;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling setCallComment");
+      }
+
+      // verify the required parameter 'callCommentData' is set
+      if (callCommentData === undefined || callCommentData === null) {
+        throw new Error("Missing the required parameter 'callCommentData' when calling setCallComment");
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/ucs/interactions/{id}/set-comment', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Set the comment for the call
+     * @param {String} id id of the Interaction
+     * @param {module:model/CallCommentData} callCommentData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.setCallComment = function(id, callCommentData) {
+      return this.setCallCommentWithHttpInfo(id, callCommentData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
      * Set the call as being completed
      * @param {String} id id of the Interaction
      * @param {module:model/CallCompletedData} callCompletedData 
@@ -707,62 +763,6 @@
      */
     this.setCallCompleted = function(id, callCompletedData) {
       return this.setCallCompletedWithHttpInfo(id, callCompletedData)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Set the note for the call
-     * @param {String} id id of the Interaction
-     * @param {module:model/CallNoteData} callNoteData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.setCallNoteWithHttpInfo = function(id, callNoteData) {
-      var postBody = callNoteData;
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling setCallNote");
-      }
-
-      // verify the required parameter 'callNoteData' is set
-      if (callNoteData === undefined || callNoteData === null) {
-        throw new Error("Missing the required parameter 'callNoteData' when calling setCallNote");
-      }
-
-
-      var pathParams = {
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/ucs/interactions/{id}/set-note', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Set the note for the call
-     * @param {String} id id of the Interaction
-     * @param {module:model/CallNoteData} callNoteData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.setCallNote = function(id, callNoteData) {
-      return this.setCallNoteWithHttpInfo(id, callNoteData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

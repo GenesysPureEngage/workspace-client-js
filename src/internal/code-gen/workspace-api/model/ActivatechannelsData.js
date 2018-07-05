@@ -127,7 +127,7 @@
    */
   exports.prototype['dynamicPhoneNumber'] = undefined;
   /**
-   * Flag denoting whether or not calls should automatically be completed for the session. Defaults to true if not provided.
+   * Specifies if calls should automatically be completed for the session. Defaults to true if not provided.
    * @member {Boolean} autoCompleteCall
    */
   exports.prototype['autoCompleteCall'] = undefined;

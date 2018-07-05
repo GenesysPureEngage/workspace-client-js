@@ -41,7 +41,7 @@
 
   /**
    * Constructs a new <code>TargetInformation</code>.
-   * The target to add/save.
+   * The target to save.
    * @alias module:model/TargetInformation
    * @class
    */
@@ -90,26 +90,32 @@
   }
 
   /**
+   * The type of target.
    * @member {String} type
    */
   exports.prototype['type'] = undefined;
   /**
+   * The ID of the target.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
   /**
+   * If the target is an agent, specify the first name.
    * @member {String} firstName
    */
   exports.prototype['firstName'] = undefined;
   /**
+   * If the target is an agent, specify the last name.
    * @member {String} lastName
    */
   exports.prototype['lastName'] = undefined;
   /**
+   * The email addresses to save for this personal favorite.
    * @member {Array.<String>} emailAddresses
    */
   exports.prototype['emailAddresses'] = undefined;
   /**
+   * The phone numbers to save for this personal favorite.
    * @member {Array.<String>} numbers
    */
   exports.prototype['numbers'] = undefined;

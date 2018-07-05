@@ -105,52 +105,52 @@
   }
 
   /**
-   * DBID of the object
+   * The unique database identifier.
    * @member {Number} DBID
    */
   exports.prototype['DBID'] = undefined;
   /**
-   * For agents firstname and lastname (or username if neither is defined), for other types the name field is used.
+   * If the target is not **agent**, this property has a value. For example, the name of the agent group.  If the target is **agent**, then the firstName and lastName fields are returned instead (or the  username if neither is defined). 
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
   /**
-   * The type of the target - agent, agent-group, acd-queue, route-point, skill, custom-contact or contact.
+   * The type of target.
    * @member {module:model/Target.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
-   * First name - only applicable to agents.
+   * The agent's first name.
    * @member {String} firstName
    */
   exports.prototype['firstName'] = undefined;
   /**
-   * Last name - only applicable to agents.
+   * The agent's last name.
    * @member {String} lastName
    */
   exports.prototype['lastName'] = undefined;
   /**
-   * Employee id - only applicable to agents.
+   * The agent's employee ID.
    * @member {String} employeeId
    */
   exports.prototype['employeeId'] = undefined;
   /**
-   * Username - only applicable to agents.
+   * The agent's username.
    * @member {String} userName
    */
   exports.prototype['userName'] = undefined;
   /**
-   * Only applicable to acd-queue and route-point
+   * The number associated with either an **acd-queue** or a **route-point**.
    * @member {String} number
    */
   exports.prototype['number'] = undefined;
   /**
-   * Only applicable to acd-queue and route-point
+   * The name of the switch associated with either an **acd-queue** or a **route-point**.
    * @member {String} switchName
    */
   exports.prototype['switchName'] = undefined;
   /**
-   * The structure depends on the target type. For agents, availability includes channel details. For acd-queues and route-points, waiting calls. For agent-groups, the number of ready agents.
+   * The structure of this object depends on the target type. For **agent**, availability includes channel details. For **acd-queue** and **route-point**, it includes waiting calls. For **agent-groups**, availability includes the number of ready agents.
    * @member {Object} availability
    */
   exports.prototype['availability'] = undefined;

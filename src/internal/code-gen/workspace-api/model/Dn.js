@@ -81,18 +81,22 @@
   }
 
   /**
+   * The directory number (phone number).
    * @member {String} number
    */
   exports.prototype['number'] = undefined;
   /**
+   * The agent ID used to log in.
    * @member {String} agentId
    */
   exports.prototype['agentId'] = undefined;
   /**
+   * The current state - one of `LoggedOut`, `LoggedIn`, `Ready`, or `NotReady`.
    * @member {String} agentState
    */
   exports.prototype['agentState'] = undefined;
   /**
+   * The current workmode. This value can be either `AuxWork` or `AfterCallWork` if the agent's state is Not Ready,  or `AutoIn` or `ManualIn` if the agent's state is Ready.
    * @member {String} agentWorkMode
    */
   exports.prototype['agentWorkMode'] = undefined;

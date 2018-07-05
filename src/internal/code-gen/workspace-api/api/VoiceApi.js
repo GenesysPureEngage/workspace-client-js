@@ -557,7 +557,7 @@
      * Remove a key/value pair from user data.
      * Delete data with the specified key from the call&#39;s user data.
      * @param {String} id The connection ID of the call.
-     * @param {module:model/KeyData} keyData The key of the data to remove.
+     * @param {module:model/KeyData} keyData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.deleteUserDataPairWithHttpInfo = function(id, keyData) {
@@ -600,7 +600,7 @@
      * Remove a key/value pair from user data.
      * Delete data with the specified key from the call&#39;s user data.
      * @param {String} id The connection ID of the call.
-     * @param {module:model/KeyData} keyData The key of the data to remove.
+     * @param {module:model/KeyData} keyData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.deleteUserDataPair = function(id, keyData) {
@@ -921,7 +921,7 @@
 
     /**
      * Log out of the voice channel.
-     * Logout the current agent on the voice channel. This request is typically paired with &#x60;/workspace/v3/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
+     * Log out the current agent on the voice channel. This request is typically paired with &#x60;/workspace/v3/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
     this.logoutVoiceWithHttpInfo = function() {
@@ -951,7 +951,7 @@
 
     /**
      * Log out of the voice channel.
-     * Logout the current agent on the voice channel. This request is typically paired with &#x60;/workspace/v3/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
+     * Log out the current agent on the voice channel. This request is typically paired with &#x60;/workspace/v3/voice/login&#x60; - together they let you login/logout an agent on the voice channel without logging out of the entire session.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
     this.logoutVoice = function() {
@@ -1509,8 +1509,8 @@
 
 
     /**
-     * Set the agent state to NotReady.
-     * Set the current agent&#39;s state to NotReady on the voice channel.
+     * Set the agent state to Not Ready.
+     * Set the current agent&#39;s state to Not Ready on the voice channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/NotReadyData} opts.notReadyData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -1542,8 +1542,8 @@
     }
 
     /**
-     * Set the agent state to NotReady.
-     * Set the current agent&#39;s state to NotReady on the voice channel.
+     * Set the agent state to Not Ready.
+     * Set the current agent&#39;s state to Not Ready on the voice channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/NotReadyData} opts.notReadyData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -2009,8 +2009,8 @@
 
 
     /**
-     * Switch to the barge in monitoring mode.
-     * Switch to the barge in monitoring mode. If the agent is currently on a call and T-Server is configured to allow barge in, the supervisor is immediately added to the call. Both the monitored agent and the customer are able to hear and speak with the supervisor. If the target agent is not on a call at the time of the request, the supervisor is brought into the call when the agent receives a new call.
+     * Switch to the barge-in monitoring mode.
+     * Switch to the barge-in monitoring mode. If the agent is currently on a call and T-Server is configured to allow barge-in, the supervisor is immediately added to the call. Both the monitored agent and the customer are able to hear and speak with the supervisor. If the target agent is not on a call at the time of the request, the supervisor is brought into the call when the agent receives a new call.
      * @param {String} id The connection ID of the call being monitored.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 
@@ -2049,8 +2049,8 @@
     }
 
     /**
-     * Switch to the barge in monitoring mode.
-     * Switch to the barge in monitoring mode. If the agent is currently on a call and T-Server is configured to allow barge in, the supervisor is immediately added to the call. Both the monitored agent and the customer are able to hear and speak with the supervisor. If the target agent is not on a call at the time of the request, the supervisor is brought into the call when the agent receives a new call.
+     * Switch to the barge-in monitoring mode.
+     * Switch to the barge-in monitoring mode. If the agent is currently on a call and T-Server is configured to allow barge-in, the supervisor is immediately added to the call. Both the monitored agent and the customer are able to hear and speak with the supervisor. If the target agent is not on a call at the time of the request, the supervisor is brought into the call when the agent receives a new call.
      * @param {String} id The connection ID of the call being monitored.
      * @param {Object} opts Optional parameters
      * @param {module:model/MonitoringScopeData} opts.monitoringScopeData 

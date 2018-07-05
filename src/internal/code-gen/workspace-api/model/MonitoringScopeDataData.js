@@ -69,7 +69,7 @@
   }
 
   /**
-   * The monitoring scope (Call/Agent).
+   * Specifies whether supervisor monitoring applies to this specific call or to the agent.
    * @member {module:model/MonitoringScopeDataData.MonitoringScopeEnum} monitoringScope
    */
   exports.prototype['monitoringScope'] = undefined;

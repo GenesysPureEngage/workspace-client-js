@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediamediatypenotreadyData'], factory);
+    define(['ApiClient', 'model/MedianotreadyData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediamediatypenotreadyData'));
+    module.exports = factory(require('../ApiClient'), require('./MedianotreadyData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.NotReadyForMediaData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypenotreadyData);
+    root.WorkspaceApi.NotReadyForMediaData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MedianotreadyData);
   }
-}(this, function(ApiClient, MediamediatypenotreadyData) {
+}(this, function(ApiClient, MedianotreadyData) {
   'use strict';
 
 
@@ -62,14 +62,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediamediatypenotreadyData.constructFromObject(data['data']);
+        obj['data'] = MedianotreadyData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediamediatypenotreadyData} data
+   * @member {module:model/MedianotreadyData} data
    */
   exports.prototype['data'] = undefined;
 

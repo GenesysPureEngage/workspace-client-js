@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediamediatypeinteractionsidaddcommentData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.MediamediatypeinteractionsidsetcommentData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The MediamediatypeinteractionsidaddcommentData model module.
-   * @module model/MediamediatypeinteractionsidaddcommentData
+   * The MediamediatypeinteractionsidsetcommentData model module.
+   * @module model/MediamediatypeinteractionsidsetcommentData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediamediatypeinteractionsidaddcommentData</code>.
-   * @alias module:model/MediamediatypeinteractionsidaddcommentData
+   * Constructs a new <code>MediamediatypeinteractionsidsetcommentData</code>.
+   * @alias module:model/MediamediatypeinteractionsidsetcommentData
    * @class
    * @param comment {String} The comment to add to the interaction.
    */
@@ -52,11 +52,11 @@
   };
 
   /**
-   * Constructs a <code>MediamediatypeinteractionsidaddcommentData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediamediatypeinteractionsidsetcommentData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediamediatypeinteractionsidaddcommentData} obj Optional instance to populate.
-   * @return {module:model/MediamediatypeinteractionsidaddcommentData} The populated <code>MediamediatypeinteractionsidaddcommentData</code> instance.
+   * @param {module:model/MediamediatypeinteractionsidsetcommentData} obj Optional instance to populate.
+   * @return {module:model/MediamediatypeinteractionsidsetcommentData} The populated <code>MediamediatypeinteractionsidsetcommentData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {

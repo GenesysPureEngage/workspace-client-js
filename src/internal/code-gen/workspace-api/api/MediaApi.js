@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/AcceptData6', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/MediaStartMonitoringData', 'model/MediaStopMonitoringData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/RejectData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
+    define(['ApiClient', 'model/AcceptData6', 'model/AddCommentData', 'model/AddContentData', 'model/ApiErrorResponse', 'model/ApiSuccessResponse', 'model/LogoutMediaData', 'model/MediaStartMonitoringData', 'model/MediaStopMonitoringData', 'model/NotReadyForAgentData', 'model/NotReadyForMediaData', 'model/PlaceInQueueData', 'model/ReadyForMediaData', 'model/RejectData', 'model/TransferData', 'model/UserData', 'model/UserData2'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/AcceptData6'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/MediaStartMonitoringData'), require('../model/MediaStopMonitoringData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/RejectData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
+    module.exports = factory(require('../ApiClient'), require('../model/AcceptData6'), require('../model/AddCommentData'), require('../model/AddContentData'), require('../model/ApiErrorResponse'), require('../model/ApiSuccessResponse'), require('../model/LogoutMediaData'), require('../model/MediaStartMonitoringData'), require('../model/MediaStopMonitoringData'), require('../model/NotReadyForAgentData'), require('../model/NotReadyForMediaData'), require('../model/PlaceInQueueData'), require('../model/ReadyForMediaData'), require('../model/RejectData'), require('../model/TransferData'), require('../model/UserData'), require('../model/UserData2'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData6, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.MediaStartMonitoringData, root.WorkspaceApi.MediaStopMonitoringData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.RejectData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
+    root.WorkspaceApi.MediaApi = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.AcceptData6, root.WorkspaceApi.AddCommentData, root.WorkspaceApi.AddContentData, root.WorkspaceApi.ApiErrorResponse, root.WorkspaceApi.ApiSuccessResponse, root.WorkspaceApi.LogoutMediaData, root.WorkspaceApi.MediaStartMonitoringData, root.WorkspaceApi.MediaStopMonitoringData, root.WorkspaceApi.NotReadyForAgentData, root.WorkspaceApi.NotReadyForMediaData, root.WorkspaceApi.PlaceInQueueData, root.WorkspaceApi.ReadyForMediaData, root.WorkspaceApi.RejectData, root.WorkspaceApi.TransferData, root.WorkspaceApi.UserData, root.WorkspaceApi.UserData2);
   }
-}(this, function(ApiClient, AcceptData6, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, MediaStartMonitoringData, MediaStopMonitoringData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, RejectData, TransferData, UserData, UserData2) {
+}(this, function(ApiClient, AcceptData6, AddCommentData, AddContentData, ApiErrorResponse, ApiSuccessResponse, LogoutMediaData, MediaStartMonitoringData, MediaStopMonitoringData, NotReadyForAgentData, NotReadyForMediaData, PlaceInQueueData, ReadyForMediaData, RejectData, TransferData, UserData, UserData2) {
   'use strict';
 
   /**
@@ -171,72 +171,6 @@
      */
     this.addAttachment = function(mediatype, id, opts) {
       return this.addAttachmentWithHttpInfo(mediatype, id, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Add a comment.
-     * Add a comment to the specified interaction.
-     * @param {String} mediatype The media channel.
-     * @param {String} id The ID of the interaction.
-     * @param {module:model/AddCommentData} addCommentData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
-     */
-    this.addCommentWithHttpInfo = function(mediatype, id, addCommentData) {
-      var postBody = addCommentData;
-
-      // verify the required parameter 'mediatype' is set
-      if (mediatype === undefined || mediatype === null) {
-        throw new Error("Missing the required parameter 'mediatype' when calling addComment");
-      }
-
-      // verify the required parameter 'id' is set
-      if (id === undefined || id === null) {
-        throw new Error("Missing the required parameter 'id' when calling addComment");
-      }
-
-      // verify the required parameter 'addCommentData' is set
-      if (addCommentData === undefined || addCommentData === null) {
-        throw new Error("Missing the required parameter 'addCommentData' when calling addComment");
-      }
-
-
-      var pathParams = {
-        'mediatype': mediatype,
-        'id': id
-      };
-      var queryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = ApiSuccessResponse;
-
-      return this.apiClient.callApi(
-        '/media/{mediatype}/interactions/{id}/add-comment', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Add a comment.
-     * Add a comment to the specified interaction.
-     * @param {String} mediatype The media channel.
-     * @param {String} id The ID of the interaction.
-     * @param {module:model/AddCommentData} addCommentData 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
-     */
-    this.addComment = function(mediatype, id, addCommentData) {
-      return this.addCommentWithHttpInfo(mediatype, id, addCommentData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -763,7 +697,7 @@
 
     /**
      * Start monitoring an agent.
-     * Start supervisor monitoring of an agent on the specified media channel. When an agent being monitored accepts a chat, the  supervisor also receives the chat and all related notifications. If the agent is currently in a chat, the supervisor is added to the agent&#39;s next chat. The supervisor can&#39;t send messages in this mode and only another supervisor can see that the monitoring supervisor joined the chat. If the monitored agent leaves the chat but another agent  is still present, the supervisor continues monitoring the chat until it&#39;s completed or placed in a queue. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/media/{mediatype}/interactions/{id}/switch-to-barge&#x60;,  &#x60;/media/{mediatype}/interactions/{id}/switch-to-coach&#x60;, and &#x60;/media/{mediatype}/interactions/{id}/switch-to-monitor&#x60;.
+     * Start supervisor monitoring of an agent on the specified media channel. When an agent being monitored accepts a chat, the  supervisor also receives the chat and all related notifications. If the agent is currently in a chat, the supervisor is added to the agent&#39;s next chat. The supervisor can&#39;t send messages in this mode and only another supervisor can see that the monitoring supervisor joined the chat. If the monitored agent leaves the chat but another agent  is still present, the supervisor continues monitoring the chat until it&#39;s completed or placed in a queue. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/media/{mediatype}/interactions/{id}/switch-to-barge-in&#x60;,  &#x60;/media/{mediatype}/interactions/{id}/switch-to-coach&#x60;, and &#x60;/media/{mediatype}/interactions/{id}/switch-to-monitor&#x60;.
      * @param {String} mediatype The media channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/MediaStartMonitoringData} opts.mediaStartMonitoringData Request parameters.
@@ -803,7 +737,7 @@
 
     /**
      * Start monitoring an agent.
-     * Start supervisor monitoring of an agent on the specified media channel. When an agent being monitored accepts a chat, the  supervisor also receives the chat and all related notifications. If the agent is currently in a chat, the supervisor is added to the agent&#39;s next chat. The supervisor can&#39;t send messages in this mode and only another supervisor can see that the monitoring supervisor joined the chat. If the monitored agent leaves the chat but another agent  is still present, the supervisor continues monitoring the chat until it&#39;s completed or placed in a queue. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/media/{mediatype}/interactions/{id}/switch-to-barge&#x60;,  &#x60;/media/{mediatype}/interactions/{id}/switch-to-coach&#x60;, and &#x60;/media/{mediatype}/interactions/{id}/switch-to-monitor&#x60;.
+     * Start supervisor monitoring of an agent on the specified media channel. When an agent being monitored accepts a chat, the  supervisor also receives the chat and all related notifications. If the agent is currently in a chat, the supervisor is added to the agent&#39;s next chat. The supervisor can&#39;t send messages in this mode and only another supervisor can see that the monitoring supervisor joined the chat. If the monitored agent leaves the chat but another agent  is still present, the supervisor continues monitoring the chat until it&#39;s completed or placed in a queue. Once you&#39;ve enabled monitoring, you can change the monitoring mode using &#x60;/media/{mediatype}/interactions/{id}/switch-to-barge-in&#x60;,  &#x60;/media/{mediatype}/interactions/{id}/switch-to-coach&#x60;, and &#x60;/media/{mediatype}/interactions/{id}/switch-to-monitor&#x60;.
      * @param {String} mediatype The media channel.
      * @param {Object} opts Optional parameters
      * @param {module:model/MediaStartMonitoringData} opts.mediaStartMonitoringData Request parameters.
@@ -874,8 +808,8 @@
 
 
     /**
-     * Switch to the barge in monitoring mode.
-     * Switch to the barge in monitoring mode for the specified chat. Both the agent and the  customer can see the supervisor&#39;s messages.
+     * Switch to the barge-in monitoring mode.
+     * Switch to the barge-in monitoring mode for the specified chat. Both the agent and the  customer can see the supervisor&#39;s messages.
      * @param {String} mediatype The media channel.
      * @param {String} id The ID of the chat interaction.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
@@ -918,8 +852,8 @@
     }
 
     /**
-     * Switch to the barge in monitoring mode.
-     * Switch to the barge in monitoring mode for the specified chat. Both the agent and the  customer can see the supervisor&#39;s messages.
+     * Switch to the barge-in monitoring mode.
+     * Switch to the barge-in monitoring mode for the specified chat. Both the agent and the  customer can see the supervisor&#39;s messages.
      * @param {String} mediatype The media channel.
      * @param {String} id The ID of the chat interaction.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
@@ -1053,10 +987,16 @@
     /**
      * Set the agent state to Not Ready.
      * Set the current agent&#39;s state to Not Ready on all media channels.
+     * @param {module:model/NotReadyForAgentData} notReadyForAgentData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
-    this.notReadyAgentStateWithHttpInfo = function() {
-      var postBody = null;
+    this.notReadyAgentStateWithHttpInfo = function(notReadyForAgentData) {
+      var postBody = notReadyForAgentData;
+
+      // verify the required parameter 'notReadyForAgentData' is set
+      if (notReadyForAgentData === undefined || notReadyForAgentData === null) {
+        throw new Error("Missing the required parameter 'notReadyForAgentData' when calling notReadyAgentState");
+      }
 
 
       var pathParams = {
@@ -1083,10 +1023,11 @@
     /**
      * Set the agent state to Not Ready.
      * Set the current agent&#39;s state to Not Ready on all media channels.
+     * @param {module:model/NotReadyForAgentData} notReadyForAgentData 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */
-    this.notReadyAgentState = function() {
-      return this.notReadyAgentStateWithHttpInfo()
+    this.notReadyAgentState = function(notReadyForAgentData) {
+      return this.notReadyAgentStateWithHttpInfo(notReadyForAgentData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1499,6 +1440,72 @@
      */
     this.removeMedia = function(mediatype, logoutMediaData) {
       return this.removeMediaWithHttpInfo(mediatype, logoutMediaData)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * set a comment.
+     * set a comment to the specified interaction. If a comment already exists, it&#39;s overridden.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
+     * @param {module:model/AddCommentData} addCommentData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
+     */
+    this.setCommentWithHttpInfo = function(mediatype, id, addCommentData) {
+      var postBody = addCommentData;
+
+      // verify the required parameter 'mediatype' is set
+      if (mediatype === undefined || mediatype === null) {
+        throw new Error("Missing the required parameter 'mediatype' when calling setComment");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling setComment");
+      }
+
+      // verify the required parameter 'addCommentData' is set
+      if (addCommentData === undefined || addCommentData === null) {
+        throw new Error("Missing the required parameter 'addCommentData' when calling setComment");
+      }
+
+
+      var pathParams = {
+        'mediatype': mediatype,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = ApiSuccessResponse;
+
+      return this.apiClient.callApi(
+        '/media/{mediatype}/interactions/{id}/set-comment', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * set a comment.
+     * set a comment to the specified interaction. If a comment already exists, it&#39;s overridden.
+     * @param {String} mediatype The media channel.
+     * @param {String} id The ID of the interaction.
+     * @param {module:model/AddCommentData} addCommentData 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
+     */
+    this.setComment = function(mediatype, id, addCommentData) {
+      return this.setCommentWithHttpInfo(mediatype, id, addCommentData)
         .then(function(response_and_data) {
           return response_and_data.data;
         });

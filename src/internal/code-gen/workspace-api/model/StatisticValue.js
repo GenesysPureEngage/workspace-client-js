@@ -43,11 +43,11 @@
    * Constructs a new <code>StatisticValue</code>.
    * @alias module:model/StatisticValue
    * @class
-   * @param objectId {String} ID of the object to get the statistic for
-   * @param objectType {String} Type of the obejct to get the statistic for
-   * @param statisticId {String} Unique id for the statistic
-   * @param name {String} The name of the statistic
-   * @param timestamp {Number} Timestamp for given value of the statistic
+   * @param objectId {String} The ID of the object to get statistics for.
+   * @param objectType {String} The type of object to get statistics for.
+   * @param statisticId {String} The ID of the statistic. This ID is unique inside the subscription.
+   * @param name {String} The name of the statistic.
+   * @param timestamp {Number} The timestamp when the statistic value was generated (provided by Stat Server).
    */
   var exports = function(objectId, objectType, statisticId, name, timestamp) {
     var _this = this;
@@ -94,32 +94,32 @@
   }
 
   /**
-   * ID of the object to get the statistic for
+   * The ID of the object to get statistics for.
    * @member {String} objectId
    */
   exports.prototype['objectId'] = undefined;
   /**
-   * Type of the obejct to get the statistic for
+   * The type of object to get statistics for.
    * @member {String} objectType
    */
   exports.prototype['objectType'] = undefined;
   /**
-   * Unique id for the statistic
+   * The ID of the statistic. This ID is unique inside the subscription.
    * @member {String} statisticId
    */
   exports.prototype['statisticId'] = undefined;
   /**
-   * The name of the statistic
+   * The name of the statistic.
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
   /**
-   * Timestamp for given value of the statistic
+   * The timestamp when the statistic value was generated (provided by Stat Server).
    * @member {Number} timestamp
    */
   exports.prototype['timestamp'] = undefined;
   /**
-   * Value of the statistic
+   * The value of the statistic. Its structure reflects the structure of the Stat Server message.
    * @member {Object} value
    */
   exports.prototype['value'] = undefined;

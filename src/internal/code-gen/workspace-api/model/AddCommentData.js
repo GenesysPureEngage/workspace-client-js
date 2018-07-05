@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/MediamediatypeinteractionsidaddcommentData'], factory);
+    define(['ApiClient', 'model/MediamediatypeinteractionsidsetcommentData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidaddcommentData'));
+    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidsetcommentData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.AddCommentData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidaddcommentData);
+    root.WorkspaceApi.AddCommentData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidsetcommentData);
   }
-}(this, function(ApiClient, MediamediatypeinteractionsidaddcommentData) {
+}(this, function(ApiClient, MediamediatypeinteractionsidsetcommentData) {
   'use strict';
 
 
@@ -62,14 +62,14 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('data')) {
-        obj['data'] = MediamediatypeinteractionsidaddcommentData.constructFromObject(data['data']);
+        obj['data'] = MediamediatypeinteractionsidsetcommentData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/MediamediatypeinteractionsidaddcommentData} data
+   * @member {module:model/MediamediatypeinteractionsidsetcommentData} data
    */
   exports.prototype['data'] = undefined;
 

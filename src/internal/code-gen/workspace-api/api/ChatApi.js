@@ -554,7 +554,7 @@
 
     /**
      * Send a custom notification.
-     * Send a custom notification to the specified chat.
+     * Send a custom notification to the specified chat. The notification is typically used as a trigger for some custom behavior on the recipient&#39;s end.
      * @param {String} id The ID of the chat interaction.
      * @param {Object} opts Optional parameters
      * @param {module:model/CustomNotificationData} opts.customNotificationData Request parameters.
@@ -594,7 +594,7 @@
 
     /**
      * Send a custom notification.
-     * Send a custom notification to the specified chat.
+     * Send a custom notification to the specified chat. The notification is typically used as a trigger for some custom behavior on the recipient&#39;s end.
      * @param {String} id The ID of the chat interaction.
      * @param {Object} opts Optional parameters
      * @param {module:model/CustomNotificationData} opts.customNotificationData Request parameters.
@@ -889,8 +889,8 @@
 
 
     /**
-     * Send a notice to modify the nickname
-     * Send a notice to modify my nickname to the specified chat.
+     * Update the agent&#39;s nickname.
+     * Update the agent&#39;s nickname for the specified chat.
      * @param {String} id The ID of the chat interaction.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateNicknameData} opts.updateNicknameData Request parameters.
@@ -929,8 +929,8 @@
     }
 
     /**
-     * Send a notice to modify the nickname
-     * Send a notice to modify my nickname to the specified chat.
+     * Update the agent&#39;s nickname.
+     * Update the agent&#39;s nickname for the specified chat.
      * @param {String} id The ID of the chat interaction.
      * @param {Object} opts Optional parameters
      * @param {module:model/UpdateNicknameData} opts.updateNicknameData Request parameters.

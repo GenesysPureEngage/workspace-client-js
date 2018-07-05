@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Call', 'model/Dn', 'model/Media'], factory);
+    define(['ApiClient', 'model/Call', 'model/Dn', 'model/Media', 'model/Service'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./Call'), require('./Dn'), require('./Media'));
+    module.exports = factory(require('../ApiClient'), require('./Call'), require('./Dn'), require('./Media'), require('./Service'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CurrentSessionDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.Dn, root.WorkspaceApi.Media);
+    root.WorkspaceApi.CurrentSessionDataUserActiveSession = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.Call, root.WorkspaceApi.Dn, root.WorkspaceApi.Media, root.WorkspaceApi.Service);
   }
-}(this, function(ApiClient, Call, Dn, Media) {
+}(this, function(ApiClient, Call, Dn, Media, Service) {
   'use strict';
 
 
@@ -46,6 +46,7 @@
    */
   var exports = function() {
     var _this = this;
+
 
 
 
@@ -80,15 +81,20 @@
       if (data.hasOwnProperty('media')) {
         obj['media'] = Media.constructFromObject(data['media']);
       }
+      if (data.hasOwnProperty('services')) {
+        obj['services'] = ApiClient.convertToType(data['services'], [Service]);
+      }
     }
     return obj;
   }
 
   /**
+   * Specifies if calls are automatically completed.
    * @member {Boolean} autoCompleteCall
    */
   exports.prototype['autoCompleteCall'] = undefined;
   /**
+   * The user's current place.
    * @member {String} currentPlace
    */
   exports.prototype['currentPlace'] = undefined;
@@ -105,6 +111,11 @@
    * @member {module:model/Media} media
    */
   exports.prototype['media'] = undefined;
+  /**
+   * An array containing the current state of any initialized services
+   * @member {Array.<module:model/Service>} services
+   */
+  exports.prototype['services'] = undefined;
 
 
 

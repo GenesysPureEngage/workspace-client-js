@@ -50,6 +50,7 @@
 
     /**
      * Search for users.
+     * Search for users with the specified filters.
      * @param {Object} opts Optional parameters
      * @param {String} opts.searchTerm The text to search.
      * @param {Number} opts.groupId The ID of the group where the user belongs.
@@ -91,6 +92,7 @@
 
     /**
      * Search for users.
+     * Search for users with the specified filters.
      * @param {Object} opts Optional parameters
      * @param {String} opts.searchTerm The text to search.
      * @param {Number} opts.groupId The ID of the group where the user belongs.

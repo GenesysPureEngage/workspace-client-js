@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.RecentData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.Info = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,15 +34,14 @@
 
 
   /**
-   * The RecentData model module.
-   * @module model/RecentData
+   * The Info model module.
+   * @module model/Info
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>RecentData</code>.
-   * This includes the media channel where the target was recently used and the timestamp for when the target was used.
-   * @alias module:model/RecentData
+   * Constructs a new <code>Info</code>.
+   * @alias module:model/Info
    * @class
    */
   var exports = function() {
@@ -53,36 +52,36 @@
   };
 
   /**
-   * Constructs a <code>RecentData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Info</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/RecentData} obj Optional instance to populate.
-   * @return {module:model/RecentData} The populated <code>RecentData</code> instance.
+   * @param {module:model/Info} obj Optional instance to populate.
+   * @return {module:model/Info} The populated <code>Info</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('media')) {
-        obj['media'] = ApiClient.convertToType(data['media'], 'String');
+      if (data.hasOwnProperty('version')) {
+        obj['version'] = ApiClient.convertToType(data['version'], 'String');
       }
-      if (data.hasOwnProperty('timeStamp')) {
-        obj['timeStamp'] = ApiClient.convertToType(data['timeStamp'], 'Number');
+      if (data.hasOwnProperty('changeset')) {
+        obj['changeset'] = ApiClient.convertToType(data['changeset'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * The media channel where the target was recently used.
-   * @member {String} media
+   * server version
+   * @member {String} version
    */
-  exports.prototype['media'] = undefined;
+  exports.prototype['version'] = undefined;
   /**
-   * The date and time when the target was used.
-   * @member {Number} timeStamp
+   * changeset
+   * @member {String} changeset
    */
-  exports.prototype['timeStamp'] = undefined;
+  exports.prototype['changeset'] = undefined;
 
 
 

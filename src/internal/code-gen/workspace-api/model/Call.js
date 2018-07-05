@@ -133,64 +133,77 @@
    */
   exports.prototype['type'] = undefined;
   /**
+   * The unique identifier for the call.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
   /**
+   * The previous connection ID is present if the ID has changed, as would be the case if an  agent is the target of a two-step conference or transfer.
    * @member {String} previousConnId
    */
   exports.prototype['previousConnId'] = undefined;
   /**
+   * The parent connection ID is present on consult calls and identifies the call from which the  conference or transfer was initiated.
    * @member {String} parentConnId
    */
   exports.prototype['parentConnId'] = undefined;
   /**
+   * The agent's phone number.
    * @member {String} phoneNumber
    */
   exports.prototype['phoneNumber'] = undefined;
   /**
+   * The connection ID for the call. This value comes from the Tlib event.
    * @member {String} connId
    */
   exports.prototype['connId'] = undefined;
   /**
+   * The universally unique identifier associated with the call. This is a separate identifier  that is specifically required by some requests.
    * @member {String} callUuid
    */
   exports.prototype['callUuid'] = undefined;
   /**
+   * The type of call, such as Internal, Inbound, Outbound, Consult.
    * @member {String} callType
    */
   exports.prototype['callType'] = undefined;
   /**
+   * The state of the call - one of Ringing, Dialing, Established, Held, Released, or Completed.  Unless specifically configured, calls are automatically completed upon release.
    * @member {String} state
    */
   exports.prototype['state'] = undefined;
   /**
+   * A list of capabilities for the current state. For example, if the current state is Dialing,  the list might be [\"HangUp\", \"Hold\"].
    * @member {Array.<String>} capabilities
    */
   exports.prototype['capabilities'] = undefined;
   /**
+   * A list of call participants - the phone numbers of those currently on the call.
    * @member {Array.<module:model/CallParticipants>} participants
    */
   exports.prototype['participants'] = undefined;
   /**
+   * The Dialed Number Identification Service from the call.
    * @member {String} dnis
    */
   exports.prototype['dnis'] = undefined;
   /**
+   * The Automatic Number Identification from the call.
    * @member {String} ani
    */
   exports.prototype['ani'] = undefined;
   /**
+   * The call recording state, one of Stopped, Recording, Paused. If the recording was never started for a call this property is absent.
    * @member {String} recordingState
    */
   exports.prototype['recordingState'] = undefined;
   /**
-   * A key/value pairs list of a data structure that provides additional information associated with this action.
+   * A key/value pairs list of a data associated with the call.
    * @member {Array.<module:model/Kvpair>} userData
    */
   exports.prototype['userData'] = undefined;
   /**
-   * A collection of key/value pairs. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Extensions).
+   * Media device/hardware reason codes and similar information. For details about extensions, refer to the [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System/Current/GenEM/Extensions).
    * @member {Array.<module:model/Kvpair>} extensions
    */
   exports.prototype['extensions'] = undefined;

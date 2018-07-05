@@ -49,8 +49,8 @@
 
 
     /**
-     * Get statistics for given subscriptionId.
-     * Get the statistics for the specified subscription ID.
+     * Get the values of statistics in a subscription.
+     * Get the values of a set of statistics that was opened with a subscription.
      * @param {String} subscriptionId The unique ID of the subscription.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002} and HTTP response
      */
@@ -86,8 +86,8 @@
     }
 
     /**
-     * Get statistics for given subscriptionId.
-     * Get the statistics for the specified subscription ID.
+     * Get the values of statistics in a subscription.
+     * Get the values of a set of statistics that was opened with a subscription.
      * @param {String} subscriptionId The unique ID of the subscription.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002}
      */
@@ -151,8 +151,8 @@
 
 
     /**
-     * Subscribe to statistics
-     * Subscribe to a group of statistics. The values are returned when you request them using &#x60;/reporting/subscriptions/{subscriptionId}&#x60;.
+     * Subscribe to statistics.
+     * Open a subscription for the specified set of statistics. The values are returned when you request them using &#x60;/reporting/subscriptions/{subscriptionId}&#x60;.
      * @param {module:model/StatisticsSubscribeData} statisticsSubscribeData The collection of statistics you want to include in your subscription.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponse2002} and HTTP response
      */
@@ -187,8 +187,8 @@
     }
 
     /**
-     * Subscribe to statistics
-     * Subscribe to a group of statistics. The values are returned when you request them using &#x60;/reporting/subscriptions/{subscriptionId}&#x60;.
+     * Subscribe to statistics.
+     * Open a subscription for the specified set of statistics. The values are returned when you request them using &#x60;/reporting/subscriptions/{subscriptionId}&#x60;.
      * @param {module:model/StatisticsSubscribeData} statisticsSubscribeData The collection of statistics you want to include in your subscription.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/InlineResponse2002}
      */
@@ -201,8 +201,8 @@
 
 
     /**
-     * Unsubscribe from statistics.
-     * Unsubscribe from the specified group of statistics.
+     * Delete a subscription.
+     * Delete the specified subscription by closing all its statistics.
      * @param {String} subscriptionId The unique ID of the subscription.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ApiSuccessResponse} and HTTP response
      */
@@ -238,8 +238,8 @@
     }
 
     /**
-     * Unsubscribe from statistics.
-     * Unsubscribe from the specified group of statistics.
+     * Delete a subscription.
+     * Delete the specified subscription by closing all its statistics.
      * @param {String} subscriptionId The unique ID of the subscription.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ApiSuccessResponse}
      */

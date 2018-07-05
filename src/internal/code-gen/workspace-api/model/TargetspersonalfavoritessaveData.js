@@ -44,7 +44,7 @@
    * @alias module:model/TargetspersonalfavoritessaveData
    * @class
    * @param target {module:model/TargetInformation} 
-   * @param category {String} The agent's personal favorites category.
+   * @param category {String} The personal favorites category where the target is saved.
    */
   var exports = function(target, category) {
     var _this = this;
@@ -79,7 +79,7 @@
    */
   exports.prototype['target'] = undefined;
   /**
-   * The agent's personal favorites category.
+   * The personal favorites category where the target is saved.
    * @member {String} category
    */
   exports.prototype['category'] = undefined;

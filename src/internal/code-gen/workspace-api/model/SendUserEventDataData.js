@@ -82,10 +82,12 @@
    */
   exports.prototype['userData'] = undefined;
   /**
+   * The universally unique identifier associated with the call.
    * @member {String} callUuid
    */
   exports.prototype['callUuid'] = undefined;
   /**
+   * The connection ID for the call. This value comes from the Tlib event.
    * @member {String} connId
    */
   exports.prototype['connId'] = undefined;

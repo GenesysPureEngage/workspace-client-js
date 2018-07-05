@@ -43,8 +43,8 @@
    * Constructs a new <code>CurrentSessionDataUser</code>.
    * @alias module:model/CurrentSessionDataUser
    * @class
-   * @param userName {String} 
-   * @param employeeId {String} 
+   * @param userName {String} The username.
+   * @param employeeId {String} The unique employee ID.
    */
   var exports = function(userName, employeeId) {
     var _this = this;
@@ -103,30 +103,37 @@
   }
 
   /**
+   * A unique identifier for the user.
    * @member {Number} dbid
    */
   exports.prototype['dbid'] = undefined;
   /**
+   * The user's first name.
    * @member {String} firstName
    */
   exports.prototype['firstName'] = undefined;
   /**
+   * The user's last name.
    * @member {String} lastName
    */
   exports.prototype['lastName'] = undefined;
   /**
+   * The username.
    * @member {String} userName
    */
   exports.prototype['userName'] = undefined;
   /**
+   * The unique employee ID.
    * @member {String} employeeId
    */
   exports.prototype['employeeId'] = undefined;
   /**
+   * The user's default place.
    * @member {String} defaultPlace
    */
   exports.prototype['defaultPlace'] = undefined;
   /**
+   * The agent's login ID.
    * @member {String} agentLogin
    */
   exports.prototype['agentLogin'] = undefined;

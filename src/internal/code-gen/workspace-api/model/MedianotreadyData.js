@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediamediatypenotreadyData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.IxnReasonCode, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.MedianotreadyData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.IxnReasonCode, root.WorkspaceApi.Kvpair);
   }
 }(this, function(ApiClient, IxnReasonCode, Kvpair) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The MediamediatypenotreadyData model module.
-   * @module model/MediamediatypenotreadyData
+   * The MedianotreadyData model module.
+   * @module model/MedianotreadyData
    * @version 1.0.0
    */
 
   /**
-   * Constructs a new <code>MediamediatypenotreadyData</code>.
-   * @alias module:model/MediamediatypenotreadyData
+   * Constructs a new <code>MedianotreadyData</code>.
+   * @alias module:model/MedianotreadyData
    * @class
    */
   var exports = function() {
@@ -53,11 +53,11 @@
   };
 
   /**
-   * Constructs a <code>MediamediatypenotreadyData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MedianotreadyData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediamediatypenotreadyData} obj Optional instance to populate.
-   * @return {module:model/MediamediatypenotreadyData} The populated <code>MediamediatypenotreadyData</code> instance.
+   * @param {module:model/MedianotreadyData} obj Optional instance to populate.
+   * @return {module:model/MedianotreadyData} The populated <code>MedianotreadyData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
