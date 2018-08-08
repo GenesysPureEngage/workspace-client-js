@@ -92,8 +92,8 @@ class VoiceApi {
 
   /**
    * Set the current agent's state to NotReady on the voice channel.
-   * @param {String} workMode The agent workmode. Possible values are AfterCallWork, AuxWork, LegalGuard, NoCallDisconnect, WalkAway. (optional)
-   * @param {String} reasonCode The reason code representing why the agent is not ready. These codes are a business-defined set of categories, such as "Lunch" or "Training". (optional)
+   * @param {String} workMode The agent workmode. Possible values are `AfterCallWork`, `AuxWork`, `LegalGuard`, `NoCallDisconnect`, `WalkAway`. (optional)
+   * @param {String} reasonCode The reason code representing why the agent is NotReady. These codes are a business-defined set of categories, such as "Lunch" or "Training". (optional)
    */
   async notReady(workMode, reasonCode) {
     let msg = `Sending not-ready`;
@@ -119,7 +119,7 @@ class VoiceApi {
   }
 
   /**
-   * Set the current agent's state to do-not-disturb on the voice channel.
+   * Set the current agent's state to Do Not Disturb on the voice channel.
    */
   async dndOn() {
     this._log('Sending dnd-on...');
@@ -128,7 +128,7 @@ class VoiceApi {
   }
 
   /**
-   * Turn off do-not-disturb for the current agent on the voice channel.
+   * Turn off Do Not Disturb for the current agent on the voice channel.
    */
   async dndOff() {
     this._log('Sending dnd-off...');
@@ -150,7 +150,7 @@ class VoiceApi {
   }
 
   /**
-   * Logout the current agent on the voice channel. This request is typically paired with `login()` - together 
+   * Log out the current agent on the voice channel. This request is typically paired with `login()` - together 
    * they let you login/logout an agent on the voice channel without logging out of the entire session.
    */
   async logout() {
@@ -186,7 +186,7 @@ class VoiceApi {
   /**
    * Make a new call to the specified destination.
    * @param {String} destination The number to call.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async makeCall(destination, optional) {
     this._log(`Sending make-call to destination [${destination}]...`);
@@ -200,9 +200,9 @@ class VoiceApi {
   }
 
   /**
-   * Answer a call.
+   * Answer the specified call.
    * @param {String} connId The connection ID of the call.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async answerCall(connId, optional) {
     this._log(`Sending answer for call [${connId}]...`);
@@ -212,9 +212,9 @@ class VoiceApi {
   }
 
   /**
-   * Place a call on hold.
+   * Place the specified call on hold.
    * @param {String} connId The connection ID of the call. 
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async holdCall(connId, optional) {
     this._log(`Sending hold for call [${connId}]...`);
@@ -223,9 +223,9 @@ class VoiceApi {
   }
 
   /**
-   * Retrieve a call from hold.
+   * Retrieve the specified call from hold.
    * @param {String} connId The connection ID of the call. 
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async retrieveCall(connId, optional) {
     this._log(`Sending retrieve for call [${connId}]...`);
@@ -234,9 +234,9 @@ class VoiceApi {
   }
 
   /**
-   * Release a call.
+   * Release the specified call.
    * @param {String} connId The connection ID of the call.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async releaseCall(connId, optional) {
     this._log(`Sending release for call [${connId}]...`);
@@ -247,7 +247,7 @@ class VoiceApi {
   /**
    * End the conference call for all parties. This can be performed by any agent participating in the conference.
    * @param {String} connId The connection ID of the call to clear.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async clearCall(connId, optional) {
     this._log(`Sending clear for call [${connId}]...`);
@@ -259,7 +259,7 @@ class VoiceApi {
    * Redirect a call to the specified destination.
    * @param {String} connId The connection ID of the call to redirect.
    * @param {String} destination The number where Workspace should redirect the call.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async redirectCall(connId, destination, optional) {
     this._log(`Sending redirect for call [${connId}] with destination [${destination}]...`);
@@ -273,12 +273,12 @@ class VoiceApi {
   }
 
   /**
-   * Initiates a two-step conference to the specified destination. This places the existing call on
+   * Initiate a two-step conference to the specified destination. This places the existing call on
    * hold and creates a new call in the dialing state (step 1). After initiating the conference you can use 
    * `completeConference()` to complete the conference and bring all parties into the same call (step 2).
    * @param {String} connId The connection ID of the call to start the conference from. This call will be placed on hold.
    * @param {String} destination The number to be dialed.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async initiateConference(connId, destination, optional) {
     this._log(`Sending initiate-conference to destination [${destination}] for call [${connId}]...`);
@@ -296,7 +296,7 @@ class VoiceApi {
    * the two separate calls are brought together so that all three parties are participating in the same call.
    * @param {String} connId The connection ID of the consult call (established).
    * @param {String} parentConnId The connection ID of the parent call (held).
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async completeConference(connId, parentConnId, optional) {
     this._log(`Sending complete-conference for call [${connId}] and parentConnId [${parentConnId}]...`);
@@ -313,7 +313,7 @@ class VoiceApi {
    * Delete the specified DN from the conference call. This operation can only be performed by the owner of the conference call.
    * @param {String} connId The connection ID of the conference.
    * @param {String} dnToDrop The DN of the party to drop from the conference.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async deleteFromConference(connId, dnToDrop, optional) {
     this._log(`Sending delete-from-conference for call [${connId}] with dnToDrop [${dnToDrop}]...`);
@@ -327,11 +327,11 @@ class VoiceApi {
   }
 
   /**
-   * Initiates a two-step transfer by placing the first call on hold and dialing the destination number (step 1). 
+   * Initiate a two-step transfer by placing the first call on hold and dialing the destination number (step 1). 
    * After initiating the transfer, you can use `completeTransfer()` to complete the transfer (step 2).
    * @param {String} connId The connection ID of the call to be transferred. This call will be placed on hold.
    * @param {String} destination The number where the call will be transferred.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async initiateTransfer(connId, destination, optional) {
     this._log(`Sending initiate-transfer to destination [${destination}] for call [${connId}]...`);
@@ -345,10 +345,10 @@ class VoiceApi {
   }
   
   /**
-   * Complete a previously initiated transfer using the provided IDs.
+   * Complete a previously initiated two-step transfer using the provided IDs.
    * @param {String} connId The connection ID of the consult call (established).
    * @param {String} parentConnId The connection ID of the parent call (held).
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async completeTransfer(connId, parentConnId, optional) {
     this._log(`Sending complete-transfer for call [${connId}] and parentConnId [${parentConnId}]...`);
@@ -366,7 +366,7 @@ class VoiceApi {
    * This is a shortcut for doing `holdCall()` and `retrieveCall()` separately.
    * @param {String} connId The connection ID of the established call that should be placed on hold.
    * @param {String} heldConnId The connection ID of the held call that should be retrieved.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async alternateCalls(connId, heldConnId, optional) {
     this._log(`Sending alternate for call [${connId}] and heldConnId [${heldConnId}]...`);
@@ -383,7 +383,7 @@ class VoiceApi {
    * Merge the two specified calls.
    * @param {String} connId The connection ID of the first call to be merged.
    * @param {String} otherConnId The connection ID of the second call to be merged.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async mergeCalls(connId, otherConnId, optional) {
     this._log(`Sending merge for call [${connId}] and otherConnId [${otherConnId}]...`);
@@ -401,7 +401,7 @@ class VoiceApi {
    * in one step. This is a quick way to to do `releaseCall()` and `retrieveCall()`.
    * @param {String} connId The connection ID of the established call (will be released).
    * @param {String} heldConnId The connection ID of the held call (will be retrieved).
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async reconnectCall(connId, heldConnId, optional) {
     this._log(`Sending reconnect for call [${connId}] and heldConnId [${heldConnId}]...`);
@@ -419,7 +419,7 @@ class VoiceApi {
    * existing call, creating a conference if necessary.
    * @param {String} connId The connection ID of the call to conference.
    * @param {String} destination The number to add to the call.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async singleStepConference(connId, destination, optional) {
     this._log(`Sending single-step-conference to destination [${destination}] for call [${connId}]...`);
@@ -436,7 +436,7 @@ class VoiceApi {
    * Perform a single-step transfer to the specified destination.
    * @param {String} connId The connection ID of the call to transfer.
    * @param {String} destination The number where the call should be transferred.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async singleStepTransfer(connId, destination, optional) {
     this._log(`Sending single-step-transfer to destination [${destination}] for call [${connId}]...`);
@@ -466,7 +466,7 @@ class VoiceApi {
   }
 
   /**
-   * Update call data with the provided key/value pairs. This will replace any existing key/value pairs with the same keys.
+   * Update call data with the provided key/value pairs. This replaces any existing key/value pairs with the same keys.
    * @param {String} connId The connection ID of the call.
    * @param {Object} userData The data to update. This is an array of objects with the properties key, type, and value.
    */
@@ -501,7 +501,7 @@ class VoiceApi {
    * with multiple digits in one request. 
    * @param {String} connId The connection ID of the call.
    * @param {String} digits The DTMF digits to send to the call.
-   * @param {Object} optional Optional parameters
+   * @param {Object} optional Optional parameters.
    */
   async sendDTMF(connId, digits, optional) {
     this._log(`Sending send-dtmf for call [${connId}] with dtmfDigits [${digits}]...`);
@@ -518,7 +518,7 @@ class VoiceApi {
    * Send EventUserEvent to T-Server with the provided attached data. For details about EventUserEvent, refer to the 
    * [Genesys Events and Models Reference Manual](https://docs.genesys.com/Documentation/System).
    * @param {Object} data The data to send. This is an array of objects with the properties key, type, and value.
-   * @param {String} callUuid The universally unique identifier for the call that the event will be associated with.
+   * @param {String} callUuid The universally unique identifier associated with the call.
    */
   async sendUserEvent(data, callUuid) {
     this._log(`Sending send-user-event with data [${JSON.stringify(data)}] and callUuid [${callUuid}]...`);
@@ -533,7 +533,7 @@ class VoiceApi {
   }
 
   /**
-   * Start recording the specified call. Recording stops when the call is completed or you send stopRecording 
+   * Start recording the specified call. Recording stops when the call is completed or you send `stopRecording()` 
    * on either the call or the DN.
    * @param {String} connId The connection ID of the call. 
    */

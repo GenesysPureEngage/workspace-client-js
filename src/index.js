@@ -10,10 +10,10 @@ adaptCometDClientForNode();
 
 class WorkspaceApi extends EventEmitter {
   /**
-   * Constructor 
-   * @param {String} apiKey The API key to be included in HTTP requests.
-   * @param {String} baseUrl The base URL of the PureEngage Cloud API.
-   * @param {String} debugEnabled Set to 'true' to enable debugging or 'false' to disable.
+   * Create a new WorkspaceApi object.
+   * @param {String} apiKey The API key used to access the Workspace API.
+   * @param {String} baseUrl The URL of the PureEngage Cloud API.
+   * @param {String} debugEnabled Set to `true` to enable debugging.
    */
   constructor(apiKey, baseUrl, debugEnabled) {
     super();
@@ -97,11 +97,11 @@ class WorkspaceApi extends EventEmitter {
   }
 
   /**
-   * Initializes the API using either an authorization code and redirect URI or an access token. The authorization code comes from using the 
+   * Initialize the API using either an authorization code and redirect URI or an access token. The authorization code comes from using the 
    * Authorization Code Grant flow to authenticate with the Authentication API.
    * @param {String} code The authorization code you received during authentication.
-   * @param {String} redirectUri The redirect URI you used during authentication. Since this is not sent by the UI, it needs to match the redirectUri that you sent when using the Authentication API to get the authCode.
-   * @param {String} token The access token.
+   * @param {String} redirectUri The redirect URI you used during authentication. This needs to match the `redirectUri` that you sent when using the Authentication API to get the authorization code.
+   * @param {String} token The access token retrieved from the Authentication API.
    */
   async initialize({ code, redirectUri, token}) {
     this._workspaceClient = new workspace.ApiClient();
@@ -143,7 +143,7 @@ class WorkspaceApi extends EventEmitter {
   get agent(){ return this._workspaceClient; }
 
   /**
-   * Ends the current agent's session. This request logs out the agent on all activated channels, ends the HTTP session, 
+   * End the current agent's session. This request logs out the agent on all activated channels, ends the HTTP session, 
    * and cleans up related resources. After you end the session, you'll need to make a login request before making any 
    * new calls to the API.
    */
@@ -162,7 +162,7 @@ class WorkspaceApi extends EventEmitter {
   }
 
   /**
-   * Activates the voice channel using the provided resources. If the channel is successfully activated, 
+   * Activate the voice channel using the provided resources. If the channel is successfully activated, 
    * Workspace sends additional information about the state of active resources (DNs, channels) via events. The 
    * resources you provide are associated with the agent for the duration of the session.
    * @param {String} agentId The unique ID of the agent.
