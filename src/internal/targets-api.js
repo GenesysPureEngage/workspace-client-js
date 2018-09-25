@@ -20,7 +20,7 @@ class TargetsApi {
    */
   async search(searchTerm, limit) {
     this._log(`Searching targets with searchTerm [${searchTerm}]...`);
-    const response = await this._api.get(searchTerm, {
+    const response = await this._api.getTargets(searchTerm, {
       limit: limit || 10
     });
 
