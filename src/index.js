@@ -30,18 +30,24 @@ class WorkspaceApi extends EventEmitter {
     }
   }
 
-
   async _initializeCometd() {
     this._log('Initializing cometd...');
     this._cometd = new CometDLib.CometD();
     const transport = this._cometd.findTransport('long-polling');
     transport.context = { cookieJar: this.cookieJar };
-    this._cometd.configure({
-      url: `${this._workspaceUrl}/notifications`,
-      requestHeaders: {
-        'x-api-key': this.apiKey,
+
+    let cometdParams = {
+      url: this._workspaceUrl + '/notifications'
+    };
+
+    if (this.apiKey) {
+      cometdParams.requestHeaders = {
+        'x-api-key': this.apiKey
       }
-    });
+    }
+
+    this._cometd.configure(cometdParams);
+
     this._log('Starting cometd handshake...');
     await this._initCometDHandshake();
     this._log('Handshake successful');
@@ -166,22 +172,33 @@ class WorkspaceApi extends EventEmitter {
    * Workspace sends additional information about the state of active resources (DNs, channels) via events. The 
    * resources you provide are associated with the agent for the duration of the session.
    * @param {String} agentId The unique ID of the agent.
-   * @param {String} dn The DN to be used for login.
+   * @param {String} dn The DN to be used for login. Provide either dn or placeName
+   * @param {String} placeName The place to be used for login. Provide either dn or placeName
    */
-  async activateChannels(agentId, dn) {
-    this._log(`Sending activate-channels with agentId [${agentId}] and dn [${dn}]...`);
+  async activateChannels(agentId, dn, placeName) {   
     let data = { data: {} };
 
-    if (agentId && dn) {
+    if (agentId) {
       data.data.agentId = agentId;
-      data.data.dn = dn;
-    } else if (this._user && this._user.agentId && this._user.defaultPlace) {
-      data.data.agentId = this._user.agentId;
-      data.data.placeName = this._user.defaultPlace;
+    } else if (this.user && this.user.agentLogin) {
+      data.data.agentId = this.user.agentLogin;
+    } else if (this.user && this.user.employeeId) {
+      data.data.agentId = this.user.employeeId;
     } else {
-      throw new Error('agentId and dn are required if user does not have a default login and place.');
+      throw new Error('agentId was not provided and no default login could be found.');
+    }
+
+    if (dn) {
+      data.data.dn = dn;
+    } else if (placeName) {
+      data.data.placeName = placeName;
+    } else if (this.user && this.user.defaultPlace) {
+      data.data.placeName = this.user.defaultPlace;
+    } else {
+      throw new Error('No dn or placeName was provided and no default could be found.');
     }
 									
+    this._log(`Sending activate-channels with: ${JSON.stringify(data)}`);
     let response = await this._sessionApi.activateChannels(data);
     return response;
   }
