@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.WorkbinsworkbinIdaddinteractionData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.IxnReasonCode, root.WorkspaceApi.Kvpair);
+    root.WorkspaceApi.MediamediatypeinteractionsidpullData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.IxnReasonCode, root.WorkspaceApi.Kvpair);
   }
 }(this, function(ApiClient, IxnReasonCode, Kvpair) {
   'use strict';
@@ -34,32 +34,31 @@
 
 
   /**
-   * The WorkbinsworkbinIdaddinteractionData model module.
-   * @module model/WorkbinsworkbinIdaddinteractionData
+   * The MediamediatypeinteractionsidpullData model module.
+   * @module model/MediamediatypeinteractionsidpullData
    * @version 9.0.000.23.2279
    */
 
   /**
-   * Constructs a new <code>WorkbinsworkbinIdaddinteractionData</code>.
-   * @alias module:model/WorkbinsworkbinIdaddinteractionData
+   * Constructs a new <code>MediamediatypeinteractionsidpullData</code>.
+   * @alias module:model/MediamediatypeinteractionsidpullData
    * @class
-   * @param interactionId {String} Id of the interaction
    */
-  var exports = function(interactionId) {
+  var exports = function() {
     var _this = this;
 
 
-    _this['interactionId'] = interactionId;
+
 
 
   };
 
   /**
-   * Constructs a <code>WorkbinsworkbinIdaddinteractionData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MediamediatypeinteractionsidpullData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/WorkbinsworkbinIdaddinteractionData} obj Optional instance to populate.
-   * @return {module:model/WorkbinsworkbinIdaddinteractionData} The populated <code>WorkbinsworkbinIdaddinteractionData</code> instance.
+   * @param {module:model/MediamediatypeinteractionsidpullData} obj Optional instance to populate.
+   * @return {module:model/MediamediatypeinteractionsidpullData} The populated <code>MediamediatypeinteractionsidpullData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -68,8 +67,8 @@
       if (data.hasOwnProperty('ownerId')) {
         obj['ownerId'] = ApiClient.convertToType(data['ownerId'], 'String');
       }
-      if (data.hasOwnProperty('interactionId')) {
-        obj['interactionId'] = ApiClient.convertToType(data['interactionId'], 'String');
+      if (data.hasOwnProperty('workbinId')) {
+        obj['workbinId'] = ApiClient.convertToType(data['workbinId'], 'String');
       }
       if (data.hasOwnProperty('reason')) {
         obj['reason'] = IxnReasonCode.constructFromObject(data['reason']);
@@ -87,10 +86,10 @@
    */
   exports.prototype['ownerId'] = undefined;
   /**
-   * Id of the interaction
-   * @member {String} interactionId
+   * Id of the workbin
+   * @member {String} workbinId
    */
-  exports.prototype['interactionId'] = undefined;
+  exports.prototype['workbinId'] = undefined;
   /**
    * @member {module:model/IxnReasonCode} reason
    */
