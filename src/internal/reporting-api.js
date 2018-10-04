@@ -30,8 +30,8 @@ class ReportingApi {
    * @param {string} statistics The collection of statistic you want to include in your subscription.
    * @return The subscription ID and the values of the statistics for that subscription.
    */
-  async register(statistics) {
-    const resp = await this._api.registerWithHttpInfo({
+  async subscribe(statistics) {
+    const resp = await this._api.subscribeWithHttpInfo({
         data: {        
             statistics: statistics
         }
