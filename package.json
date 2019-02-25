@@ -1,6 +1,6 @@
 {
   "name": "genesys-workspace-client-js",
-  "version": "9.0.8",
+  "version": "9.0.9",
   "description": "Workspace application API used by Workspace Web Edition",
   "license": "MIT",
   "main": "src/index.js",
