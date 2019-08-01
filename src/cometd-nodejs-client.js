@@ -69,6 +69,9 @@ module.exports = {
                     _config.headers['Cookie'] = cookies;
                 }
 
+                // Set Content-Length header
+                _config.headers['Content-Length'] =  data ? Buffer.byteLength(data) : 0;
+
                 var self = this;
                 var http = _secure(_config) ? https : httpc;
                 _request = http.request(_config, function (response) {

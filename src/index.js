@@ -163,7 +163,7 @@ class WorkspaceApi extends EventEmitter {
             }
 
             this._log('Logging out...');
-            this._sessionApi.logout();
+            await this._sessionApi.logout();
 
             this.initialized = false;
         }
