@@ -25,7 +25,7 @@
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ExchangeTokenResponseData = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.PureCloudTokenResponseData = factory(root.WorkspaceApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The ExchangeTokenResponseData model module.
-   * @module model/ExchangeTokenResponseData
+   * The PureCloudTokenResponseData model module.
+   * @module model/PureCloudTokenResponseData
    * @version 9.0.000.51.3082
    */
 
   /**
-   * Constructs a new <code>ExchangeTokenResponseData</code>.
-   * @alias module:model/ExchangeTokenResponseData
+   * Constructs a new <code>PureCloudTokenResponseData</code>.
+   * @alias module:model/PureCloudTokenResponseData
    * @class
    */
   var exports = function() {
@@ -49,14 +49,15 @@
 
 
 
+
   };
 
   /**
-   * Constructs a <code>ExchangeTokenResponseData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>PureCloudTokenResponseData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ExchangeTokenResponseData} obj Optional instance to populate.
-   * @return {module:model/ExchangeTokenResponseData} The populated <code>ExchangeTokenResponseData</code> instance.
+   * @param {module:model/PureCloudTokenResponseData} obj Optional instance to populate.
+   * @return {module:model/PureCloudTokenResponseData} The populated <code>PureCloudTokenResponseData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -64,6 +65,9 @@
 
       if (data.hasOwnProperty('access_token')) {
         obj['access_token'] = ApiClient.convertToType(data['access_token'], 'String');
+      }
+      if (data.hasOwnProperty('token_type')) {
+        obj['token_type'] = ApiClient.convertToType(data['token_type'], 'String');
       }
       if (data.hasOwnProperty('expires_in')) {
         obj['expires_in'] = ApiClient.convertToType(data['expires_in'], 'Number');
@@ -77,6 +81,11 @@
    * @member {String} access_token
    */
   exports.prototype['access_token'] = undefined;
+  /**
+   * type of the token
+   * @member {String} token_type
+   */
+  exports.prototype['token_type'] = undefined;
   /**
    * expire time in seconds
    * @member {Number} expires_in

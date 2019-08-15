@@ -16,72 +16,62 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/PureCloudTokenResponseData'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./PureCloudTokenResponseData'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.CallParticipants = factory(root.WorkspaceApi.ApiClient);
+    root.WorkspaceApi.PureCloudTokenResponse = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.PureCloudTokenResponseData);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, PureCloudTokenResponseData) {
   'use strict';
 
 
 
 
   /**
-   * The CallParticipants model module.
-   * @module model/CallParticipants
+   * The PureCloudTokenResponse model module.
+   * @module model/PureCloudTokenResponse
    * @version 9.0.000.51.3082
    */
 
   /**
-   * Constructs a new <code>CallParticipants</code>.
-   * @alias module:model/CallParticipants
+   * Constructs a new <code>PureCloudTokenResponse</code>.
+   * @alias module:model/PureCloudTokenResponse
    * @class
    */
   var exports = function() {
     var _this = this;
 
 
-
   };
 
   /**
-   * Constructs a <code>CallParticipants</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>PureCloudTokenResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/CallParticipants} obj Optional instance to populate.
-   * @return {module:model/CallParticipants} The populated <code>CallParticipants</code> instance.
+   * @param {module:model/PureCloudTokenResponse} obj Optional instance to populate.
+   * @return {module:model/PureCloudTokenResponse} The populated <code>PureCloudTokenResponse</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('number')) {
-        obj['number'] = ApiClient.convertToType(data['number'], 'String');
-      }
-      if (data.hasOwnProperty('role')) {
-        obj['role'] = ApiClient.convertToType(data['role'], 'String');
+      if (data.hasOwnProperty('data')) {
+        obj['data'] = PureCloudTokenResponseData.constructFromObject(data['data']);
       }
     }
     return obj;
   }
 
   /**
-   * The participant's phone number.
-   * @member {String} number
+   * @member {module:model/PureCloudTokenResponseData} data
    */
-  exports.prototype['number'] = undefined;
-  /**
-   * The participant's role.
-   * @member {String} role
-   */
-  exports.prototype['role'] = undefined;
+  exports.prototype['data'] = undefined;
 
 
 
