@@ -1,6 +1,6 @@
 {
   "name": "genesys-workspace-client-js",
-  "version": "9.0.33",
+  "version": "9.0.34",
   "description": "Workspace application API used by Workspace Web Edition",
   "license": "MIT",
   "main": "./src/index.js",
@@ -24,7 +24,7 @@
     "url": "git://github.com/GenesysPureEngage/workspace-client-js.git"
   },
   "dependencies": {
-    "cometd": "^4.0.3",
+    "cometd": "^4.0.4",
     "cookiejar": "^2.1.2",
     "events": "^1.1.1",
     "superagent": "3.7.0",
