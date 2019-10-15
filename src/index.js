@@ -135,6 +135,14 @@ class WorkspaceApi extends EventEmitter {
         let response = await this._sessionApi.initializeWorkspaceWithHttpInfo(options);
 
         this._sessionCookie = response.response.header['set-cookie'].find(v => v.startsWith('WORKSPACE_SESSIONID'));
+
+        // Patch "Secure" cookie flag
+        if (this._sessionCookie) {
+            if (this._sessionCookie.indexOf('Secure') !== -1) {
+                this._sessionCookie = this._sessionCookie.replace('Secure', '');
+            }
+        }
+
         this.cookieJar.setCookie(this._sessionCookie);
         this._log('WORKSPACE_SESSIONID is: ' + this._sessionCookie);
 
