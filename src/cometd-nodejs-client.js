@@ -61,7 +61,7 @@ module.exports = {
                 const access = CookieAccess(
                     _config.hostname,
                     _config.pathname,
-                    'https:' == _config.protocol
+                    'https:' === _config.protocol
                 );
                 const cookies = cookieJar.getCookies(access).toValueString();
 
@@ -80,6 +80,23 @@ module.exports = {
                     self.statusText = response.statusMessage;
                     self.readyState = runtime.XMLHttpRequest.HEADERS_RECEIVED;
                     const cookies = response.headers['set-cookie'];
+
+                    cookies.forEach((cookie, cookieIndex) => {
+                        // Patch "Secure" cookie flag
+                        if (cookie.startsWith('BAYEUX_BROWSER')) {
+                            if(cookie.toLowerCase().indexOf('secure') !== -1) {
+                                let cookieFlags = cookie.split(';');
+                                cookieFlags.forEach((flag, flagIndex) => {
+                                    if (flag.toLowerCase().indexOf('secure') !== -1) {
+                                        cookieFlags[flagIndex] = '';
+                                    }
+                                });
+                                cookie = cookieFlags.filter(Boolean).join(';');
+                                cookies[cookieIndex] = cookie;
+                            }
+                        }
+                    });
+
                     if (cookies) {
                         cookieJar.setCookies(cookies);
                     }

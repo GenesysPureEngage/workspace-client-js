@@ -16,62 +16,71 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/OperationId'], factory);
+    define(['ApiClient', 'model/CallingList'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./OperationId'));
+    module.exports = factory(require('../ApiClient'), require('./CallingList'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.MediaSwicthToCoachData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.OperationId);
+    root.WorkspaceApi.Campaign = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.CallingList);
   }
-}(this, function(ApiClient, OperationId) {
+}(this, function(ApiClient, CallingList) {
   'use strict';
 
 
 
 
   /**
-   * The MediaSwicthToCoachData model module.
-   * @module model/MediaSwicthToCoachData
+   * The Campaign model module.
+   * @module model/Campaign
    * @version 9.0.000.68.3436
    */
 
   /**
-   * Constructs a new <code>MediaSwicthToCoachData</code>.
-   * @alias module:model/MediaSwicthToCoachData
+   * Constructs a new <code>Campaign</code>.
+   * @alias module:model/Campaign
    * @class
    */
   var exports = function() {
     var _this = this;
 
 
+
   };
 
   /**
-   * Constructs a <code>MediaSwicthToCoachData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Campaign</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MediaSwicthToCoachData} obj Optional instance to populate.
-   * @return {module:model/MediaSwicthToCoachData} The populated <code>MediaSwicthToCoachData</code> instance.
+   * @param {module:model/Campaign} obj Optional instance to populate.
+   * @return {module:model/Campaign} The populated <code>Campaign</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('operationId')) {
-        obj['operationId'] = OperationId.constructFromObject(data['operationId']);
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('callingLists')) {
+        obj['callingLists'] = ApiClient.convertToType(data['callingLists'], [CallingList]);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/OperationId} operationId
+   * name of the campaign
+   * @member {String} name
    */
-  exports.prototype['operationId'] = undefined;
+  exports.prototype['name'] = undefined;
+  /**
+   * @member {Array.<module:model/CallingList>} callingLists
+   */
+  exports.prototype['callingLists'] = undefined;
 
 
 

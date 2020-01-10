@@ -102,6 +102,21 @@ class WorkspaceApi extends EventEmitter {
         });
     }
 
+    _patchSecureCookieFlag(sessionCookie) {
+        // Patch "Secure" cookie flag
+        if (sessionCookie && sessionCookie.toLowerCase().indexOf('secure') !== -1) {
+            let cookieFlags = sessionCookie.split(';');
+            cookieFlags.forEach((flag, flagIndex) => {
+                if (flag.toLowerCase().indexOf('secure') !== -1) {
+                    cookieFlags[flagIndex] = '';
+                }
+            });
+            sessionCookie = cookieFlags.filter(Boolean).join(';');
+        }
+
+        this.cookieJar.setCookie(sessionCookie);
+    }
+
     /**
      * Initialize the API using either an authorization code and redirect URI or an access token. The authorization code comes from using the
      * Authorization Code Grant flow to authenticate with the Authentication API.
@@ -135,15 +150,7 @@ class WorkspaceApi extends EventEmitter {
         let response = await this._sessionApi.initializeWorkspaceWithHttpInfo(options);
 
         this._sessionCookie = response.response.header['set-cookie'].find(v => v.startsWith('WORKSPACE_SESSIONID'));
-
-        // Patch "Secure" cookie flag
-        if (this._sessionCookie) {
-            if (this._sessionCookie.indexOf('Secure') !== -1) {
-                this._sessionCookie = this._sessionCookie.replace('Secure', '');
-            }
-        }
-
-        this.cookieJar.setCookie(this._sessionCookie);
+        this._patchSecureCookieFlag(this._sessionCookie);
         this._log('WORKSPACE_SESSIONID is: ' + this._sessionCookie);
 
         let data = await this._initializeCometd();
@@ -209,8 +216,7 @@ class WorkspaceApi extends EventEmitter {
         }
 
         this._log(`Sending activate-channels with: ${JSON.stringify(data)}`);
-        let response = await this._sessionApi.activateChannels(data);
-        return response;
+        return await this._sessionApi.activateChannels(data);
     }
 
     isDebugEnabled() {

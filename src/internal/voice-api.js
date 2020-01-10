@@ -1,7 +1,13 @@
 const workspace = require('./code-gen/workspace-api');
 
 class VoiceApi {
-
+    /**
+     * Implements Voice API interaction methods. There is no need to call this constructor explicitly, it is initialized
+     * internally by WorkspaceAPI object. Use WorkspaceAPI.voice to access it
+     * @param eventEmitter reference to WorkspaceApi object
+     * @param workspaceClient reference to ApiClient with low level workspace API
+     * @param debugEnabled set to true to enable extended debug output
+     */
     constructor(eventEmitter, workspaceClient, debugEnabled) {
         this._eventEmitter = eventEmitter;
         this._api = new workspace.VoiceApi(workspaceClient);
