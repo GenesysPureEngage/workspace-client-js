@@ -16,63 +16,62 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/TargetsResponseStatus'], factory);
+    define(['ApiClient', 'model/OperationId'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./TargetsResponseStatus'));
+    module.exports = factory(require('../ApiClient'), require('./OperationId'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.ApiSuccessResponse = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.TargetsResponseStatus);
+    root.WorkspaceApi.RemoveAttachmentData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.OperationId);
   }
-}(this, function(ApiClient, TargetsResponseStatus) {
+}(this, function(ApiClient, OperationId) {
   'use strict';
 
 
 
 
   /**
-   * The ApiSuccessResponse model module.
-   * @module model/ApiSuccessResponse
+   * The RemoveAttachmentData model module.
+   * @module model/RemoveAttachmentData
    * @version 9.0.000.72.3561
    */
 
   /**
-   * Constructs a new <code>ApiSuccessResponse</code>.
-   * @alias module:model/ApiSuccessResponse
+   * Constructs a new <code>RemoveAttachmentData</code>.
+   * @alias module:model/RemoveAttachmentData
    * @class
-   * @param status {module:model/TargetsResponseStatus} 
    */
-  var exports = function(status) {
+  var exports = function() {
     var _this = this;
 
-    _this['status'] = status;
+
   };
 
   /**
-   * Constructs a <code>ApiSuccessResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>RemoveAttachmentData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ApiSuccessResponse} obj Optional instance to populate.
-   * @return {module:model/ApiSuccessResponse} The populated <code>ApiSuccessResponse</code> instance.
+   * @param {module:model/RemoveAttachmentData} obj Optional instance to populate.
+   * @return {module:model/RemoveAttachmentData} The populated <code>RemoveAttachmentData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('status')) {
-        obj['status'] = TargetsResponseStatus.constructFromObject(data['status']);
+      if (data.hasOwnProperty('operationId')) {
+        obj['operationId'] = OperationId.constructFromObject(data['operationId']);
       }
     }
     return obj;
   }
 
   /**
-   * @member {module:model/TargetsResponseStatus} status
+   * @member {module:model/OperationId} operationId
    */
-  exports.prototype['status'] = undefined;
+  exports.prototype['operationId'] = undefined;
 
 
 

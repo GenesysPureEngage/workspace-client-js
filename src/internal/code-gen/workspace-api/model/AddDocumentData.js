@@ -16,47 +16,48 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/OperationId', 'model/VoiceloginData'], factory);
+    define(['ApiClient', 'model/MediamediatypeinteractionsidadddocumentData', 'model/OperationId'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./OperationId'), require('./VoiceloginData'));
+    module.exports = factory(require('../ApiClient'), require('./MediamediatypeinteractionsidadddocumentData'), require('./OperationId'));
   } else {
     // Browser globals (root is window)
     if (!root.WorkspaceApi) {
       root.WorkspaceApi = {};
     }
-    root.WorkspaceApi.LoginData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.OperationId, root.WorkspaceApi.VoiceloginData);
+    root.WorkspaceApi.AddDocumentData = factory(root.WorkspaceApi.ApiClient, root.WorkspaceApi.MediamediatypeinteractionsidadddocumentData, root.WorkspaceApi.OperationId);
   }
-}(this, function(ApiClient, OperationId, VoiceloginData) {
+}(this, function(ApiClient, MediamediatypeinteractionsidadddocumentData, OperationId) {
   'use strict';
 
 
 
 
   /**
-   * The LoginData model module.
-   * @module model/LoginData
+   * The AddDocumentData model module.
+   * @module model/AddDocumentData
    * @version 9.0.000.72.3561
    */
 
   /**
-   * Constructs a new <code>LoginData</code>.
-   * @alias module:model/LoginData
+   * Constructs a new <code>AddDocumentData</code>.
+   * @alias module:model/AddDocumentData
    * @class
+   * @param data {module:model/MediamediatypeinteractionsidadddocumentData} 
    */
-  var exports = function() {
+  var exports = function(data) {
     var _this = this;
 
 
-
+    _this['data'] = data;
   };
 
   /**
-   * Constructs a <code>LoginData</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>AddDocumentData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/LoginData} obj Optional instance to populate.
-   * @return {module:model/LoginData} The populated <code>LoginData</code> instance.
+   * @param {module:model/AddDocumentData} obj Optional instance to populate.
+   * @return {module:model/AddDocumentData} The populated <code>AddDocumentData</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -66,7 +67,7 @@
         obj['operationId'] = OperationId.constructFromObject(data['operationId']);
       }
       if (data.hasOwnProperty('data')) {
-        obj['data'] = VoiceloginData.constructFromObject(data['data']);
+        obj['data'] = MediamediatypeinteractionsidadddocumentData.constructFromObject(data['data']);
       }
     }
     return obj;
@@ -77,7 +78,7 @@
    */
   exports.prototype['operationId'] = undefined;
   /**
-   * @member {module:model/VoiceloginData} data
+   * @member {module:model/MediamediatypeinteractionsidadddocumentData} data
    */
   exports.prototype['data'] = undefined;
 
