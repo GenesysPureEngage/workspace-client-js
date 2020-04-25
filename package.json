@@ -27,7 +27,8 @@
     "cometd": "4.0.4",
     "cookiejar": "^2.1.2",
     "events": "^1.1.1",
-    "superagent": "3.7.0",
+    "superagent": "^5.2.2",
+    "superagent-proxy": "^2.0.0",
     "url": "^0.11.0"
   },
   "devDependencies": {
