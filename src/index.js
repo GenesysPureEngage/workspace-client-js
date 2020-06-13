@@ -5,6 +5,8 @@ const EventEmitter = require('events');
 const VoiceApi = require('./internal/voice-api');
 const TargetsApi = require('./internal/targets-api');
 const ReportingApi = require('./internal/reporting-api');
+const ChatApi = require('./internal/chat-api');
+const MediaApi = require('./internal/media-api');
 
 class WorkspaceApi extends EventEmitter {
     /**
@@ -50,6 +52,8 @@ class WorkspaceApi extends EventEmitter {
         await this._initCometDHandshake();
         this._log('Handshake successful');
         const result = await this._initializeWorkspaceSubscription();
+
+        // Voice channel subscription
         this._cometd.subscribe(
             '/workspace/v3/voice',
             msg => {
@@ -62,6 +66,35 @@ class WorkspaceApi extends EventEmitter {
                 this._log(`/workspace/v3/voice subscription ${status}.`);
             }
         );
+
+        // Media channel subscription
+        this._cometd.subscribe(
+            '/workspace/v3/media',
+            msg => {
+                this.media._onCometdMessage(msg)
+            },
+            result => {
+                const status = result.successful
+                    ? 'successful'
+                    : 'failed';
+                this._log(`/workspace/v3/media subscription ${status}.`);
+            }
+        );
+
+        // Chat channel subscription
+        this._cometd.subscribe(
+            '/workspace/v3/media/chat',
+            msg => {
+                this.chat._onCometdMessage(msg)
+            },
+            result => {
+                const status = result.successful
+                    ? 'successful'
+                    : 'failed';
+                this._log(`/workspace/v3/media/chat subscription ${status}.`);
+            }
+        );
+
         return result;
     }
 
@@ -136,6 +169,8 @@ class WorkspaceApi extends EventEmitter {
         this.voice = new VoiceApi(this, this._workspaceClient, this._debugEnabled);
         this.targets = new TargetsApi(this._workspaceClient, this._debugEnabled);
         this.reporting = new ReportingApi(this._workspaceClient, this._debugEnabled);
+        this.chat = new ChatApi(this._workspaceClient, this._debugEnabled);
+        this.media = new MediaApi(this._workspaceClient, this._debugEnabled);
 
         let options = {};
 
