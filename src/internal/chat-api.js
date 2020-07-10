@@ -2,8 +2,8 @@ const workspace = require('./code-gen/workspace-api');
 
 class ChatApi {
     /**
-     * Implements Voice API interaction methods. There is no need to call this constructor explicitly, it is initialized
-     * internally by WorkspaceAPI object. Use WorkspaceAPI.voice to access it
+     * Implements Chat API interaction methods. There is no need to call this constructor explicitly, it is initialized
+     * internally by WorkspaceAPI object. Use WorkspaceAPI.chat to access it
      * @param eventEmitter reference to WorkspaceApi object
      * @param workspaceClient reference to ApiClient with low level workspace API
      * @param debugEnabled set to true to enable extended debug output
@@ -39,30 +39,161 @@ class ChatApi {
         }
     }
 
+    /**
+     * Example
+     {
+       "interaction":{
+          "capabilities":[
+             "accept",
+             "reject"
+          ],
+          "ticketId":1,
+          "outQueues":[],
+          "proxyClientId":9,
+          "submittedToRouterAt":"2018-05-17T13:49:31Z",
+          "inQueues":[
+             {
+                "key":"MyFirstQueue",
+                "type":"str",
+                "value":""
+             }
+          ],
+          "interactionType":"Inbound",
+          "id":"022AKaDEME4A000K",
+          "receivedAt":"2018-05-17T13:46:36Z",
+          "isHeld":false,
+          "submittedBy":"esv_chat_srv",
+          "mediatype":"chat",
+          "tenantId":1,
+          "queue":"MySecondQueue",
+          "submitSeq":"15007843",
+          "movedToQueueAt":"2018-05-17T13:46:37Z",
+          "submittedAt":"2018-05-17T13:46:37Z",
+          "placedInQueueAt":"2018-05-17T13:49:27Z",
+          "userData":[
+             {
+                "key":"LastName",
+                "type":"str",
+                "value":"Smith"
+             },
+             {
+                "key":"FirstName",
+                "type":"str",
+                "value":"John"
+             }
+          ],
+          "interactionSubtype":"InboundNew",
+          "isLocked":false,
+          "isOnline":true,
+          "placeInQueueSeq":"15007887",
+          "chat":{
+             "participants":[
+
+             ]
+          },
+          "state":"Invited",
+          "isInWorkflow":false
+       },
+       "notificationType":"StatusChange",
+       "messageType":"InteractionStateChanged"
+    }
+     */
     // TODO: Handle event to remove chat from a list when chat is terminated
     _onInteractionStateChanged(cometdMsg) {
         let interactionData = cometdMsg.data.interaction;
         let chatId = interactionData.id;
 
-        if (!this.chats.has(chatId)) {
-            this.chats[chatId] = interactionData;
-        }
+        // Add chat information
+        this.chats[chatId] = interactionData;
 
-        let msg = {chatId, interactionData, notificationType: cometdMsg.data.notificationType};
+        let msg = {
+            id: chatId,
+            data: interactionData,
+            notificationType: cometdMsg.data.notificationType};
 
         this._eventEmitter.emit('InteractionStateChanged', msg);
     }
 
+    /**
+     * Example:
+        {
+           "id":"022AKaDEME4A000X",
+           "messages":[
+              {
+                 "type":"ParticipantJoined",
+                 "index":1,
+                 "from":{
+                    "participantId":"00935AFD8ACE0006",
+                    "type":"Customer",
+                    "nickname":"John Smith",
+                    "visibility":"All"
+                 },
+                 "visibility":"All",
+                 "userData":{
+                    "_data_id":"155-1a67959f-4901-441c-93c6-4bed8da51564",
+                    "_genesys_referrer":"",
+                    "FirstName":"John",
+                    "_genesys_source":"web",
+                    "GCTI_LanguageCode":"en",
+                    "_genesys_pageTitle":"Widgets Project",
+                    "EmailAddress":"John.Smith@genesys.com",
+                    "_genesys_browser":"Chrome",
+                    "IdentifyCreateContact":"3",
+                    "TimeZone":"120",
+                    "_genesys_OS":"Mac OS X",
+                    "MediaType":"chat",
+                    "_genesys_url":"http://fce-u0021.us.int.genesyslab.com/",
+                    "LastName":"Smith"
+                 }
+              },
+              {
+                 "type":"ParticipantJoined",
+                 "index":2,
+                 "from":{
+                    "participantId":"00935AFD8AD10008",
+                    "type":"External",
+                    "nickname":"PoD service",
+                    "visibility":"All"
+                 },
+                 "visibility":"All",
+                 "timestamp":"2018-05-17T13:59:45.000Z",
+                 "timestampSeconds":1526565585
+              },
+              {
+                 "type":"Text",
+                 "index":3,
+                 "from":{
+                    "participantId":"00935AFD8AD10008",
+                    "type":"External",
+                    "nickname":"PoD service",
+                    "visibility":"All"
+                 },
+                 "visibility":"All",
+                 "timestamp":"2018-05-17T13:59:45.000Z",
+                 "timestampSeconds":1526565585,
+                 "text":"agent will be with you shortly ..."
+              }
+           ],
+           "notificationType":"NewMessages",
+           "messageType":"MessageLogUpdated"
+        }
+         */
     _onMessageLogUpdated(cometdMsg) {
+        // TODO: Verify cometdMsg.data.id
         let chatId = cometdMsg.data.interactionId;
-        let notificationType =  cometdMsg.data.notificationType;
-        let messages =  cometdMsg.data.messages;
+        let notificationType = cometdMsg.data.notificationType;
+        let messages = cometdMsg.data.messages;
 
         if (this.chats.has(chatId) && messages) {
             this.chats[chatId].chat.messages = (this.chats[chatId].chat.messages || []).concat(messages);
         }
 
-        let msg = {id: chatId, chat: this.chats[chatId], messages: messages, notificationType: cometdMsg.data.notificationType};
+        let msg = {
+            id: chatId,
+            chat: this.chats[chatId],
+            messages: messages,
+            notificationType: cometdMsg.data.notificationType
+        };
 
         this._eventEmitter.emit('MessageLogUpdated', msg);
     }
@@ -283,11 +414,10 @@ class ChatApi {
     }
 
 
-
     setDebugEnabled(isEnabled) {
         this._debugEnabled = !!isEnabled;
         return this;
     }
 }
 
-module.exports = VoiceApi;
+module.exports = ChatApi;
