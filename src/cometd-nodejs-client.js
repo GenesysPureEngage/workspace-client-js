@@ -81,23 +81,23 @@ module.exports = {
                     self.readyState = runtime.XMLHttpRequest.HEADERS_RECEIVED;
                     const cookies = response.headers['set-cookie'];
 
-                    cookies.forEach((cookie, cookieIndex) => {
-                        // Patch "Secure" cookie flag
-                        if (cookie.startsWith('BAYEUX_BROWSER')) {
-                            if(cookie.toLowerCase().indexOf('secure') !== -1) {
-                                let cookieFlags = cookie.split(';');
-                                cookieFlags.forEach((flag, flagIndex) => {
-                                    if (flag.toLowerCase().indexOf('secure') !== -1) {
-                                        cookieFlags[flagIndex] = '';
-                                    }
-                                });
-                                cookie = cookieFlags.filter(Boolean).join(';');
-                                cookies[cookieIndex] = cookie;
-                            }
-                        }
-                    });
-
                     if (cookies) {
+                        cookies.forEach((cookie, cookieIndex) => {
+                            // Patch "Secure" cookie flag
+                            if (cookie.startsWith('BAYEUX_BROWSER')) {
+                                if (cookie.toLowerCase().indexOf('secure') !== -1) {
+                                    let cookieFlags = cookie.split(';');
+                                    cookieFlags.forEach((flag, flagIndex) => {
+                                        if (flag.toLowerCase().indexOf('secure') !== -1) {
+                                            cookieFlags[flagIndex] = '';
+                                        }
+                                    });
+                                    cookie = cookieFlags.filter(Boolean).join(';');
+                                    cookies[cookieIndex] = cookie;
+                                }
+                            }
+                        });
+
                         cookieJar.setCookies(cookies);
                     }
 

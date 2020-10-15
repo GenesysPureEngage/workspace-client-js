@@ -21,7 +21,7 @@ class WorkspaceApi extends EventEmitter {
         this.baseUrl = baseUrl;
         this._workspaceUrl = `${this.baseUrl}/workspace/v3`;
         this._debugEnabled = (String(debugEnabled) === 'true');
-        this.initialized = false;
+        this._initialized = false;
     }
 
     _log(msg) {
@@ -192,8 +192,8 @@ class WorkspaceApi extends EventEmitter {
         this.user = data.user;
         this.configuration = data.configuration;
 
-        this.initialized = true;
         this._log('Initialization complete.');
+        this._initialized = true;
     }
 
     get agent() {
@@ -206,7 +206,7 @@ class WorkspaceApi extends EventEmitter {
      * new calls to the API.
      */
     async destroy() {
-        if (this.initialized) {
+        if (this._initialized) {
             if (this._cometd) {
                 this._log('Disconnecting cometd...');
                 this._cometd.disconnect();
@@ -215,7 +215,7 @@ class WorkspaceApi extends EventEmitter {
             this._log('Logging out...');
             await this._sessionApi.logout();
 
-            this.initialized = false;
+            this._initialized = false;
         }
     }
 
