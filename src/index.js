@@ -24,6 +24,7 @@ class WorkspaceApi extends EventEmitter {
         this._initialized = false;
     }
 
+
     _log(msg) {
         if (this._debugEnabled) {
             console.log(msg);
@@ -135,6 +136,56 @@ class WorkspaceApi extends EventEmitter {
         });
     }
 
+    // Patch nodejs http module to show requests body and headers
+    _patchHttpHandler() {
+        if (this._debugEnabled) {
+            process.env['FORCE_COLOR'] = true;
+
+            const http = require('http');
+            const patch = require('monkeypatch');
+            const chalk = require('chalk');
+            const util = require('util');
+
+            patch(http, 'request', (requestUnpatched, options, cb) => {
+                const req = requestUnpatched(options, cb);
+
+                // Patch request.end function
+                patch(req, 'end', (endUnpatched, data) => {
+                    this._log(chalk.red(`${req.method}`) + chalk.blue(` ${req.path}`));
+                    const headers = req.getHeaders();
+                    if (headers)
+                        this._log(chalk.green("HEADERS: ") + chalk.green(util.inspect(headers, {depth: 5})));
+                    if (data)
+                        this._log(chalk.gray(util.inspect(data, {depth: 5})));
+                    if (req.output)
+                        this._log(chalk.gray(util.inspect(req.output, {depth: 5})));
+
+
+                    return endUnpatched(data);
+                });
+
+                // Patch response data function
+                req.on('response', resp => {
+                    const headers = resp ? resp.headers : {};
+
+                    resp.on('data', data => {
+                        this._log(chalk.red("RESPONSE") + chalk.blue(` ${req.path}`));
+                        if (headers)
+                            this._log(chalk.green("HEADERS: ") + chalk.green(util.inspect(headers, {depth: 5})));
+
+                        if (data instanceof Buffer) {
+                            this._log(chalk.gray(util.inspect(data.toString('utf8'), {depth: 5})));
+                        } else {
+                            this._log(chalk.gray(util.inspect(data, {depth: 5})));
+                        }
+                    });
+                });
+
+                return req;
+            });
+        }
+    }
+
     _patchSecureCookieFlag(sessionCookie) {
         // Patch "Secure" cookie flag
         if (sessionCookie && sessionCookie.toLowerCase().indexOf('secure') !== -1) {
@@ -158,6 +209,9 @@ class WorkspaceApi extends EventEmitter {
      * @param {String} token The access token retrieved from the Authentication API.
      */
     async initialize({code, redirectUri, token}) {
+        // Install http debug output handler if debug output enabled
+        this._patchHttpHandler();
+
         this._workspaceClient = new workspace.ApiClient();
         this._workspaceClient.basePath = this._workspaceUrl;
         this._workspaceClient.enableCookies = true;

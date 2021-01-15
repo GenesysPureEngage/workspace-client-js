@@ -17,6 +17,11 @@ module.exports = {
         runtime.console = console;
         runtime.console.debug = runtime.console.log;
 
+        // Inject empty window object to support CometD 4.0.5 and 5.0.1
+        if (typeof global.window === 'undefined') {
+            global.window = runtime;
+        }
+
         // Fields shared by all XMLHttpRequest instances.
         var _agentc = new httpc.Agent({
             keepAlive: true
